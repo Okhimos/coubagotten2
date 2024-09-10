@@ -159,7 +159,7 @@ local ITEM = Clockwork.item:New();
 			else
 				Schema:EasyText(player, "peru", "Броненосец Пришвартован!");
 			end
-		elseif itemFunction == "undock" then
+		else]]if itemFunction == "undock" then
 			if cwSailing:LongshipExists(self.itemID) then
 				Schema:EasyText(player, "peru", "Броненосец Отшвартован!");
 				return false;

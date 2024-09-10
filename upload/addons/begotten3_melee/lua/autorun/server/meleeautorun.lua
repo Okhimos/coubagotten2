@@ -23,19 +23,33 @@ function Parry(target, dmginfo)
 					attacker:SetNWBool("Parried", true)
 					target.parryTarget = attacker;
 					if(attacker:IsPlayer()) then netstream.Start(attacker, "Stunned", (attacker:HasBelief("encore") and 0.5 or 1)); end
+					
+					if wep.isLongsword and (!cwBeliefs or target:HasBelief("blademaster")) then
+						wep:SetNW2Bool("swordplayActive", true);
+						
+						wep:CreateTimer(0.5, "swordplayTimer"..wep:EntIndex(), function()
+							if IsValid(wep) then
+								wep:SetNW2Bool("swordplayActive", false);
+							end
+						end);
+					end
+				end
+
+				if cwBeliefs and target:HasBelief("repulsive_riposte") then
+					target.parryStacks = (target.parryStacks or 0) + 1;
+					if wep.Timers and wep.Timers["parryTimer"..tostring(target:EntIndex())] then
+						wep.Timers["parryTimer"..tostring(target:EntIndex())].duration = wep.Timers["parryTimer"..tostring(target:EntIndex())].duration + 0.3;
+					end
 				end
 				
 				dmginfo:SetDamage(0)
-				target:EmitSound("meleesounds/DS2Parry.mp3")
-				netstream.Start(target, "Parried", 0.2)
-				
-				if cwBeliefs and target:HasBelief("repulsive_riposte") then
-					target.parryStacks = (target.parryStacks or 0) + 1;
-					
-					if wep.Timers and wep.Timers["parryTimer"..tostring(target:EntIndex())] then
-						wep.Timers["parryTimer"..tostring(target:EntIndex())].duration = wep.Timers["parryTimer"..tostring(target:EntIndex())].duration + 0.15;
-					end
+				if target.parryStacks and target.parryStacks > 1 then
+					target:EmitSound("meleesounds/DS2Parry.mp3", 100, 90 + math.min(255, 90 + (target.parryStacks * 10)))
+				else
+					target:EmitSound("meleesounds/DS2Parry.mp3")
 				end
+
+				netstream.Start(target, "Parried", 0.2)
 				
 				if !isJavelin then
 					if attacker.CancelGuardening then
@@ -79,7 +93,7 @@ function Parry(target, dmginfo)
 				
 				local max_stamina = target:GetMaxStamina();
 				
-				target:SetStamina(target:GetNWInt("Stamina") + (math.Round(blocktable["parrytakestamina"] / 2) * (target.parryStacks or 1)));
+				target:SetStamina(math.min(max_stamina, target:GetNWInt("Stamina") + (math.Round(blocktable["parrytakestamina"] / 2) * (target.parryStacks or 1))));
 				
 				-- Poise should start regenerating upon successful parry after 0.5 seconds.
 				target.blockStaminaRegen = math.min(target.blockStaminaRegen or 0, curTime + 0.5);
@@ -126,6 +140,16 @@ function Parry(target, dmginfo)
 						end
 						
 						target:SetNWBool("ParrySucess", true)
+						
+						if wep.isLongsword and (!cwBeliefs or target:HasBelief("blademaster")) then
+							wep:SetNW2Bool("swordplayActive", true);
+							
+							wep:CreateTimer(0.5, "swordplayTimer"..wep:EntIndex(), function()
+								if IsValid(wep) then
+									wep:SetNW2Bool("swordplayActive", false);
+								end
+							end);
+						end
 						
 						local delay = 2.5;
 						
@@ -189,7 +213,7 @@ local function Guarding(ent, dmginfo)
 	
 	local isJavelin = IsValid(inflictor) and inflictor.isJavelin and !inflictor:IsWeapon();
 	
-	if (!ent:IsPlayer()) then
+	if !ent.GetActiveWeapon or !IsValid(ent:GetActiveWeapon()) then
 		if ent:IsNPC() or ent:IsNextBot() then
 			local attacker = dmginfo:GetAttacker()
 			
@@ -240,32 +264,48 @@ local function Guarding(ent, dmginfo)
 		
 		return;
 	end;
+	
+	local bIsPlayer = ent:IsPlayer();
 
-	if ent:Alive() then
+	if (bIsPlayer and ent:Alive()) or (ent:IsNextBot() or ent:IsNPC()) and ent.GetActiveWeapon then
 		local wep = ent:GetActiveWeapon()
 		--local attacksoundtable = GetSoundTable(wep.AttackSoundTable)
 		--local attacktable = GetTable(wep.AttackTable)
 		local attacker = dmginfo:GetAttacker()
 		--local max_poise = ent:GetNetVar("maxMeleeStamina") or 90;
-		local max_stamina = ent:GetMaxStamina();
 		local conditionDamage = dmginfo:GetDamage();
 
-		if IsValid(wep) and (ent:GetNWBool("Guardening") == true) then
+		if IsValid(wep) and (ent:GetNWBool("Guardening") or (ent.IsBlocking and ent:IsBlocking())) then
 			local blocktable;
+			local soundtable;
 			
-			if wep:GetNWString("activeOffhand"):len() > 0 then
-				local offhandTable = weapons.GetStored(wep:GetNWString("activeOffhand"));
-							
-				if offhandTable then
-					blocktable = GetDualTable(wep.realBlockTable, offhandTable.BlockTable);
+			if ent.BlockTable then
+				blocktable = GetTable(ent.BlockTable);
+				
+				if blocktable then
+					if !ent.BlockSoundTable then
+						soundtable = blocktable.blocksoundtable;
+					end
 				else
 					blocktable = GetTable(wep.realBlockTable);
 				end
 			else
-				blocktable = GetTable(wep.realBlockTable);
+				if wep:GetNWString("activeOffhand"):len() > 0 then
+					local offhandTable = weapons.GetStored(wep:GetNWString("activeOffhand"));
+								
+					if offhandTable then
+						blocktable = GetDualTable(wep.realBlockTable, offhandTable.BlockTable);
+					else
+						blocktable = GetTable(wep.realBlockTable);
+					end
+				else
+					blocktable = GetTable(wep.realBlockTable);
+				end
 			end
 			
-			local blocksoundtable = GetSoundTable(wep.realBlockSoundTable)
+			soundtable = soundtable or ent.BlockSoundTable or wep.realBlockSoundTable;
+			
+			local blocksoundtable = GetSoundTable(soundtable)
 			local blockthreshold = (blocktable["blockcone"] or 135) / 2;
 			
 			if blocktable["partialbulletblock"] == true and (dmginfo:IsDamageType(DMG_BULLET) or dmginfo:IsDamageType(DMG_BUCKSHOT)) and (IsValid(attacker) and (math.abs(math.AngleDifference(ent:EyeAngles().y, (attacker:GetPos() - ent:GetPos()):Angle().y)) <= blockthreshold)) then
@@ -366,7 +406,7 @@ local function Guarding(ent, dmginfo)
 			if canblock then
 				local enemywep;
 				
-				if attacker:IsPlayer() or attacker:IsNPC() then
+				if attacker:IsPlayer() or attacker:IsNPC() or attacker.GetActiveWeapon then
 					enemywep = inflictor or attacker:GetActiveWeapon()
 				end
 				
@@ -504,7 +544,7 @@ local function Guarding(ent, dmginfo)
 						end
 					end
 					
-					if not ent.opponent then
+					if bIsPlayer and !ent.opponent then
 						if wep then
 							local shieldItemTable = ent:GetShieldEquipped();
 							local weaponItemTable = item.GetByWeapon(wep);
@@ -604,7 +644,6 @@ local function Guarding(ent, dmginfo)
 		
 					-- Special Effect
 					if (blocktable["specialeffect"]) == true then
-				
 						local flame = (blocktable["blockeffect"]);
 						local bone = ent:LookupBone("ValveBiped.Bip01_R_Hand");
 					
@@ -701,7 +740,7 @@ local function Guarding(ent, dmginfo)
 					end
 					--]]
 						
-					if !ent:GetNWBool("Deflect") and ent:IsValid() and ent:Alive() and attacker:IsValid() then
+					if bIsPlayer and !ent:GetNWBool("Deflect") and ent:Alive() and attacker:IsValid() then
 						local poiseDamageModifier = 1;
 						
 						if attacker.HasBelief then
@@ -962,7 +1001,7 @@ local function Guarding(ent, dmginfo)
 					end
 					-- Poise system
 			
-					if !ent:GetNWBool("Deflect") then
+					if bIsPlayer and !ent:GetNWBool("Deflect") then
 						--local melsta = ent:GetNWInt("meleeStamina", 90);
 						local melsta = ent:GetNWInt("Stamina", 100);
 						local blockamount = (blocktable["guardblockamount"]);
@@ -1121,7 +1160,6 @@ local function Guarding(ent, dmginfo)
 						end
 						
 						ent:SetNWBool("Deflect", false)
-						
 						wep:SetNextPrimaryFire(0);
 						
 						if ent.HasBelief then
@@ -1132,6 +1170,8 @@ local function Guarding(ent, dmginfo)
 							if ent:HasBelief("sidestep") then
 								deflectionPoisePayback = 25;
 								deflectionStabilityPayback = 15;
+								ent:SetNWBool("CanDeflect", true)
+
 							elseif ent:HasBelief("deflection") then
 								deflectionPoisePayback = 15;
 								deflectionStabilityPayback = 10;
@@ -1141,7 +1181,6 @@ local function Guarding(ent, dmginfo)
 								deflectionPoisePayback = math.Round(deflectionPoisePayback * 1.5);
 							end
 							
-							--ent:SetNWInt("meleeStamina", math.Clamp(ent:GetNWInt("meleeStamina", max_poise) + deflectionPoisePayback, 0, max_poise));
 							ent:HandleStamina(deflectionPoisePayback);
 							ent:SetCharacterData("stability", math.Clamp(ent:GetCharacterData("stability", max_stability) + deflectionStabilityPayback, 0, max_stability));
 							ent:SetNWInt("stability", ent:GetCharacterData("stability", max_stability));
@@ -1157,13 +1196,13 @@ local function Guarding(ent, dmginfo)
 							local delay = enemyattacktable["delay"];
 							
 							if ent.HasBelief then
-								if ent:HasBelief("sidestep") and enemyattacktable["delay"] >= 2 then
-									delay = enemyattacktable["delay"] + 2;
-								elseif ent:HasBelief("deflection") and enemyattacktable["delay"] >= 1 then
-									delay = enemyattacktable["delay"] + 1;
+								if ent:HasBelief("sidestep") then
+									delay = math.max(2, enemyattacktable["delay"]);
+								elseif ent:HasBelief("deflection") then
+									delay = math.max(1, enemyattacktable["delay"]);
 								end
 							end
-							
+
 							if enemywep then
 								enemywep:SetNextPrimaryFire(CurTime() + delay);
 								
@@ -1187,6 +1226,16 @@ local function Guarding(ent, dmginfo)
 							timer.Simple(delay, function()
 								if IsValid(attacker) then
 									attacker:SetNWBool("Deflected", false);
+								end
+							end);
+						end
+						
+						if wep.isLongsword and (!cwBeliefs or ent:HasBelief("blademaster")) then
+							wep:SetNW2Bool("swordplayActive", true);
+							
+							wep:CreateTimer(0.5, "swordplayTimer"..wep:EntIndex(), function()
+								if IsValid(wep) then
+									wep:SetNW2Bool("swordplayActive", false);
 								end
 							end);
 						end

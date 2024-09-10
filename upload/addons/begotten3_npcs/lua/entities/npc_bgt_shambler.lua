@@ -21,7 +21,7 @@ ENT.AvoidEnemyRange = 0
 ENT.HearingCoefficient = 0.5
 ENT.SightFOV = 300
 ENT.SightRange = 1300
-ENT.XPValue = 135;
+ENT.XPValue = 35;
 -- Relationships --
 ENT.Factions = {FACTION_ZOMBIES}
 -- Movements/animations --
@@ -45,6 +45,7 @@ ENT.ClimbUpAnimation = ACT_ZOMBIE_CLIMB_UP--ACT_ZOMBIE_CLIMB_UP --pull_grenade
 ENT.ClimbOffset = Vector(-14, 0, 0)
 ENT.ArmorPiercing = 10;
 ENT.Damage = 10;
+ENT.MaxMultiHit = 1;
 -- Detection --
 ENT.EyeBone = "ValveBiped.Bip01_Spine4"
 ENT.EyeOffset = Vector(7.5, 0, 5)
@@ -275,7 +276,6 @@ end
 	self:OnRangeAttack()
   end;
   function ENT:OnAnimEvent()
-	local sha = false
     if self:IsAttacking() and self:GetCycle() > 0.3 then
       self:Attack({
         damage = self.Damage,

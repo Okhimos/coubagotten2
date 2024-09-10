@@ -4,6 +4,8 @@ ENT.Base = "drgbase_nextbot" -- DO NOT TOUCH (obviously)
 -- Misc --
 ENT.PrintName = "Snow Leopard (Spirit)"
 ENT.Category = "Begotten DRG"
+ENT.AdminSpawnable = false;
+ENT.Spawnable = false;
 ENT.Models = {"models/animal_ragd/piratecat_leopard.mdl"}
 ENT.RagdollOnDeath = false
 ENT.CollisionBounds = Vector(15, 15, 40)
@@ -21,6 +23,7 @@ ENT.ArmorPiercing = 75;
 ENT.SpawnHealth = 450;
 ENT.StaminaDamage = 60;
 ENT.XPValue = 145;
+ENT.MaxMultiHit = 1;
 
 -- Regen --
 

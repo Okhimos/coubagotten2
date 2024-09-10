@@ -2,13 +2,17 @@ if not DrGBase then return end -- return if DrGBase isn't installed
 ENT.Base = "drgbase_nextbot" -- DO NOT TOUCH (obviously)
 
 -- Misc --
-ENT.PrintName = "Deer"
+ENT.PrintName = "Deer (Spirit)"
 ENT.Category = "Begotten DRG"
+ENT.AdminSpawnable = false;
+ENT.Spawnable = false;
 ENT.Models = {"models/animals/deer1.mdl"}
 ENT.RagdollOnDeath = false
 ENT.CollisionBounds = Vector(18, 18, 50)
-ENT.BloodColor = BLOOD_COLOR_RED
+ENT.BloodColor = DONT_BLEED
 ENT.Frightening = false
+ENT.SightFOV = 300
+ENT.SightRange = 1024
 
 -- Sounds --
 ENT.OnDamageSounds = {"deer/idle1.wav"}
@@ -16,8 +20,9 @@ ENT.OnDamageSounds = {"deer/idle1.wav"}
 
 -- Stats --
 ENT.ArmorPiercing = 5;
-ENT.SpawnHealth = 70
-ENT.XPValue = 135;
+ENT.SpawnHealth = 200;
+ENT.StaminaDamage = 15;
+ENT.XPValue = 30;
 ENT.MaxMultiHit = 1;
 
 -- Regen --
@@ -27,13 +32,11 @@ ENT.HealthRegen = 1
 -- AI --
 ENT.RangeAttackRange = 0
 ENT.MeleeAttackRange = 60
-ENT.ReachEnemyRange = 60
-ENT.AvoidEnemyRange = 4000
-ENT.AvoidAfraidOfRange = 4000
-ENT.WatchAfraidOfRange = 3500
+ENT.ReachEnemyRange = 55
+ENT.AvoidEnemyRange = 0
 
 -- Relationships --
-ENT.Factions = {"FACTION_DEER","FACTION_FORESTHERBIVORES","FACTION_BROWNBEAR", "FACTION_SNOWLEOPARD"}
+ENT.Factions = {"FACTION_SPIRIT_GORE"}
 
 -- Movements/animations --
 ENT.IdleAnimation = "idle"
@@ -45,6 +48,15 @@ ENT.JumpAnimation = "idle"
 
 ENT.Acceleration = 300
 ENT.Deceleration = 300
+
+-- Climbing --
+ENT.ClimbLedges = true
+ENT.ClimbProps = true
+ENT.ClimbLedgesMaxHeight = 300
+ENT.ClimbLadders = true
+ENT.ClimbSpeed = 90
+ENT.ClimbUpAnimation = "walk"
+ENT.ClimbOffset = Vector(-14, 0, 0)
 
 -- Possession --
 ENT.PossessionEnabled = true
@@ -76,24 +88,61 @@ end
 
 if SERVER then
 
-function ENT:OnDeath(dmg, delay, hitgroup)	
+function ENT:OnDeath(dmg)
 	local gib = ents.Create( "prop_ragdoll" )
 	gib:SetModel( "models/animals/deer1.mdl" )
+	gib:SetMaterial("models/props_combine/portalball001_sheet")  
 	gib:SetPos( self:LocalToWorld(Vector(0,0,0))) -- The Postion the model spawns
 	gib:SetAngles( self:GetAngles() )
 	gib:Spawn()
-	
-	timer.Simple(600, function()
-		if IsValid(gib) then
-			gib:Remove();
-		end
-	end);
-end
+	  
+	  if IsValid(gib) then
+		  ParticleEffectAttach("doom_dissolve", PATTACH_POINT_FOLLOW, gib, 0);
+		  
+		  timer.Simple(1.6, function() 
+			  if IsValid(gib) then
+				  ParticleEffectAttach("doom_dissolve_flameburst", PATTACH_POINT_FOLLOW, gib, 0);
+				  gib:Fire("fadeandremove", 1);
+				  gib:EmitSound("begotten/npc/burn.wav");
+				  
+				  if cwRituals and cwItemSpawner and !hook.Run("GetShouldntThrallDropCatalyst", gib) then
+					  local randomItem;
+					  local spawnable = cwItemSpawner:GetSpawnableItems(true);
+					  local lootPool = {};
+					  
+					  for _, itemTable in ipairs(spawnable) do
+						  if itemTable.category == "Catalysts" then
+							  if itemTable.itemSpawnerInfo and !itemTable.itemSpawnerInfo.supercrateOnly then
+								  table.insert(lootPool, itemTable);
+							  end
+						  end
+					  end
+					  
+					  randomItem = lootPool[math.random(1, #lootPool)];
+					  
+					  if randomItem then
+						  local itemInstance = item.CreateInstance(randomItem.uniqueID);
+						  
+						  if itemInstance then
+							  local entity = Clockwork.entity:CreateItem(nil, itemInstance, gib:GetPos() + Vector(0, 0, 16));
+							  
+							  entity.lifeTime = CurTime() + config.GetVal("loot_item_lifetime");
+							  
+							  table.insert(cwItemSpawner.ItemsSpawned, entity);
+						  end
+					  end
+				  end
+			  end;
+		  end)
+		  
+		  return true;
+	  end
+  end
 
   -- Init/Think --
 
 function ENT:CustomInitialize()
-self:SetDefaultRelationship(D_FR)
+self:SetDefaultRelationship(D_HT)
 self:SequenceEvent("walk",0/2,self.Step)
 self:SequenceEvent("walk",1/2,self.Step)
 self:SequenceEvent("run",0/2,self.Step)
@@ -146,9 +195,9 @@ end
 
   function ENT:Hit2()
       self:Attack({
-        damage = 14,
+        damage = 15,
         range = 60,
-        delay = 0,
+        delay = 0.2,
         type = DMG_CLUB,
         viewpunch = Angle(20, math.random(-10, 10), 0),
       }, function(self, hit)

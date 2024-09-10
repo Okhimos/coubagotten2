@@ -3092,10 +3092,9 @@ RECIPE:Register()
 		function RECIPE:EndCraft(player)
 		end;
 	RECIPE:Register()
-	RECIPE.name = "Костяной Кинжал";
 	
-	RECIPE.name = "Костяная Булава";
 	RECIPE = cwRecipes.recipes:New("bone_dagger");
+		RECIPE.name = "Bone Dagger";
 		RECIPE.requiredBeliefs = {"ingenious", "primeval"};
 		RECIPE.requirements = {
 			["human_bone"] = {amount = 2},
@@ -3121,6 +3120,7 @@ RECIPE:Register()
 	RECIPE:Register()
 	
 	RECIPE = cwRecipes.recipes:New("bone_mace");
+		RECIPE.name = "Bone Mace";
 		RECIPE.requiredBeliefs = {"ingenious", "primeval"};
 		RECIPE.requirements = {
 			["human_bone"] = {amount = 4},
@@ -5111,7 +5111,8 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"artisan"};
 		RECIPE.requiredFactions = {"Gatekeeper", "Holy Hierarchy"};
 		RECIPE.requirements = {
-			["steel_ingot"] = {amount = 6},
+			["shield11"] = {amount = 1},
+			["steel_ingot"] = {amount = 8},
 		};
 		RECIPE.result = {
 			["shield18"] = {amount = 1},
@@ -5121,7 +5122,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "smithing"
-		RECIPE.experience = 120;
+		RECIPE.experience = 180;
 		
 		function RECIPE:OnCraft(player)
 		end;
@@ -6290,7 +6291,7 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"artisan"};
 		RECIPE.requiredFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
-			["hellforged_steel_ingot"] = {amount = 1},
+			["hellforged_steel_ingot"] = {amount = 2},
 			["iron_ingot"] = {amount = 5},
 			["human_bone"] = {amount = 2},
 		};
@@ -6587,7 +6588,7 @@ RECIPE:Register()
 		RECIPE.requiredSubfaiths = {"Voltism"};
 		RECIPE.requirements = {
 			["technocraft"] = {amount = 1},
-			["scrap"] = {amount = 7},
+			["scrap"] = {amount = 8},
 		};
 		RECIPE.result = {
 			["voltist_archangel_exoskeleton"] = {amount = 1},
@@ -6669,7 +6670,7 @@ RECIPE:Register()
 		function RECIPE:EndCraft(player)
 		end;
 	RECIPE:Register()
-
+	
 	RECIPE = cwRecipes.recipes:New("voltist_stormchaser_exoskeleton");
 		RECIPE.name = "Экзоскелет Повелитель Шторма";
 		RECIPE.requiresSmithy = true;
@@ -7151,8 +7152,7 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"artisan"};
 		RECIPE.requiredFactions = {"Gatekeeper", "Holy Hierarchy"};
 		RECIPE.requirements = {
-			["steel_ingot"] = {amount = 4},
-			["iron_ingot"] = {amount = 3},
+			["steel_ingot"] = {amount = 7},
 			["leather"] = {amount = 2},
 		};
 		RECIPE.result = {

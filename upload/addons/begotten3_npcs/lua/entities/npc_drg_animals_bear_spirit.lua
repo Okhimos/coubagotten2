@@ -4,6 +4,8 @@ ENT.Base = "drgbase_nextbot" -- DO NOT TOUCH (obviously)
 -- Misc --
 ENT.PrintName = "Cave Bear (Spirit)"
 ENT.Category = "Begotten DRG"
+ENT.AdminSpawnable = false;
+ENT.Spawnable = false;
 ENT.Models = {"models/animals/bear.mdl"}
 ENT.RagdollOnDeath = false
 ENT.CollisionBounds = Vector(18, 18, 65)
@@ -20,7 +22,8 @@ ENT.OnDamageSounds = {"bear/attack1.wav"}
 ENT.ArmorPiercing = 55;
 ENT.SpawnHealth = 600;
 ENT.StaminaDamage = 65;
-ENT.XPValue = 475;
+ENT.XPValue = 175;
+ENT.MaxMultiHit = 2;
 
 -- Regen --
 

@@ -1,4 +1,4 @@
-local MeleeSoundTable = {}
+local MeleeSoundTable = {} 
 -- OPTIMIZE NOTE: all of this stuff should be ordered better, not really for optimization but for general readability
 
 local ent = nil;
@@ -1573,7 +1573,7 @@ AttackTables.LongswordAttackTable = {
 	["poisedamage"] = 25,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 6,
-	["delay"] = 1.2,
+	["delay"] = 1.1,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1035,
@@ -1593,7 +1593,7 @@ AttackTables.TrainingLongswordAttackTable = {
 	["poisedamage"] = 25,
 	["stabilitydamage"] = 25,
 	["takeammo"] = 6,
-	["delay"] = 1.2,
+	["delay"] = 1.1,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1120,
@@ -1601,22 +1601,22 @@ AttackTables.TrainingLongswordAttackTable = {
 };
 
 AttackTables.EnchantedLongswordAttackTable = {
-	["primarydamage"] = 60,
+	["primarydamage"] = 65,
 	["dmgtype"] = 4,
 	["attacktype"] = "ice_swing",
 	["canaltattack"] = true,
 	["altattackdamagemodifier"] = 0.8,
 	["altattackpoisedamagemodifier"] = 0.1,
 	["altmeleearc"] = 15,
-	["armorpiercing"] = 15,
+	["armorpiercing"] = 25,
 	["altarmorpiercing"] = 45,
 	["poisedamage"] = 25,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 6,
-	["delay"] = 1.5,
+	["delay"] = 1.1,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
-	["meleerange"] = 1035,
+	["meleerange"] = 1095,
 	["punchstrength"] = Angle(0,1,0),
 };
 
@@ -1633,7 +1633,7 @@ AttackTables.SatanicLongswordAttackTable = {
 	["poisedamage"] = 30,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 7,
-	["delay"] = 1.2,
+	["delay"] = 1.1,
 	["striketime"] = 0.6,
 	["meleearc"] = 35,
 	["meleerange"] = 1095,
@@ -1653,7 +1653,7 @@ AttackTables.ClaymoreAttackTable = {
 	["poisedamage"] = 35,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 8,
-	["delay"] = 1.45,
+	["delay"] = 1.4,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1140,
@@ -1673,7 +1673,7 @@ AttackTables.VoltlongswordAttackTable = {
 	["poisedamage"] = 25,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 6,
-	["delay"] = 1.2,
+	["delay"] = 1.1,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1035,
@@ -1693,7 +1693,7 @@ AttackTables.ExileKnightSwordAttackTable = {
 	["poisedamage"] = 25,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 7,
-	["delay"] = 1.2,
+	["delay"] = 1.1,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1080,
@@ -1713,7 +1713,7 @@ AttackTables.InquisitorSwordAttackTable = {
 	["poisedamage"] = 25,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 7,
-	["delay"] = 1.1,
+	["delay"] = 1.05,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1095,
@@ -1730,10 +1730,10 @@ AttackTables.SkylightSwordAttackTable = {
 	["altmeleearc"] = 15,
 	["armorpiercing"] = 55,
 	["altarmorpiercing"] = 90,
-	["poisedamage"] = 30,
-	["stabilitydamage"] = 0,
+	["poisedamage"] = 55,
+	["stabilitydamage"] = 25,
 	["takeammo"] = 8,
-	["delay"] = 1.3,
+	["delay"] = 1.2,
 	["striketime"] = 0.6,
 	["meleearc"] = 55,
 	["meleerange"] = 1120,
@@ -1754,7 +1754,7 @@ AttackTables.UnholySigilSwordAttackTable = {
 	["poisedamage"] = 45,
 	["stabilitydamage"] = 25,
 	["takeammo"] = 8,
-	["delay"] = 1.3,
+	["delay"] = 1.25,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1035,
@@ -1774,7 +1774,7 @@ AttackTables.UnholySigilSword_Fire_AttackTable = {
 	["poisedamage"] = 45,
 	["stabilitydamage"] = 25,
 	["takeammo"] = 8,
-	["delay"] = 1.3,
+	["delay"] = 1.25,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1035,
@@ -1794,7 +1794,7 @@ AttackTables.UnholySigilSword_Ice_AttackTable = {
 	["poisedamage"] = 45,
 	["stabilitydamage"] = 25,
 	["takeammo"] = 8,
-	["delay"] = 1.3,
+	["delay"] = 1.25,
 	["striketime"] = 0.6,
 	["meleearc"] = 45,
 	["meleerange"] = 1035,
@@ -2194,7 +2194,7 @@ AttackTables.SteelClawsAttackTable = {
 -- Daggers
 
 AttackTables.IronDaggerAttackTable = {
-	["primarydamage"] = 10,
+	["primarydamage"] = 12,
 	["dmgtype"] = 16,
 	["attacktype"] = "reg_swing",
 	["canaltattack"] = false,
@@ -2213,7 +2213,7 @@ AttackTables.IronDaggerAttackTable = {
 };
 
 AttackTables.BoneDaggerAttackTable = {
-	["primarydamage"] = 12,
+	["primarydamage"] = 10,
 	["dmgtype"] = 16,
 	["attacktype"] = "reg_swing",
 	["canaltattack"] = false,
@@ -2232,7 +2232,7 @@ AttackTables.BoneDaggerAttackTable = {
 };
 
 AttackTables.GoreHuntingDaggerAttackTable = {
-	["primarydamage"] = 14,
+	["primarydamage"] = 15,
 	["dmgtype"] = 16,
 	["attacktype"] = "reg_swing",
 	["canaltattack"] = false,
@@ -2270,7 +2270,7 @@ AttackTables.QuickshankAttackTable = {
 };
 
 AttackTables.ParryingDaggerAttackTable = {
-	["primarydamage"] = 12,
+	["primarydamage"] = 13,
 	["dmgtype"] = 16,
 	["attacktype"] = "reg_swing",
 	["canaltattack"] = false,
@@ -2289,7 +2289,7 @@ AttackTables.ParryingDaggerAttackTable = {
 };
 
 AttackTables.KnightsbaneAttackTable = {
-	["primarydamage"] = 12,
+	["primarydamage"] = 14,
 	["dmgtype"] = 16,
 	["attacktype"] = "reg_swing",
 	["canaltattack"] = false,
@@ -2589,7 +2589,7 @@ AttackTables.SatanicSpearAttackTable = {
 	["poisedamage"] = 15,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 5,
-	["delay"] = 1.2,
+	["delay"] = 1.1,
 	["striketime"] = 0.4,
 	["meleearc"] = 15,
 	["meleerange"] = 1100,
@@ -2637,7 +2637,7 @@ AttackTables.WarScytheAttackTable = {
 };
 
 AttackTables.GlaiveAttackTable = {
-	["primarydamage"] = 80,
+	["primarydamage"] = 90,
 	["dmgtype"] = 4,
 	["attacktype"] = "polearm_swing",
 	["canaltattack"] = false,
@@ -2723,7 +2723,7 @@ AttackTables.HaralderWarAxeAttackTable = {
 	["altattackpoisedamagemodifier"] = nil,
 	["armorpiercing"] = 45,
 	["altarmorpiercing"] = nil,
-	["poisedamage"] = 40,
+	["poisedamage"] = 45,
 	["stabilitydamage"] = 0,
 	["takeammo"] = 7,
 	["delay"] = 1.4,
@@ -5903,11 +5903,11 @@ BlockTables.shield2 = { -- Slaveshield
 	["blockanim"] = "a_sword_shield_block_drakekeeper",
 	["blocksoundtable"] = "WoodenShieldSoundTable",
 	["partialbulletblock"] = false,
-	["poiseresistance"] = 10,
+	["poiseresistance"] = 12,
 	["raisespeed"] = 0.75,
 	["instantraise"] = false,
-	["parrydifficulty"] = 0.2,
-	["parrytakestamina"] = 10,
+	["parrydifficulty"] = 0.25,
+	["parrytakestamina"] = 8,
 	["canparry"] = true,
 	["candeflect"] = true,
 	["ironsights"] = {
@@ -6626,10 +6626,10 @@ BlockTables.shield17 = { -- Leather Shield
 	["blocksoundtable"] = "WoodenShieldSoundTable",
 	["partialbulletblock"] = true,
 	["poiseresistance"] = 25,
-	["raisespeed"] = 1.3,
+	["raisespeed"] = 1.25,
 	["instantraise"] = false,
 	["parrydifficulty"] = 0.2,
-	["parrytakestamina"] = 15,
+	["parrytakestamina"] = 10,
 	["canparry"] = true,
 	["candeflect"] = true,
 	["ironsights"] = {
@@ -6664,7 +6664,7 @@ BlockTables.shield17 = { -- Leather Shield
 BlockTables.shield18 = { -- Steel Gatekeeper Shield
 	["name"] = "Steel Gatekeeper Shield",
 	["guardblockamount"] = 3,
-	["damagereduction"] = 0.75,
+	["damagereduction"] = 0.8,
 	["specialeffect"] = false,
 	["blockeffect"] = "MetalSpark",
 	["blockeffectforward"] = 25,
@@ -6674,11 +6674,11 @@ BlockTables.shield18 = { -- Steel Gatekeeper Shield
 	["blockanim"] = "a_sword_shield_block_drakekeeper",
 	["blocksoundtable"] = "MetalShieldSoundTable",
 	["partialbulletblock"] = false,
-	["poiseresistance"] = 60,
+	["poiseresistance"] = 70,
 	["raisespeed"] = 2,
 	["instantraise"] = false,
 	["parrydifficulty"] = 0.2,
-	["parrytakestamina"] = 45,
+	["parrytakestamina"] = 40,
 	["canparry"] = true,
 	["candeflect"] = false,
 	["ironsights"] = {
@@ -6756,6 +6756,55 @@ BlockTables.shield19 = { -- Rusted Kite Shield
 	},
 };
 
+BlockTables.shield20 = { -- Old Soldier Shield
+	["name"] = "Old Soldier Shield",
+	["guardblockamount"] = 5,
+	["damagereduction"] = 0.8,
+	["specialeffect"] = false,
+	["blockeffect"] = "MetalSpark",
+	["blockeffectforward"] = 35,
+	["blockeffectpos"] = (Vector(-5, -10, 45)),
+	["blockcone"] = 220,
+	["blockdamagetypes"] = {DMG_SLASH, DMG_CLUB, DMG_VEHICLE, DMG_BULLET, DMG_BUCKSHOT},
+	["blockanim"] = "a_sword_shield_block_pursuer",
+	["blocksoundtable"] = "MetalShieldSoundTable",
+	["partialbulletblock"] = false,
+	["poiseresistance"] = 25,
+	["raisespeed"] = 1.1,
+	["instantraise"] = false,
+	["parrydifficulty"] = 0.25,
+	["parrytakestamina"] = 10,
+	["canparry"] = true,
+	["candeflect"] = true,
+	["ironsights"] = {
+		["models/v_onehandedbegotten.mdl"] = {pos = Vector(9.159, -9.849, 7.88), ang = Vector(-6.332, -3.518, -8.443)},
+		["models/v_begottenknife.mdl"] = {pos = Vector(3.24, -7.437, 3.079), ang = Vector(-3, -15, -3.901)},
+		["models/weapons/cstrike/c_knife_t.mdl"] = {pos = Vector(3.519, -8.844, 3.16), ang = Vector(4.925, -1.407, -11.256)},
+	},
+	["ViewModelBoneMods"] = {
+		["models/v_onehandedbegotten.mdl"] = {
+			["ValveBiped.Bip01_L_UpperArm"] = { scale = Vector(1, 1, 1), pos = Vector(0, -15, 0), angle = Angle(0, 0, 0) },
+		},
+		["models/v_begottenknife.mdl"] = {
+			["ValveBiped.Bip01_L_UpperArm"] = { scale = Vector(1, 1, 1), pos = Vector(6.852, -9.815, -3.149), angle = Angle(0, 0, 0) }
+		},
+	},
+	["VElements"] = {
+		["models/v_onehandedbegotten.mdl"] = {
+			["shield20"] = { type = "Model", model = "models/begotten/thralls/skellyshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(0, -11, 2), angle = Angle(40, 66, -33), size = Vector(1.2, 1.2, 1.2), material = "", skin = 0, bodygroup = {} },
+		},
+		["models/v_begottenknife.mdl"] = {
+			["shield20"] = { type = "Model", model = "models/begotten/thralls/skellyshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(4.675, -7.792, 8.831), angle = Angle(0, 45, -13), size = Vector(1, 1, 1), material = "", skin = 0, bodygroup = {} },
+		},
+		["models/weapons/cstrike/c_knife_t.mdl"] = {
+			["shield20"] = { type = "Model", model = "models/begotten/thralls/skellyshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(5, 0, 0), angle = Angle(15, 30, -40), size = Vector(1.2, 1.2, 1.2), material = "", skin = 0, bodygroup = {} },
+		},
+	},
+	["WElements"] = {
+		["shield20"] = { type = "Model", model = "models/begotten/thralls/skellyshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(3, -3.5, 0), angle = Angle(180, -35, 90), size = Vector(1.1, 1.1, 1.1), material = "", skin = 0, bodygroup = {} }
+	},
+};
+
 BlockTables.shieldunique1 = { -- Red Wolf Skinshield (Unique)
 	["name"] = "Red Wolf Skinshield",
 	["guardblockamount"] = 3,
@@ -6773,27 +6822,24 @@ BlockTables.shieldunique1 = { -- Red Wolf Skinshield (Unique)
 	["raisespeed"] = 2,
 	["instantraise"] = false,
 	["parrydifficulty"] = 0.2,
-	["parrytakestamina"] = 45,
+	["parrytakestamina"] = 40,
 	["canparry"] = true,
 	["candeflect"] = false,
 	["ironsights"] = {
-		["models/v_onehandedbegotten.mdl"] = {pos = Vector(4.519, -1.206, 1.72), ang = Vector(-4.926, -23.921, 0)},
-		["models/v_begottenknife.mdl"] = {pos = Vector(4.5, -1.5, 1.72), ang = Vector(-4.926, -18.292, 5.627)},
-		["models/weapons/cstrike/c_knife_t.mdl"] = {pos = Vector(4.519, -1.206, 1.72), ang = Vector(-4.926, -23.921, 0)},
+		["models/v_onehandedbegotten.mdl"] = {pos = Vector(5, -9.849, -3.481), ang = Vector(4.221, -16.885, 4.221)},
+		["models/v_begottenknife.mdl"] = {pos = Vector(8.199, -4.222, -3.04), ang = Vector(0, -19.698, 4.925)},
+		["models/weapons/cstrike/c_knife_t.mdl"] = {pos = Vector(9.96, -5.428, -2.8), ang = Vector(5.627, -20.403, 5.627)},
 	},
 	["VElements"] = {
 		["models/v_onehandedbegotten.mdl"] = {
-			["shield_red_wolf"] = { type = "Model", model = "models/begotten/weapons/uniquegoreshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(-10.91, 6.752, -4.676), angle = Angle(35, 73.636, 134.416), size = Vector(1, 1, 1), material = "", skin = 0, bodygroup = {} },
+			["shield_red_wolf"] = { type = "Model", model = "models/begotten/weapons/uniquegoreshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(-3.636, 11.947, -6.753), angle = Angle(35, 73.636, 134.416), size = Vector(0.899, 0.899, 0.899), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {} }
 		},
 		["models/v_begottenknife.mdl"] = {
-			["shield_red_wolf"] = { type = "Model", model = "models/begotten/weapons/uniquegoreshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(-15, 12, 5), angle = Angle(0, 50, 176), size = Vector(1, 1, 1), material = "", skin = 0, bodygroup = {} },
+			["shield_red_wolf"] = { type = "Model", model = "models/begotten/weapons/uniquegoreshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(-17.143, 7.791, 3.635), angle = Angle(0, 50, 160.13), size = Vector(0.899, 0.899, 0.899), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {} }
 		},
 		["models/weapons/cstrike/c_knife_t.mdl"] = {
-			["shield_red_wolf"] = { type = "Model", model = "models/begotten/weapons/uniquegoreshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(-3.458, 8.395, -2.47), angle = Angle(25.555, 58.888, 143.332), size = Vector(1, 1, 1), material = "", skin = 0, bodygroup = {} },
+			["shield_red_wolf"] = { type = "Model", model = "models/begotten/weapons/uniquegoreshield.mdl", bone = "ValveBiped.Bip01_L_Forearm", rel = "", pos = Vector(5.714, -7.792, -1.558), angle = Angle(24.545, -31.559, -87.663), size = Vector(0.899, 0.899, 0.899), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {} }
 		},
-	},
-	["WElements"] = {
-		["shield_red_wolf"] = { type = "Model", model = "models/begotten/weapons/uniquegoreshield.mdl", bone = "ValveBiped.Bip01_L_Hand", rel = "", pos = Vector(1.557, -3.636, 0.518), angle = Angle(3.506, 143.766, 82.986), size = Vector(1, 1, 1), material = "", skin = 0, bodygroup = {} }
 	},
 };
 
@@ -6835,6 +6881,7 @@ AddTable("shield16", BlockTables.shield16)
 AddTable("shield17", BlockTables.shield17)
 AddTable("shield18", BlockTables.shield18)
 AddTable("shield19", BlockTables.shield19)
+AddTable("shield20", BlockTables.shield20)
 AddTable("shieldunique1", BlockTables.shieldunique1)
 AddTable("shieldunique2", BlockTables.shieldunique2)
 

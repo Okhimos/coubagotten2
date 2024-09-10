@@ -1065,8 +1065,10 @@ local COMMAND = Clockwork.command:New("Warcry");
 		local player_has_belief = false;
 		local player_has_daring_trout = player:HasBelief("daring_trout");
 		local player_has_fearsome_wolf = player:HasBelief("fearsome_wolf");
+		local player_has_watchful_raven = player:HasBelief("watchful_raven");
 		local sanity_debuff;
 		local warcry_beliefs;
+		local affected_players = {};
 		
 		if player:GetNetVar("kinisgerOverride") then
 			if player:GetNetVar("kinisgerOverride") == "Goreic Warrior" then

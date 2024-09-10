@@ -1,29 +1,29 @@
 if not DrGBase then return end -- return if DrGBase isn't installed
 ENT.Base = "drgbase_nextbot" -- DO NOT TOUCH (obviously)
 -- Misc --
-ENT.PrintName = "Brute"
+ENT.PrintName = "Soldier"
 ENT.Category = "Begotten DRG"
-ENT.Models = {"models/begotten/thralls/brute.mdl"}
-ENT.BloodColor = BLOOD_COLOR_RED
+ENT.Models = {"models/begotten/thralls/skelly01.mdl", "models/begotten/thralls/skelly02.mdl", "models/begotten/thralls/skelly03.mdl", "models/begotten/thralls/skelly04.mdl", "models/begotten/thralls/skelly05.mdl", "models/begotten/thralls/spearskelly01.mdl"}
+ENT.BloodColor = DONT_BLEED
 ENT.RagdollOnDeath = true;
 -- Sounds --
-ENT.OnDamageSounds = {"begotten/npc/brute/attack_claw01.mp3", "begotten/npc/brute/attack_claw02.mp3", "begotten/npc/brute/attack_claw03.mp3"}
-ENT.OnDeathSounds = {"begotten/npc/brute/amb_idle_scratch01.mp3", "begotten/npc/brute/amb_idle_scratch02.mp3", "begotten/npc/brute/amb_idle_scratch03.mp3", "begotten/npc/brute/amb_idle_scratch04.mp3"}
-ENT.PainSounds = {"begotten/npc/brute/attack_launch01.mp3", "begotten/npc/brute/attack_launch02.mp3", "begotten/npc/brute/attack_launch03.mp3"};
+ENT.OnDamageSounds = {}
+ENT.OnDeathSounds = {}
+ENT.PainSounds = {"npc/stalker/stalker_pain1.wav", "npc/stalker/stalker_pain2.wav", "npc/stalker/stalker_pain3.wav"};
 -- Stats --
-ENT.SpawnHealth = 300
+ENT.SpawnHealth = 100
 ENT.SpotDuration = 20
 -- AI --
 ENT.RangeAttackRange = 0
-ENT.MeleeAttackRange = 120
-ENT.ReachEnemyRange = 50
+ENT.MeleeAttackRange = 100
+ENT.ReachEnemyRange = 45
 ENT.AvoidEnemyRange = 0
 ENT.HearingCoefficient = 0.5
 ENT.SightFOV = 300
 ENT.SightRange = 1024
-ENT.XPValue = 350;
+ENT.XPValue = 30;
 -- Relationships --
-ENT.Factions = {FACTION_ZOMBIES}
+ENT.Factions = {FACTION_ANTLIONS}
 -- Movements/animations --
 ENT.UseWalkframes = true
 ENT.RunAnimation = ACT_RUN
@@ -37,9 +37,10 @@ ENT.ClimbLadders = true
 ENT.ClimbSpeed = 100
 ENT.ClimbUpAnimation = "run_all_grenade"--ACT_ZOMBIE_CLIMB_UP --pull_grenade
 ENT.ClimbOffset = Vector(-14, 0, 0)
-ENT.ArmorPiercing = 50;
-ENT.Damage = 45;
-ENT.MaxMultiHit = 2;
+ENT.ArmorPiercing = 20;
+ENT.Damage = 30;
+ENT.StaminaDamage = 15;
+ENT.MaxMultiHit = 1;
 -- Detection --
 ENT.EyeBone = "ValveBiped.Bip01_Spine4"
 ENT.EyeOffset = Vector(7.5, 0, 5)
@@ -66,18 +67,14 @@ ENT.PossessionBinds = {
 			self:LeaveGround();
 			self:SetVelocity(self:GetVelocity() + Vector(0,0,700) + self:GetForward() * 100);
 
-			self:EmitSound("begotten/npc/grunt/attack_launch0"..math.random(1, 3)..".mp3", 100, self.pitch)
+			self:EmitSound("npc/stalker/stalker_alert"..math.random(1, 3).."b.wav", 100, self.pitch)
 
 		end
-
 	}},
-
 	[IN_ATTACK] = {{
 		coroutine = true,
 		onkeydown = function(self)
-			if(self.nextMeleeAttack and self.nextMeleeAttack > CurTime()) then return; end
-						self:EmitSound("begotten/npc/brute/attack_launch0"..math.random(1, 3)..".mp3", 100, self.pitch)
-			self:PlayActivityAndMove(ACT_MELEE_ATTACK1, 1, self.PossessionFaceForward)
+			self:OnMeleeAttack();
 		end
 	}}
 }
@@ -89,46 +86,145 @@ if SERVER then
 		local curTime = CurTime();
 		if (!self.nextNotice or self.nextNotice < curTime) then
 			self.nextNotice = curTime + 20
-			self:EmitSound("begotten/npc/brute/enabled0"..math.random(1, 4)..".mp3", 100, self.pitch)
+			self:EmitSound("npc/stalker/stalker_scream"..math.random(1, 4)..".wav", 100, self.pitch, 0.6)
 		end;
 		--	self:Jump(100)
 	end
+	
 	function ENT:OnLost()
 		local curTime = CurTime();
 		if (!self.nextLo or self.nextLo < curTime) then
 			self.nextLo = curTime + 20
-			self:EmitSound("begotten/npc/brute/amb_alert0"..math.random(1, 3)..".mp3", 100, self.pitch)
+			self:EmitSound("npc/stalker/stalker_die"..math.random(1, 2)..".wav", 100, self.pitch)
 		end;
 	end
+	
 	function ENT:OnParried()
 		self.nextMeleeAttack = CurTime() + 2;
-		self:ResetSequence(ACT_IDLE);
-
-		local rand = math.random(1,3);
-		local direction = (rand == 1 and self:GetRight() or rand == 2 and (self:GetRight() * -1) or (self:GetForward() * -1));
-		local distance = math.random(200,250);
-
-		timer.Simple(0.1, function()
-			self:ResetSequence(ACT_WALK);
-			self:Jump(40);
-			self:SetVelocity(self:GetVelocity() + direction * distance);
-			self:EmitSound(self.OnDamageSounds[math.random(#self.OnDamageSounds)], 100, self.pitch + math.random(5,15));
-			self:EmitSound("Zombie.AttackMiss");
-
-		end);
-
+		self:ResetSequence(ACT_FLINCH_PHYSICS);
+		
+		--[[if self.Shielded then
+			if self:GetNWBool("Guardening") then
+				self:SetNWBool("Guardening", false);
+			end
+			
+			timer.Create("GuardResetTimer_"..self:EntIndex(), 2, 1, function()
+				if IsValid(self) then
+					self:SetNWBool("Guardening", true);
+				end
+			end);
+		end]]--
 	end
+	
+	function ENT:IsBlocking()
+		if self.Shielded and self:GetActivity() == ACT_RUN then return true end;
+	end
+	
 	-- Init/Think --
 	function ENT:CustomInitialize()
 		self:SetDefaultRelationship(D_HT)
 		
-		self:EmitSound("begotten/npc/brute/enabled0"..math.random(1, 4)..".mp3", 100)
+		timer.Simple(FrameTime(), function()
+			if !IsValid(self) then return end;
+			
+			local model = self:GetModel();
+			
+			if model == "models/begotten/thralls/spearskelly01.mdl" then
+				if math.random(1, 2) == 1 then
+					self:GiveWeapon("begotten_spear_ironspear");
+					
+					self.ArmorPiercing = 45;
+					self.Damage = 40;
+					
+					self.MeleeAttackRange = 125
+					self.ReachEnemyRange = 80
+				else
+					self:GiveWeapon("begotten_polearm_pike");
+					
+					self.ArmorPiercing = 60;
+					self.Damage = 50;
+					
+					self.MeleeAttackRange = 160
+					self.ReachEnemyRange = 110
+				end
+				
+				self.RunAnimation = ACT_WALK;
+			elseif model == "models/begotten/thralls/skelly03.mdl" then
+				self.Armor = 25;
+				self.ArmorMaterial = "plate"
+				
+				if math.random(1, 2) == 1 then
+					self:GiveWeapon("begotten_1h_brokensword");
+				else
+					self:GiveWeapon("begotten_1h_glazicus");
+					
+					self.ArmorPiercing = 35;
+					self.Damage = 40;
+				end
+			elseif model == "models/begotten/thralls/skelly04.mdl" then
+				self.Armor = 45;
+				self.ArmorMaterial = "plate"
+				
+				if math.random(1, 2) == 1 then
+					self:GiveWeapon("begotten_1h_spatha");
+					
+					self.ArmorPiercing = 65;
+					self.Damage = 60;
+				else
+					self:GiveWeapon("begotten_1h_glazicus");
+					
+					self.ArmorPiercing = 35;
+					self.Damage = 40;
+				end
+			elseif model == "models/begotten/thralls/skelly05.mdl" or model == "models/begotten/thralls/skelly06.mdl" then
+				self.Armor = 65;
+				self.ArmorMaterial = "plate"
+				self.BlockTable = "shield19";
+				self.Shielded = true
+				
+				self.ArmorPiercing = 65;
+				self.Damage = 60;
+				
+				self:GiveWeapon("begotten_1h_spatha");
+				--self:SetNWBool("Guardening", true);
+			else
+				if math.random(1, 3) == 1 then
+					self:GiveWeapon("begotten_1h_glazicus");
+					
+					self.ArmorPiercing = 35;
+					self.Damage = 40;
+				else
+					self:GiveWeapon("begotten_1h_brokensword");
+				end
+			end
+		end);
 	end
 	-- AI --
 	function ENT:OnMeleeAttack(enemy)
 		if !self.nextMeleeAttack or self.nextMeleeAttack < CurTime() then
-			self:EmitSound("begotten/npc/brute/attack_launch0"..math.random(1, 3)..".mp3", 100, self.pitch)
-			self:PlayActivityAndMove(ACT_MELEE_ATTACK1, 1.25, self.FaceEnemy)
+			self:EmitSound("npc/stalker/stalker_alert"..math.random(1, 3).."b.wav", 100, self.pitch)
+			
+			if self:GetModel() ~= "models/begotten/thralls/spearskelly01.mdl" and math.random(1, 3) == 1 then
+				self:PlaySequenceAndMove("fastattack", 0.6, self.FaceEnemy)
+			else
+				self:PlayActivityAndMove(ACT_MELEE_ATTACK1, 1.25, self.FaceEnemy)
+			end
+			
+			--[[if self.Shielded then
+				self.nextMeleeAttack = CurTime() + math.Rand(1, 3);
+			end]]--
+			
+			--[[if self.Shielded then
+				if self:GetNWBool("Guardening") then
+					self:SetNWBool("Guardening", false);
+				end
+				
+				timer.Create("GuardResetTimer_"..self:EntIndex(), 2, 1, function()
+					if IsValid(self) then
+						self:SetNWBool("Guardening", true);
+					end
+				end);
+			end]]--
 		end
 	end
 	function ENT:OnReachedPatrol()
@@ -148,14 +244,12 @@ if SERVER then
 		
 		if (!self.nextId or self.nextId < curTime) then
 			self.nextId = curTime + 10
-			self:EmitSound("begotten/npc/brute/amb_idle0"..math.random(1, 4)..".mp3", 100, self.pitch)
 			self:AddPatrolPos(self:RandomPos(1500))
 		end;
 	end
 	-- Damage --
 	
 	function ENT:OnDeath(dmg, delay, hitgroup)
-		
 	end
 	function ENT:OnRagdoll(dmg)
 		local ragdoll = self;
@@ -169,31 +263,15 @@ if SERVER then
 					ragdoll:Fire("fadeandremove", 1);
 					ragdoll:EmitSound("begotten/npc/burn.wav");
 					
-					if cwRituals and cwItemSpawner and !hook.Run("GetShouldntThrallDropCatalyst", ragdoll) then
-						local randomItem;
-						local spawnable = cwItemSpawner:GetSpawnableItems(true);
-						local lootPool = {};
+					if cwItemSpawner and self.Shielded and math.random(1, 40) == 1 and !hook.Run("GetShouldntThrallDropCatalyst", ragdoll) then
+						local itemInstance = item.CreateInstance("old_soldier_shield");
 						
-						for _, itemTable in ipairs(spawnable) do
-							if itemTable.category == "Catalysts" then
-								if itemTable.itemSpawnerInfo and !itemTable.itemSpawnerInfo.supercrateOnly then
-									table.insert(lootPool, itemTable);
-								end
-							end
-						end
-						
-						randomItem = lootPool[math.random(1, #lootPool)];
-						
-						if randomItem then
-							local itemInstance = item.CreateInstance(randomItem.uniqueID);
+						if itemInstance then
+							local entity = Clockwork.entity:CreateItem(nil, itemInstance, ragdoll:GetPos() + Vector(0, 0, 16));
 							
-							if itemInstance then
-								local entity = Clockwork.entity:CreateItem(nil, itemInstance, ragdoll:GetPos() + Vector(0, 0, 16));
-								
-								entity.lifeTime = CurTime() + config.GetVal("loot_item_lifetime");
-								
-								table.insert(cwItemSpawner.ItemsSpawned, entity);
-							end
+							entity.lifeTime = CurTime() + config.GetVal("loot_item_lifetime");
+							
+							table.insert(cwItemSpawner.ItemsSpawned, entity);
 						end
 					end
 				end;
@@ -223,7 +301,7 @@ if SERVER then
 	
 	-- Animations/Sounds --
 	function ENT:OnNewEnemy()
-		self:EmitSound("begotten/npc/brute/notice0"..math.random(1,2)..".mp3", 100, self.pitch)
+		self:EmitSound("npc/stalker/stalker_scream"..math.random(1,3)..".wav", 100, self.pitch, 0.6)
 	end
 	
 	function ENT:OnChaseEnemy()
@@ -244,14 +322,12 @@ if SERVER then
 				self:EmitSound(self.PainSounds[math.random(#self.PainSounds)], 100, self.pitch);
 				self:EmitSound("Zombie.AttackMiss");
 				self:Jump(400, function() self:SetVelocity(self:GetVelocity() + self:GetForward() * 50); end);
-
 			end
-
 		end
 
 		if (!self.nextId or self.nextId < curTime) then
 			self.nextId = curTime + math.random(7, 15)
-			self:EmitSound("begotten/npc/brute/amb_hunt0"..math.random(1,3)..".mp3", 100, self.pitch)
+			self:EmitSound("npc/stalker/stalker_scream"..math.random(1,3)..".wav", 100, self.pitch, 0.6)
 		end;
 	end
 	function ENT:OnLandedOnGround()

@@ -111,7 +111,8 @@ local GUNSLINGER = Clockwork.trait:New()
 	GUNSLINGER.name = "Оружейник"
 	GUNSLINGER.description = "Что для вашего персонажа люди, как не движущиеся цели? Ваш персонаж начнет с Поджигой и случайным набором боеприпасов, а также двумя убеждениями из древа «Изобретательность»: «Смышленный» и «Порох и Сталь»."
 	GUNSLINGER.disables = {"pilgrim"}
-	GUNSLINGER.points = 7
+	--GUNSLINGER.points = 7
+	GUNSLINGER.points = 3
 	GUNSLINGER.excludedfactions = {"Children of Satan", "Gatekeeper", "Holy Hierarchy", "Pope Adyssa's Gatekeepers"}
 	GUNSLINGER.excludedsubfactions = {"Clan Crast", "Clan Grock", "Clan Harald", "Clan Reaver", "Clan Gore"};
 Clockwork.trait:Register(GUNSLINGER)
@@ -292,7 +293,7 @@ local WEAK = Clockwork.trait:New()
 	WEAK.name = "Слабый"
 	WEAK.description = "Ваш персонаж имеет хрупкое телосложение и не способен выносить боль. Дерево убеждений «Мастерство» будет заблокировано и не сможет развиваться."
 	WEAK.points = -5
-	WEAK.disables = {"brawny", "duelist", "miner", "logger", "vigorous"}
+	WEAK.disables = {"brawny", "duelist", "miner", "logger", "veteran", "vigorous"}
 Clockwork.trait:Register(WEAK)
 
 local WINDED = Clockwork.trait:New()

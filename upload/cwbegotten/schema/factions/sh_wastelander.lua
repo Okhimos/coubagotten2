@@ -44,24 +44,6 @@ local FACTION = Clockwork.faction:New("Wanderer");
 	end;
 FACTION_WANDERER = FACTION:Register();
 
-local FACTION = Clockwork.faction:New("Wanderer");
-	FACTION.disabled = false; -- For events.
-	FACTION.useFullName = false;
-	FACTION.material = "begotten/faction/faction_logo_wanderers";
-	FACTION.color = Color(160, 100, 15);
-	FACTION.description = "Странники — личинки, пирующие на трупе мертвого мира. \nЭто многочисленные крестьяне из низших уездов, едва грамотные и недоедающие. \nЧтобы выжить в качестве Странника, нужно быть дерзким и жестоким, а также тщательно обдумывать каждое свое слово и действие. \nИх оружие — их вера и страх, а их борьба будет вечной.";
-	FACTION.availablefaiths = {"Faith of the Light", "Faith of the Family", "Faith of the Dark"};
-	FACTION.imposters = true;
-	FACTION.names = "glazic";
-	
-	-- Called when a player is transferred to the faction.
-	function FACTION:OnTransferred(player, faction, name)
-		if (faction.name == "Goreic Warrior") then
-			return false;
-		end;
-	end;
-FACTION_WANDERER = FACTION:Register();
-
 local FACTION = Clockwork.faction:New("Gatekeeper");
 	FACTION.disabled = false; -- For events.
 	FACTION.whitelist = true;
@@ -71,6 +53,8 @@ local FACTION = Clockwork.faction:New("Gatekeeper");
 	FACTION.description = "Привратники — это передовая линия обороны против бесчисленных нечестивых ужасов, которые угрожают Сиянию. \nИх ряды пополняются за счет мобилизованных жаждущих власти простолюдинов и фанатичных бичеванцев. \nОни должны служить Священной Иерархии усердно и беспрекословно, какими бы возмутительными ни были их требования. \nОт этих плохо обученных и плохо экипированных солдат ждут, что они отдадут свои жизни, защищая Свет. \nИ они так и сделают.";
 	FACTION.availablefaiths = {"Faith of the Light"};
 	FACTION.alliedfactions = {"Holy Hierarchy"};
+	FACTION.masterfactions = {"Holy Hierarchy"};
+	FACTION.enlist = true;
 	FACTION.singleGender = GENDER_MALE;
 	FACTION.characterLimit = 2; -- # of characters of this faction a player can have.
 	FACTION.ratio = 0.4; -- 0.3 slots per player (9 at 30 players).

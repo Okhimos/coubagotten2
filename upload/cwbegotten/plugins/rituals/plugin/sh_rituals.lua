@@ -2289,10 +2289,10 @@ RITUAL = cwRituals.rituals:New("summon_familiar_leopard");
 					
 					table.insert(cwRituals.summonedNPCs, entity);
 					
-					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется существо из горейского леса!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
 					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
 					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
 					
+					Clockwork.chatBox:AddInTargetRadius(player, "it", "There is a blinding flash of light and thunderous noise as a creature of the Gore Forest suddenly appears!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
 				end
 			end);
 		else
@@ -2404,10 +2404,10 @@ RITUAL = cwRituals.rituals:New("summon_familiar_elk");
 					
 					table.insert(cwRituals.summonedNPCs, entity);
 					
-					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется существо из горейского леса!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
 					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
 					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
 					
+					Clockwork.chatBox:AddInTargetRadius(player, "it", "There is a blinding flash of light and thunderous noise as a creature of the Gore Forest suddenly appears!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
 				end
 			end);
 		else

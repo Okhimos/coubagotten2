@@ -8,7 +8,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.model = "models/props_c17/TrapPropeller_Lever.mdl";
 	ITEM.weight = 0.15;
 	ITEM.description = "Стеклянный флакон, наполненный таинственной прозрачной жидкостью, которую можно ввести человеку, чтобы получить прилив энергии.";
-	ITEM.iconoverride = "materials/begotten/ui/itemicons/ampoule.png"
+	ITEM.iconoverride = "materials/begotten/ui/itemicons/syringe.png"
 	ITEM.useSound = "begotten/items/meat_inject.mp3";
 	ITEM.uniqueID = "ampoule"
 	
@@ -55,7 +55,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.model = "models/props_c17/TrapPropeller_Lever.mdl";
 	ITEM.weight = 0.15;
 	ITEM.description = "Шприц, в котором что-то находится...";
-	ITEM.iconoverride = "materials/begotten/ui/itemicons/ampoule.png"
+	ITEM.iconoverride = "materials/begotten/ui/itemicons/blacksyringe.png"
 	ITEM.useSound = "begotten/items/meat_inject.mp3";
 	ITEM.uniqueID = "blacksyringe"
 	
@@ -101,12 +101,12 @@ ITEM:Register();
 local ITEM = Clockwork.item:New("medical_base");
 	ITEM.name = "Антибиотики";
 	ITEM.cost = 150;
-	ITEM.model = "models/props_junk/glassjug01.mdl";
+	ITEM.model = "models/healthvial_nmrih.mdl";
 	ITEM.weight = 0.5;
 	ITEM.useText = "Drink";
 	ITEM.useSound = "npc/barnacle/barnacle_gulp1.wav";
 	ITEM.description = "Действительно редкость! Это древнее лекарство славится своей способностью лечить большинство инфекций.";
-	ITEM.iconoverride = "materials/begotten/ui/itemicons/laudanum.png"
+	ITEM.iconoverride = "materials/begotten/ui/itemicons/antibiotics.png"
 	ITEM.uniqueID = "antibiotics"
 
 	ITEM.ingestible = {orally = true, anally = false};
