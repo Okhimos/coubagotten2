@@ -591,6 +591,7 @@ function GM:PlayerSwitchFlashlight(player, bIsOn)
 					player.cwNextRaise = curTime + (actionTime + 0.25);
 					
 					if (activeWeapon.InstantRaise) then
+						Clockwork.player:SetAction(player, false);
 						player:ToggleWeaponRaised();
 						return;
 					end;
@@ -1170,7 +1171,9 @@ function GM:SaveData()
 	
 	for k, v in pairs(players) do
 		if (v:HasInitialized()) then
-			v:SaveCharacter()
+			if hook.Run("CanSaveCharacter", v) ~= false then
+				v:SaveCharacter()
+			end
 		end
 	end;
 
