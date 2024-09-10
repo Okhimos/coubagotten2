@@ -1,0 +1,1 @@
+['loot_player_ratio;['default;0.75;'value;0.1;}'loot_container_lifetime;[(4)1200;(5)360;}'loot_item_lifetime;[(4)1800;(5)901;}'enable_gravgun_punt;[(4)t(5)f}'loot_max_containers;[(4)80;(5)90;}'loot_population_scaling_enabled;[(4)t(5)f}'faction_ratio_enabled;[(4)t(5)f}'loot_min_containers;[(4)40;(5)89;}'loot_min_ground_spawns;[(4)50;(5)80;}'xp_modifier;[(4)1;(5)2;}}

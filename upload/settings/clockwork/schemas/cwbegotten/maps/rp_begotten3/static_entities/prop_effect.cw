@@ -1,0 +1,1 @@
+{['moveable;f'angles;a6.9161922056082e-07,90.004570007324,0;'color;['r;255;'b;255;'a;255;'g;255;}'model;'models/props_junk/watermelon01.mdl;'renderMode;0;'material;';'class;'prop_effect;'position;v1519.5529785156,13011.094726562,-983.19818115234;'renderFX;0;}}
