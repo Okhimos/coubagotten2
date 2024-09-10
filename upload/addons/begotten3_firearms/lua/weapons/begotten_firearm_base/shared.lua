@@ -209,16 +209,20 @@ function SWEP:Holster()
 		
 		self.Owner:SetFOV(0, 0.5);
 	end
+	
+	if self.OnHolster then
+		self:OnHolster();
+	end
+	
+	if CLIENT then
+		self:RemoveModels();
+	end
    
 	return true
 end
  
 function SWEP:OnRemove()
 	self:Holster();
-	
-	if CLIENT then
-		self:RemoveModels();
-	end
 end
 
 function SWEP:RemoveModels()
@@ -279,7 +283,7 @@ function SWEP:AdjustFireBegotten()
 							local ownerPos = self.Owner:GetPos();
 							
 							for i, v in ipairs(players) do
-								if v:GetSharedVar("powderheelActive") then
+								if v:GetNetVar("powderheelActive") then
 									if v:GetPos():Distance(ownerPos) <= config.Get("talk_radius"):Get() then
 										forceJam = true;
 										
@@ -291,8 +295,8 @@ function SWEP:AdjustFireBegotten()
 					
 						if !self.noJam or forceJam then
 							local hasPistolier = cwBeliefs and self.Owner.HasBelief and self.Owner:HasBelief("pistolier");
-							local hasFavored = self.Owner:GetSharedVar("favored");
-							local hasMarked = self.Owner:GetSharedVar("marked");
+							local hasFavored = self.Owner:GetNetVar("favored");
+							local hasMarked = self.Owner:GetNetVar("marked");
 							
 							local misfireChance = self.MisfireChance;
 							local itemCondition = itemTable:GetCondition();
@@ -323,6 +327,8 @@ function SWEP:AdjustFireBegotten()
 										local position = self.Owner:GetPos();
 										
 										Clockwork.chatBox:AddInTargetRadius(self.Owner, "me", "pulls the trigger on their "..self.PrintName.." and it suddenly explodes!", position, config.Get("talk_radius"):Get() * 2);
+										
+										Schema:EasyText(GetAdmins(), "icon16/bomb.png", "tomato", self.Owner:Name().."'s "..self.PrintName.." exploded!");
 									
 										local effectData = EffectData();
 										effectData:SetStart(position);
@@ -454,12 +460,14 @@ function SWEP:TakeAmmoBegotten(amount)
 			if itemTable.TakeCondition then
 				local conditionLoss = math.max((((1000 - self.Primary.RPM) / 1000) * amount), 0.5);
 				
-				if IsValid(self.Owner) and self.Owner:IsPlayer() then
-					if self.Owner.HasBelief then
-						if self.Owner:HasBelief("ingenuity_finisher") then
-							return;
-						elseif self.Owner:HasBelief("scour_the_rust") then
-							conditionLoss = conditionLoss / 2;
+				if !itemTable.unrepairable then
+					if IsValid(self.Owner) and self.Owner:IsPlayer() then
+						if self.Owner.HasBelief then
+							if self.Owner:HasBelief("ingenuity_finisher") then
+								return;
+							elseif self.Owner:HasBelief("scour_the_rust") then
+								conditionLoss = conditionLoss / 2;
+							end
 						end
 					end
 				end
@@ -1143,11 +1151,12 @@ Think
 function SWEP:Think()
 	if SERVER then
 		local curTime = CurTime();
+		local player = self.Owner;
 		
 		if !self.notPowder and (!self.waterCheck or self.waterCheck <= curTime) then
 			self.waterCheck = curTime + 0.5;
 			
-			if IsValid(self.Owner) then
+			if IsValid(player) and player:IsPlayer() then
 				if self.Owner:WaterLevel() >= 3 then
 					if !self.Owner.cwObserverMode then
 						if Clockwork then
@@ -1166,6 +1175,19 @@ function SWEP:Think()
 					end
 				end
 			end
+		end
+		
+		-- Last ditch effort to fix the clientside itemtable desync.
+		if !self.nextItemSend or self.nextItemSend <= curTime then
+			if IsValid(player) and player:IsPlayer() then
+				local itemTable = item.GetByWeapon(self);
+					
+				if itemTable then
+					item.SendToPlayer(player, itemTable);
+				end
+			end
+			
+			self.nextItemSend = curTime + math.random(1, 5);
 		end
 	--elseif CLIENT then
 		--self:IronSight();
@@ -1375,7 +1397,7 @@ if CLIENT then
 				if (v.type == "Model") then
 					local model = v.modelEnt
 					
-					if !IsValid(model) or model:GetParent() ~= self.Owner then
+					if !IsValid(model) or model:GetParent() ~= self.Owner and IsValid(self.Owner) then
 						self:CreateModels(wepTab.WElements);
 						
 						return;

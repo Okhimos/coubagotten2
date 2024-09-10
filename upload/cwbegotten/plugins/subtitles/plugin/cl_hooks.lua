@@ -28,16 +28,10 @@ function cwCinematicText:ChatBoxAdjustInfo(info)
 				
 				if (info.filter == "ic" and table.HasValue(goodClasses, info.class)) then
 					local doesRecognise = Clockwork.player:DoesRecognise(info.speaker);
-					local nameText = Clockwork.player:GetName(info.speaker);
+					local nameText = info.name;
 					
 					if (!doesRecognise) then
-						local unrecognisedName, usedPhysDesc = Clockwork.player:GetUnrecognisedName(info.speaker);
-						
-						if (usedPhysDesc and string.utf8len(unrecognisedName) > 24) then
-							unrecognisedName = string.utf8sub(unrecognisedName, 1, 21).."...";
-						end;
-						
-						nameText = "["..unrecognisedName.."]";
+						nameText = "["..string.sub(Clockwork.player:GetPhysDesc(info.speaker), 0, 21).."...]";
 					end
 					
 					if (info.class == "yell") then

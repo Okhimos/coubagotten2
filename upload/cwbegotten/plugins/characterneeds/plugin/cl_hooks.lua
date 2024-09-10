@@ -81,16 +81,6 @@ function cwCharacterNeeds:BuildNeedTooltip(need, x, y, width, height, frame)
 					needName = "Усталость";
 				end
 			end
-
-			if needName == "Hunger" then
-				needName = "Голод"
-			end
-			if needName == "Thirst" then
-				needName = "Жажда"
-			end
-			if needName == "Corruption" then
-				needName = "Порча"
-			end
 			
 			frame:AddText(needName, Color(180, 20, 20), "nov_IntroTextSmallDETrooper", 1.15);
 			frame:AddText(needTextTable[5], Color(180, 170, 170), "nov_IntroTextSmallDETrooper", 0.8);

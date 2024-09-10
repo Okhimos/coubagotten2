@@ -85,7 +85,7 @@ function playerMeta:Possess(possessor)
 		possessor:Spectate(OBS_MODE_IN_EYE);
 		possessor:SpectateEntity(self);
 		
-		self:SetSharedVar("currentlyPossessed", true);
+		self:SetNetVar("currentlyPossessed", true);
 		
 		Clockwork.chatBox:Add(self, nil, "itnofake", "Как бы вы ни боролись, вы не сможете победить сущность, которая теперь захватывает контроль над вашим телом!");
 		
@@ -146,7 +146,7 @@ function playerMeta:PossessionFreakout()
 		end
 	end
 	
-	self:SetSharedVar("possessionFreakout", true);
+	self:SetNetVar("possessionFreakout", true);
 	self:Freeze(true);
 	
 	Clockwork.chatBox:Add(self, nil, "itnofake", "Вы чувствуете, как что-то проникает в ваш разум!");
@@ -170,7 +170,7 @@ function playerMeta:PossessionFreakout()
 	
 	timer.Simple(30, function()
 		if IsValid(self) then
-			self:SetSharedVar("possessionFreakout", false);
+			self:SetNetVar("possessionFreakout", false);
 			self:Freeze(false);
 			
 			if !self.possessor then
@@ -206,8 +206,8 @@ function playerMeta:Unpossess()
 	
 	self.possessor = nil;
 	
-	self:SetSharedVar("currentlyPossessed", false);
-	self:SetSharedVar("possessionFreakout", false);
+	self:SetNetVar("currentlyPossessed", false);
+	self:SetNetVar("possessionFreakout", false);
 	netstream.Start(self, "Stunned", 5); -- Replace with damnation or custom VFX later!
 	Clockwork.player:SetRagdollState(self, RAGDOLL_KNOCKEDOUT, 15);
 	Clockwork.chatBox:AddInTargetRadius(self, "me", "внезапно обмякает и падает на землю!", self:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
@@ -227,5 +227,5 @@ end
 
 -- A function to get if the player is possessed.
 function playerMeta:IsPossessedByDemon()
-	return self:GetSharedVar("currentlyPossessed") or false;
+	return self:GetNetVar("currentlyPossessed") or false;
 end

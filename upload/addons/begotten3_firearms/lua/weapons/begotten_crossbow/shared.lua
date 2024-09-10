@@ -57,12 +57,12 @@ SWEP.SelectiveFire			= false
 
 -- Enter iron sight info and bone mod info below
 
-SWEP.IronSightsPos = Vector(-8.025, 0, 5)
+SWEP.IronSightsPos = Vector(-8.08, -12.462, 5.599)
 SWEP.IronSightsAng = Vector(0, 0, 0)
-SWEP.SightsPos = Vector(-8.025, 0, 5)
+SWEP.SightsPos = Vector(-8.08, -12.462, 5.599)
 SWEP.SightsAng = Vector(0, 0, 0)
-SWEP.RunSightsPos = Vector(-0.361, 0, 0.4)
-SWEP.RunSightsAng = Vector(-17.588, 31.658, -20.403)
+SWEP.RunSightsPos = Vector(-1.64, 0, 1.32)
+SWEP.RunSightsAng = Vector(-11.256, 28.843, -19.698)
 
 SWEP.noJam = true;
 SWEP.notPowder = true;
@@ -146,6 +146,10 @@ function SWEP:PrimaryAttack()
 				self.Weapon:SendWeaponAnim(ACT_VM_PRIMARYATTACK)
 				self.Owner:SetAnimation(PLAYER_ATTACK1);
 				self.Weapon:SetNextPrimaryFire(curTime + 1 / (self.Primary.RPM / 60));
+				
+				if SERVER then
+					self.Owner.cloakCooldown = CurTime() + 5;
+				end
 			end
 		end
 	end

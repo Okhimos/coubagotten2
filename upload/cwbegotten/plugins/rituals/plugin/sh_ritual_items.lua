@@ -282,7 +282,7 @@ ITEM:Register();
 local ITEM = Clockwork.item:New();
 	ITEM.name = "Камень Льда";
 	ITEM.model = "models/srp/items/spezzy/art_moldfish.mdl";
-	ITEM.iconoverride = "materials/begotten/ui/itemicons/ice_catalyst.png";
+	ITEM.iconoverride = "materials/begotten/ui/itemicons/art_moldfish.png";
 	ITEM.weight = 0.1;
 	ITEM.uniqueID = "ice_sigil_stone"
 	ITEM.category = "Catalysts";

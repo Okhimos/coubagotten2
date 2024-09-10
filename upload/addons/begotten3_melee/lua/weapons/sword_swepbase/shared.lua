@@ -354,18 +354,7 @@ function SWEP:Think()
 				local itemTable = item.GetByWeapon(self);
 					
 				if itemTable then
-					netstream.Start(player, "WeaponItemData", {
-						definition = item.GetDefinition(itemTable, true),
-						weapon = self:EntIndex()
-					})
-
-					if self:GetNWString("ItemID") ~= itemTable.itemID then
-						self:SetNWString(
-							"ItemID", tostring(itemTable.itemID)
-						)
-					end
-					
-					self.cwItemTable = itemTable
+					item.SendToPlayer(player, itemTable);
 				end
 			end
 			
@@ -495,10 +484,6 @@ function SWEP:PrimaryAttack()
 	local delay = attacktable["delay"];
 	local stance = "reg_swing";
 	local strikeTime = attacktable["striketime"];
-
-	if self:GetNW2Bool("swordplayActive") == true then
-		strikeTime = strikeTime * 0.7;
-	end
 	
 	if self:GetNWString("activeOffhand"):len() > 0 then
 		offhandWeapon = weapons.GetStored(self:GetNWString("activeOffhand"));
@@ -538,14 +523,8 @@ function SWEP:PrimaryAttack()
 	wep:SetNextSecondaryFire(curTime + (delay * 0.1));
 	
 	if bParry then
-		local anim = self.Weapon.realCriticalAnim;
-		
-		if self:GetNW2Bool("swordplayActive") == true then
-			anim = "a_heavy_2h_attack_slash_02_fast";
-		end
-		
 		self:CriticalAnimation();
-		self:TriggerAnim(owner, anim);
+		self:TriggerAnim(owner, self.Weapon.realCriticalAnim);
 		owner:SetNWBool("Riposting", true);
 		owner:SetNWBool("ParrySucess", false);
 	else
@@ -2301,29 +2280,17 @@ function SWEP:SecondaryAttack()
 						deflectionWindow = deflectionWindow + 0.1;
 					end
 				end
-								
+				
+				ply:SetNWBool( "CanDeflect", false )
+				self:CreateTimer(1, "deflectionTimer"..ply:EntIndex(), function()
+					if self:IsValid() and !ply:IsRagdolled() and ply:Alive() then
+						ply:SetNWBool( "CanDeflect", true ) 
+					end 
+				end);
+				
 				self:CreateTimer(deflectionWindow, "deflectionOffTimer"..ply:EntIndex(), function()
 					if self:IsValid() and !ply:IsRagdolled() and ply:Alive() then
 						ply:SetNWBool( "Deflect", false ) 
-					end 
-				end);
-				
-				if ply:HasBelief("sidestep") then
-					deflectioncooldown = 1.2
-				else
-					deflectioncooldown = 1.5
-				end
-				
-				ply:SetNWBool( "CanDeflect", false ) -- Clean this ass code up
-				self:CreateTimer(deflectioncooldown, "deflectionTimer"..ply:EntIndex(), function()
-					if self:IsValid() and !ply:IsRagdolled() and ply:Alive() then
-						ply:SetNWBool( "CanDeflect", true ) 
-					end 
-				end);
-			else
-				self:CreateTimer(deflectioncooldown, "deflectionTimer"..ply:EntIndex(), function()
-					if self:IsValid() and !ply:IsRagdolled() and ply:Alive() then
-						ply:SetNWBool( "CanDeflect", true ) 
 					end 
 				end);
 			end
@@ -2400,14 +2367,12 @@ function SWEP:SecondaryAttack()
 	end
 	
 	self:CreateTimer(parryWindow, "parryTimer"..ply:EntIndex(), function()
-		if self:IsValid() and ply:IsValid() then
+		if self:IsValid() and ply:IsValid() and !ply:IsRagdolled() and ply:Alive() then
 			ply:SetNWBool("Parry", false)
 			
 			if ply.parryStacks then
 				ply.parryStacks = nil;
 			end
-			
-			if ply:IsRagdolled() or !ply:Alive() then return end;
 			
 			if (ply:KeyDown(IN_ATTACK2)) then
 				if (!ply:KeyDown(IN_USE)) then
@@ -3088,15 +3053,13 @@ function SWEP:Holster()
 		self:StopAllAnims(player);
 		
 		if CLIENT then
-			if player:IsPlayer() then
-				local vm = player:GetViewModel()
-				
-				if IsValid(vm) then
-					self:ResetBonePositions(vm)
-					vm:SetSubMaterial( 0, "" )
-					vm:SetSubMaterial( 1, "" )
-					vm:SetSubMaterial( 2, "" )
-				end
+			local vm = player:GetViewModel()
+			
+			if IsValid(vm) then
+				self:ResetBonePositions(vm)
+				vm:SetSubMaterial( 0, "" )
+				vm:SetSubMaterial( 1, "" )
+				vm:SetSubMaterial( 2, "" )
 			end
 		else
 			if player:GetNWBool("ThrustStance") then

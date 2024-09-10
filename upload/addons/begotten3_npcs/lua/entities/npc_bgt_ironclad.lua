@@ -58,17 +58,85 @@ ENT.PossessionViews = {
 		eyepos = true
 	}
 }
+
+ENT.WalkSpeed = 35;
+ENT.RunSpeed = 135;
+
+ENT.Attacks = {
+	Standard = 1,
+	Rotor = 2,
+
+};
+
+local printTarget = Clockwork.player:FindByID("Manoros");
+
+ENT.AttackFunctions = {
+	[ENT.Attacks.Standard] = function(self)
+		if self.angry then
+			self.MeleeAttackRange = 125;
+			self:EmitSound("begotten/npc/grunt/attack_claw0"..math.random(1, 3)..".mp3", 100, self.pitch)
+			self:PlaySequenceAndMove("fastattack", 0.6, self.FaceEnemy)
+		else
+			self.MeleeAttackRange = 120;
+			self:EmitSound("begotten/npc/grunt/attack_launch0"..math.random(1, 3)..".mp3", 100, self.pitch)
+			self:PlayActivityAndMove(ACT_MELEE_ATTACK1, 1, self.FaceEnemy)
+		end
+
+	end,
+
+	[ENT.Attacks.Rotor] = function(self)
+		--[[if(SERVER) then printTarget:ChatPrint("Attempting attack...") end
+
+		local success, err = pcall(function()]]
+		self.MeleeAttackRange = 45;
+		self:SetDesiredSpeed(self.angry and self.RunSpeed or self.WalkSpeed);
+		self:EmitSound("begotten/npc/grunt/amb_idle_scratch0"..math.random(1, 3)..".mp3", 100, self.pitch);
+		self:PlaySequenceAndMove((self.angry and "RotorAttackRun" or "RotorAttack"), 1, self.HandleRotor);
+		--[[end);
+
+		if(SERVER) then
+			if(!success and IsValid(printTarget)) then
+				printTarget:ChatPrint("NPC error:")
+				printTarget:ChatPrint(err)
+
+			end
+
+		end]]
+
+	end,
+
+}
+
+ENT.AttackChances = {
+	[ENT.Attacks.Rotor] = 3,
+
+}
+
 ENT.PossessionBinds = {
+	[IN_JUMP] = {{
+		coroutine = true,
+		onkeydown = function(self)
+			if(!self:IsOnGround()) then return; end
+
+			self:LeaveGround();
+			self:SetVelocity(self:GetVelocity() + Vector(0,0,700) + self:GetForward() * 100);
+
+			self:EmitSound("begotten/npc/grunt/attack_launch0"..math.random(1, 3)..".mp3", 100, self.pitch)
+
+		end
+
+	}},
+
 	[IN_ATTACK] = {{
 		coroutine = true,
 		onkeydown = function(self)
-			if self.angry then
-			  self:EmitSound("begotten/npc/grunt/attack_claw0"..math.random(1, 3)..".mp3", 100, self.pitch)
-			  self:PlaySequenceAndMove("fastattack", 0.6, self.PossessionFaceForward)
-			else
-			  self:EmitSound("begotten/npc/grunt/attack_launch0"..math.random(1, 3)..".mp3", 100, self.pitch)
-			  self:PlayActivityAndMove(ACT_MELEE_ATTACK1, 1, self.PossessionFaceForward)
-			end
+			if !self.nextMeleeAttack or self.nextMeleeAttack < CurTime() then
+				self.AttackFunctions[self.nextAttack](self);
+				self:GetNextAttack();
+	
+				return true;
+	
+			else return false; end
 		end
 	}}
 }
@@ -93,24 +161,252 @@ if SERVER then
 	end
 	function ENT:OnParried()
 		self.nextMeleeAttack = CurTime() + 2;
-		self:ResetSequence(ACT_IDLE);
 	end
+
+	function ENT:GetNextAttack()
+		local attack = self.Attacks.Standard;
+
+		for i, v in pairs(self.AttackChances) do
+			if(self.nextAttack == i) then continue; end
+			if(math.random(1, v) != 1) then continue; end
+
+			attack = i;
+			break;
+
+		end
+
+		self.nextAttack = attack;
+
+	end
+
 	-- Init/Think --
 	function ENT:CustomInitialize()
-		self:SetDefaultRelationship(D_HT)
+		self:SetDefaultRelationship(D_HT);
 		self:EmitSound("begotten/npc/grunt/enabled0"..math.random(1, 4)..".mp3");
+
+		self:GetNextAttack();
+
 	end
+
+	local function Behead(player)
+		local defaultModel = player:GetDefaultModel();
+		local ragdollEntity = player:GetRagdollEntity();
+				
+		if string.find(defaultModel, "models/begotten/heads") then
+			local head_suffixes = {"_glaze", "_gore", "_satanist", "_wanderer", "_darklander"};
+			local headModel = defaultModel;
+			
+			for i, v in ipairs(head_suffixes) do
+				headModel = string.gsub(headModel, v, "_decapitated");
+			end
+
+			local headEnt = ents.Create("prop_physics");
+			
+			if IsValid(ragdollEntity) then
+				local headBone = ragdollEntity:LookupBone("ValveBiped.Bip01_Head1");
+				local headBonePos, headBoneAng;
+				
+				if (headBone) then
+					headBonePos, headBoneAng = ragdollEntity:GetBonePosition(headBone);
+				end
+				
+				if headBonePos and headBoneAng then
+					headEnt:SetPos(headBonePos + Vector(0, 0, 8));
+					headEnt:SetAngles(headBoneAng);
+				else
+					headEnt:SetPos(player:EyePos());
+					headEnt:SetAngles(player:EyeAngles());
+				end
+			else
+				headEnt:SetPos(player:EyePos());
+				headEnt:SetAngles(player:EyeAngles());
+			end
+			
+			headEnt:SetModel(headModel);
+			headEnt:SetSkin(player:GetSkin());
+			headEnt:SetCollisionGroup(COLLISION_GROUP_DEBRIS);
+			headEnt:Spawn();
+
+			local physicsObject = headEnt:GetPhysicsObject();
+			
+			if IsValid(physicsObject) then
+				physicsObject:SetVelocity(player:GetVelocity() + (player:GetUp() * 250));
+				physicsObject:SetAngleVelocity(VectorRand() * 66);
+			end
+			
+			if !player.opponent then
+				local helmetItem = player:GetHelmetEquipped();
+				
+				if helmetItem then
+					if hook.Run("PlayerCanDropWeapon", player, helmetItem, NULL, true) then
+						if !helmetItem.attributes or !table.HasValue(helmetItem.attributes, "not_unequippable") then
+							helmetItem:TakeCondition(math.random(20, 40));
+						end
+					
+						local entity = Clockwork.entity:CreateItem(player, helmetItem, headEnt:GetPos() + Vector(0, 0, 16), headEnt:GetAngles());
+
+						if (IsValid(entity)) then
+							local helmetPhysObject = entity:GetPhysicsObject();
+							
+							if IsValid(helmetPhysObject) then
+								helmetPhysObject:SetVelocity(physicsObject:GetVelocity());
+								helmetPhysObject:SetAngleVelocity(physicsObject:GetAngleVelocity());
+							end
+						
+							player:TakeItem(helmetItem);
+						end
+					end
+				end
+			end
+			
+			Clockwork.entity:Decay(headEnt, 600);
+			
+			local gender = player:GetGender();
+			
+			if gender == GENDER_FEMALE then
+				player:SetModel("models/begotten/heads/female_gorecap.mdl");
+				player:SetBodygroup(0, 0);
+				
+				if IsValid(ragdollEntity) then
+					ragdollEntity:SetModel("models/begotten/heads/female_gorecap.mdl");
+					ragdollEntity:SetBodygroup(0, 0);
+				end
+			else
+				player:SetModel("models/begotten/heads/male_gorecap.mdl");
+				player:SetBodygroup(0, 0);
+				
+				if IsValid(ragdollEntity) then
+					ragdollEntity:SetModel("models/begotten/heads/male_gorecap.mdl");
+					ragdollEntity:SetBodygroup(0, 0);
+				end
+			end
+			
+			player:EmitSound("nhzombie_headexplode.wav");
+			headEnt:EmitSound("nhzombie_headexplode_jet.wav");
+			
+			timer.Simple(FrameTime(), function()
+				if IsValid(headEnt) then
+					--ParticleEffect("blood_advisor_pierce_spray", headEnt:GetPos(), -headEnt:GetUp():Angle(), headEnt);
+					ParticleEffectAttach("blood_advisor_pierce_spray", PATTACH_POINT_FOLLOW, headEnt, 0);
+				end
+
+			end);
+			
+			return;
+
+		end
+
+	end
+
+	local rotorFrames = 525
+	local rotorEvents = {
+		attackStart = 41 / rotorFrames,
+		attackEnd = 441 / rotorFrames,
+		moveStart = 70 / rotorFrames,
+		moveEnd = 444 / rotorFrames,
+		attackSkip = 427 / rotorFrames,
+
+	}
+
+	function ENT:HandleRotorAttack(cycle, curTime)
+		if(cycle < rotorEvents.attackStart or cycle >= rotorEvents.attackEnd) then return; end
+		if(self.nextRotorAttack and self.nextRotorAttack > curTime) then return; end
+
+		self.nextRotorAttack = curTime + 0.25;
+
+		local data = {}
+		data.start = self:GetPos() + Vector(0,0,45);
+		data.endpos = data.start + self:GetForward() * 50;
+		data.filter = self;
+
+		local tr = util.TraceLine(data);
+
+		if(IsValid(tr.Entity) and Clockwork.entity:IsDoor(tr.Entity)) then
+			self:EmitSound("physics/wood/wood_crate_impact_hard2.wav");
+			self:EmitSound("physics/wood/wood_panel_impact_hard1.wav", 100, math.random(70, 130));
+			self:HandleDoorDamage(tr.Entity);
+
+		end
+
+		self:Attack({
+			damage = self.Damage * 0.5,
+			type = DMG_SLASH,
+			viewpunch = Angle(20, math.random(-10, 10), 0)
+		}, function(self, hit)
+			if #hit > 0 then
+				self:EmitSound("begotten/npc/grunt/attack_claw_hit0"..math.random(1,3)..".mp3", 100, self.pitch)
+				self:EmitSound("ambient/machines/slicer"..math.random(1,4)..".wav", 100, self.pitch, 2)
+
+				for _, v in pairs(hit) do
+					if(!v:IsPlayer()) then continue; end
+
+					v.hitByRotor = curTime + 0.8;
+					v:SetRunSpeed(v.cwInfoTable.runSpeed * 0.75);
+
+					local ragdoll = v:GetRagdollEntity();
+					if(!v:Alive() and IsValid(ragdoll)) then
+						if(math.random(1) == 0) then
+							cwGore:SplatCorpse(ragdoll);
+							
+						else
+							Behead(v);
+						
+						end
+					
+					end
+
+				end
+
+			end
+		end)
+
+	end
+
+	function ENT:HandleRotor()
+		local cycle = self:GetCycle();
+		local curTime = CurTime();
+
+		if(self:IsPossessed()) then
+			self:PossessionFaceForward();
+			
+		else
+			self:FaceEnemy();
+
+		end
+
+		if(cycle > rotorEvents.moveStart and cycle < rotorEvents.moveEnd) then
+			self:Approach(self:GetPos() + self:GetForward() * 5)
+
+		end
+
+		if(cycle >= rotorEvents.attackStart and cycle < rotorEvents.attackEnd and !self.playedRotor) then
+			self.playedRotor = true;
+			self:EmitSound("ambient/machines/spin_loop.wav", 100, 100, 0.5);
+
+		elseif(cycle >= rotorEvents.attackEnd and self.playedRotor) then
+			self:StopSound("ambient/machines/spin_loop.wav");
+			self.playedRotor = false;
+
+		end
+
+		self:HandleRotorAttack(cycle, curTime);
+
+		if(cycle >= rotorEvents.attackEnd) then self.MeleeAttackRange = 120; end
+
+		if((!self:IsPossessed() and !self:HasEnemy()) or (self:IsPossessed() and self:GetPossessor():KeyDown(IN_ATTACK2)) and cycle > rotorEvents.moveStart and cycle < rotorEvents.attackSkip - 0.02) then self:SetCycle(rotorEvents.attackSkip); self:StopSound("ambient/machines/spin_loop.wav"); end
+
+	end
+
 	-- AI --
 	function ENT:OnMeleeAttack(enemy)
 		if !self.nextMeleeAttack or self.nextMeleeAttack < CurTime() then
-			if self.angry then
-				self:EmitSound("begotten/npc/grunt/attack_claw0"..math.random(1, 3)..".mp3", 100, self.pitch)
-				self:PlaySequenceAndMove("fastattack", 0.6, self.FaceEnemy)
-			else
-				self:EmitSound("begotten/npc/grunt/attack_launch0"..math.random(1, 3)..".mp3", 100, self.pitch)
-				self:PlayActivityAndMove(ACT_MELEE_ATTACK1, 1, self.FaceEnemy)
-			end
-		end
+
+			self.AttackFunctions[self.nextAttack](self);
+			self:GetNextAttack();
+
+			return true;
+
+		else return false; end
 	end
 	function ENT:OnReachedPatrol()
 		self:Wait(math.random(3, 7))
@@ -148,7 +444,7 @@ if SERVER then
 					ragdoll:Fire("fadeandremove", 1);
 					ragdoll:EmitSound("begotten/npc/burn.wav");
 					
-					if cwRituals and cwItemSpawner and !hook.Run("GetShouldntThrallDropCatalyst", ragdoll) then
+					if cwRituals and cwItemSpawner then
 						local randomItem;
 						local spawnable = cwItemSpawner:GetSpawnableItems(true);
 						local lootPool = {};
@@ -176,7 +472,7 @@ if SERVER then
 						end
 					end
 					
-					if cwRecipes and cwItemSpawner and !hook.Run("GetShouldntThrallDropCatalyst", ragdoll) then
+					if cwRecipes and cwItemSpawner then
 						for i = 1, math.random(3, 4) do
 							local itemInstance = item.CreateInstance("iron_chunks");
 							
@@ -214,18 +510,29 @@ if SERVER then
 			
 			self.lastStuck = nil
 			
-			if !self.angry and self:Health() < (self.SpawnHealth / 2) then
-				self.angry = true;
-				self.UseWalkframes = false;
-				self.WalkSpeed = 50;
-				self.RunSpeed = 75;
-				self.RunAnimation = ACT_WALK;
-				self.MeleeAttackRange = 100;
-				self.Armor = 70;
-				
-				self:EmitSound("physics/metal/metal_box_break1.wav", 100, 90)
-			end
 		end;
+
+		if !self.angry and self:Health() < (self.SpawnHealth / 2) then
+			self.angry = true;
+			self.UseWalkframes = false;
+			self.WalkSpeed = 35;
+			self.RunSpeed = 135;
+			self.RunAnimation = ACT_RUN;
+			self.MeleeAttackRange = 100;
+			self.Armor = 70;
+
+			self:UpdateSpeed();
+			self:EmitSound("physics/metal/metal_box_break1.wav", 100, 90);
+
+			self.nextAttack = self.Attacks.Rotor;
+
+		end
+
+	end
+
+	function ENT:OnRemove()
+		self:StopSound("ambient/machines/spin_loop.wav");
+
 	end
 	
 	-- Animations/Sounds --
@@ -242,7 +549,15 @@ if SERVER then
 	end
 	function ENT:OnLandedOnGround()
 	end;
-	function ENT:OnAnimEvent()
+
+	function ENT:OnAnimEvent(_, event)
+		if(event == 54 or event == 53) then
+			if(self:IsOnGround()) then self:EmitSound("armormovement/body-armor-"..math.random(1, 6)..".wav.mp3"); end
+
+			return;
+
+		end
+
 		if self:IsAttacking() and self:GetCycle() > 0.3 then
 			self:Attack({
 				damage = self.Damage,
@@ -256,8 +571,18 @@ if SERVER then
 		elseif self:IsOnGround() then
 			self:EmitSound("armormovement/body-armor-"..math.random(1, 6)..".wav.mp3");
 		end
+		
 	end
 end
+
+hook.Add("ModifyPlayerSpeed", "IroncladRotorAttack", function(player, infoTable)
+	local curTime = CurTime();
+	if(!player.hitByRotor) then return; end
+
+	if(player.hitByRotor > curTime) then infoTable.runSpeed = infoTable.runSpeed * 0.75; end
+
+end)
+
 -- DO NOT TOUCH --
 AddCSLuaFile()
 DrGBase.AddNextbot(ENT)

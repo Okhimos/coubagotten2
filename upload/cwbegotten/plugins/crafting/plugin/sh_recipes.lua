@@ -3092,56 +3092,58 @@ RECIPE:Register()
 		function RECIPE:EndCraft(player)
 		end;
 	RECIPE:Register()
-
-	RECIPE = cwRecipes.recipes:New("bone_dagger");
 	RECIPE.name = "Костяной Кинжал";
-	RECIPE.requiredBeliefs = {"ingenious", "primeval"};
-	RECIPE.requirements = {
-		["human_bone"] = {amount = 2},
-	};
-	RECIPE.result = {
-		["begotten_dagger_bonedagger"] = {amount = 1},
-	};
-	RECIPE.category = "Weapons"
-	RECIPE.finishSound = "physics/wood/wood_strain3.wav";
-	RECIPE.failSound = "buttons/button2.wav"
-	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "assembling"
-	RECIPE.experience = 0;
 	
-	function RECIPE:OnCraft(player)
-	end;
-	function RECIPE:OnFail(player)
-	end;
-	function RECIPE:StartCraft(player)
-	end;
-	function RECIPE:EndCraft(player)
-	end;
-
-RECIPE = cwRecipes.recipes:New("bone_mace");
 	RECIPE.name = "Костяная Булава";
-	RECIPE.requiredBeliefs = {"ingenious", "primeval"};
-	RECIPE.requirements = {
-		["human_bone"] = {amount = 4},
-	};
-	RECIPE.result = {
-		["begotten_1h_bonemace"] = {amount = 1},
-	};
-	RECIPE.category = "Weapons"
-	RECIPE.finishSound = "physics/wood/wood_strain3.wav";
-	RECIPE.failSound = "buttons/button2.wav"
-	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "assembling"
-	RECIPE.experience = 2;
+	RECIPE = cwRecipes.recipes:New("bone_dagger");
+		RECIPE.requiredBeliefs = {"ingenious", "primeval"};
+		RECIPE.requirements = {
+			["human_bone"] = {amount = 2},
+		};
+		RECIPE.result = {
+			["begotten_dagger_bonedagger"] = {amount = 1},
+		};
+		RECIPE.category = "Weapons"
+		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
+		RECIPE.failSound = "buttons/button2.wav"
+		RECIPE.craftTime = 8
+		RECIPE.craftVerb = "assembling"
+		RECIPE.experience = 2;
+		
+		function RECIPE:OnCraft(player)
+		end;
+		function RECIPE:OnFail(player)
+		end;
+		function RECIPE:StartCraft(player)
+		end;
+		function RECIPE:EndCraft(player)
+		end;
+	RECIPE:Register()
 	
-	function RECIPE:OnCraft(player)
-	end;
-	function RECIPE:OnFail(player)
-	end;
-	function RECIPE:StartCraft(player)
-	end;
-	function RECIPE:EndCraft(player)
-	end;
+	RECIPE = cwRecipes.recipes:New("bone_mace");
+		RECIPE.requiredBeliefs = {"ingenious", "primeval"};
+		RECIPE.requirements = {
+			["human_bone"] = {amount = 4},
+		};
+		RECIPE.result = {
+			["begotten_1h_bonemace"] = {amount = 1},
+		};
+		RECIPE.category = "Weapons"
+		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
+		RECIPE.failSound = "buttons/button2.wav"
+		RECIPE.craftTime = 8
+		RECIPE.craftVerb = "assembling"
+		RECIPE.experience = 3;
+		
+		function RECIPE:OnCraft(player)
+		end;
+		function RECIPE:OnFail(player)
+		end;
+		function RECIPE:StartCraft(player)
+		end;
+		function RECIPE:EndCraft(player)
+		end;
+	RECIPE:Register()
 	
 	RECIPE = cwRecipes.recipes:New("scrap_axe");
 		RECIPE.name = "Скрап Топор";

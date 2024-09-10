@@ -215,7 +215,7 @@ if SERVER then
 					
 					if self.parried then
 						if cwBeliefs and self.Owner.HasBelief and self.Owner:HasBelief("repulsive_riposte") then
-							damage = damage * 4;
+							damage = damage * 3.5;
 						else
 							damage = damage * 3;
 						end
@@ -281,6 +281,18 @@ if SERVER then
 						bolt:SetAngles(Ent:GetAimVector():Angle())
 						phys:SetVelocity(Ent:GetAimVector() * 1800);
 						
+						if Ent:GetNWBool("Parry") then
+							Ent:EmitSound("meleesounds/DS2Parry.mp3");
+						end
+						
+						if IsValid(enemywep) then
+							local blocksoundtable = GetSoundTable(enemywep.realBlockSoundTable);
+							
+							if blocksoundtable and blocksoundtable["deflectmetal"] then
+								Ent:EmitSound(blocksoundtable["deflectmetal"][math.random(1, #blocksoundtable["deflectmetal"])], 90);
+							end
+						end
+						
 						Clockwork.chatBox:AddInTargetRadius(Ent, "me", "suddenly catches the crossbow bolt mid-flight with their weapon and redirects it, showing impossible skill and grace as it is deflected in the direction of its shooter!", Ent:GetPos(), config.Get("talk_radius"):Get() * 4);
 					else
 						phys:SetVelocity(Ent:GetAimVector() * 50);
@@ -293,8 +305,10 @@ if SERVER then
 				
 					return;
 				elseif Ent.iFrames then
+					local phys = bolt:GetPhysicsObject()
+					
 					self:SetCollisionGroup(COLLISION_GROUP_WORLD);
-					self:SetVelocity(data.OurOldVelocity);
+					phys:SetVelocity(data.OurOldVelocity);
 					Ent:EmitSound("meleesounds/comboattack3.wav.mp3", 75, math.random( 90, 110 ));
 					
 					return;

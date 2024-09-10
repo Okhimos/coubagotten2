@@ -3,18 +3,6 @@
 	written by: cash wednesday, DETrooper, gabs and alyousha35.
 --]]
 
-local function IsAreaClear(position, radius, player)
-	for k, v in pairs (ents.FindInSphere(position, radius)) do
-		if v:IsPlayer() or v:IsNPC() or v:IsNextBot() then
-			if player and v == player then continue end;
-			
-			return false;
-		end
-	end
-	
-	return true;
-end
-
 local RITUAL = cwRituals.rituals:New("purifying_stone_rite");
 	RITUAL.name = "(T2) Стих Камня Очищения";
 	RITUAL.description = "Наделить вещь не только чистотой, но и способностью распространять свою очищенную природу на окружающее пространство - это акт веры, который практикуют немногие. Выполнив этот ритуал, вы вызываете предмет «Камень Очищения». Снимает 10 порчи.";
@@ -53,12 +41,12 @@ RITUAL = cwRituals.rituals:New("yellow_banner_of_quelling");
 	RITUAL.experience = 75; -- XP gained from performing the ritual.
 
 	function RITUAL:OnPerformed(player)
-		player:SetSharedVar("yellowBanner", true);
+		player:SetNetVar("yellowBanner", true);
 
 		timer.Create("YellowBannerTimer_"..player:EntIndex(), 1800, 1, function()
 			if IsValid(player) then
-				if player:GetSharedVar("yellowBanner", false) then
-					player:GetSharedVar("yellowBanner", false);
+				if player:GetNetVar("yellowBanner", false) then
+					player:GetNetVar("yellowBanner", false);
 
 					Clockwork.hint:Send(player, "The 'Yellow Banner of Quelling' ritual has worn off...", 10, Color(175, 100, 100), true, true);
 				end
@@ -337,7 +325,7 @@ RITUAL = cwRituals.rituals:New("aura_of_the_mother");
 	RITUAL.experience = 75;
 
 	function RITUAL:OnPerformed(player)
-		player:SetSharedVar("auraMotherActive", true);
+		player:SetNetVar("auraMotherActive", true);
 	
 		timer.Create("auraMotherTimer_"..player:EntIndex(), 5, 120, function() 
 			if IsValid(player) then
@@ -352,7 +340,7 @@ RITUAL = cwRituals.rituals:New("aura_of_the_mother");
 		
 		timer.Simple(600, function()
 			if IsValid(player) then
-				player:SetSharedVar("auraMotherActive", false);
+				player:SetNetVar("auraMotherActive", false);
 			end
 		end);
 	end;
@@ -942,31 +930,6 @@ RITUAL = cwRituals.rituals:New("apostle_of_many_faces");
 	RITUAL.description = "Испытание веры для истинного чернокнижника - нести чучела языческих и благочестивых верований, противоположных твоей собственной. Играть роль чужого аколита настолько хорошо, что обмануть даже богов - признак мастера-чернокнижника! Выполнение этого ритуала навсегда позволяет вам экипировать или использовать все снаряжение, не связанное с верой вольтизма. Дает 50 порчи.";
 	RITUAL.requiredSubfaction = {"Kinisger"}; -- Subfaction Ritual
 	
-	RITUAL.requirements = {"xolotl_catalyst", "xolotl_catalyst", "xolotl_catalyst"};
-	RITUAL.corruptionCost = 50;
-	RITUAL.ritualTime = 15;
-	
-	function RITUAL:OnPerformed(player)
-		player:SetCharacterData("apostle_of_many_faces", true);
-	end;
-	function RITUAL:OnFail(player)
-	end;
-	function RITUAL:StartRitual(player)
-		if player:GetCharacterData("apostle_of_many_faces") then
-			Schema:EasyText(player, "firebrick", "Вы уже исполнили этот ритуал!");
-		
-			return false;
-		end
-	end;
-	function RITUAL:EndRitual(player)
-	end;
-RITUAL:Register()
-
-RITUAL = cwRituals.rituals:New("kinisger_appearance_alteration");
-	RITUAL.name = "(Уникальное) Максировка дома Кининсгер";
-	RITUAL.description = "Члены Дома Кинисгер - мастера проникновения, благодаря использованию темной магии и своей мутантской крови для изменения внешности. Дает 50 порчи.";
-	RITUAL.requiredSubfaction = {"Kinisger"}; -- Subfaction Ritual
-	
 	RITUAL.requirements = {"down_catalyst", "down_catalyst", "ice_catalyst"};
 	--RITUAL.corruptionCost = 50; -- Corruption gets added once the UI is closed.
 	RITUAL.ritualTime = 15;
@@ -980,6 +943,31 @@ RITUAL = cwRituals.rituals:New("kinisger_appearance_alteration");
 	function RITUAL:OnFail(player)
 	end;
 	function RITUAL:StartRitual(player)
+	end;
+	function RITUAL:EndRitual(player)
+	end;
+RITUAL:Register()
+
+RITUAL = cwRituals.rituals:New("kinisger_appearance_alteration");
+	RITUAL.name = "(Уникальное) Максировка дома Кининсгер";
+	RITUAL.description = "Члены Дома Кинисгер - мастера проникновения, благодаря использованию темной магии и своей мутантской крови для изменения внешности. Дает 50 порчи.";
+	RITUAL.requiredSubfaction = {"Kinisger"}; -- Subfaction Ritual
+	
+	RITUAL.requirements = {"xolotl_catalyst", "xolotl_catalyst", "xolotl_catalyst"};
+	RITUAL.corruptionCost = 50;
+	RITUAL.ritualTime = 15;
+	
+	function RITUAL:OnPerformed(player)
+		player:SetCharacterData("apostle_of_many_faces", true);
+	end;
+	function RITUAL:OnFail(player)
+	end;
+	function RITUAL:StartRitual(player)
+		if player:GetCharacterData("apostle_of_many_faces") then
+			Schema:EasyText(player, "firebrick", "You have already performed this ritual!");
+		
+			return false;
+		end
 	end;
 	function RITUAL:EndRitual(player)
 	end;
@@ -1039,7 +1027,7 @@ RITUAL = cwRituals.rituals:New("mark_of_the_devil");
 								if !cwRituals:PlayerMeetsRitualItemRequirements(player, ritualTable, ritualTable.requirements, true) then return end;
 								
 								target:SetCharacterData("markedBySatanist", true);
-								target:SetSharedVar("markedBySatanist", true);
+								target:SetNetVar("markedBySatanist", true);
 								
 								Schema:EasyText(player, "maroon", target:Name().." был помечен на смерть.");
 								Schema:EasyText(GetAdmins(), "tomato", target:Name().."  был помечен на протрах чушкой под именем "..player:Name().."!");
@@ -1106,7 +1094,7 @@ RITUAL = cwRituals.rituals:New("mark_of_the_devil_target");
 								if !cwRituals:PlayerMeetsRitualItemRequirements(player, ritualTable, ritualTable.requirements, true) then return end;
 							
 								target:SetCharacterData("markedBySatanist", true);
-								target:SetSharedVar("markedBySatanist", true);
+								target:SetNetVar("markedBySatanist", true);
 								
 								Schema:EasyText(player, "maroon", target:Name().." был помечен на смерть");
 								Schema:EasyText(GetAdmins(), "tomato", target:Name().." был помечен на протрах чушкой под именем "..player:Name().."!");
@@ -1267,7 +1255,7 @@ RITUAL = cwRituals.rituals:New("regrowth");
 		player:SetNeed("hunger", 0);
 		player:SetNeed("corruption", 0);
 		player:SetNeed("sleep", 0);
-		player:SetSharedVar("sanity", 100);
+		player:SetNetVar("sanity", 100);
 		player:SetCharacterData("sanity", 100);
 		player:SetCharacterData("Stamina", max_stamina);
 		player:SetNWInt("Stamina", max_stamina);
@@ -1387,12 +1375,12 @@ RITUAL = cwRituals.rituals:New("aura_of_powderheel");
 	RITUAL.experience = 75; -- XP gained from performing the ritual.
 
 	function RITUAL:OnPerformed(player)
-		player:SetSharedVar("powderheelActive", true);
+		player:SetNetVar("powderheelActive", true);
 
 		timer.Create("PowderheelTimer_"..player:EntIndex(), 600, 1, function()
 			if IsValid(player) then
-				if player:GetSharedVar("powderheelActive") then
-					player:SetSharedVar("powderheelActive", false);
+				if player:GetNetVar("powderheelActive") then
+					player:SetNetVar("powderheelActive", false);
 
 					Clockwork.hint:Send(player, "Вы чувствуете как барьер постепенно угасает...", 10, Color(175, 100, 100), true, true);
 				end
@@ -1598,13 +1586,13 @@ RITUAL = cwRituals.rituals:New("soulscorch");
 
 	function RITUAL:OnPerformed(player)
 		player.soulscorchActive = true;
-		player:SetSharedVar("soulscorchActive", true);
+		player:SetNetVar("soulscorchActive", true);
 
 		timer.Create("SoulScorchTimer_"..player:EntIndex(), 300, 1, function()
 			if IsValid(player) then
 				if player.soulscorchActive then
 					player.soulscorchActive = nil;
-					player:SetSharedVar("soulscorchActive", false);
+					player:SetNetVar("soulscorchActive", false);
 
 					Clockwork.hint:Send(player, "Ритуал выжигания души спадает с вас...", 10, Color(175, 100, 100), true, true);
 				end
@@ -1674,12 +1662,12 @@ RITUAL = cwRituals.rituals:New("enlightenment");
 	RITUAL.experience = 50;
 	
 	function RITUAL:OnPerformed(player)
-		player:SetSharedVar("enlightenmentActive", true);
+		player:SetNetVar("enlightenmentActive", true);
 		
 		timer.Create("EnlightenmentTimer_"..player:EntIndex(), 900, 1, function()
 			if IsValid(player) then
-				if player:GetSharedVar("enlightenmentActive", false) then
-					player:SetSharedVar("enlightenmentActive", false);
+				if player:GetNetVar("enlightenmentActive", false) then
+					player:SetNetVar("enlightenmentActive", false);
 					
 					Clockwork.hint:Send(player, "Ритуал просвещения спадает с вас...", 10, Color(175, 100, 100), true, true);
 				end
@@ -2167,7 +2155,9 @@ RITUAL = cwRituals.rituals:New("summon_familiar_bear");
 					end
 					
 					table.insert(cwRituals.summonedNPCs, entity);
-
+					
+					print(entity:GetPos());
+					
 					Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
 					
 					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется существо из горейского леса!", trace.HitPos, config.Get("talk_radius"):Get() * 3);

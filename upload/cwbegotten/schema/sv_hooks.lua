@@ -165,7 +165,6 @@ end;
 function Schema:ClockworkInitPostEntity()
 	self:LoadDummies();
 	self:LoadRadios();
-	self:LoadPopeSpeakers()
 	self:LoadNPCs();
 	self:LoadNPCSpawns();
 	self:SpawnBegottenEntities();
@@ -2228,9 +2227,7 @@ function Schema:PlayerUseItem(player, itemTable, itemEntity)
 						if Schema.Ranks then
 							for k, v in pairs(Schema.Ranks) do
 								for i, v2 in ipairs(v) do
-									if v2 ~= "" then
-										table.insert(blacklistedNames, string.lower(v2));
-									end
+									table.insert(blacklistedNames, string.lower(v2));
 								end
 							end
 						end
@@ -2492,7 +2489,7 @@ function Schema:PostPlayerDeath(player)
 	end
 	
 	if (player:GetNetVar("blackOut")) then
-		player:SetLocalVar("blackOut", false);
+		player:SetNetVar("blackOut", false);
 	end;
 end
 
@@ -2505,35 +2502,26 @@ function Schema:PlayerChangedRanks(player)
 			player:SetCharacterData("rank", 1);
 		end;
 		
+		player:OverrideName(nil)
+		local name = player:Name();
+
 		local factionTable = Clockwork.faction:FindByID(faction);
 		
 		if factionTable and factionTable.GetName then
 			player:OverrideName(factionTable:GetName(player));
-			
-			return;
 		else
 			local rankOverride = player:GetCharacterData("rankOverride");
 			
-			if rankOverride and rankOverride ~= "" then
-				player:OverrideName(rankOverride.." "..player:Name(true));
-				
-				return;
+			if rankOverride then
+				player:OverrideName(rankOverride.." "..player:Name());
 			else
 				local rank = math.Clamp(player:GetCharacterData("rank", 1), 1, #self.Ranks[faction]);
 
-				if (rank and isnumber(rank)) then
-					local rankText = self.Ranks[faction][rank];
-					
-					if rankText and rankText ~= "" then
-						player:OverrideName(rankText.." "..player:Name(true));
-					
-						return;
-					end
+				if (rank and isnumber(rank) and self.Ranks[faction][rank]) then
+					player:OverrideName(self.Ranks[faction][rank].." "..player:Name());
 				end;
 			end;
 		end
-		
-		player:OverrideName(nil);
 	end;
 end;
 
@@ -2657,15 +2645,13 @@ function Schema:PlayerCharacterLoaded(player)
 		else
 			local rankOverride = player:GetCharacterData("rankOverride");
 			
-			if rankOverride and rankOverride ~= "" then
+			if rankOverride then
 				player:OverrideName(rankOverride.." "..player:Name());
 			else
 				local rank = math.Clamp(player:GetCharacterData("rank", 1), 1, #self.Ranks[faction]);
 
 				if (rank and isnumber(rank) and self.Ranks[faction][rank]) then
-					if self.Ranks[faction][rank] ~= "" then
-						player:OverrideName(self.Ranks[faction][rank].." "..player:Name());
-					end
+					player:OverrideName(self.Ranks[faction][rank].." "..player:Name());
 				end;
 			end;
 		end
@@ -2856,14 +2842,11 @@ function Schema:PostPlayerTakeFromStorage(player, storageTable, itemTable)
 end
 
 -- Called when a player should take damage.
-function Schema:PlayerShouldTakeDamage(player, attacker)
+function Schema:PlayerShouldTakeDamage(player, attacker, inflictor, damageInfo)
 	if (player.cwWakingUp) then
 		return false;
 	end;
-end
-
--- Called when a player should take damage.
-function Schema:PlayerShouldTakeDamageNew(player, attacker, inflictor, damageInfo)
+	
 	-- rubber johnny flags
 	if (player:IsPlayer() and attacker:IsPlayer()) then
 		local hasFlags = Clockwork.player:HasFlags(player, "6");

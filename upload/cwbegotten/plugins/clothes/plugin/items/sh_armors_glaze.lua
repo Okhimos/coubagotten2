@@ -2019,7 +2019,7 @@ function ITEM:OnPlayerUnequipped(player, extraData)
 		end
 		
 		if self.concealsFace == true then
-			player:SetSharedVar("faceConcealed", false);
+			player:SetNetVar("faceConcealed", false);
 		end
 	end
 end
@@ -2033,7 +2033,7 @@ function ITEM:OnTakeFromPlayer(player)
 		end
 
 		if self.concealsFace == true then
-			player:SetSharedVar("faceConcealed", false);
+			player:SetNetVar("faceConcealed", false);
 		end
 	end
 end
@@ -2142,7 +2142,7 @@ function ITEM:OnPlayerUnequipped(player, extraData)
 		end
 		
 		if self.concealsFace == true then
-			player:SetSharedVar("faceConcealed", false);
+			player:SetNetVar("faceConcealed", false);
 		end
 	end
 end
@@ -2156,7 +2156,7 @@ function ITEM:OnTakeFromPlayer(player)
 		end
 
 		if self.concealsFace == true then
-			player:SetSharedVar("faceConcealed", false);
+			player:SetNetVar("faceConcealed", false);
 		end
 	end
 end
@@ -2269,7 +2269,7 @@ function ITEM:OnPlayerUnequipped(player, extraData)
 		end
 		
 		if self.concealsFace == true then
-			player:SetSharedVar("faceConcealed", false);
+			player:SetNetVar("faceConcealed", false);
 		end
 	end
 end
@@ -2283,7 +2283,7 @@ function ITEM:OnTakeFromPlayer(player)
 		end
 		
 		if self.concealsFace == true then
-			player:SetSharedVar("faceConcealed", false);
+			player:SetNetVar("faceConcealed", false);
 		end
 	end
 end

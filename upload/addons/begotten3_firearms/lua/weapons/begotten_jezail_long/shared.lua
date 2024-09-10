@@ -56,7 +56,7 @@ SWEP.Primary.Ammo			= "smg"	-- pistol, 357, smg1, ar2, buckshot, slam, SniperPen
 -- Pistol, buckshot, and slam always ricochet. Use AirboatGun for a light metal peircing shotgun pellets
 
 SWEP.Secondary.ScopeZoom			= 30
-SWEP.Secondary.IronFOV			= 20		-- How much you 'zoom' in. Less is more! 
+SWEP.Secondary.IronFOV			= 25		-- How much you 'zoom' in. Less is more! 
 SWEP.Secondary.UseSVD			= true
 
 SWEP.data 				= {}				--The starting firemode
@@ -67,7 +67,7 @@ SWEP.ReticleScale 			= 0.75
 SWEP.ShellTime			= .35
 
 SWEP.Primary.NumShots	= 1		//how many bullets to shoot, use with shotguns
-SWEP.Primary.Damage		= 95	//base damage, scaled by game
+SWEP.Primary.Damage		= 105	//base damage, scaled by game
 SWEP.Primary.Spread		= .05	//define from-the-hip accuracy 1 is terrible, .0001 is exact)
 SWEP.Primary.IronAccuracy = .015 // has to be the same as primary.spread
 -- Because irons don't magically give you less pellet spread!
@@ -80,21 +80,11 @@ SWEP.IronSightsAng = Vector(0, 0, 0)
 SWEP.RunSightsPos = Vector(0, 0, -0.801)
 SWEP.RunSightsAng = Vector(-7.739, 33.064, -0.704)
 
-function SWEP:AdjustMouseSensitivity()
-
-	if self.Owner:KeyPressed(IN_ATTACK2) then
-		return 0.1
-	else
-		return 1
-	end
-	
-end
-
 SWEP.AmmoTypes = {
 	["Longshot"] = function(SWEP)
 		SWEP.Primary.Sound = Sound("v51_"..math.random(1,4)..".ogg");
 		SWEP.Primary.NumShots = 1;
-		SWEP.Primary.Damage = 95;
+		SWEP.Primary.Damage = 105;
 		SWEP.Primary.Spread = .1;
 		SWEP.Primary.IronAccuracy = .035;
 		SWEP.Primary.Ammo = "smg";
@@ -146,8 +136,21 @@ function SWEP:PrimaryAttack()
 				self:ShootBulletInformation();
 				self.Weapon:TakeAmmoBegotten(1); -- This should really only ever be 1 unless for some reason we have burst-fire guns or some shit, especially since we have different ammo types.
 				--self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
-				self.Weapon:EmitSound(self.Primary.Sound)
-
+				
+				if SERVER then
+					local filter = RecipientFilter();
+					
+					if zones then
+						filter:AddPlayers(zones:GetPlayersInSupraZone(zones:GetPlayerSupraZone(self.Owner)));
+					else
+						filter:AddAllPlayers();
+					end
+					
+					self.Weapon:EmitSound(self.Primary.Sound, self.Primary.SoundLevel or 511, math.random(98, 102), 1, CHAN_WEAPON, 0, 0, filter);
+				else
+					self.Weapon:EmitSound(self.Primary.Sound, self.Primary.SoundLevel or 511, math.random(98, 102), 1, CHAN_WEAPON, 0, 0);
+				end
+				
 				local effect = EffectData();
 				local Forward = self.Owner:GetForward()
 				local Right = self.Owner:GetRight()

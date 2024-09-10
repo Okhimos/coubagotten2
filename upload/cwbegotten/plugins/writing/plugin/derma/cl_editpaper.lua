@@ -11,7 +11,7 @@ local PANEL = {};
 function PANEL:Init()
 	self:SetBackgroundBlur(true);
 	self:SetDeleteOnClose(false);
-	self:SetTitle("Бумага");
+	self:SetTitle("Paper");
 	
 	-- Called when the button is clicked.
 	function self.btnClose.DoClick(button)
@@ -86,8 +86,7 @@ function PANEL:Populate()
 			netstream.Start( "EditPaper", { self.entity, string.sub(textEntry:GetValue(), 0, 500) } );
 		end;
 	end;
-	
-
+	
 	self.panelList:AddItem(textEntry);
 	self.panelList:AddItem(button);
 end;

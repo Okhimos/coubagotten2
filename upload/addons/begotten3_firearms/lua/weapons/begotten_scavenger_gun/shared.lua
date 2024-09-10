@@ -86,6 +86,7 @@ SWEP.RunSightsAng = Vector(-11.961, 34.472, -16.181)
 SWEP.AmmoTypes = {
 	["Scrapshot"] = function(SWEP) -- Single chambered round.
 		SWEP.Primary.Sound = Sound("weapons_moth/p90-1.wav");
+		SWEP.Primary.SoundLevel = 400;
 		SWEP.Primary.NumShots = 1;
 		SWEP.Primary.Damage = 30;
 		SWEP.Primary.Spread = .2;
@@ -119,6 +120,7 @@ SWEP.AmmoTypes = {
 	end,
 	["Scavenger Gun Magazine"] = function(SWEP)
 		SWEP.Primary.Sound = Sound("weapons_moth/p90-1.wav");
+		SWEP.Primary.SoundLevel = 400;
 		SWEP.Primary.NumShots = 1;
 		SWEP.Primary.Damage = 27;
 		SWEP.Primary.Spread = .15;
@@ -136,6 +138,7 @@ SWEP.AmmoTypes = {
 	end,
 	["Scavenger Gun Large Magazine"] = function(SWEP)
 		SWEP.Primary.Sound = Sound("weapons_moth/p90-1.wav");
+		SWEP.Primary.SoundLevel = 400;
 		SWEP.Primary.NumShots = 1;
 		SWEP.Primary.Damage = 27;
 		SWEP.Primary.Spread = .15;
@@ -170,7 +173,20 @@ function SWEP:PrimaryAttack()
 				self:ShootBulletInformation();
 				self.Weapon:TakeAmmoBegotten(1); -- This should really only ever be 1 unless for some reason we have burst-fire guns or some shit, especially since we have different ammo types.
 				--self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
-				self.Weapon:EmitSound(self.Primary.Sound)
+				
+				if SERVER then
+					local filter = RecipientFilter();
+					
+					if zones then
+						filter:AddPlayers(zones:GetPlayersInSupraZone(zones:GetPlayerSupraZone(self.Owner)));
+					else
+						filter:AddAllPlayers();
+					end
+					
+					self.Weapon:EmitSound(self.Primary.Sound, self.Primary.SoundLevel or 511, math.random(98, 102), 1, CHAN_WEAPON, 0, 0, filter);
+				else
+					self.Weapon:EmitSound(self.Primary.Sound, self.Primary.SoundLevel or 511, math.random(98, 102), 1, CHAN_WEAPON, 0, 0);
+				end
 
 				local effect = EffectData();
 				local Forward = self.Owner:GetForward()
