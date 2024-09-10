@@ -309,12 +309,12 @@ ITEM:Register();
 local ITEM = Clockwork.item:New("medical_base");
 	ITEM.name = "Мазь";
 	ITEM.cost = 8;
-	ITEM.model = "models/props_junk/glassjug01.mdl";
+	ITEM.model = "models/mosi/fallout4/props/junk/components/adhesive.mdl";
 	ITEM.weight = 0.5;
 	ITEM.useText = "Apply";
 	ITEM.useSound = "begotten/ui/sanity_gain.mp3";
 	ITEM.description = "Бутылка старой вязкой жижицы для лечения ожогов.";
-	ITEM.iconoverride = "materials/begotten/ui/itemicons/laudanum.png"
+	ITEM.iconoverride = "materials/begotten/ui/itemicons/ointment.png"
 	ITEM.uniqueID = "ointment"
 	
 	ITEM.applicable = true;
@@ -417,14 +417,13 @@ ITEM:Register();
 
 local ITEM = Clockwork.item:New("medical_base");
 	ITEM.name = "Скальпель";
-	ITEM.cost = 15;
-	ITEM.model = "models/props_c17/TrapPropeller_Lever.mdl";
+	ITEM.model = "models/gibs/metal_gib4.mdl";
 	ITEM.weight = 0.25;
 	ITEM.access = "v";
 	ITEM.useText = "Cut";
 	ITEM.useSound = "bandaging_1.wav";
 	ITEM.description = "Относительно нормальный скальпель, которым можно разрезать плоть.";
-	ITEM.iconoverride = "materials/begotten/ui/itemicons/ampoule.png"
+	ITEM.iconoverride = "materials/begotten/ui/itemicons/scalpel.png"
 	ITEM.uniqueID = "scalpel"
 	
 	ITEM.applicable = true;
@@ -508,7 +507,7 @@ local ITEM = Clockwork.item:New();
 					if (canChloroform or target:IsRagdolled()) then
 						Clockwork.player:SetAction(player, "chloroform", chloroformTime);
 						
-						target:SetSharedVar("beingChloro", true);
+						target:SetNetVar("beingChloro", true);
 						
 						Clockwork.player:EntityConditionTimer(player, target, trace.Entity, chloroformTime, 192, function()
 							local canChloroform = (target:GetAimVector():DotProduct(player:GetAimVector()) > 0);
@@ -530,7 +529,7 @@ local ITEM = Clockwork.item:New();
 							Clockwork.player:SetAction(player, "chloroform", false);
 							
 							if (IsValid(target)) then
-								target:SetSharedVar("beingChloro", false);
+								target:SetNetVar("beingChloro", false);
 							end;
 						end);
 					else

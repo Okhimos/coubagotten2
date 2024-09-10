@@ -247,7 +247,9 @@ local COMMAND = Clockwork.command:New("CharGetBeliefs");
 				local belief_strings = {};
 			
 				for k, v in pairs(beliefs) do
-					table.insert(belief_strings, k);
+					if v == true then
+						table.insert(belief_strings, k);
+					end
 				end
 			
 				Schema:EasyText(player, "cornflowerblue", "["..self.name.."] "..target:Name().." has the following beliefs: "..table.concat(belief_strings, " "));
@@ -1050,6 +1052,12 @@ local COMMAND = Clockwork.command:New("Warcry");
 		
 			return false;
 		end
+		
+		if player:GetNetVar("tied") != 0 then
+			Schema:EasyText(player, "firebrick", "You lack the will to do this!");
+		
+			return false;
+		end;
 	
 		local faction = player:GetNetVar("kinisgerOverride") or player:GetFaction();
 		local subfaction = player:GetNetVar("kinisgerOverrideSubfaction") or player:GetSubfaction();
@@ -1110,6 +1118,20 @@ local COMMAND = Clockwork.command:New("Warcry");
 					if (isPlayer and v:GetMoveType() == MOVETYPE_WALK) then
 						local immune = false;
 						local vFaction = v:GetNetVar("kinisgerOverride") or v:GetFaction();
+						
+						if player_has_watchful_raven and Clockwork.player:DoesRecognise(v, player) then
+							v:HandleSanity(10);
+							v:HandleStamina(10);
+							v.ravenBuff = true;
+							
+							table.insert(affected_players, v);
+							
+							timer.Create("RavenTimer_"..v:EntIndex(), 10, 1, function()
+								if IsValid(v) then
+									v.ravenBuff = false;
+								end
+							end);
+						end
 						
 						if v:GetFaith() ~= faith then
 							-- Kinisgers can twisted warcry if disguised as a Reaver.
@@ -1224,17 +1246,25 @@ local COMMAND = Clockwork.command:New("Warcry");
 						end
 					end
 					
-					if player:GetGender() == GENDER_MALE then
-						if faction == "Goreic Warrior" then
-							player:EmitSound("warcries/warcry"..math.random(1, 16)..".mp3", 100, math.random(90, 105));
-						else
-							player:EmitSound("warcries/jambw_yell_"..math.random(1, 17)..".mp3", 100, math.random(90, 105));
-						end
+					if player_has_watchful_raven then
+						player:EmitSound("warcries/motherwarcry"..math.random(1, 9)..".mp3", 100);
+						
+						Clockwork.chatBox:AddInTargetRadius(player, "me", "speaks in tongues with the voice of a vengeful spirit of Nature!", playerPos, radius);
+						
+						netstream.Start(player, "UpgradedWarcry", affected_players);
 					else
-						player:EmitSound("warcries/warcry_female"..math.random(1, 16)..".mp3", 100, math.random(90, 105));
-					end
+						if player:GetGender() == GENDER_MALE then
+							if faction == "Goreic Warrior" then
+								player:EmitSound("warcries/warcry"..math.random(1, 16)..".mp3", 100, math.random(90, 105));
+							else
+								player:EmitSound("warcries/jambw_yell_"..math.random(1, 17)..".mp3", 100, math.random(90, 105));
+							end
+						else
+							player:EmitSound("warcries/warcry_female"..math.random(1, 16)..".mp3", 100, math.random(90, 105));
+						end
 					
-					Clockwork.chatBox:AddInTargetRadius(player, "me", "издает вопль, полный дикости и бесстрашия!", playerPos, radius);
+						Clockwork.chatBox:AddInTargetRadius(player, "me", "lets out a feral warcry!", playerPos, radius);
+					end
 				else
 					player:HandleSanity(-5);
 					player:EmitSound("warcries/twistedwarcry"..math.random(1, 5)..".mp3", 100, math.random(90, 105));

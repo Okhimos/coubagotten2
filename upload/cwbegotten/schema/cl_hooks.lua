@@ -19,7 +19,7 @@ local requiredWorkshopAddons = {
 Schema.requiredMounts = {
 	--["episodic"] = "Half-Life 2: Episode 1",
 	--["ep2"] = "Half-Life 2: Episode 2",
-	--["cstrike"] = "Counter-Strike: Source",
+	["cstrike"] = "Counter-Strike: Source",
 };
 
 Schema.cheapleMessages = {"Мне нужно убраться подальше от этой чертовой штуки!", "Оно приближается!", "Что эта штука от меня хочет!?", "Почему никто другой этого не видит!?", "Черт, оно приближается!", "Надо продолжать двигаться... надо продолжать двигаться..."};
@@ -1452,6 +1452,35 @@ function Schema:CanPaintChatbox()
 	end;
 end;
 
+local noDisplayClasses = {
+	"dwf",
+	"dw ",
+	"dwd",
+	"dar",
+	"rav",
+	"rs ",
+	"rsc",
+	"rsf",
+	"rel",
+	"re ",
+	"adm",
+	"ad ",
+	"su ",
+	"op ",
+};
+
+function Schema:ShouldNotDisplayTyping(text)
+	local prefix = config.Get("command_prefix"):Get()
+	
+	if string.sub(text, 1, 1) == prefix then
+		local stringsub = string.sub(text, 2, 4);
+		
+		if table.HasValue(noDisplayClasses, stringsub) then
+			return false;
+		end
+	end
+end
+
 -- Called to get whether the character menu should be created.
 function Schema:ShouldCharacterMenuBeCreated()
 	if Schema.contentVerified ~= "verified" then
@@ -1644,6 +1673,10 @@ function Schema:ModifyItemMarkupTooltip(category, maximumWeight, weight, conditi
 				
 				if itemTable.isShortPolearm then
 					frame:AddText("Короткое Древковое Оружие: урон увеличивается до +50% по мере удаления от цели.", Color(110, 30, 30), nil, 0.9);
+				end
+				
+				if weaponTable.isLongsword then
+					frame:AddText("Swordplay: After deflecting or parrying an opponent, your next attack within 0.5s will have a faster striketime. This trait only works if you have 'Blademaster' unlocked.", Color(110, 30, 30), nil, 0.9);
 				end
 				
 				if weaponTable.MultiHit then

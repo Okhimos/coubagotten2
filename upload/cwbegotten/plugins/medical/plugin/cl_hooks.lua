@@ -124,7 +124,7 @@ function cwMedicalSystem:HUDPaintForeground()
 			local y = (srcH / 2) - 128;
 
 			Clockwork.kernel:OverrideMainFont(Clockwork.option:GetFont("menu_text_small"));
-			y = Clockwork.kernel:DrawInfo("ТЫ УМИРАЕШЬ ОТ СВОИХ РАН...", x, y, colorRed, alpha);
+			y = Clockwork.kernel:DrawInfo("YOU ARE DYING OF YOUR WOUNDS...", x, y, colorRed, alpha);
 			Clockwork.kernel:OverrideMainFont(false);
 		elseif (action == "die_bleedout") then
 			local scrW = ScrW();
@@ -134,7 +134,7 @@ function cwMedicalSystem:HUDPaintForeground()
 			local y = (srcH / 2) - 128;
 
 			Clockwork.kernel:OverrideMainFont(Clockwork.option:GetFont("menu_text_small"));
-			y = Clockwork.kernel:DrawInfo("ТЫ ИСТЕКАЕШЬ КРОВЬЮ...", x, y, colorRed, alpha);
+			y = Clockwork.kernel:DrawInfo("YOU ARE BLEEDING OUT...", x, y, colorRed, alpha);
 			Clockwork.kernel:OverrideMainFont(false);
 		end;	
 	end;
@@ -143,17 +143,17 @@ end;
 -- Called when the post progress bar info is needed.
 function cwMedicalSystem:GetProgressBarInfoAction(action, percentage)
 	if (action == "heal") then
-		return {text = "Ты лечишь себя. Нажми ЛКМ, чтобы отменить.", percentage = percentage, flash = percentage > 75};
+		return {text = "You are healing yourself. Click to cancel.", percentage = percentage, flash = percentage > 75};
 	elseif (action == "healing") then
-		return {text = "Ты лечишь кого-то. Нажми ЛКМ, чтобы отменить.", percentage = percentage, flash = percentage > 75};
+		return {text = "You are healing somebody. Click to cancel.", percentage = percentage, flash = percentage > 75};
 	elseif (action == "performing_surgery") then
-		return {text = "Ты проводишь операцию. Нажми ЛКМ, чтобы отменить..", percentage = percentage, flash = percentage > 75};
+		return {text = "You are performing an operation on somebody. Click to cancel.", percentage = percentage, flash = percentage > 75};
 	elseif (action == "chloroform") then
-		return {text = "Ты используешь на ком-то хлороформ. Нажми ЛКМ, чтобы отменить.", percentage = percentage, flash = percentage > 75};
+		return {text = "You are using chloroform on somebody. Click to cancel.", percentage = percentage, flash = percentage > 75};
 	elseif (action == "die") then
-		return {text = "Ты медленно умираешь.", percentage = percentage, flash = percentage > 75};
+		return {text = "You are slowly dying.", percentage = percentage, flash = percentage > 75};
 	elseif (action == "die_bleedout") then
-		return {text = "Ты истекаешь кровью.", percentage = percentage, flash = percentage > 75};
+		return {text = "You are slowly bleeding out.", percentage = percentage, flash = percentage > 75};
 	end;
 end;
 
@@ -223,7 +223,7 @@ function cwMedicalSystem:RenderScreenspaceEffects()
 				local symptoms = Clockwork.Client:GetNetVar("symptoms", {});
 				
 				if table.HasValue(symptoms, "Nausea") then
-					local strings = {"Мне кажется, что меня сейчас стошнит!", "Я чувствую, что меня сейчас стошнит."};
+					local strings = {"I feel like I need to puke!", "I feel like I'm gonna be sick."};
 					
 					CRAZYBOB = 75;
 					
@@ -243,7 +243,7 @@ function cwMedicalSystem:RenderScreenspaceEffects()
 				local symptoms = Clockwork.Client:GetNetVar("symptoms", {});
 				
 				if table.HasValue(symptoms, "Headaches") then
-					local strings = {"У меня голова раскалывается!", "Моя блядская голова!", "Черт, найти бы что-то от головы!"};
+					local strings = {"My head is pounding!", "My head is killing me!", "Fuck, my head hurts like hell."};
 					
 					if cwMelee then
 						util.ScreenShake(Clockwork.Client:GetPos(), 15, 2, 3, 10);
@@ -366,15 +366,15 @@ function cwMedicalSystem:DrawTargetPlayerSymptoms(target, alpha, x, y)
 		
 		if symptom == "Paleness" then
 			if symptomText then
-				symptomText = symptomText.." Он выглядит очень бледными и болезненными.";
+				symptomText = symptomText.." They look very pale and sickly.";
 			else
-				symptomText = "Он выглядит очень бледными и болезненными.";
+				symptomText = "They look very pale and sickly.";
 			end
 		elseif symptom == "Pustules" then
 			if symptomText then
-				symptomText = symptomText.." Он покрыт бубонами.";
+				symptomText = symptomText.." They are covered in pustules and buboes.";
 			else
-				symptomText = "Он покрыт бубонами.";
+				symptomText = "They are covered in pustules and buboes.";
 			end
 		--[[elseif symptom == "Deformities" then
 			if symptomText then
@@ -419,11 +419,11 @@ function cwMedicalSystem:ModifyStatusEffects(tab)
 	end
 	
 	if bloodLevel <= self.maxBloodLevel - 250 and bloodLevel > self.maxBloodLevel - 750 then
-		table.insert(tab, {text = "(-) Незначительная Кровопотеря", color = Color(200, 40, 40)});
+		table.insert(tab, {text = "(-) Minor Blood Loss", color = Color(200, 40, 40)});
 	elseif bloodLevel <= self.maxBloodLevel - 750 and bloodLevel > self.maxBloodLevel - 1500 then
-		table.insert(tab, {text = "(-) Кровопотеря", color = Color(200, 40, 40)});
+		table.insert(tab, {text = "(-) Blood Loss", color = Color(200, 40, 40)});
 	elseif bloodLevel <= self.maxBloodLevel - 1500 and bloodLevel > self.lethalBloodLoss then
-		table.insert(tab, {text = "(-) Серьезная Кровопотеря", color = Color(200, 40, 40)});
+		table.insert(tab, {text = "(-) Severe Blood Loss", color = Color(200, 40, 40)});
 	end
 	
 	for i = 1, #symptoms do

@@ -4,13 +4,30 @@
 
 local longshipXP = 300;
 
+-- Called when Clockwork has loaded all of the entities.
+function cwSailing:ClockworkInitPostEntity()
+	self:LoadLongships();
+end
+
+-- Called just after data should be saved.
+function cwSailing:PostSaveData()
+	self:SaveLongships();
+end
+
 function cwSailing:EntityTakeDamageNew(entity, damageInfo)
 	local class = entity:GetClass();
 	
 	if (class == "cw_longship") then
 		local attacker = damageInfo:GetAttacker();
+		local curTime = CurTime();
 		local damageType = damageInfo:GetDamageType();
 		local damageAmount = damageInfo:GetDamage();
+		local owner = entity.owner;
+		
+		if entity.health <= 700 and IsValid(owner) and owner:GetSubfaction() == "Clan Harald" and owner:Alive() and owner:HasBelief("daring_trout") and (!owner.nextShipDamageNotif or curTime > owner.nextShipDamageNotif) then
+			owner.nextShipDamageNotif = curTime + 60;
+			Schema:EasyText(owner, "icon16/anchor.png", "red", "A raven lands on your shoulder, clutching a torn piece of your longship's sail in its beak! Your longship is being damaged and may soon be destroyed if you do not act!");
+		end
 		
 		if damageAmount >= 20 then
 			if damageType == 4 then -- SLASH
@@ -54,15 +71,62 @@ function cwSailing:EntityTakeDamageNew(entity, damageInfo)
 	end
 end
 
+function cwSailing:CanPlayerMoveLongship(longshipEnt, caller)
+	local owner = longshipEnt.owner;
+	
+	if !IsValid(owner) then
+		if caller:GetCharacterKey() == longshipEnt.ownerID then
+			owner = caller;
+		end
+	elseif longshipEnt.owner == caller and caller:GetCharacterKey() ~= longshipEnt.ownerID then
+		owner = nil;
+		
+		longshipEnt.owner = nil;
+	end
+
+	if longshipEnt:GetNWBool("freeSailing") then return true end;
+
+	if IsValid(owner) and owner:Alive() and ((owner:GetNetVar("tied", 0) ~= 0 and !owner:IsRagdolled()) or zones:IsPlayerInSupraZone(owner, "supragore")) then
+		if owner == caller then
+			return true;
+		end
+	elseif caller:GetFaction() == "Goreic Warrior" or caller:GetNetVar("kinisgerOverride") == "Goreic Warrior" then
+		return true;
+	end
+	
+	if caller:IsAdmin() and caller.cwObserverMode then
+		return true;
+	end
+	
+	return false;
+end
+
+-- Called when a player's character has been loaded.
+function cwSailing:PlayerCharacterLoaded(player)
+	if player:GetFaction() == "Goreic Warrior" then
+		local characterID = player:GetCharacterKey();
+		
+		if !characterID then return end;
+		
+		for i, v in ipairs(ents.FindByClass("cw_longship*")) do
+			if v.ownerID == characterID then
+				v.owner = player;
+			end
+		end
+	end
+end
+
 -- Called when a player uses an unknown item function.
 function cwSailing:PlayerUseUnknownItemFunction(player, itemTable, itemFunction)
 	if !self.shipLocations then
 		return;
 	end;
 	
-	if itemFunction == "dock" or itemFunction == "undock" or itemFunction == "rename" then
+	if --[[itemFunction == "dock" or]] itemFunction == "undock" or itemFunction == "rename" then
 		if itemTable.OnUseCustom then
-			itemTable:OnUseCustom(player, itemTable, itemFunction);
+			if itemTable:OnUseCustom(player, itemTable, itemFunction) ~= false then
+				player:TakeItem(itemTable);
+			end
 		end
 	end;
 end;

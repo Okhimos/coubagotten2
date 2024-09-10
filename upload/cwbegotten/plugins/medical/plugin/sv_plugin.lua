@@ -107,7 +107,6 @@ function cwMedicalSystem:PlayerUseMedical(player, itemTable, hitGroup)
 	if (!IsValid(player) or !itemTable or !player:HasItemInstance(itemTable) or !player:Alive()) then
 		return;
 	end;
-
 	local action = Clockwork.player:GetAction(player);
 	
 	if (action != "heal" and action != "healing" and action != "performing_surgery") then
@@ -116,6 +115,8 @@ function cwMedicalSystem:PlayerUseMedical(player, itemTable, hitGroup)
 		if player:HasBelief("dexterity") then
 			consumeTime = consumeTime * 0.67;
 		end
+		
+		player:SetWeaponRaised(false);
 			
 		Clockwork.player:SetAction(player, "heal", consumeTime, nil, function()
 			if !IsValid(player) then
@@ -217,7 +218,11 @@ function cwMedicalSystem:PlayerUseMedical(player, itemTable, hitGroup)
 				local timesHealed = 0;
 				
 				if cwBeliefs and player:HasBelief("medicine_man") then
-					healAmount = healAmount * 2;
+					healAmount = healAmount * 1.7;
+				end
+				
+				if cwBeliefs and player:HasBelief("one_with_the_druids") then
+					healAmount = healAmount * 1.5;
 				end
 
 				timer.Create(playerIndex.."_heal_"..itemTable.itemID, healDelay, healRepetition, function()
@@ -309,6 +314,8 @@ function cwMedicalSystem:HealPlayer(player, target, itemTable, hitGroup)
 	
 	if (actionPlayer != "heal" and actionPlayer != "healing" and actionPlayer != "performing_surgery") then
 		if (actionTarget != "heal" and actionTarget != "healing" and actionTarget != "performing_surgery") then
+			player:SetWeaponRaised(false);
+			
 			Clockwork.player:SetAction(player, "healing", consumeTime, nil, function()
 				if !IsValid(player) or !IsValid(target) then
 					return;
@@ -422,6 +429,10 @@ function cwMedicalSystem:HealPlayer(player, target, itemTable, hitGroup)
 						healAmount = healAmount * 3;
 					end
 					
+					if cwBeliefs and player:HasBelief("one_with_the_druids") then
+						healAmount = healAmount * 1.5;
+					end
+					
 					timer.Create(targetIndex.."_heal_"..itemTable.itemID, healDelay, healRepetition, function()
 						if (IsValid(target)) then
 							local targetMaxHealth = target:GetMaxHealth(); -- Moving this here since max health could theoretically change while a heal is happening.
@@ -491,7 +502,7 @@ function cwMedicalSystem:HealPlayer(player, target, itemTable, hitGroup)
 				player:TakeItem(itemTable, true);
 			end);
 		else
-			Schema:EasyText(player, "peru","This player is already healing!");
+			Schema:EasyText(player, "peru", "This player is already healing!");
 		end;
 	else
 		Schema:EasyText(player, "peru", "You are already healing!");

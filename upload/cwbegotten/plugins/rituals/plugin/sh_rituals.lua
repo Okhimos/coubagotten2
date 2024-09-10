@@ -3,12 +3,24 @@
 	written by: cash wednesday, DETrooper, gabs and alyousha35.
 --]]
 
+local function IsAreaClear(position, radius, player)
+	for k, v in pairs (ents.FindInSphere(position, radius)) do
+		if v:IsPlayer() or v:IsNPC() or v:IsNextBot() then
+			if player and v == player then continue end;
+			
+			return false;
+		end
+	end
+	
+	return true;
+end
+
 local RITUAL = cwRituals.rituals:New("purifying_stone_rite");
 	RITUAL.name = "(T2) Стих Камня Очищения";
 	RITUAL.description = "Наделить вещь не только чистотой, но и способностью распространять свою очищенную природу на окружающее пространство - это акт веры, который практикуют немногие. Выполнив этот ритуал, вы вызываете предмет «Камень Очищения». Снимает 10 порчи.";
 	RITUAL.onerequiredbelief = {"man_become_beast", "one_with_the_druids", "daring_trout", "shedskin", "flagellant", "acolyte", "soothsayer", "heretic"}; -- Tier II Shared Ritual
 	
-	RITUAL.requirements = {"light_catalyst", "up_catalyst", "up_catalyst"};
+	RITUAL.requirements = {"light_catalyst", "up_catalyst", "trinity_catalyst"};
 	RITUAL.result = {
 		["purifying_stone"] = {amount = 1},
 	};
@@ -46,7 +58,7 @@ RITUAL = cwRituals.rituals:New("yellow_banner_of_quelling");
 		timer.Create("YellowBannerTimer_"..player:EntIndex(), 1800, 1, function()
 			if IsValid(player) then
 				if player:GetNetVar("yellowBanner", false) then
-					player:GetNetVar("yellowBanner", false);
+					player:SetNetVar("yellowBanner", false);
 
 					Clockwork.hint:Send(player, "The 'Yellow Banner of Quelling' ritual has worn off...", 10, Color(175, 100, 100), true, true);
 				end
@@ -326,8 +338,12 @@ RITUAL = cwRituals.rituals:New("aura_of_the_mother");
 
 	function RITUAL:OnPerformed(player)
 		player:SetNetVar("auraMotherActive", true);
+		
+		local auraMotherTick = 0;
 	
 		timer.Create("auraMotherTimer_"..player:EntIndex(), 5, 120, function() 
+			auraMotherTick = auraMotherTick + 1;
+			
 			if IsValid(player) then
 				for k, v in pairs (ents.FindInSphere(player:GetPos(), config.Get("talk_radius"):Get())) do
 					if (v:IsPlayer() and v:GetFaith() == "Faith of the Family") then
@@ -335,12 +351,10 @@ RITUAL = cwRituals.rituals:New("aura_of_the_mother");
 						v:ModifyBloodLevel(150);
 					end
 				end
-			end
-		end);
-		
-		timer.Simple(600, function()
-			if IsValid(player) then
-				player:SetNetVar("auraMotherActive", false);
+				
+				if auraMotherTick == 120 then
+					player:SetNetVar("auraMotherActive", false);
+				end
 			end
 		end);
 	end;
@@ -873,7 +887,7 @@ RITUAL = cwRituals.rituals:New("holy_powderkeg");
 	function RITUAL:OnPerformed(player)
 		player.holyPowderkegActive = true;
 
-		timer.Create("HolyPowderTimer_"..player:EntIndex(), 900, 1, function()
+		timer.Create("HolyPowderTimer_"..player:EntIndex(), 1800, 1, function()
 			if IsValid(player) then
 				if player.holyPowderkegActive then
 					player.holyPowderkegActive = nil;
@@ -896,14 +910,14 @@ RITUAL = cwRituals.rituals:New("cloak_of_the_black_hat");
 	RITUAL.description = "Любой ребенок знает, как спрятаться в темноте. Черная Шляпа приносит тьму с собой, преследуя залы знати, которая ошибочно считает себя в безопасности. Они больше никогда не будут одиноки. Выполнив этот ритуал, вы станете невидимым в присяди в течение следующих 30 минут, но не сможете атаковать, будучи замаскированным. Дает 25 порчи.";
 	RITUAL.requiredSubfaction = {"Kinisger"}; -- Subfaction Ritual
 	
-	RITUAL.requirements = {"pentagram_catalyst", "xolotl_catalyst", "ice_catalyst"};
+	RITUAL.requirements = {"pentagram_catalyst", "ice_catalyst", "ice_catalyst"};
 	RITUAL.corruptionCost = 25; -- Corruption gets added once the UI is closed.
 	RITUAL.ritualTime = 15;
 	
 	function RITUAL:OnPerformed(player)
 		player:SetNetVar("kinisgerCloak", true);
 		
-		timer.Simple(1800, function()
+		timer.Create("KinisgerCloakTimer_"..player:EntIndex(), 1800, 1, function()
 			if IsValid(player) then
 				if player:GetNetVar("kinisgerCloak", false) then
 					player:SetNetVar("kinisgerCloak", false);
@@ -1331,7 +1345,7 @@ RITUAL = cwRituals.rituals:New("regrowth_target");
 					target:SetNeed("hunger", 0);
 					target:SetNeed("corruption", 0);
 					target:SetNeed("sleep", 0);
-					target:SetSharedVar("sanity", 100);
+					target:SetNetVar("sanity", 100);
 					target:SetCharacterData("sanity", 100);
 					target:SetCharacterData("Stamina", max_stamina);
 					target:SetNWInt("Stamina", max_stamina);
@@ -1400,7 +1414,7 @@ RITUAL = cwRituals.rituals:New("eye_of_the_storm");
 	RITUAL.description = "Харальдры утверждают, что каждый удар грома исходит от боевого топора Старого Сына, который рубит небесных чудовищ, проливающих дождь на земли. Крастеры утверждают, что грозовые тучи - от Матери, которая плачет, чтобы зародить новую жизнь в круговороте природы. Кланы могут не соглашаться, но, тем не менее, им обоим полезны соленые воды, в которых тонут их многочисленные враги. Выполнение этого ритуала вызовет грозу в течение минуты после выполнения. Дает 50 порчи.";
 	RITUAL.onerequiredbelief = {"daring_trout", "watchful_raven"}; -- Unique Mother/Old Son Ritual
 	
-	RITUAL.requirements = {"purifying_stone", "up_catalyst", "xolotl_catalyst"};
+	RITUAL.requirements = {"purifying_stone", "up_catalyst", "elysian_catalyst"};
 	RITUAL.corruptionCost = 50;
 	RITUAL.ritualTime = 10;
 	RITUAL.experience = 150;
@@ -1504,7 +1518,7 @@ RITUAL = cwRituals.rituals:New("rooting");
 	RITUAL.onerequiredbelief = {"honor_the_gods", "one_with_the_druids", "the_black_sea", "witch_druid"}; -- Tier I Faith of the Family Ritual
 	
 	RITUAL.requirements = {"pantheistic_catalyst", "familial_catalyst", "familial_catalyst"};
-	RITUAL.corruptionCost = -45;
+	RITUAL.corruptionCost = -65;
 	RITUAL.ritualTime = 10;
 	RITUAL.experience = 50;
 	
@@ -1792,8 +1806,10 @@ RITUAL = cwRituals.rituals:New("summon_eddie");
 					
 					table.insert(cwRituals.summonedNPCs, entity);
 					
-					Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
-					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется нечестивое порождение Ада!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
+					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
+					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
+					
+					Clockwork.chatBox:AddInTargetRadius(player, "it", "There is a blinding flash of light and thunderous noise as an unholy creature of Hell suddenly appears!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
 				end
 			end);
 		else
@@ -1912,8 +1928,10 @@ RITUAL = cwRituals.rituals:New("summon_otis");
 					
 					table.insert(cwRituals.summonedNPCs, entity);
 					
-					Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
 					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется нечестивое порождение Ада!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
+					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
+					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
+					
 				end
 			end);
 		else
@@ -2041,8 +2059,8 @@ RITUAL = cwRituals.rituals:New("summon_sprinter");
 						end
 					end
 
-					Clockwork.entity:MakeFlushToGround(entity, v + Vector(0, 0, 64), trace.HitNormal);
-
+					--Clockwork.entity:MakeFlushToGround(entity, v + Vector(0, 0, 64), trace.HitNormal);
+					entity:SetPos(v + Vector(0, 0, 16));
 				end
 					
 				Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется нечестивое порождение Ада!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
@@ -2155,10 +2173,9 @@ RITUAL = cwRituals.rituals:New("summon_familiar_bear");
 					end
 					
 					table.insert(cwRituals.summonedNPCs, entity);
-					
-					print(entity:GetPos());
-					
-					Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
+
+					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
+					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
 					
 					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется существо из горейского леса!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
 				end
@@ -2272,8 +2289,10 @@ RITUAL = cwRituals.rituals:New("summon_familiar_leopard");
 					
 					table.insert(cwRituals.summonedNPCs, entity);
 					
-					Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
 					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется существо из горейского леса!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
+					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
+					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
+					
 				end
 			end);
 		else
@@ -2385,8 +2404,10 @@ RITUAL = cwRituals.rituals:New("summon_familiar_elk");
 					
 					table.insert(cwRituals.summonedNPCs, entity);
 					
-					Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
 					Clockwork.chatBox:AddInTargetRadius(player, "it", "Ослепительная вспышка света и громоподобный шум - внезапно появляется существо из горейского леса!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
+					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
+					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
+					
 				end
 			end);
 		else

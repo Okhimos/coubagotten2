@@ -40,7 +40,13 @@ local ITEM = Clockwork.item:New(nil, true)
 				
 				if !table.HasValue(booksRead, self.uniqueID) then
 					--if cwBeliefs and player:HasBelief("scribe") then
-						player:HandleXP(cwBeliefs.xpValues["read"]);
+						local readXP = cwBeliefs.xpValues["read"] or 50;
+						
+						if player:GetFaction() ~= "Wanderer" then
+							readXP = math.Round(readXP / 2);
+						end
+						
+						player:HandleXP(readXP);
 					--end
 					
 					table.insert(booksRead, self.uniqueID);
@@ -405,8 +411,6 @@ local ITEM = Clockwork.item:New("book_base")
 	ITEM.itemSpawnerInfo = {category = "City Junk", rarity = 1500, onGround = false};
 
 ITEM:Register()
-
-Clockwork.item:Initialize(); -- This fixes shit for autorefresh I guess?
 
 if (SERVER) then
 	function cwScriptures:PlayerCharacterLoaded(player)

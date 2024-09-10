@@ -156,7 +156,7 @@ function ENT:Think()
 					self.nextNPCCheck = curTime + math.random(3, 10);
 					
 					-- Thrall combat encounters when sailing through the Styx.
-					self.maxNPCs = math.max(1, #self.playersOnBoard / 3);
+					self.maxNPCs = math.min(2, math.max(1, #self.playersOnBoard / 5));
 					
 					if !self.spawnedNPCs then
 						self.spawnedNPCs = {};
@@ -192,7 +192,7 @@ function ENT:Think()
 									local entity = cwZombies:SpawnThrall(npcName, spawnPos, Angle(0, math.random(1, 359), 0));
 
 									if IsValid(entity) then
-										entity:SetMaterial("models/props_lab/Tank_Glass001");
+										entity:SetMaterial("models/props_combine/com_shield001a");
 										entity.noCatalysts = true;
 										
 										for i, v in RandomPairs(self.playersOnBoard) do
@@ -226,7 +226,7 @@ function ENT:Think()
 						end
 					
 						if playerPos.z <= self:GetPos().z + offset then
-							if !table.HasValue(zones:GetPlayersInZone("sea_"..self.location)) then
+							if !table.HasValue(zones:GetPlayersInZone("sea_"..self.location), player) then
 								table.remove(self.playersOnBoard, i);
 								
 								break;
@@ -353,7 +353,11 @@ function ENT:Use(activator, caller)
 		data.entity = self;
 		data.location = self.location;
 		
-		if caller:GetFaction() == "Goreic Warrior" or (caller:IsAdmin() and caller.cwObserverMode) then
+		if (caller:GetCharacterKey() == self.ownerID) or !IsValid(self.owner) or self.owner:GetCharacterKey() ~= self.ownerID or !self.owner:Alive() or self.owner:GetNetVar("tied") ~= 0 then
+			data.isOwner = true;
+		end
+		
+		if caller:GetFaction() == "Goreic Warrior" or caller:GetNetVar("kinisgerOverride") == "Goreic Warrior" or (caller:IsAdmin() and caller.cwObserverMode) then
 			self.cargoholdopenable = true;
 			data.destination = self.destination;
 			data.sailable = true;
@@ -398,34 +402,40 @@ function ENT:OnRemove()
 		self.sandbags:Remove();
 	end
 	
-	if IsValid(self.machinegun) then
-		if IsValid(self.machinegun.gun) then
-			local itemID = self.itemID;
+	if self.location == "docks" then
+		if IsValid(self.owner) and self.ownerID == self.owner:GetCharacterKey() then
+			local itemTable = item.FindInstance(self.itemID);
 			
-			local itemTable = item.FindInstance(itemID);
-	
+			if !itemTable then
+				itemTable = item.CreateInstance("scroll_ironclad", self.itemID);
+			end
+			
 			if itemTable then
-				itemTable:SetData("ammo", self.machinegun.gun:GetDTInt(0) or 0);
+				if IsValid(self.machinegun) then
+					itemTable:SetData("machinegunUpgrade", true);
+					
+					if IsValid(self.machinegun.gun) then
+						itemTable:SetData("ammo", self.machinegun.gun:GetDTInt(0) or 0);
+					end
+				end
+				
+				local steamEngine = self.steamEngine;
+				
+				if IsValid(steamEngine) then
+					itemTable:SetData("fuel", math.Round(steamEngine.fuel or 0, 2));
+				end
+				
+				self.owner:GiveItem(itemTable, true);
 			end
 		end
-	
-		self.machinegun:Remove();
 	end
 	
-	local steamEngine = self.steamEngine;
-	
-	if IsValid(steamEngine) then
-		local itemID = self.itemID;
-		
-		if itemID then
-			local itemTable = item.FindInstance(itemID);
-	
-			if itemTable then
-				itemTable:SetData("fuel", math.Round(steamEngine.fuel or 0, 2));
-			end
-		end
-	
-		steamEngine:Remove();
+	if IsValid(self.machinegun) then
+		self.machinegun:Remove();
+	end
+
+	if IsValid(self.steamEngine) then
+		self.steamEngine:Remove();
 	end
 
 	self:StopParticles();

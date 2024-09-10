@@ -382,6 +382,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.overlay = "begotten/zomboverlay/gatekeep1";
 	
 	ITEM.conditionScale = 1 -- item degrades 1x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -415,6 +416,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.useSound = "npc/combine_soldier/zipline_clothing2.wav";
 	
 	ITEM.conditionScale = 1.1 -- item degrades 1.5x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 	
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -447,6 +449,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.useSound = "armor/plate_damage_02.wav";
 
 	ITEM.conditionScale = 1 -- item degrades 1x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -480,6 +483,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.useSound = "armor/plate_damage_02.wav";
 
 	ITEM.conditionScale = 0.75 -- item degrades 0.5x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -512,6 +516,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.useSound = "armor/plate_damage_02.wav";
 
 	ITEM.conditionScale = 0.75 -- item degrades 0.5x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -547,6 +552,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.faction = "Gatekeeper";
 
 	ITEM.conditionScale = 0.75 -- item degrades 1.5x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -562,7 +568,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.bulletScale = 0.70; -- reduces bullet damage by 30%
 	ITEM.stabilityScale = 0.45; -- reduces stability damage by 55%
 	
-	ITEM.components = {breakdownType = "meltdown", items = {"fine_steel_chunks"}};
+	ITEM.components = {breakdownType = "meltdown", items = {"fine_steel_chunks", "steel_chunks"}};
 	
 ITEM:Register();
 
@@ -584,6 +590,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.faction = "Gatekeeper";
 
 	ITEM.conditionScale = 0.75 -- item degrades 1.5x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -617,6 +624,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.overlay = "begotten/zomboverlay/gatekeep1";
 
 	ITEM.conditionScale = 0.75 -- item degrades 1.5x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,
@@ -649,6 +657,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.overlay = "begotten/zomboverlay/gatekeep1";
 
 	ITEM.conditionScale = 0.75 -- item degrades 1.5x faster with damage related condition loss
+	ITEM.repairCostModifier = 0.5;
 
 	ITEM.effectiveLimbs = {
 		[HITGROUP_HEAD] = true,

@@ -965,7 +965,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.name = "Самодельный Бинт";
 		RECIPE.requiredBeliefs = {"ingenious"};
 		RECIPE.requirements = {
-			["cloth"] = {amount = 2},
+			["cloth"] = {amount = 1},
 		};
 		RECIPE.result = {
 			["crafted_bandage"] = {amount = 1},
@@ -1043,7 +1043,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.name = "Ломоть Кожи";
 		RECIPE.requiredBeliefs = {"primeval"};
 		RECIPE.requirements = {
-			["humanmeat"] = {amount = 2},
+			["humanmeat"] = {amount = 3},
 		};
 		RECIPE.result = {
 			["skintape"] = {amount = 1},
@@ -1069,8 +1069,8 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.name = "Марля из Плоти";
 		RECIPE.requiredBeliefs = {"primeval"};
 		RECIPE.requirements = {
-			["humanmeat"] = {amount = 3},
-			["human_bone"] = {amount = 2},
+			["humanmeat"] = {amount = 5},
+			["human_bone"] = {amount = 4},
 		};
 		RECIPE.result = {
 			["skingauze"] = {amount = 1},
@@ -2662,7 +2662,7 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"craftsman"};
 		RECIPE.requiredFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
-			["steel_ingot"] = {amount = 3},
+			["steel_ingot"] = {amount = 2},
 			["wood"] = {amount = 2},
 		};
 		RECIPE.result = {
@@ -2673,7 +2673,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "smithing"
-		RECIPE.experience = 25;
+		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
 		end;
@@ -2691,7 +2691,7 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"craftsman"};
 		RECIPE.requiredFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
-			["steel_ingot"] = {amount = 3},
+			["steel_ingot"] = {amount = 2},
 			["wood"] = {amount = 2},
 		};
 		RECIPE.result = {
@@ -2702,7 +2702,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "smithing"
-		RECIPE.experience = 25;
+		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
 		end;
@@ -2732,7 +2732,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "smithing"
-		RECIPE.experience = 25;
+		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
 		end;
@@ -2892,7 +2892,7 @@ RECIPE:Register()
 	RECIPE = cwRecipes.recipes:New("iron_shortsword");
 		RECIPE.name = "Короткий Железный Меч";
 		RECIPE.requiresSmithy = true;
-		RECIPE.requiredBeliefs = {"mechanic"};
+		RECIPE.requiredBeliefs = {"craftsman"};
 		RECIPE.excludedFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
 			["iron_ingot"] = {amount = 2},
@@ -3008,7 +3008,7 @@ RECIPE:Register()
 	RECIPE = cwRecipes.recipes:New("morning_star");
 		RECIPE.name = "Моргенштерн";
 		RECIPE.requiresSmithy = true;
-		RECIPE.requiredBeliefs = {"mechanic"};
+		RECIPE.requiredBeliefs = {"craftsman"};
 		RECIPE.excludedFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
 			["iron_ingot"] = {amount = 5},
@@ -3108,7 +3108,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "assembling"
-		RECIPE.experience = 2;
+		RECIPE.experience = 0;
 		
 		function RECIPE:OnCraft(player)
 		end;
@@ -3133,7 +3133,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "assembling"
-		RECIPE.experience = 3;
+		RECIPE.experience = 2;
 		
 		function RECIPE:OnCraft(player)
 		end;
@@ -3199,7 +3199,7 @@ RECIPE:Register()
 		function RECIPE:EndCraft(player)
 		end;
 	RECIPE:Register()
-
+	
 	RECIPE = cwRecipes.recipes:New("pickaxe");
 		RECIPE.name = "Кирка";
 		RECIPE.requiresSmithy = true;
@@ -5140,7 +5140,7 @@ RECIPE:Register()
 		RECIPE.requiredFactions = {"Gatekeeper", "Holy Hierarchy"};
 		RECIPE.requirements = {
 			["maximilian_steel_ingot"] = {amount = 2},
-			["iron_ingot"] = {amount = 5},
+			["iron_ingot"] = {amount = 7},
 		};
 		RECIPE.result = {
 			["shield9"] = {amount = 1},
@@ -5208,7 +5208,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "smithing"
-		RECIPE.experience = 80;
+		RECIPE.experience = 130;
 		
 		function RECIPE:OnCraft(player)
 		end;
@@ -5310,8 +5310,8 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"artisan"};
 		RECIPE.requiredFaiths = {"Faith of the Family"};
 		RECIPE.requirements = {
-			["shagalaxian_steel_ingot"] = {amount = 3},
-			["iron_ingot"] = {amount = 6},
+			["shagalaxian_steel_ingot"] = {amount = 2},
+			["iron_ingot"] = {amount = 7},
 		};
 		RECIPE.result = {
 			["shield10"] = {amount = 1},
@@ -5339,10 +5339,8 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"artisan"};
 		RECIPE.requiredFaiths = {"Faith of the Family"};
 		RECIPE.requirements = {
-			["hellforged_steel_ingot"] = {amount = 3},
-			["iron_ingot"] = {amount = 4},
-			["belphegor_catalyst"] = {amount = 1},
-			["down_catalyst"] = {amount = 1},
+			["hellforged_steel_ingot"] = {amount = 2},
+			["iron_ingot"] = {amount = 5},
 		};
 		RECIPE.result = {
 			["shieldunique1"] = {amount = 1},
@@ -5352,7 +5350,7 @@ RECIPE:Register()
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
 		RECIPE.craftVerb = "smithing"
-		RECIPE.experience = 225;
+		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
 		end;

@@ -7,11 +7,11 @@
 local ITEM = Clockwork.item:New();
 	ITEM.name = "Набор для Разборки";
 	ITEM.category = "Tools";
-	ITEM.model = "models/props/de_prodigy/ammo_can_02.mdl";
-	ITEM.weight = 0.8;
+	ITEM.model = "models/mosi/fallout4/props/junk/modcrate.mdl";
+	ITEM.weight = 1;
 	ITEM.uniqueID = "breakdown_kit";
 	ITEM.description = "Набор инструментов, который можно использовать для того, чтобы получить с предмета составные части.";
-	ITEM.iconoverride = "materials/begotten/ui/itemicons/repair_kit.png";
+	ITEM.iconoverride = "materials/begotten/ui/itemicons/breakdown_kit.png";
 	ITEM.stackable = false;
 	
 	ITEM.itemSpawnerInfo = {category = "Repair Kits", rarity = 300, bNoSupercrate = true};

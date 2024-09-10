@@ -128,6 +128,7 @@ function cwMedicalSystem:PlayerThink(player, curTime, infoTable, alive, initiali
 												--if (bloodLevel <= self.lethalBloodLoss) then
 													player:DeathCauseOverride("Захлебнулся в луже собственной крови.");
 													player:Kill();
+													Clockwork.kernel:PrintLog(LOGTYPE_CRITICAL, player:Name().." has bled out!")
 													--player:TakeDamage(99999, player, player);
 													--player:SetCrouchedWalkSpeed(1);
 												--[[else
@@ -251,6 +252,7 @@ function cwMedicalSystem:PlayerThink(player, curTime, infoTable, alive, initiali
 										if (bloodLevel <= self.lethalBloodLoss) then
 											player:DeathCauseOverride("Захлебнулся в луже собственной крови.");
 											player:Kill();
+											Clockwork.kernel:PrintLog(LOGTYPE_CRITICAL, player:Name().." has bled out!")
 											--player:TakeDamage(99999, player, player);
 											--player:SetCrouchedWalkSpeed(1);
 										else
@@ -1114,6 +1116,12 @@ function cwMedicalSystem:PlayerUnragdolled(player, state, ragdoll)
 	Clockwork.player:SetAction(player, "die_bleedout", false);
 end;
 
+-- Called when a player has been ragdolled.
+function cwMedicalSystem:PlayerRagdolled(player, state, ragdoll)
+	--Clockwork.player:SetAction(player, "die", false);
+	--Clockwork.player:SetAction(player, "die_bleedout", false);
+end;
+
 -- Called when the local player attempts to get up.
 function cwMedicalSystem:PlayerCanGetUp(player)
 	local action = Clockwork.player:GetAction(player);
@@ -1121,12 +1129,6 @@ function cwMedicalSystem:PlayerCanGetUp(player)
 	if action == "die" or action == "die_bleedout" then
 		return false;
 	end
-end;
-
--- Called when a player has been ragdolled.
-function cwMedicalSystem:PlayerRagdolled(player, state, ragdoll)
-	--Clockwork.player:SetAction(player, "die", false);
-	--Clockwork.player:SetAction(player, "die_bleedout", false);
 end;
 
 -- Called when a player attempts to use an item.
