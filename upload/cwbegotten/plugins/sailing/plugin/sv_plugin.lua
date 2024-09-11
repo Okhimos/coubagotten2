@@ -216,15 +216,15 @@ function cwSailing:SpawnLongship(owner, location, itemTable)
 			end
 			
 			-- No available spot found so remove it.
-			Schema:EasyText(owner, "peru", "The location you are trying to spawn your longship in is currently full or invalid!");
 			
 			-- Add these so the owner gets refunded when it gets deleted.
 			longshipEnt.owner = owner;
 			longshipEnt.ownerID = owner:GetCharacterKey();
 			
+			Schema:EasyText(owner, "peru", "Локация, куда вы пытаетесь привести корабль заполнена или недействительна!");
 			longshipEnt:Remove();
 		else
-			Schema:EasyText(owner, "peru", "The longship for this scroll is already undocked!");
+			Schema:EasyText(owner, "peru", "Корабль этого свитка уже в доках!");
 		end
 	end
 end
@@ -300,8 +300,8 @@ function cwSailing:BeginSailing(longshipEnt, destination, caller)
 			end
 			
 			--printp("selected sea zone: "..sea_zone);
-			Schema:EasyText(owner, "icon16/anchor.png", "cornflowerblue", "Setting sail in "..tostring(sail_time).." seconds!");
-			Schema:EasyText(GetAdmins(), "icon16/anchor.png", "cornflowerblue", owner:Name().."'s "..longshipEnt.longshipType.." is setting sail to destination "..destination.."!");
+			Schema:EasyText(owner, "icon16/anchor.png", "cornflowerblue", "Отправляется через "..tostring(sail_time).." секунд!");
+			Schema:EasyText(GetAdmins(), "icon16/anchor.png", "cornflowerblue", owner:Name().."'s "..longshipEnt.longshipType.." отплывает в "..destination.."!");
 			
 			if longshipEnt.longshipType == "longship" then
 				longshipEnt:EmitSound("ambient/machines/thumper_dust.wav");
@@ -356,7 +356,7 @@ function cwSailing:BeginSailing(longshipEnt, destination, caller)
 				longshipEnt.destination = nil;
 				--printp("sailing aborted!");
 				
-				Schema:EasyText(GetAdmins(), "icon16/anchor.png", "cornflowerblue", "Sailing aborted for "..longshipEnt.longshipType.." "..longshipEnt:EntIndex().."!");
+				Schema:EasyText(GetAdmins(), "icon16/anchor.png", "cornflowerblue", "Отплытие судна "..longshipEnt:EntIndex().." отменено!");
 			end);
 		end
 	else
@@ -677,7 +677,7 @@ function cwSailing:MoveLongship(longshipEnt, location)
 												
 												util.ScreenShake(alarm:GetPos(), 1, 20, 15, 1024, true);
 												
-												Clockwork.chatBox:AddInRadius(nil, "localevent", "The Gorewatch alarm sounds, heralding the arrival of a Goreic host!", alarm:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 4);
+												Clockwork.chatBox:AddInRadius(nil, "localevent", "Звучит сигнализация, Горейский корабль приплыл!", alarm:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 4);
 												
 												local alarmPos = alarm:GetPos();
 												local filter = RecipientFilter();
@@ -761,7 +761,7 @@ function cwSailing:MoveLongship(longshipEnt, location)
 		
 		-- No available spot found.
 		if IsValid(longshipEnt.owner) then
-			Schema:EasyText(longshipEnt.owner, "peru", "The location you are trying to move your longship to is currently full or invalid! Waiting 30 more seconds.");
+			Schema:EasyText(longshipEnt.owner, "peru", "Локация, в которую вы хотите отправить корабль недействительна или полная! Подождите 30 секунд.");
 		end
 		
 		for i, player in ipairs(_player.GetAll()) do
@@ -917,10 +917,10 @@ function cwSailing:RemoveLongship(longshipEnt)
 		if IsValid(longshipEnt.owner) then
 			if longshipEnt.health then
 				if longshipEnt.health > 0 then
-					Schema:EasyText(longshipEnt.owner, "icon16/anchor.png", "cornflowerblue", "Your "..longshipEnt.longshipType.." has returned to its dock.");
+					Schema:EasyText(longshipEnt.owner, "icon16/anchor.png", "cornflowerblue", "Ваш "..longshipEnt.longshipType.." вернулся в доки.");
 				end
 			else
-				Schema:EasyText(longshipEnt.owner, "icon16/anchor.png", "cornflowerblue", "Your "..longshipEnt.longshipType.." has returned to its dock.");
+				Schema:EasyText(longshipEnt.owner, "icon16/anchor.png", "cornflowerblue", "Ваш "..longshipEnt.longshipType.." вернулся в доки.");
 			end
 		end
 
@@ -1090,7 +1090,7 @@ concommand.Add("cw_BurnShip", function(player, cmd, args)
 		if entity:GetPos():Distance(player:GetPos()) < 256 then
 			if (entity:GetClass() == "cw_longship") then
 				if entity.enchantment then
-					Schema:EasyText(player, "peru", "This longship seems to have an invisible force that prevents it from being burnt!");
+					Schema:EasyText(player, "peru", "Какая-то неведомая сила не дает кораблю загореться!");
 					
 					return false;
 				end
@@ -1116,7 +1116,7 @@ concommand.Add("cw_BurnShip", function(player, cmd, args)
 						end
 						
 						if oil_count < 2 then
-							Schema:EasyText(player, "peru", "Тебе нужны две полные лампы, чтобы сжечь судно!");
+							Schema:EasyText(player, "peru", "Тебе нужно два больших бутылька с маслом, чтобы сжечь судно!");
 							
 							return false;
 						end
@@ -1146,7 +1146,7 @@ concommand.Add("cw_BurnShip", function(player, cmd, args)
 												end
 												
 												if oil_count < 2 then
-													Schema:EasyText(player, "peru", "Тебе нужны две полные лампы, чтобы сжечь судно!");
+													Schema:EasyText(player, "peru", "Тебе нужно два больших бутылька с маслом, чтобы сжечь судно!");
 													
 													return false;
 												end
@@ -1183,11 +1183,11 @@ concommand.Add("cw_BurnShip", function(player, cmd, args)
 													local owner = entity.owner;
 													
 													if IsValid(owner) and owner:GetSubfaction() == "Clan Harald" and owner:Alive() and owner:HasBelief("daring_trout") then
-														Schema:EasyText(owner, "icon16/anchor.png", "red", "A raven lands on your shoulder with smoldering wings! Your longship has been set alight and must be extinguished soon!");
+														Schema:EasyText(owner, "icon16/anchor.png", "red", "Ворон приземлился на твое плечо с обоженным крылом! Корабль загорелся и должен быть потушен как можно скорее!");
 														owner.nextShipDamageNotif = CurTime() + 60;
 													end
 													
-													Clockwork.chatBox:AddInTargetRadius(player, "me", "ignites the longship before them with their lantern!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+													Clockwork.chatBox:AddInTargetRadius(player, "me", "выливает масло на корабль под собой, после чего поджигает его!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 												--else
 													--Schema:EasyText(player, "peru", "This longship cannot be lit on fire as it is currently setting sail!");
 												--end
@@ -1434,7 +1434,7 @@ concommand.Add("cw_MoveShipLava", function(player, cmd, args)
 					Schema:EasyText(player, "maroon", "This "..entity.longshipType.." is already preparing to sail!");
 				end
 			else
-				Schema:EasyText(player, "chocolate", "Вашему ладье не хватает чар, необходимых для безопасного плавания по реке Стикс.");
+				Schema:EasyText(player, "chocolate", "Вашему кораблю не хватает чар, необходимых для безопасного плавания по реке Стикс.");
 			end
 		end
 	end;
@@ -1469,7 +1469,6 @@ concommand.Add("cw_MoveShipHell", function(player, cmd, args)
 					Schema:EasyText(GetAdmins(), "icon16/anchor.png", "goldenrod", player:Name() .. " has attempted to sail to Hell while /ToggleHellSailing is disabled! Expect a prayer.")
 				end
 			else
-				Schema:EasyText(player, "chocolate", "Your longship lacks the enchantment required to navigate the River Styx safely.");
 			end
 		end
 	end;
@@ -1521,6 +1520,7 @@ concommand.Add("cw_DockLongship", function(player, cmd, args)
 				end
 			else
 				Schema:EasyText(player, "maroon", "This "..entity.longshipType.." must be at the Gore Forest to dock!");
+				Schema:EasyText(player, "chocolate", "Вашему кораблю не хватает чар, необходимых для безопасного плавания по реке Стикс.");
 			end
 		end
 	end;
@@ -1547,7 +1547,7 @@ concommand.Add("cw_CargoHold", function(player, cmd, args)
 				end
 				
 				Clockwork.storage:Open(player, {
-					name = "Трюм",
+					name = "Cargo Hold",
 					weight = weight,
 					entity = entity,
 					distance = entity:OBBMaxs():Length(),
