@@ -939,9 +939,9 @@ RITUAL = cwRituals.rituals:New("cloak_of_the_black_hat");
 	end;
 RITUAL:Register()
 
-RITUAL = cwRituals.rituals:New("apostle_of_many_faces");
-	RITUAL.name = "(Уникальное) Апостол Многих Лиц";
-	RITUAL.description = "Испытание веры для истинного чернокнижника - нести чучела языческих и благочестивых верований, противоположных твоей собственной. Играть роль чужого аколита настолько хорошо, что обмануть даже богов - признак мастера-чернокнижника! Выполнение этого ритуала навсегда позволяет вам экипировать или использовать все снаряжение, не связанное с верой вольтизма. Дает 50 порчи.";
+RITUAL = cwRituals.rituals:New("kinisger_appearance_alteration");
+    RITUAL.name = "(Уникальное) Максировка дома Кининсгер";
+    RITUAL.description = "Члены Дома Кинисгер - мастера проникновения, благодаря использованию темной магии и своей мутантской крови для изменения внешности. Дает 50 порчи.";
 	RITUAL.requiredSubfaction = {"Kinisger"}; -- Subfaction Ritual
 	
 	RITUAL.requirements = {"down_catalyst", "down_catalyst", "ice_catalyst"};
@@ -962,9 +962,9 @@ RITUAL = cwRituals.rituals:New("apostle_of_many_faces");
 	end;
 RITUAL:Register()
 
-RITUAL = cwRituals.rituals:New("kinisger_appearance_alteration");
-	RITUAL.name = "(Уникальное) Максировка дома Кининсгер";
-	RITUAL.description = "Члены Дома Кинисгер - мастера проникновения, благодаря использованию темной магии и своей мутантской крови для изменения внешности. Дает 50 порчи.";
+RITUAL = cwRituals.rituals:New("apostle_of_many_faces");
+	RITUAL.name = "(Уникальное) Апостол Многих Лиц";
+	RITUAL.description = "Испытание веры для истинного чернокнижника - нести чучела языческих и благочестивых верований, противоположных твоей собственной. Играть роль чужого аколита настолько хорошо, что обмануть даже богов - признак мастера-чернокнижника! Выполнение этого ритуала навсегда позволяет вам экипировать или использовать все снаряжение, не связанное с верой вольтизма. Дает 50 порчи.";
 	RITUAL.requiredSubfaction = {"Kinisger"}; -- Subfaction Ritual
 	
 	RITUAL.requirements = {"xolotl_catalyst", "xolotl_catalyst", "xolotl_catalyst"};
