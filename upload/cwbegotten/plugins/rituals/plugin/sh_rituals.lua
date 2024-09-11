@@ -830,7 +830,7 @@ RITUAL = cwRituals.rituals:New("hail_prince_thieves");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("hear_me");
-	RITUAL.name = "(T1) Услыш Меня";
+	RITUAL.name = "(T1) Услышь Меня";
 	RITUAL.description = "Вы не являетесь никем, пока не заявите о себе. Выполнение этого ритуала дает вам 300 веры (опыта). Дает 10 порчи.";
 	RITUAL.onerequiredbelief = {"soothsayer", "witch", "witch_druid"}; -- Tier I Faith of the Dark Ritual
 	
@@ -963,7 +963,7 @@ RITUAL = cwRituals.rituals:New("kinisger_appearance_alteration");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("apostle_of_many_faces");
-	RITUAL.name = "(Уникальное) Апостол Многих Лиц";
+	RITUAL.name = "(Уникальное) Многоликий Апостол";
 	RITUAL.description = "Испытание веры для истинного чернокнижника - нести чучела языческих и благочестивых верований, противоположных твоей собственной. Играть роль чужого аколита настолько хорошо, что обмануть даже богов - признак мастера-чернокнижника! Выполнение этого ритуала навсегда позволяет вам экипировать или использовать все снаряжение, не связанное с верой вольтизма. Дает 50 порчи.";
 	RITUAL.requiredSubfaction = {"Kinisger"}; -- Subfaction Ritual
 	
@@ -1699,7 +1699,7 @@ RITUAL = cwRituals.rituals:New("enlightenment");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("summon_eddie");
-	RITUAL.name = "(T3) Призыв демона(Эдди)";
+	RITUAL.name = "(T3) Призыв демона (Эдди)";
 	RITUAL.description = "Призовите оболочку порожденного, ставшего вместилищем для демона ада. Он будет враждебно относиться ко всем, кто не принадлежит к Вере Тьмы. Время призыва 10 секунд. Дает 15 порчи.";
 	RITUAL.onerequiredbelief = {"sorcerer"}; -- Tier III Faith of the Dark Ritual
 	RITUAL.requiredBeliefsSubfactionOverride = {["Rekh-khet-sa"] = {"embrace_the_darkness"}}; -- Tier III Faith of the Dark Ritual
