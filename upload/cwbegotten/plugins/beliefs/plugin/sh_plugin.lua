@@ -953,12 +953,12 @@ function COMMAND:OnRun(player, arguments)
 			Schema:EasyText(admins, ringcolor, "[PRAYER ", color, faith_str, markedcolor, markedstr, ringcolor, "] ", plycol, player:Name(), "ivory", ": "..message)
 			Schema:EasyText(player, color, "You make a prayer: \""..message.."\"")
 			
-			Clockwork.chatBox:AddInTargetRadius(player, "me", "бормочет какую-то ересть себе под нос.", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+			Clockwork.chatBox:AddInTargetRadius(player, "me", "бормочет какую-то ересь себе под нос.", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 		else
 			Schema:EasyText(player, "chocolate", "Ты должен выбрать течение веры, чтобы совершить молитву!");
 		end
 	else
-		Schema:EasyText(player, "chocolate", "У тебя нету Богов, которым можешь совершить молитву!");
+		Schema:EasyText(player, "chocolate", "У тебя нету Богов, которым ты можешь совершить молитву!");
 	end
 end;
 
@@ -1251,7 +1251,7 @@ local COMMAND = Clockwork.command:New("Warcry");
 					if player_has_watchful_raven then
 						player:EmitSound("warcries/motherwarcry"..math.random(1, 9)..".mp3", 100);
 						
-						Clockwork.chatBox:AddInTargetRadius(player, "me", "speaks in tongues with the voice of a vengeful spirit of Nature!", playerPos, radius);
+						Clockwork.chatBox:AddInTargetRadius(player, "me", "говорит голосом мстительного духа природы!", playerPos, radius);
 						
 						netstream.Start(player, "UpgradedWarcry", affected_players);
 					else
@@ -1265,7 +1265,7 @@ local COMMAND = Clockwork.command:New("Warcry");
 							player:EmitSound("warcries/warcry_female"..math.random(1, 16)..".mp3", 100, math.random(90, 105));
 						end
 					
-						Clockwork.chatBox:AddInTargetRadius(player, "me", "lets out a feral warcry!", playerPos, radius);
+						Clockwork.chatBox:AddInTargetRadius(player, "me", "издает дикий клич!", playerPos, radius);
 					end
 				else
 					player:HandleSanity(-5);
