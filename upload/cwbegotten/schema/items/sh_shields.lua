@@ -158,12 +158,11 @@ local ITEM = Clockwork.item:New("shield_base");
 ITEM:Register();
 
 local ITEM = Clockwork.item:New("shield_base");
-	ITEM.name = "Щит Ржавого Змея";
-	ITEM.name = "Old Soldier Shield";
+	ITEM.name = "Щит Старого Солдата";
 	ITEM.model = "models/begotten/thralls/skellyshield.mdl";
 	ITEM.weight = 2.5;
 	ITEM.uniqueID = "shield20";
-	ITEM.description = "Formerly used by the foot soldiers of the Empire of Light's armies, these shields now serve a more sinister purpose.";
+	ITEM.description = "Раньше эти щиты использовались пехотинцами армий Империи Света, но теперь они служат более зловещей цели.";
 	ITEM.iconoverride = "materials/begotten/ui/itemicons/old_soldier_shield.png"
 	ITEM.isAttachment = true;
 	ITEM.attachmentBone = "ValveBiped.Bip01_Spine2";
@@ -175,6 +174,7 @@ local ITEM = Clockwork.item:New("shield_base");
 ITEM:Register();
 
 local ITEM = Clockwork.item:New("shield_base");
+	ITEM.name = "Щит Ржавого Змея";
 	ITEM.model = "models/props/begotten/melee/red_rust_shield.mdl";
 	ITEM.weight = 2.5;
 	ITEM.uniqueID = "shield19";
