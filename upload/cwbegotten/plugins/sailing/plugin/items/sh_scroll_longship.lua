@@ -33,7 +33,7 @@ local ITEM = Clockwork.item:New();
 			return false;
 		end
 		
-		--[[if itemFunction == "dock" then
+		if itemFunction == "dock" then
 			local longshipEnt = cwSailing:LongshipExists(self.itemID);
 			
 			if longshipEnt then
@@ -41,7 +41,7 @@ local ITEM = Clockwork.item:New();
 			else
 				Schema:EasyText(player, "peru", "Корабль Пришвартован!");
 			end
-		else]]if itemFunction == "undock" then
+		elseif itemFunction == "undock" then
 			if cwSailing:LongshipExists(self.itemID) then
 				Schema:EasyText(player, "peru", "Корабль Отшвартован!");
 				return false;
@@ -65,7 +65,7 @@ local ITEM = Clockwork.item:New();
 						longshipEnt.health = self:GetData("health", 500);
 					end
 					
-					--self:SetData("health", longshipEnt.health);
+					self:SetData("health", longshipEnt.health);
 				end
 			end
 		elseif itemFunction == "rename" then
@@ -84,9 +84,7 @@ local ITEM = Clockwork.item:New();
 		
 		player:EmitSound("begotten/items/note_turn.wav");
 
-		--return false; -- Prevent this item from being used, it should be permanent.
-		
-		return true;
+		return false; -- Prevent this item from being used, it should be permanent.
 	end
 	
 	function ITEM:GetCustomName()
@@ -151,7 +149,7 @@ local ITEM = Clockwork.item:New();
 			return false;
 		end
 		
-		--[[if itemFunction == "dock" then
+		if itemFunction == "dock" then
 			local longshipEnt = cwSailing:LongshipExists(self.itemID);
 			
 			if longshipEnt then
@@ -159,7 +157,7 @@ local ITEM = Clockwork.item:New();
 			else
 				Schema:EasyText(player, "peru", "Броненосец Пришвартован!");
 			end
-		else]]if itemFunction == "undock" then
+		elseif itemFunction == "undock" then
 			if cwSailing:LongshipExists(self.itemID) then
 				Schema:EasyText(player, "peru", "Броненосец Отшвартован!");
 				return false;

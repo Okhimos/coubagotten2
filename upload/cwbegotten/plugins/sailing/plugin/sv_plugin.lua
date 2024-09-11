@@ -897,6 +897,8 @@ function cwSailing:RemoveLongship(longshipEnt)
 		end
 		
 		if IsValid(longshipEnt.owner) then
+			longshipEnt.owner.longship = nil;
+			
 			if longshipEnt.health then
 				if longshipEnt.health > 0 then
 					Schema:EasyText(longshipEnt.owner, "icon16/anchor.png", "cornflowerblue", "Ваш "..longshipEnt.longshipType.." вернулся в доки.");
