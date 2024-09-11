@@ -9,13 +9,13 @@ function cwPowerArmor:GetBatteryText()
 
 	if (battery) then
 		if (battery <= 100 and battery >= 90) then
-			text = "Fully Charged";
+			text = "ПОЛНОСТЬЮ ЗАРЯЖЕН";
 		elseif (battery < 90 and battery >= 30) then
-			text = "Charged";
+			text = "ЗАРЯЖЕН";
 		elseif (battery < 30 and battery >= 1) then
-			text = "Low Power";
+			text = "НИЗКИЙ ЗАРЯД";
 		elseif (battery <= 0) then
-			text = "Depleted";
+			text = "РАЗРЯЖЕН";
 		end;
 	end;
 	
@@ -38,7 +38,7 @@ function cwPowerArmor:GetBars(bars)
 					self.battery = math.Approach(self.battery, battery, 1);
 				end;
 				
-				bars:Add("BATTERY", color, batteryText, self.battery, 100, self.battery < 10);
+				bars:Add("БАТАРЕЯ", color, batteryText, self.battery, 100, self.battery < 10);
 			end;
 		--end;
 	end;
