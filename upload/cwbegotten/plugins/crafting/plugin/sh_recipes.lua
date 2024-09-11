@@ -3094,7 +3094,7 @@ RECIPE:Register()
 	RECIPE:Register()
 	
 	RECIPE = cwRecipes.recipes:New("bone_dagger");
-		RECIPE.name = "Bone Dagger";
+		RECIPE.name = "Костяной Кинжал";
 		RECIPE.requiredBeliefs = {"ingenious", "primeval"};
 		RECIPE.requirements = {
 			["human_bone"] = {amount = 2},
@@ -3120,7 +3120,7 @@ RECIPE:Register()
 	RECIPE:Register()
 	
 	RECIPE = cwRecipes.recipes:New("bone_mace");
-		RECIPE.name = "Bone Mace";
+		RECIPE.name = "Костяная Булава";
 		RECIPE.requiredBeliefs = {"ingenious", "primeval"};
 		RECIPE.requirements = {
 			["human_bone"] = {amount = 4},
@@ -5540,7 +5540,7 @@ RECIPE:Register()
 	RECIPE:Register()
 
 	RECIPE = cwRecipes.recipes:New("scrap_crossbow");
-	RECIPE.name = "Scrap Crossbow";
+	RECIPE.name = "Скрап Арбалет";
 	RECIPE.requiredBeliefs = {"craftsman"};
 	RECIPE.excludedFactions = {"Goreic Warrior"};
 	RECIPE.requirements = {
