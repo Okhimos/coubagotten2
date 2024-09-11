@@ -237,16 +237,7 @@ local ITEM = Clockwork.item:New();
 			return;
 		end;
 		
-		local characterID = player:GetCharacterKey();
-		local longshipEnt;
-		
-		for i, v in ipairs(ents.FindByClass("cw_longship_ironclad")) do
-			if v.ownerID and v.ownerID == characterID then
-				longshipEnt = v;
-				
-				break;
-			end
-		end
+		local longshipEnt = player.longship;
 		
 		if !IsValid(longshipEnt) or longshipEnt:GetClass() ~= "cw_longship_ironclad" then
 			Schema:EasyText(player, "peru", "На Броненосец нельзя повесить второй Пулемёт!");
@@ -269,7 +260,7 @@ local ITEM = Clockwork.item:New();
 			return false;
 		end
 		
-		--[[if longshipEnt.itemID then
+		if longshipEnt.itemID then
 			local itemTable = item.FindInstance(longshipEnt.itemID);
 			
 			if itemTable then
@@ -281,12 +272,6 @@ local ITEM = Clockwork.item:New();
 					itemTable:SetData("machinegunUpgrade", true);
 				end
 			end
-		end]]--
-		
-		if IsValid(longshipEnt.machinegun) then
-			Schema:EasyText(player, "peru", "This ironclad has already been upgraded!");
-			
-			return false;
 		end
 		
 		player:EmitSound("oneuse_deploy.ogg");
