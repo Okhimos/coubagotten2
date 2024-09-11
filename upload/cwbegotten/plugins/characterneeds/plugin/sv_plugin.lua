@@ -111,11 +111,11 @@ function playerMeta:HandleNeed(need, amount)
 						end]]--
 					end;
 				elseif newAmount >= 90 and currentAmount < 90 then
-					Clockwork.chatBox:Add(self, nil, "itnofake", "Мой чертов живот...Нужно набить его хоть чем-то.");
+					Clockwork.chatBox:Add(self, nil, "itnofake", "Мой чертов живот... Нужно набить его хоть чем-то.");
 				elseif newAmount >= 75 and currentAmount < 75 then
-					Clockwork.chatBox:Add(self, nil, "itnofake", "Живот слегка побаливает...Нужно чем-то перекусить.");
+					Clockwork.chatBox:Add(self, nil, "itnofake", "Живот слегка побаливает... Нужно чем-то перекусить.");
 				elseif newAmount >= 50 and currentAmount < 50 then
-					Clockwork.chatBox:Add(self, nil, "itnofake", "Живот урчит...Нужно бы перекусить.");
+					Clockwork.chatBox:Add(self, nil, "itnofake", "Живот урчит... Надо бы перекусить.");
 				end;
 			elseif need == "thirst" then
 				if cwBeliefs and self:HasBelief("yellow_and_black") and amount > 0 then
@@ -144,11 +144,11 @@ function playerMeta:HandleNeed(need, amount)
 						end]]--
 					end;
 				elseif newAmount >= 90 and currentAmount < 90 then
-					Clockwork.chatBox:Add(self, nil, "itnofake", "Без воды я не протяну и дня!");
+					Clockwork.chatBox:Add(self, nil, "itnofake", "Без воды я не протяну и минуты!");
 				elseif newAmount >= 75 and currentAmount < 75 then
-					Clockwork.chatBox:Add(self, nil, "itnofake", "Нужна вода...Даже голова болит.");
+					Clockwork.chatBox:Add(self, nil, "itnofake", "Нужна вода... Даже голова болит.");
 				elseif newAmount >= 50 and currentAmount < 50 then
-					Clockwork.chatBox:Add(self, nil, "itnofake", "Горло что-то першит...Водички бы.");
+					Clockwork.chatBox:Add(self, nil, "itnofake", "Горло что-то першит... Водички бы.");
 				end;
 			elseif need == "sleep" then
 				if amount > 0 then
@@ -170,21 +170,21 @@ function playerMeta:HandleNeed(need, amount)
 					Schema:EasyText(self, "olive", "Ну вот и все...");
 				elseif newAmount >= 90 and currentAmount < 90 then
 					if cwBeliefs and self:HasBelief("yellow_and_black") then
-						Clockwork.chatBox:Add(self, nil, "itnofake", "Микросхема! Любая...Или я труп.");
+						Clockwork.chatBox:Add(self, nil, "itnofake", "Микросхема! Любая... Или я труп.");
 					else
-						Clockwork.chatBox:Add(self, nil, "itnofake", "Нет...Без сна больше нельзя. Прилягу прямо здесь.");
+						Clockwork.chatBox:Add(self, nil, "itnofake", "Нет... Без сна больше нельзя. Прилягу прямо здесь.");
 					end
 				elseif newAmount >= 75 and currentAmount < 75 then
 					if cwBeliefs and self:HasBelief("yellow_and_black") then
-						Clockwork.chatBox:Add(self, nil, "itnofake", "Я отключаюсь...Вот дерьмо!");
+						Clockwork.chatBox:Add(self, nil, "itnofake", "Я отключаюсь... Вот дерьмо!");
 					else
 						Clockwork.chatBox:Add(self, nil, "itnofake", "Поспать бы...");
 					end
 				elseif newAmount >= 50 and currentAmount < 50 then
 					if cwBeliefs and self:HasBelief("yellow_and_black") then
-						Clockwork.chatBox:Add(self, nil, "itnofake", "Половина заряда. Нужно бы чем-то подзарядиться.");
+						Clockwork.chatBox:Add(self, nil, "itnofake", "Половина заряда. Надо бы чем-то подзарядиться.");
 					else
-						Clockwork.chatBox:Add(self, nil, "itnofake", "Я бы поспал...На какой-нибудь кровати.");
+						Clockwork.chatBox:Add(self, nil, "itnofake", "Я бы поспал... На какой-нибудь кровати.");
 					end
 				end;
 			elseif need == "corruption" then
@@ -291,7 +291,7 @@ function playerMeta:HandleNeed(need, amount)
 								end;
 							end
 						
-							Clockwork.chatBox:AddInTargetRadius(self, "me", "неожиданно взрывается, разрабскивая свои внутренности по округе!", playerPos, config.Get("talk_radius"):Get() * 2);
+							Clockwork.chatBox:AddInTargetRadius(self, "me", "неожиданно взрывается, разбрызгивая свои внутренности по округе!", playerPos, config.Get("talk_radius"):Get() * 2);
 							Schema:EasyText(GetAdmins(), "icon16/bomb.png", "tomato", self:Name().." exploded from high corruption!");
 						end
 					end

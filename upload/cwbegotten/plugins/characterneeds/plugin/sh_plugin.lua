@@ -29,14 +29,14 @@ function COMMAND:OnRun(player, arguments)
 		end;
 		
 		if cwBeliefs and (player:HasBelief("the_paradox_riddle_equation") or player:HasBelief("the_storm")) then
-			Schema:EasyText(player, "maroon", "Вы лакаете воду в свой сосуд, но это начинает замыкать ваши внутренности!");
+			Schema:EasyText(player, "maroon", "Вы набираете воду в ваш приемник, но это начинает замыкать ваши внутренности!");
 			player:TakeDamage(25);
 			
 			return;
 		end
 		
 		if thirst <= 10 then
-			Schema:EasyText(player, "chocolate", "Ты не хочешь пить отсюда. Пока еще.");
+			Schema:EasyText(player, "chocolate", "Ты не хочешь пить отсюда. Пока что.");
 			
 			return;
 		end
@@ -67,7 +67,7 @@ function COMMAND:OnRun(player, arguments)
 					player:HandleSanity(-10);
 					player:HandleNeed("thirst", -25);
 					player:EmitSound("npc/barnacle/barnacle_gulp1.wav");
-					Schema:EasyText(player, "olive", "Ты пьешь из вод Порожденных. Никто не знает, какую мерзость ты только что поглотил...Плохой день.");
+					Schema:EasyText(player, "olive", "Ты пьешь из вод Порожденных. Никто не знает, какую мерзость ты только что поглотил... Плохой день.");
 				end
 			end
 		end
@@ -93,7 +93,7 @@ function COMMAND:OnRun(player, arguments)
 					end
 					
 					if cwBeliefs and (player:HasBelief("the_paradox_riddle_equation") or player:HasBelief("the_storm")) then
-						Schema:EasyText(player, "maroon", "Вы лакаете воду в свой сосуд, но это начинает замыкать ваши внутренности!");
+						Schema:EasyText(player, "maroon", "Вы набираете воду в свой приемник, но это начинает замыкать ваши внутренности!");
 						player:TakeDamage(25);
 						
 						return;
@@ -101,7 +101,7 @@ function COMMAND:OnRun(player, arguments)
 
 					if weather == "acidrain" then
 						if player:GetSubfaction() == "Varazdat" then
-							Schema:EasyText(player, "chocolate", "В этом дожде нет крови, пить его...Плохая идея.");
+							Schema:EasyText(player, "chocolate", "В этом дожде нет крови, пить его... Плохая идея.");
 							
 							return;
 						end;
@@ -156,7 +156,7 @@ function COMMAND:OnRun(player, arguments)
 						return;
 					elseif weather == "thunderstorm" then
 						if player:GetSubfaction() == "Varazdat" then
-							Schema:EasyText(player, "chocolate", "Это не кровавый дождь..Я не собираюсь его пить.");
+							Schema:EasyText(player, "chocolate", "Это не кровавый дождь.. Я не собираюсь его пить.");
 							
 							return;
 						end;
