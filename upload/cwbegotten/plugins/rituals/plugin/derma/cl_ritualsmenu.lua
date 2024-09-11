@@ -360,7 +360,7 @@ function PANEL:Rebuild()
 		local textw, texth = Clockwork.kernel:GetCachedTextSize("Ritual_Text", "ВЫ ЕЩЕ НЕ ЗНАЕТЕ НИКАКИХ РИТУАЛОВ...")
 		local warning = vgui.Create("DLabel", self.ritualList)
 		
-		warning:SetText("YOU HAVE NOT DISCOVERED ANY RITUALS...")
+		warning:SetText("ВЫ ЕЩЕ НЕ ЗНАЕТЕ НИКАКИХ РИТУАЛОВ...")
 		warning:SetFont("Ritual_Text")
 		warning:SetTextColor(Color(200, 0, 0))
 		warning:SetPos((ritualListW / 2) - (textw / 2), (ritualListH / 2) - (texth / 2));
@@ -377,7 +377,7 @@ function PANEL:Rebuild()
 	self.ritualList:SetVisible(false);
 	
 	self.closeButton = vgui.Create("DButton", self)
-	self.closeButton:SetText("CLOSE")
+	self.closeButton:SetText("ЗАКРЫТЬ")
 	self.closeButton:SetSize(252, 67)
 	self.closeButton:SetPos(35, 554)
 	self.closeButton:SetTextColor(Color(160, 0, 0))
@@ -406,7 +406,7 @@ function PANEL:Rebuild()
 	end
 	
 	self.listButton = vgui.Create("DButton", self)
-	self.listButton:SetText("RITES")
+	self.listButton:SetText("ОБРЯДЫ")
 	self.listButton:SetSize(252, 67)
 	self.listButton:SetPos(325, 554)
 	self.listButton:SetTextColor(Color(160, 0, 0))
@@ -543,7 +543,7 @@ function PANEL:Rebuild()
 
 		for _, v in pairs(cwRituals.hotkeyRituals) do
 			if(v.uniqueID == ritualData.uniqueID) then
-				Schema:EasyText("firebrick", "You have already bound this ritual to your F1 menu!");
+				Schema:EasyText("firebrick", "Вы уже привязали этот ритуал в своем F1 меню!");
 				return;
 
 			end
@@ -563,7 +563,7 @@ function PANEL:Rebuild()
 		parent.ritualList:SetVisible(false);
 
 		Clockwork.Client:EmitSound("begotten/ui/buttonclick.wav");
-		Schema:EasyText("cornflowerblue", "You have bound the "..RitualFriendlyName(ritualData.name).." ritual to your F1 menu.");
+		Schema:EasyText("cornflowerblue", "Вы привязали ритуал "..RitualFriendlyName(ritualData.name).." к своему F1 меню.");
 
 		table.insert(cwRituals.hotkeyRituals, {
 			name = ritualData.name,
@@ -619,7 +619,7 @@ function PANEL:Rebuild()
 	self.requirementsList:SetPos(300 + 198 - ((68 * #self.requirementsList:GetItems() / 2)), 28);
 	
 	self.requirementsLabel = vgui.Create("DLabel", self);
-	self.requirementsLabel:SetText("Items Required:");
+	self.requirementsLabel:SetText("Необходимые предметы:");
 	self.requirementsLabel:SetTextColor(Color(160, 145, 145));
 	self.requirementsLabel:SetFont("Decay_FormText");
 	self.requirementsLabel:SizeToContents();
@@ -735,9 +735,9 @@ function PANEL:Init()
 	self.categoryList:SetPaintBackground(false);
 
 	self.nameForm = vgui.Create("DForm", self);
-	self.nameForm:SetName("Name & Faction");
+	self.nameForm:SetName("Имя и фракция");
 	self.nameForm:SetPadding(4);
-	self.fullNameTextEntry = self.nameForm:TextEntry("Full Name");
+	self.fullNameTextEntry = self.nameForm:TextEntry("Полное Имя");
 	self.fullNameTextEntry:SetAllowNonAsciiCharacters(true);
 	
 	local factions = {};
@@ -788,8 +788,8 @@ function PANEL:Init()
 	
 	self.appearanceForm = vgui.Create("DForm");
 	self.appearanceForm:SetPadding(4);
-	self.appearanceForm:SetName("Appearance");
-	self.appearanceForm:Help("Write a physical description for your character in full English, and select an appropriate model.");
+	self.appearanceForm:SetName("Описание");
+	self.appearanceForm:Help("Опишите своего персонажа и выберите модель.");
 	self.physDescTextEntry = self.appearanceForm:TextEntry("Description");
 	self.physDescTextEntry:SetAllowNonAsciiCharacters(true);
 	
@@ -809,7 +809,7 @@ function PANEL:Init()
 	end;
 	
 	self.closeButton = vgui.Create("DButton", self)
-	self.closeButton:SetText("CLOSE")
+	self.closeButton:SetText("ЗАКРЫТЬ")
 	self.closeButton:SetSize(252, 67)
 	self.closeButton:SetPos(2, 441)
 	self.closeButton:SetTextColor(Color(160, 0, 0))
@@ -839,7 +839,7 @@ function PANEL:Init()
 	end
 	
 	self.changeButton = vgui.Create("DButton", self)
-	self.changeButton:SetText("CHANGE")
+	self.changeButton:SetText("ИЗМЕНИТЬ")
 	self.changeButton:SetSize(252, 67)
 	self.changeButton:SetPos(257, 441)
 	self.changeButton:SetTextColor(Color(160, 0, 0))
