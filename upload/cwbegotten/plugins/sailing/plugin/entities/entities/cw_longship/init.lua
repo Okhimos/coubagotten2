@@ -260,13 +260,13 @@ end
 function ENT:SetHP(newhp)
 	self.health = newhp;
 	
-	--[[if self.itemID then
+	if self.itemID then
 		local itemTable = item.FindInstance(self.itemID);
 		
 		if itemTable then
 			itemTable:SetData("health", newhp);
 		end
-	end]]--
+	end
 
 	if newhp > 0 then
 		if newhp == 500 then
@@ -399,7 +399,7 @@ function ENT:Use(activator, caller)
 		data.entity = self;
 		data.location = self.location;
 		
-		if (caller:GetCharacterKey() == self.ownerID) or !IsValid(self.owner) or self.owner:GetCharacterKey() ~= self.ownerID or !self.owner:Alive() or self.owner:GetNetVar("tied") ~= 0 then
+		if Clockwork.player:GetCharacterID(caller) == self.ownerID then
 			data.isOwner = true;
 		end
 		
@@ -467,21 +467,11 @@ function ENT:OnRemove()
 		self.spawnedNPCs = nil;
 	end
 	
-	if self.location == "docks" then
-		if self.itemID then
-			if IsValid(self.owner) and self.ownerID == self.owner:GetCharacterKey() then
-				local itemTable = item.FindInstance(self.itemID);
-				
-				if !itemTable then
-					itemTable = item.CreateInstance("scroll_longship", self.itemID);
-				end
-				
-				if itemTable then
-					itemTable:SetData("health", self.health or 500);
-					
-					self.owner:GiveItem(itemTable, true);
-				end
-			end
+	if self.itemID then
+		local itemTable = item.FindInstance(self.itemID);
+		
+		if itemTable then
+			itemTable:SetData("health", self.health or 500);
 		end
 	end
 	

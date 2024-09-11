@@ -353,11 +353,7 @@ function ENT:Use(activator, caller)
 		data.entity = self;
 		data.location = self.location;
 		
-		if (caller:GetCharacterKey() == self.ownerID) or !IsValid(self.owner) or self.owner:GetCharacterKey() ~= self.ownerID or !self.owner:Alive() or self.owner:GetNetVar("tied") ~= 0 then
-			data.isOwner = true;
-		end
-		
-		if caller:GetFaction() == "Goreic Warrior" or caller:GetNetVar("kinisgerOverride") == "Goreic Warrior" or (caller:IsAdmin() and caller.cwObserverMode) then
+		if caller:GetFaction() == "Goreic Warrior" or (caller:IsAdmin() and caller.cwObserverMode) then
 			self.cargoholdopenable = true;
 			data.destination = self.destination;
 			data.sailable = true;
@@ -402,40 +398,34 @@ function ENT:OnRemove()
 		self.sandbags:Remove();
 	end
 	
-	if self.location == "docks" then
-		if IsValid(self.owner) and self.ownerID == self.owner:GetCharacterKey() then
-			local itemTable = item.FindInstance(self.itemID);
+	if IsValid(self.machinegun) then
+		if IsValid(self.machinegun.gun) then
+			local itemID = self.itemID;
 			
-			if !itemTable then
-				itemTable = item.CreateInstance("scroll_ironclad", self.itemID);
-			end
-			
+			local itemTable = item.FindInstance(itemID);
+	
 			if itemTable then
-				if IsValid(self.machinegun) then
-					itemTable:SetData("machinegunUpgrade", true);
-					
-					if IsValid(self.machinegun.gun) then
-						itemTable:SetData("ammo", self.machinegun.gun:GetDTInt(0) or 0);
-					end
-				end
-				
-				local steamEngine = self.steamEngine;
-				
-				if IsValid(steamEngine) then
-					itemTable:SetData("fuel", math.Round(steamEngine.fuel or 0, 2));
-				end
-				
-				self.owner:GiveItem(itemTable, true);
+				itemTable:SetData("ammo", self.machinegun.gun:GetDTInt(0) or 0);
 			end
 		end
-	end
 	
-	if IsValid(self.machinegun) then
 		self.machinegun:Remove();
 	end
-
-	if IsValid(self.steamEngine) then
-		self.steamEngine:Remove();
+	
+	local steamEngine = self.steamEngine;
+	
+	if IsValid(steamEngine) then
+		local itemID = self.itemID;
+		
+		if itemID then
+			local itemTable = item.FindInstance(itemID);
+	
+			if itemTable then
+				itemTable:SetData("fuel", math.Round(steamEngine.fuel or 0, 2));
+			end
+		end
+	
+		steamEngine:Remove();
 	end
 
 	self:StopParticles();
