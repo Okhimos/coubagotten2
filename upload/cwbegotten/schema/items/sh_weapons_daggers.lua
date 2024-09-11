@@ -70,6 +70,7 @@ local ITEM = Clockwork.item:New("weapon_base");
 	ITEM.canUseOffhand = true;
 	
 	ITEM.components = {breakdownType = "breakdown", items = {"human_bone"}};
+ITEM:Register();
 
 local ITEM = Clockwork.item:New("weapon_base");
 	ITEM.name = "Бич Рыцарей";
