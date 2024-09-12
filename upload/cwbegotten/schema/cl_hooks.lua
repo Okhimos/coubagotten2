@@ -1035,7 +1035,7 @@ end
 
 -- Called when a player's scoreboard options are needed.
 function Schema:GetPlayerScoreboardOptions(player, options, menu)
-	if (Clockwork.command:FindByID("CharSetCustomClass")) then
+	--[[if (Clockwork.command:FindByID("CharSetCustomClass")) then
 		if (Clockwork.player:HasFlags(Clockwork.Client, Clockwork.command:FindByID("CharSetCustomClass").access)) then
 			options["Custom Class"] = {};
 			options["Custom Class"]["Set"] = function()
@@ -1044,13 +1044,13 @@ function Schema:GetPlayerScoreboardOptions(player, options, menu)
 				end);
 			end;
 			
-			if (player:GetNetVar("customClass") != "") then
+			if (player:GetNetVar("customClass")) then
 				options["Custom Class"]["Take"] = function()
 					Clockwork.kernel:RunCommand("CharTakeCustomClass", player:Name());
 				end;
 			end;
 		end;
-	end;
+	end;]]--
 	
 	if (Clockwork.command:FindByID("CharPermaKill")) then
 		if (Clockwork.player:HasFlags(Clockwork.Client, Clockwork.command:FindByID("CharPermaKill").access)) then
@@ -1107,13 +1107,13 @@ end
 function Schema:GetScreenTextInfo()
 	local blackFadeAlpha = Clockwork.kernel:GetBlackFadeAlpha();
 	
-	if (Clockwork.Client:GetNetVar("permaKilled")) then
+	--[[if (Clockwork.Client:GetNetVar("permaKilled")) then
 		return {
 			alpha = blackFadeAlpha,
 			title = "ЭТОТ ПЕРСОНАЖ УБИТ",
 			text = "Чтобы создать нового персонажа, перейдите в меню."
 		};
-	elseif (Clockwork.Client:GetNetVar("beingChloro")) then
+	else]]if (Clockwork.Client:GetNetVar("beingChloro")) then
 		return {
 			alpha = 255 - blackFadeAlpha,
 			title = "КТО-ТО ИСПОЛЬЗУЕТ НА ТЕБЕ ХЛОРОФОРМ"
@@ -1133,9 +1133,9 @@ end;
 
 -- Called when the local player's character screen faction is needed.
 function Schema:GetPlayerCharacterScreenFaction(character)
-	if (character.customClass and character.customClass != "") then
+	--[[if (character.customClass and character.customClass != "") then
 		return character.customClass;
-	end;
+	end;]]--
 end;
 
 -- Called when the cinematic intro info is needed.
