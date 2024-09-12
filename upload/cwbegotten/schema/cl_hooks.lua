@@ -840,7 +840,7 @@ function Schema:DrawTargetPlayerSubfaction(target, alpha, x, y)
 				subfactionText = "Соперник из "..targetSubfaction..".";
 				textColor = Color(255, 0, 0, 255);
 			elseif playerSubfaction == targetSubfaction then
-				subfactionText = "Мой соклановец из "..targetSubfaction..".";
+				subfactionText = "Мой товарищ из "..targetSubfaction..".";
 				textColor = Color(0, 255, 0, 255);
 			else
 				subfactionText = "Член "..targetSubfaction..".";
