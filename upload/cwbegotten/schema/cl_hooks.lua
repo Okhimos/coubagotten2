@@ -837,13 +837,13 @@ function Schema:DrawTargetPlayerSubfaction(target, alpha, x, y)
 			end
 			
 			if SUBFACTION and SUBFACTION.rivalry == targetSubfaction then
-				subfactionText = "A rival member of "..targetSubfaction..".";
+				subfactionText = "Соперник из "..targetSubfaction..".";
 				textColor = Color(255, 0, 0, 255);
 			elseif playerSubfaction == targetSubfaction then
-				subfactionText = "A fellow member of "..targetSubfaction..".";
+				subfactionText = "Мой соклановец из "..targetSubfaction..".";
 				textColor = Color(0, 255, 0, 255);
 			else
-				subfactionText = "A member of "..targetSubfaction..".";
+				subfactionText = "Член "..targetSubfaction..".";
 			end
 		-- GetFaction() checks incase they're disguised.
 		elseif Clockwork.Client:GetFaction() == "Children of Satan" and target:GetFaction() == "Children of Satan" then
