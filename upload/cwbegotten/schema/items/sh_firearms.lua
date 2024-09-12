@@ -376,3 +376,25 @@ ITEM = Clockwork.item:New("firearm_base");
 	
 	ITEM.components = {breakdownType = "meltdown", items = {"wood", "fine_steel_chunks", "steel_chunks", "steel_chunks", "steel_chunks"}};
 ITEM:Register();
+
+local ITEM = Clockwork.item:New("firearm_base");
+    ITEM.name = "Пистоль";
+    ITEM.model = "models/dishonored/gun/corvopistol.mdl";
+    ITEM.weight = 1;
+    ITEM.uniqueID = "begotten_flintlock";
+    ITEM.description = "Этот тип оружия был впервые создан для охоты на Черных Шляп самой Первой Инквизицией. Теперь он служит и многим другим целям.";
+    ITEM.iconoverride = "rgs-3/itemicons/flintlock.png"
+    ITEM.isAttachment = true;
+    ITEM.attachmentBone = "ValveBiped.Bip01_R_Thigh";
+    ITEM.attachmentOffsetAngles = Angle(68.62, 0, 357.02);
+    ITEM.attachmentOffsetVector = Vector(-4.24, 0, -5.66);
+
+    ITEM.ammoCapacity = 1;
+    ITEM.ammoTypes = {"Longshot"};
+    ITEM.firearmType = "Handgun";
+    ITEM.reloadTime = 8; -- Seconds
+    ITEM.reloadSounds = {"musket/reload_musket01.wav", "musket/reload_musket02.wav", "musket/reload_musket03.wav", "musket/reload_musket04.wav", "musket/reload_musket05.wav", "musket/reload_musket06.wav", "musket/reload_musket07.wav", "musket/reload_musket08.wav", "musket/reload_musket_cock.wav"};
+
+    ITEM.components = {breakdownType = "meltdown", items = {"steel_chunks", "scrap", "wood"}};
+    ITEM.itemSpawnerInfo = {category = "Firearms", rarity = 800, bNoSupercrate = true};
+ITEM:Register();

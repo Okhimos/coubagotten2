@@ -237,7 +237,7 @@ local COMMAND = Clockwork.command:New("DemonHeal");
 					Clockwork.player:SetRagdollState(target, RAGDOLL_NONE);
 				end
 				
-				Clockwork.chatBox:AddInTargetRadius(target, "me", "is suddenly and miraculously healed of their wounds! Your eyes seem almost to deceive you as you watch their wounds disappear.", target:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+				Clockwork.chatBox:AddInTargetRadius(target, "me", "совершенно неожиданно исцеляется от всех своих ран! Ваши глаза, кажется, обманывают вас, но вы четко смотрите на то, как сломанные конечности срастаются, а раны затягиваются сами по себе!", target:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 			else
 				Schema:EasyText(player, "peru", "You cannot use this command for another "..tostring(math.ceil(player.nextDemonHeal - curTime)).." seconds!");
 			end
@@ -273,7 +273,7 @@ function COMMAND:OnRun(player, arguments)
 				end
 			end
 			
-			Clockwork.chatBox:AddInTargetRadius(player.victim, "me", "lets out an unholy and blood-curdling shriek!", player.victim:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+			Clockwork.chatBox:AddInTargetRadius(player.victim, "me", "издает ужасающий демонический вопль!", player.victim:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 		else
 			Schema:EasyText(player, "peru", "You cannot use this command for another "..tostring(math.ceil(player.nextDemonShriek - curTime)).." seconds!");
 		end
@@ -521,7 +521,7 @@ function COMMAND:OnRun(player, arguments)
 	if (target) then
 		local targetPos = target:GetPos();
 		
-		Clockwork.chatBox:AddInTargetRadius(target, "me", "abruptly explodes into a shower of fire and gore as a fucking demon bursts from their very flesh!", targetPos, config.Get("talk_radius"):Get() * 2);
+		Clockwork.chatBox:AddInTargetRadius(target, "me", "превращается в кусок мяса, когда из его тела вылазит ебучий демон!", targetPos, config.Get("talk_radius"):Get() * 2);
 		
 		target:Kill();
 		

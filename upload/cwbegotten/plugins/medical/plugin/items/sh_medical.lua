@@ -7,7 +7,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.useText = "Вколоть";
 	ITEM.model = "models/props_c17/TrapPropeller_Lever.mdl";
 	ITEM.weight = 0.15;
-	ITEM.description = "Стеклянный флакон, наполненный таинственной прозрачной жидкостью, которую можно ввести человеку, чтобы получить прилив энергии.";
+	ITEM.description = "Шприц с иголкой, который содержит в себе прозрачную жидкость.";
 	ITEM.iconoverride = "materials/begotten/ui/itemicons/syringe.png"
 	ITEM.useSound = "begotten/items/meat_inject.mp3";
 	ITEM.uniqueID = "ampoule"
@@ -93,7 +93,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.useXP = 25;
 	
 	function ITEM:OnUsed(player, itemEntity)
-		Schema:EasyText(player, "olivedrab","You apply the antibiotic paste to your wound.");
+		Schema:EasyText(player, "olivedrab","Вы наносите на рану пасту.");
 		netstream.Start(self, "Stunned", 2);
 	end;
 ITEM:Register();
@@ -329,7 +329,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.limbs = {HITGROUP_CHEST, HITGROUP_HEAD, HITGROUP_STOMACH, HITGROUP_LEFTARM, HITGROUP_RIGHTARM, HITGROUP_LEFTLEG, HITGROUP_RIGHTLEG};
 	
 	function ITEM:OnUsed(player, itemEntity)
-		Schema:EasyText(player, "olivedrab","The ointment is applied to your skin. It stings like hell, but hopefully it will work.");
+		Schema:EasyText(player, "olivedrab","Мазь оказывается на коже и начинает чертовски ее щипать. Лишь бы помогло...");
 		netstream.Start(self, "Stunned", 2);
 	end;
 ITEM:Register();
@@ -865,7 +865,7 @@ local ITEM = Clockwork.item:New();
 					player:TakeDamageInfo(d);
 					player:TakeItem(self, true);
 					
-					Schema:EasyText(player, "olive", "Ты засовываешь микросхему в рот и начинаешь ее жевать! Зубам больно, но что поделать....!");
+					Schema:EasyText(player, "olive", "Ты засовываешь микросхему в рот и начинаешь ее жевать! Зубам больно, но что поделать...");
 				end
 			end;
 		end;

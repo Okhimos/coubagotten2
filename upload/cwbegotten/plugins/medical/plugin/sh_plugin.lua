@@ -714,7 +714,7 @@ function COMMAND:OnRun(player, arguments)
 		if (player != target) then
 			Schema:EasyText(GetAdmins(), "olive", "["..self.name.."] "..player:Name().." has made "..target:Name().." vomit.");
 		else
-			Schema:EasyText(player, "olive", "["..self.name.."] You have made yourself vomit.");
+			Schema:EasyText(player, "olive", "["..self.name.."] Ты вызвал у себя рвоту.");
 		end;
 	else
 		Schema:EasyText(player, "grey", "["..self.name.."] "..arguments[1].." is not a valid player!");

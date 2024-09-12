@@ -45,15 +45,15 @@ local ITEM = Clockwork.item:New(nil, true)
 			local action = Clockwork.player:GetAction(player);
 				
 			if (action == "heal") then
-				Schema:EasyText(player, "peru","Your character is already healing!");
+				Schema:EasyText(player, "peru","Тебя уже лечат!");
 				
 				return false;
 			elseif (action == "healing") then
-				Schema:EasyText(player, "peru", "You are already healing somebody!");
+				Schema:EasyText(player, "peru", "Ты уже лечишь его!");
 				
 				return false;
 			elseif (action == "performing_surgery") then
-				Schema:EasyText(player, "peru", "You are already performing surgery on someone!");
+				Schema:EasyText(player, "peru", "Ты уже проводишь на нем операцию!");
 				
 				return false;
 			else
@@ -71,15 +71,15 @@ local ITEM = Clockwork.item:New(nil, true)
 			local action = Clockwork.player:GetAction(player);
 				
 			if (action == "heal") then
-				Schema:EasyText(player, "peru","Your character is already healing!");
+				Schema:EasyText(player, "peru","Твоего персонажа уже лечат!");
 				
 				return false;
 			elseif (action == "healing") then
-				Schema:EasyText(player, "peru", "You are already healing somebody!");
+				Schema:EasyText(player, "peru", "Ты уже лечишь его!");
 				
 				return false;
 			elseif (action == "performing_surgery") then
-				Schema:EasyText(player, "peru", "You are already performing surgery on someone!");
+				Schema:EasyText(player, "peru", "Ты уже проводишь на ком-то операцию!");
 				
 				return false;
 			else
@@ -100,15 +100,15 @@ local ITEM = Clockwork.item:New(nil, true)
 		local action = Clockwork.player:GetAction(player);
 			
 		if (action == "heal") then
-			Schema:EasyText(player, "firebrick", "You cannot drop this while healing!");
+			Schema:EasyText(player, "firebrick", "Ты не можешь сделать это, пока лечишься!");
 			
 			return false;
 		elseif (action == "healing") then
-			Schema:EasyText(player, "firebrick", "You cannot drop this while healing somebody!");
+			Schema:EasyText(player, "firebrick", "Ты не можешь сделать это, пока лечишь кого-то!");
 			
 			return false;
 		elseif (action == "performing_surgery") then
-			Schema:EasyText(player, "firebrick", "You cannot drop this while performing surgery on someone!");
+			Schema:EasyText(player, "firebrick", "Ты не можешь сделать это, пока проводишь на ком-то операцию!");
 			
 			return false;
 		end;

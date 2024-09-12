@@ -5540,7 +5540,7 @@ RECIPE:Register()
 	RECIPE:Register()
 
 	RECIPE = cwRecipes.recipes:New("scrap_crossbow");
-	RECIPE.name = "Скрап Арбалет";
+	RECIPE.name = "Арбалет из Скрапа";
 	RECIPE.requiredBeliefs = {"craftsman"};
 	RECIPE.excludedFactions = {"Goreic Warrior"};
 	RECIPE.requirements = {
@@ -8705,3 +8705,33 @@ RECIPE = cwRecipes.recipes:New("emis_gatekeeper_helmet");
 		function RECIPE:EndCraft(player)
 		end;
 	RECIPE:Register()
+
+RECIPE = cwRecipes.recipes:New("flintlock");
+    RECIPE.name = "Пистоль";
+    RECIPE.requiresSmithy = true;
+    RECIPE.requiredBeliefs = {"mechanic"};
+    RECIPE.requiredBeliefsNiceNames = {"Mechanic"};
+    RECIPE.excludedSubfactions = {"Clan Gore", "Clan Harald", "Clan Reaver", "Clan Crast", "Clan Grock"};
+    RECIPE.requirements = {
+        ["steel_ingot"] = {amount = 1},
+        ["wood"] = {amount = 1},
+    };
+    RECIPE.result = {
+        ["begotten_flintlock"] = {amount = 1},
+    };
+    RECIPE.category = "Munitions"
+    RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
+    RECIPE.failSound = "buttons/button2.wav"
+    RECIPE.craftTime = 15
+    RECIPE.craftVerb = "smithing"
+    RECIPE.experience = 80;
+
+    function RECIPE:OnCraft(player)
+    end;
+    function RECIPE:OnFail(player)
+    end;
+    function RECIPE:StartCraft(player)
+    end;
+    function RECIPE:EndCraft(player)
+    end;
+RECIPE:Register()

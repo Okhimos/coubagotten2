@@ -129,8 +129,8 @@ function COMMAND:OnRun(player, arguments)
 		end
 		
 		netstream.Start(_player.GetAll(), "EmitSound", {name = "ambient/weather/thunderstorm/lightning_strike_"..tostring(math.random(1, 4))..".wav", pitch = 100, level = 100});
-		Clockwork.chatBox:AddInTargetRadius(target, "me", "is struck by a huge bolt of electricity, their flesh and clothes burning to a crisp as their corpse spasms wildly!", target:GetPos(), config.Get("talk_radius"):Get() * 2);
-		Clockwork.chatBox:Add(_player.GetAll(), nil, "event", "A crack of thunder can be heard throughout the Wasteland, as though someone has been smited by the gods.");
+		Clockwork.chatBox:AddInTargetRadius(target, "me", "неожиданно оказывается поражен молнией! Его вещи и кожа сгорают дотла, а тело еще некоторое время бьется в консульсиях! Вот пиздец!", target:GetPos(), config.Get("talk_radius"):Get() * 2);
+		Clockwork.chatBox:Add(_player.GetAll(), nil, "event", "По всей Пустоши раздается раскат грома, кто-то разозлил богов!");
 		Schema:EasyText(GetAdmins(), "icon16/weather_lightning.png", "goldenrod", target:Name().." incurred "..player:Name().."'s divine wrath!");
 	else
 		Clockwork.player:Notify(player, "Invalid target! Enter a name or look at a player!");
