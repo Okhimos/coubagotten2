@@ -1676,7 +1676,7 @@ function Schema:ModifyItemMarkupTooltip(category, maximumWeight, weight, conditi
 				end
 				
 				if weaponTable.isLongsword then
-					frame:AddText("Swordplay: After deflecting or parrying an opponent, your next attack within 0.5s will have a faster striketime. This trait only works if you have 'Blademaster' unlocked.", Color(110, 30, 30), nil, 0.9);
+					frame:AddText("Звон Мечей: После отражения или парирования противника, ваша следующая атака в течение 0,5 с будет иметь более быстрое время удара. Эта черта работает только если у вас разблокировано «Заточенное Лезвие».", Color(110, 30, 30), nil, 0.9);
 				end
 				
 				if weaponTable.MultiHit then
