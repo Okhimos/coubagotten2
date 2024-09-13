@@ -1455,7 +1455,7 @@ RITUAL = cwRituals.rituals:New("Sister's Blessing");
 	RITUAL.description = "Считается, что река Стикс - это кипящая лава, в которой обитают мертвые и проклятые. С помощью правильного ритуала магии крови Риверы смогли договориться с демонами о том, что их переправа будет оплачена душами которые они принесли в ад. Дает 75 порчи.";
 	RITUAL.onerequiredbelief = {"shedskin", "watchful_raven"}; -- Unique Mother/Sister Ritual
 
-	RITUAL.requirements = {"xolotl_catalyst", "pentagram_catalyst", "xolotl_catalyst"};
+	RITUAL.requirements = {"xolotl_catalyst", "pentagram_catalyst", "familial_catalyst"};
 	RITUAL.corruptionCost = 75;
 	RITUAL.ritualTime = 10;
 	RITUAL.experience = 200;
@@ -1636,7 +1636,7 @@ RITUAL = cwRituals.rituals:New("steel_will");
 	RITUAL.description = "Непоколебимый, непоколебимый - Сияние с вами! Выполнение этого ритуала полностью восстанавливает ваше здравомыслие, уменьшает потерю здравомыслия на 90% и делает вас невосприимчивым к эффектам страха на 15 минут. Дает 10 порчи.";
 	RITUAL.onerequiredbelief = {"emissary", "extinctionist"}; -- Tier III Faith of the Light Ritual
 	
-	RITUAL.requirements = {"xolotl_catalyst", "holy_spirit", "light_catalyst"};
+	RITUAL.requirements = {"light_catalyst", "elysian_catalyst", "light_catalyst"};
 	RITUAL.corruptionCost = 10;
 	RITUAL.ritualTime = 10;
 	RITUAL.experience = 50;
@@ -1645,7 +1645,7 @@ RITUAL = cwRituals.rituals:New("steel_will");
 		player:SetNetVar("steelWill", true);
 		player:HandleSanity(100);
 
-		timer.Create("SteelWillTimer_"..player:EntIndex(), 900, 1, function()
+		timer.Create("SteelWillTimer_"..player:EntIndex(), 2400, 1, function()
 			if IsValid(player) then
 				if player:GetNetVar("steelWill", false) then
 					player:SetNetVar("steelWill", false);

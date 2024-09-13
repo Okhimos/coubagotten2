@@ -132,7 +132,7 @@ local ITEM = Clockwork.item:New("enchanted_base");
 	ITEM.uniqueID = "hurlers_talisman";
 	ITEM.description = "Наконечник дротика с запекшейся кровью. Смотря на него вы понимаете, как правильно использовать метательное оружие.";
 	ITEM.iconoverride = "materials/begotten/ui/itemicons/"..ITEM.uniqueID..".png";
-	ITEM.charmEffects = "- Увеличивает скорость и дальность полета метательного оружия на 35%.";
+	ITEM.charmEffects = "- Увеличивает скорость и дальность полета метательного оружия и арбалетных болтов на 35%.";
 	
 	ITEM.itemSpawnerInfo = {category = "Charms", rarity = 1000, onGround = false}
 ITEM:Register();
