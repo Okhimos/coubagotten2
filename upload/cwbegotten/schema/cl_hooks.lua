@@ -974,7 +974,7 @@ function Schema:DrawTargetPlayerLevel(target, alpha, x, y)
 			end
 
 			textColor = Color(200, 150, 150, 255);
-			levelText = "Окружаемый легкой аурой силы. Можно было бы принести "..thirdPerson.." , но душа не представляла бы большой ценности для Темного Лорда.";
+			levelText = "Окружаемый легкой аурой силы. Можно было бы поднести "..thirdPerson.." , но душа не представляет большой ценности для Темного Лорда.";
 		elseif level >= 20 and level < 30 then
 			textColor = Color(150, 200, 150, 255);
 			levelText = "Очень зрелая душа, которая бы порадовала Темного Лорда.";
@@ -997,10 +997,10 @@ function Schema:DrawTargetPlayerLevel(target, alpha, x, y)
 		local textColor = Color(255, 100, 100, 255);
 		
 		if level < 10 then
-			local thirdPerson = "его"
+			local thirdPerson = "Он"
 			
 			if (target:GetGender() == GENDER_FEMALE) then
-				thirdPerson = "её"
+				thirdPerson = "Она"
 			end
 			
 			levelText = thirdPerson.." выглядит мусором, бездарным и бесполезным.";
@@ -1012,10 +1012,10 @@ function Schema:DrawTargetPlayerLevel(target, alpha, x, y)
 			end
 
 			textColor = Color(200, 150, 150, 255);
-			levelText = "Этот слабый и не будет продаваться за большие деньги на невольничьем рынке.";
+			levelText = "Этот слабый и вряд ли будет дорого стоить на рабском рынке.";
 		elseif level >= 20 and level < 30 then
 			textColor = Color(150, 200, 150, 255);
-			levelText = "Если бы был здоров, его можно было бы продать за справедливую цену на невольничьем рынке.";
+			levelText = "Если бы он был здоров, его можно было бы продать за справедливую цену на рабском рынке.";
 		elseif level >= 30 then
 			local thirdPerson = "Он"
 			
@@ -1024,7 +1024,7 @@ function Schema:DrawTargetPlayerLevel(target, alpha, x, y)
 			end
 		
 			textColor = Color(100, 255, 100, 255);
-			levelText = thirdPerson.." выглядит очень хорошо и с радостью приобретен";
+			levelText = thirdPerson.." очень силен, его хорошо купят на рабском рынке!";
 		end
 		
 		if levelText then

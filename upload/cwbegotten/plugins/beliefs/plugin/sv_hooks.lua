@@ -527,7 +527,7 @@ function cwBeliefs:EntityHandleMenuOption(player, entity, option, arguments)
 								end
 							end);
 						elseif model == "models/animals/bear.mdl" then
-							Clockwork.chatBox:AddInTargetRadius(player, "me", "разделывает труп медведя,, собирая его мясо.", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+							Clockwork.chatBox:AddInTargetRadius(player, "me", "разделывает труп медведя, собирая его мясо.", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 						
 							Clockwork.player:SetAction(player, "mutilating", 10, 5, function()
 								if IsValid(player) and IsValid(entity) then
