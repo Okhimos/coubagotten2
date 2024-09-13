@@ -125,7 +125,7 @@ function Parry(target, dmginfo)
 							end
 							
 							if wep:GetClass() == "begotten_fists" then
-								Clockwork.chatBox:AddInTargetRadius(target, "me", "parries "..attacker:Name().." with their bare hands!", target:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+								Clockwork.chatBox:AddInTargetRadius(target, "me", "парирует "..attacker:Name().." голыми руками!", target:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 							end
 						end
 					end
@@ -1038,7 +1038,7 @@ local function Guarding(ent, dmginfo)
 						if melsa <= blockamount and not ent:IsRagdolled() and chance == 1 then
 							if ent:GetCharacterData("stability") < 70 then
 								if wep:GetNWString("activeShield"):len() == 0 and not string.find(wep:GetClass(), "begotten_fists") and not string.find(wep:GetClass(), "begotten_claws") then
-									local dropMessages = {" goes flying out of their hand!", " is knocked out of their hand!"};
+									local dropMessages = {" вылетает из его рук!", " выбит из его рук!"};
 									local itemTable = Clockwork.item:GetByWeapon(wep);
 									
 									if ent.opponent then
