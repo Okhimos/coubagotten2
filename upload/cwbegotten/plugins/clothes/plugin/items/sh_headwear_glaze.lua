@@ -688,7 +688,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.requireFaith = {"Faith of the Light"};
 	ITEM.excludeFactions = {"Goreic Warrior"};
 	ITEM.useSound = "armor/plate_damage_02.wav";
-	ITEM.overlay = "begotten/zomboverlay/gatekeep1";
+	ITEM.overlay = "begotten/zomboverlay/skullhelm";
 	ITEM.attributes = {"fear"}
 	ITEM.faction = "Gatekeeper";
 
@@ -722,7 +722,7 @@ local ITEM = Clockwork.item:New("bodygroup_base")
 	ITEM.description = "Шлем, выполненный по древним канонам, украшен маской с изображением известного деятеля Империи Света, что делает его уникальным и особенно ценным."
 	ITEM.excludeFactions = {"Goreic Warrior"};
 	ITEM.useSound = "armor/plate_damage_02.wav";
-	ITEM.overlay = "begotten/zomboverlay/gatekeep1";
+	ITEM.overlay = "begotten/zomboverlay/skullhelm";
 	ITEM.faction = "Gatekeeper";
 
 	ITEM.conditionScale = 0.75 -- item degrades 1.5x faster with damage related condition loss

@@ -2497,3 +2497,59 @@ ITEM.walkSound = {
 };
 
 ITEM:Register();
+
+local ITEM = Clockwork.item:New("clothes_base");
+ITEM.name = "Кожаный Доспех";
+ITEM.uniqueID = "scout_gambeson";
+ITEM.group = "gatekeeper/gatekeeperauxarmor";
+ITEM.model = "models/begotten/headgroups_props/gatekeeperauxarmor_black.mdl"
+ITEM.iconoverride = "materials/begotten/ui/itemicons/praeventor_gambeson.png"
+ITEM.category = "Armor"
+ITEM.conditionScale = 1.1
+ITEM.hitParticle = "GlassImpact";
+ITEM.protection = 40
+ITEM.type = "leather";
+ITEM.weight = 2.5;
+ITEM.weightclass = "Light";
+ITEM.description = "Доспех из вываренной кожи, который был усилен парой пластин из метала. Достаточно удобен, чтобы не сковывать движений.";
+ITEM.useSound = "npc/combine_soldier/zipline_clothing2.wav";
+ITEM.excludeFactions = {"Goreic Warrior"};
+ITEM.faction = "Gatekeeper";
+
+ITEM.effectiveLimbs = {
+	[HITGROUP_GENERIC] = true,
+	[HITGROUP_CHEST] = true,
+	[HITGROUP_STOMACH] = true,
+	[HITGROUP_LEFTARM] = true,
+	[HITGROUP_RIGHTARM] = true,
+	[HITGROUP_LEFTLEG] = true,
+	[HITGROUP_RIGHTLEG] = true,
+	[HITGROUP_GEAR] = true
+}
+
+ITEM.bluntScale = 0.70; -- reduces blunt damage by 25%
+ITEM.pierceScale = 0.90; -- reduces pierce damage by 5%
+ITEM.slashScale = 0.85; -- reduces slash damage by 10%
+ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
+ITEM.bulletScale = 0.90; -- reduces bullet damage by 10%
+
+ITEM.components = {breakdownType = "breakdown", items = {"iron_chunks", "leather", "leather", "cloth", "cloth"}};
+
+-- Called when a replacement is needed for a player.
+function ITEM:GetReplacement(player)
+
+end;
+
+ITEM.runSound = {
+	"armormovement/body-lobe-1.wav.mp3",
+	"armormovement/body-lobe-2.wav.mp3",
+	"armormovement/body-lobe-3.wav.mp3",
+	"armormovement/body-lobe-4.wav.mp3",
+	"armormovement/body-lobe-5.wav.mp3",
+};
+
+--[[ITEM.walkSound = {
+	"armormovement/body-lobe-b1.wav.mp3",
+	"armormovement/body-lobe-b2.wav.mp3",
+};]]--
+
