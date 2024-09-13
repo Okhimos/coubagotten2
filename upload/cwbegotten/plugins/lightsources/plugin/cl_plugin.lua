@@ -9,13 +9,13 @@ function cwLantern:GetOilText()
 
 	if (oil) then
 		if (oil <= 100 and oil >= 60) then
-			text = "Full";
+			text = "ПОЛНАЯ";
 		elseif (oil < 60 and oil >= 15) then
-			text = "Waning...";
+			text = "УГАСАЕТ...";
 		elseif (oil < 15 and oil >= 1) then
-			text = "Running on Fumes...";
+			text = "ЕЛЕ СВЕТИТ...";
 		elseif (oil <= 0) then
-			text = "Out of Oil...";
+			text = "МАСЛО ЗАКОНЧИЛОСЬ...";
 		end;
 	end;
 	
