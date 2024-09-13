@@ -379,7 +379,7 @@ ITEM:Register();
 
 local ITEM = Clockwork.item:New("firearm_base");
     ITEM.name = "Пистоль";
-    ITEM.model = "models/dishonored/gun/corvopistol.mdl";
+    ITEM.model = "models/dishonored/gun/elitegun.mdl";
     ITEM.weight = 1;
     ITEM.uniqueID = "begotten_flintlock";
     ITEM.description = "Этот тип оружия был впервые создан для охоты на Черных Шляп самой Первой Инквизицией. Теперь он служит и многим другим целям.";
