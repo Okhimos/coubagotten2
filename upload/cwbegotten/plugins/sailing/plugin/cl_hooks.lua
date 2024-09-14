@@ -6,17 +6,17 @@ local cwSailing = cwSailing;
 
 function cwSailing:GetProgressBarInfoAction(action, percentage)
 	if (action == "burn_longship") then
-		return {text = "You are setting the longship alight. Click to cancel.", percentage = percentage, flash = percentage < 10};
+		return {text = "Вы поджигаете корабль. ЛКМ чтобы отменить.", percentage = percentage, flash = percentage < 10};
 	elseif (action == "extinguish_longship") then
-		return {text = "You are trying to put out the flames. Click to cancel.", percentage = percentage, flash = percentage < 10};
+		return {text = "Вы пытаетесь потушить корабль. ЛКМ чтобы отменить.", percentage = percentage, flash = percentage < 10};
 	elseif (action == "repair_longship") then
-		return {text = "You are making repairs to the longship. Click to cancel.", percentage = percentage, flash = percentage < 10};
+		return {text = "Вы чините корабль. ЛКМ чтобы отменить.", percentage = percentage, flash = percentage < 10};
 	elseif (action == "repair_alarm") then
-		return {text = "You are repairing the Gorewatch alarm. Click to cancel.", percentage = percentage, flash = percentage < 10};
+		return {text = "Вы чините сигнализацию. ЛКМ чтобы отменить.", percentage = percentage, flash = percentage < 10};
 	elseif (action == "repair_steam_engine") then
-		return {text = "You are repairing the steam engine. Click to cancel.", percentage = percentage, flash = percentage < 10};
+		return {text = "Вы чините паровой двигатель. ЛКМ чтобы отменить.", percentage = percentage, flash = percentage < 10};
 	elseif (action == "refuel_ironclad") then
-		return {text = "You are adding Charcoal to the ironclad's steam engine. Click to cancel.", percentage = percentage, flash = percentage < 10};
+		return {text = "Вы добавляете уголь в двигатель броненосца. ЛКМ чтобы отменить.", percentage = percentage, flash = percentage < 10};
 	end
 end
 

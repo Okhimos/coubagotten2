@@ -43,10 +43,10 @@ end
 
 function cwRecipes:GetProgressBarInfoAction(action, percentage)
 	if (action == "crafting") then
-		local craftVerb = Clockwork.Client:GetNetVar("cwProgressBarVerb") or  "crafting";
-		local itemName = Clockwork.Client:GetNetVar("cwProgressBarItem") or "an item";
+		local craftVerb = Clockwork.Client:GetNetVar("cwProgressBarVerb") or  "создаете";
+		local itemName = Clockwork.Client:GetNetVar("cwProgressBarItem") or "предмет";
 		
-		return {text = "You are "..craftVerb.." "..itemName..". Click to cancel.", percentage = percentage, flash = percentage < 0}
+		return {text = "Вы "..craftVerb.." "..itemName..". ЛКМ чтобы отменить.", percentage = percentage, flash = percentage < 0}
 	end
 end
 
