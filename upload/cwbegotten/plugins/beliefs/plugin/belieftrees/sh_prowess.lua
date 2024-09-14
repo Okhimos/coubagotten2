@@ -47,7 +47,7 @@ local PROWESS = cwBeliefs.beliefTrees:New("prowess")
 				name = "Заточенное Лезвие",
 				description = "Все одноручное рубящее оружие и когти теперь наносят на 15% больше урона.",
 				iconOverride = "begotten/ui/belieficons/swordsman.png",
-				lockedSubfactions = {"Auxiliary"},
+				--lockedSubfactions = {"Auxiliary"},
 				requirements = {"fighter", "halfsword_sway"},
 				row = 3,
 			},
@@ -70,7 +70,7 @@ local PROWESS = cwBeliefs.beliefTrees:New("prowess")
 			["repulsive_riposte"] = {
 				name = "Сокрушительный Выпад",
 				description = "Дает возможность парировать несколько целей с малым промежутком времени, увеличивая ваше активное окно парирования на 0,15 секунды каждый раз, когда вы соединяете парирование, что позволяет вам парировать нескольких противников с большей легкостью. Многократное парирование последовательно восстанавливает больше выносливости, чем больше целей вы парируете. Урон от атаки рипоста от успешных парирований увеличивается с 200% до 250%.";
-				lockedSubfactions = {"Auxiliary"},
+				--lockedSubfactions = {"Auxiliary"},
 				requirements = {"fighter", "parrying"},
 				row = 3,
 			},
@@ -92,7 +92,7 @@ local PROWESS = cwBeliefs.beliefTrees:New("prowess")
 			["warrior"] = {
 				name = "Пехотинец",
 				description = "Максимальная выносливость теперь увеличена еще на 10 очков.",
-				lockedSubfactions = {"Auxiliary"},
+				--lockedSubfactions = {"Auxiliary"},
 				requirements = {"fighter", "wrestle_subdue"},
 				row = 3,
 			},
@@ -114,7 +114,7 @@ local PROWESS = cwBeliefs.beliefTrees:New("prowess")
 			["sidestep"] = {
 				name = "Ошеломляя Врага",
 				description = "Успешное отражение теперь восстанавливает +10 очков выносливости и устойчивости, а также предотвращает атаки противника на дополнительную секунду.",
-				lockedSubfactions = {"Auxiliary"},
+				--lockedSubfactions = {"Auxiliary"},
 				requirements = {"fighter", "deflection"},
 				row = 3,
 			},
@@ -129,8 +129,8 @@ local PROWESS = cwBeliefs.beliefTrees:New("prowess")
 			["might"] = {
 				name = "Тяжелая Рука",
 				description = "Увеличена вместимость инвентаря на 50%. Наносит на 15% больше урона стабильности всем оружием ближнего боя. Кулаки и кулаковое оружие теперь наносят на 20% больше урона.",
-				quote = "\"Ты УНИЧТОЖУ тебя!\"",
-				lockedSubfactions = {"Auxiliary"},
+				quote = "\"Я УНИЧТОЖУ тебя!\"",
+				--lockedSubfactions = {"Auxiliary"},
 				requirements = {"fighter", "strength"},
 				row = 3,
 			},

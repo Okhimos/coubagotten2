@@ -531,11 +531,11 @@ RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("call_of_the_blood_storm");
 	RITUAL.name = "(Уникальное) Зов Кровавого Шторма";
-	RITUAL.description = "Тысячи лет племена луны и джунгли джуджус танцевали вокруг своих фетиш-алтарей, пропитанных кровью, взывая к дождям, чтобы очистить их, но они так и не пришли. Только те, кто продолжал танцевать после того, как их костры догорели, могут почувствовать теплую багровую каплю на своей щеке. Выполнение этого ритуала вызовет кровавую бурю в течение минуты после выполнения. Дает 90 единиц порчи.";
+	RITUAL.description = "Тысячи лет племена луны и джунгли джуджус танцевали вокруг своих фетиш-алтарей, пропитанных кровью, взывая к дождям, чтобы очистить их, но они так и не пришли. Только те, кто продолжал танцевать после того, как их костры догорели, могут почувствовать теплую багровую каплю на своей щеке. Выполнение этого ритуала вызовет кровавую бурю в течение минуты после выполнения. Дает 75 единиц порчи.";
 	RITUAL.onerequiredbelief = {"thirst_blood_moon"}; -- Primevalist Unique Ritual
 	
 	RITUAL.requirements = {"tortured_spirit", "tortured_spirit", "tortured_spirit"};
-	RITUAL.corruptionCost = 90;
+	RITUAL.corruptionCost = 75;
 	RITUAL.ritualTime = 10;
 	RITUAL.experience = 200;
 	
@@ -1276,7 +1276,7 @@ RITUAL = cwRituals.rituals:New("regrowth");
 		player:SetCharacterData("stability", max_stability);
 		--player:SetCharacterData("meleeStamina", max_poise);
 		--player:SetNWInt("meleeStamina", max_poise);
-		player:SetNWInt("freeze", 0);
+		player:SetLocalVar("freeze", 0);
 		player:SetBloodLevel(5000);
 		player:StopAllBleeding();
 		Clockwork.limb:HealBody(player, 100);
@@ -1352,7 +1352,7 @@ RITUAL = cwRituals.rituals:New("regrowth_target");
 					target:SetCharacterData("stability", max_stability);
 					--target:SetCharacterData("meleeStamina", max_poise);
 					--target:SetNWInt("meleeStamina", max_poise);
-					target:SetNWInt("freeze", 0);
+					target:SetLocalVar("freeze", 0);
 					target:SetBloodLevel(5000);
 					target:StopAllBleeding();
 					Clockwork.limb:HealBody(target, 100);

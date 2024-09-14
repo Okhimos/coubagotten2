@@ -11,6 +11,8 @@ Clockwork.kernel:IncludePrefixed("sv_plugin.lua");
 Clockwork.kernel:IncludePrefixed("sv_hooks.lua");
 
 function cwMelee:KeyPress(player, key)
+	if !IsFirstTimePredicted() then return end;
+
 	local bUse = (key == IN_USE)
 	local bAttack2 = (key == IN_ATTACK2);
 
@@ -25,7 +27,7 @@ function cwMelee:KeyPress(player, key)
 			end;
 			
 			if (requiredKey) then
-				if (player:GetNWBool("MelAttacking") != false) then
+				if (player:GetNetVar("MelAttacking")) then
 					return;
 				end;
 				
@@ -58,7 +60,7 @@ function cwMelee:KeyPress(player, key)
 									end
 								end
 							
-								if (player:GetNWBool("ThrustStance") == false) then
+								if !player:GetNetVar("ThrustStance") then
 									if (activeWeapon.isJavelin) then
 										player:PrintMessage(HUD_PRINTTALK, "*** Перешел в стойку ближнего боя.")
 										
@@ -79,7 +81,7 @@ function cwMelee:KeyPress(player, key)
 										end
 									end;
 									
-									player:SetNWBool("ThrustStance", true)
+									player:SetLocalVar("ThrustStance", true)
 									player.StanceSwitchOn = curTime + 1;
 									
 									if activeWeapon.OnMeleeStanceChanged then
@@ -112,7 +114,7 @@ function cwMelee:KeyPress(player, key)
 										end
 									end;
 									
-									player:SetNWBool("ThrustStance", false)
+									player:SetLocalVar("ThrustStance", false)
 									player.StanceSwitchOn = curTime + 1;
 									
 									if activeWeapon.OnMeleeStanceChanged then
@@ -129,7 +131,7 @@ function cwMelee:KeyPress(player, key)
 	
 	if (bAttack2) then
 		if (!player:KeyDown(IN_USE)) then
-			if (player:GetNWBool("MelAttacking") != false) then
+			if (player:GetNetVar("MelAttacking")) then
 				player:CancelGuardening()
 				return;
 			end;
@@ -150,10 +152,12 @@ function cwMelee:KeyPress(player, key)
 						
 						--if (blockTable and player:GetNWInt("meleeStamina", 100) >= blockTable["guardblockamount"]) then
 						if (blockTable and player:GetNWInt("Stamina", 100) >= blockTable["guardblockamount"]) then
-							player:SetNWBool("Guardening", true);
-							player.beginBlockTransition = true;
-							activeWeapon.Primary.Cone = activeWeapon.IronCone;
-							activeWeapon.Primary.Recoil = activeWeapon.Primary.IronRecoil;
+							if !player:GetNetVar("Guardening") then
+								player:SetLocalVar("Guardening", true);
+								player.beginBlockTransition = true;
+								activeWeapon.Primary.Cone = activeWeapon.IronCone;
+								activeWeapon.Primary.Recoil = activeWeapon.Primary.IronRecoil;
+							end
 						else
 							player:CancelGuardening()
 						end;
@@ -162,7 +166,7 @@ function cwMelee:KeyPress(player, key)
 					player:CancelGuardening();
 				end;
 			end;
-		elseif (player:GetNWBool("Guardening", false) == true) then
+		elseif player:GetNetVar("Guardening") then
 			player:CancelGuardening()
 		end;
 	end;
@@ -188,7 +192,7 @@ end;
 
 function cwMelee:KeyRelease(player, key)
 	if key == IN_ATTACK2 then
-		if (player:GetNWBool("Guardening", false) == true) then
+		if (player:GetNetVar("Guardening", false) == true) then
 			player:CancelGuardening();
 		end;
 	end
@@ -197,15 +201,18 @@ end
 local playerMeta = FindMetaTable("Player");
 
 function playerMeta:CancelGuardening()
-	local activeWeapon = self:GetActiveWeapon();
-	
-	if (IsValid(activeWeapon)) then
-		if (activeWeapon.Base == "sword_swepbase") then
-			activeWeapon.Primary.Cone = activeWeapon.DefaultCone;
-			activeWeapon.Primary.Recoil = activeWeapon.DefaultRecoil;
+	if self:GetNetVar("Guardening") then
+		local activeWeapon = self:GetActiveWeapon();
+		
+		if (IsValid(activeWeapon)) then
+			if (activeWeapon.Base == "sword_swepbase") then
+				activeWeapon.Primary.Cone = activeWeapon.DefaultCone;
+				activeWeapon.Primary.Recoil = activeWeapon.DefaultRecoil;
+			end;
 		end;
-	end;
+		
+		self:SetLocalVar("Guardening", false);
+	end
 	
-	self:SetNWBool("Guardening", false);
 	self.beginBlockTransition = true;
 end;
