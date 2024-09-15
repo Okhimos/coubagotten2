@@ -60,6 +60,7 @@ ITEM:Register();
 
 local ITEM = Clockwork.item:New();
 	ITEM.name = "Заплесневелый Хлеб";
+	ITEM.uniqueID = "moldy_bread"
 	ITEM.cost = 8;
 	ITEM.model = "models/kali/miscstuff/stalker/food/bread.mdl";
 	ITEM.weight = 0.2;
