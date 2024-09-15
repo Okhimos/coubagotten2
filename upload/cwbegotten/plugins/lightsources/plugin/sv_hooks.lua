@@ -21,9 +21,9 @@ function cwLantern:PlayerThink(player, curTime, infoTable, alive, initialized, p
 		plyTab.nextLanternBurn = curTime + math.random(60, 120);
 
 		if (math.random(0, (player:HasTrait("marked") and 50 or 150)) == 0) then
-			local pronoun = (player:GetGender() == GENDER_FEMALE and "her" or "him");
+			local pronoun = (player:GetGender() == GENDER_FEMALE and "себя" or "себя");
 
-			Clockwork.chatBox:AddInTargetRadius(player, "me", "'s lantern spills some oil onto "..pronoun.."self, igniting and setting "..pronoun.." on fire!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+			Clockwork.chatBox:AddInTargetRadius(player, "me", "случайно разливает немного масла из лампы на "..pronoun..", поджигая "..pronoun.."!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 			player:Ignite(5);
 		end
 	end
