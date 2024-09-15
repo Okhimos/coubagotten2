@@ -9,7 +9,7 @@
 	RECIPE.model = "models/props_combine/breenclock.mdl"; -- NOT USED CURRENTLY
 	RECIPE.description = "Example description" -- NOT USED CURRENTLY
 	RECIPE.requiresHeatSource = false; -- Primarily for cooking, you can just not include this instead of making it false and it will work the same.
-	RECIPE.requiresSmithy = true; -- Primarily for smithing, you can just not include this instead of making it false and it will work the same.
+	RECIPE.requiresSmithy = true; -- Primarily for куете, you can just not include this instead of making it false and it will work the same.
 	
 	-- Use one or the other, not both. These hide the recipe from players who do not meet the faction/faith requirements.
 	RECIPE.requiredFactions = {"Gatekeeper", "Holy Hierarchy"};
@@ -35,7 +35,7 @@
 	RECIPE.finishSound = "ambient/creatures/teddy.wav"; -- Sound that plays when the crafting action finishes successfully.
 	RECIPE.failSound = "buttons/button2.wav" -- NOT USED CURRENTLY
 	RECIPE.craftTime = 8 -- Time it takes for the crafting action bar to complete.
-	RECIPE.craftVerb = "smithing" -- Verb seen in /mes and the crafting action bar.
+	RECIPE.craftVerb = "куете" -- Verb seen in /mes and the crafting action bar.
 	RECIPE.experience = 2 -- XP gained from crafting the recipe.
 	
 	function RECIPE:SetUpTooltip(frame)
@@ -71,7 +71,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "ambient/fire/mtov_flame2.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 4;
 		
 		function RECIPE:OnCraft(player)
@@ -177,7 +177,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 5;
 		
 		function RECIPE:OnCraft(player)
@@ -205,7 +205,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 5;
 		
 		function RECIPE:OnCraft(player)
@@ -233,7 +233,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 5;
 		
 		function RECIPE:OnCraft(player)
@@ -261,7 +261,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -289,7 +289,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -317,7 +317,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -345,7 +345,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -373,7 +373,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -403,7 +403,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -433,7 +433,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -462,7 +462,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -492,7 +492,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -521,7 +521,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 20;
 		
 		function RECIPE:OnCraft(player)
@@ -974,7 +974,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 2;
 		
 		function RECIPE:OnCraft(player)
@@ -1000,7 +1000,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 2;
 		
 		function RECIPE:OnCraft(player)
@@ -1026,7 +1026,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 8;
 		
 		function RECIPE:OnCraft(player)
@@ -1052,7 +1052,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 3;
 		
 		function RECIPE:OnCraft(player)
@@ -1079,7 +1079,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 12
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 8;
 		
 		function RECIPE:OnCraft(player)
@@ -1107,7 +1107,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -1137,7 +1137,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 85;
 		
 		function RECIPE:OnCraft(player)
@@ -1170,7 +1170,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 6
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -1197,7 +1197,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -1224,7 +1224,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -1251,7 +1251,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 12;
 		
 		function RECIPE:OnCraft(player)
@@ -1278,7 +1278,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 8;
 		
 		function RECIPE:OnCraft(player)
@@ -1305,7 +1305,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 8;
 		
 		function RECIPE:OnCraft(player)
@@ -1331,7 +1331,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 8;
 		
 		function RECIPE:OnCraft(player)
@@ -1358,7 +1358,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 12;
 		
 		function RECIPE:OnCraft(player)
@@ -1384,7 +1384,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 8;
 		
 		function RECIPE:OnCraft(player)
@@ -1417,7 +1417,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -1445,7 +1445,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 20;
 		
 		function RECIPE:OnCraft(player)
@@ -1473,7 +1473,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -1501,7 +1501,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -1529,7 +1529,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -1556,7 +1556,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -1590,7 +1590,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -1618,7 +1618,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -1646,7 +1646,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -1675,7 +1675,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 19;
 		
 		function RECIPE:OnCraft(player)
@@ -1703,7 +1703,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 18;
 		
 		function RECIPE:OnCraft(player)
@@ -1731,7 +1731,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -1760,7 +1760,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -1788,7 +1788,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -1815,7 +1815,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -1842,7 +1842,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -1870,7 +1870,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -1900,7 +1900,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -1930,7 +1930,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -1959,7 +1959,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
@@ -1987,7 +1987,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2016,7 +2016,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2045,7 +2045,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2074,7 +2074,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -2104,7 +2104,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 85;
 		
 		function RECIPE:OnCraft(player)
@@ -2134,7 +2134,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 85;
 		
 		function RECIPE:OnCraft(player)
@@ -2164,7 +2164,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -2191,7 +2191,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2220,7 +2220,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -2250,7 +2250,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 65;
 		
 		function RECIPE:OnCraft(player)
@@ -2277,7 +2277,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -2305,7 +2305,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "beams/beamstart5.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -2334,7 +2334,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "beams/beamstart5.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
@@ -2363,7 +2363,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -2391,7 +2391,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "beams/beamstart5.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 85;
 		
 		function RECIPE:OnCraft(player)
@@ -2418,7 +2418,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -2446,7 +2446,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -2474,7 +2474,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -2501,7 +2501,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2529,7 +2529,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -2557,7 +2557,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -2585,7 +2585,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -2614,7 +2614,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2643,7 +2643,7 @@ function cwRecipes:ClockworkInitialized()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 75;
 	
 	function RECIPE:OnCraft(player)
@@ -2672,7 +2672,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -2701,7 +2701,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -2731,7 +2731,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
@@ -2760,7 +2760,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -2789,7 +2789,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -2819,7 +2819,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 20;
 		
 		function RECIPE:OnCraft(player)
@@ -2848,7 +2848,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -2876,7 +2876,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2905,7 +2905,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2934,7 +2934,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -2963,7 +2963,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -2992,7 +2992,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -3021,7 +3021,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -3052,7 +3052,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -3080,7 +3080,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -3106,7 +3106,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 0;
 		
 		function RECIPE:OnCraft(player)
@@ -3132,7 +3132,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 2;
 		
 		function RECIPE:OnCraft(player)
@@ -3160,7 +3160,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -3187,7 +3187,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -3215,7 +3215,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -3245,7 +3245,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -3276,7 +3276,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 20;
 		
 		function RECIPE:OnCraft(player)
@@ -3307,7 +3307,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 20;
 		
 		function RECIPE:OnCraft(player)
@@ -3334,7 +3334,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -3360,7 +3360,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -3389,7 +3389,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 65;
 		
 		function RECIPE:OnCraft(player)
@@ -3419,7 +3419,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -3450,7 +3450,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -3479,7 +3479,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -3508,7 +3508,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -3537,7 +3537,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -3563,7 +3563,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -3592,7 +3592,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -3622,7 +3622,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -3652,7 +3652,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -3680,7 +3680,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -3709,7 +3709,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -3738,7 +3738,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -3766,7 +3766,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -3794,7 +3794,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -3822,7 +3822,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 20;
 		
 		function RECIPE:OnCraft(player)
@@ -3851,7 +3851,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -3879,7 +3879,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -3905,7 +3905,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -3931,7 +3931,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -3959,7 +3959,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -3987,7 +3987,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -4015,7 +4015,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -4044,7 +4044,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -4073,7 +4073,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -4102,7 +4102,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -4129,7 +4129,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -4159,7 +4159,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -4188,7 +4188,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "beams/beamstart5.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -4217,7 +4217,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -4243,7 +4243,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -4273,7 +4273,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -4303,7 +4303,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -4333,7 +4333,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -4363,7 +4363,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -4393,7 +4393,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -4424,7 +4424,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -4461,7 +4461,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -4491,7 +4491,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -4521,7 +4521,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 130;
 		
 		function RECIPE:OnCraft(player)
@@ -4550,7 +4550,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "possession/spiritsting.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "imbueing"
+		RECIPE.craftVerb = "наполяете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -4579,7 +4579,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "possession/spiritsting.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "imbueing"
+		RECIPE.craftVerb = "наполяете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -4608,7 +4608,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -4637,7 +4637,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 130;
 		
 		function RECIPE:OnCraft(player)
@@ -4667,7 +4667,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 175;
 		
 		function RECIPE:OnCraft(player)
@@ -4697,7 +4697,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 90;
 		
 		function RECIPE:OnCraft(player)
@@ -4727,7 +4727,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 125;
 		
 		function RECIPE:OnCraft(player)
@@ -4759,7 +4759,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 125;
 		
 		function RECIPE:OnCraft(player)
@@ -4789,7 +4789,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -4819,7 +4819,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -4849,7 +4849,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -4879,7 +4879,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -4909,7 +4909,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -4939,7 +4939,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -4969,7 +4969,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -5004,7 +5004,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -5034,7 +5034,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 65;
 		
 		function RECIPE:OnCraft(player)
@@ -5063,7 +5063,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 65;
 		
 		function RECIPE:OnCraft(player)
@@ -5092,7 +5092,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -5121,7 +5121,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 180;
 		
 		function RECIPE:OnCraft(player)
@@ -5150,7 +5150,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
@@ -5178,7 +5178,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -5208,7 +5208,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 130;
 		
 		function RECIPE:OnCraft(player)
@@ -5235,7 +5235,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -5264,7 +5264,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -5292,7 +5292,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "beams/beamstart5.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -5321,7 +5321,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
@@ -5350,7 +5350,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
@@ -5376,7 +5376,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -5404,7 +5404,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "physics/wood/wood_strain3.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -5431,7 +5431,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -5467,7 +5467,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -5497,7 +5497,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -5526,7 +5526,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -5555,7 +5555,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 35;
 	
 	function RECIPE:OnCraft(player)
@@ -5584,7 +5584,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -5614,7 +5614,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 75;
 		
 		function RECIPE:OnCraft(player)
@@ -5644,7 +5644,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 80;
 	
 	function RECIPE:OnCraft(player)
@@ -5674,7 +5674,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 60;
 	
 	function RECIPE:OnCraft(player)
@@ -5703,7 +5703,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -5732,7 +5732,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -5761,7 +5761,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 125;
 		
 		function RECIPE:OnCraft(player)
@@ -5790,7 +5790,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -5825,7 +5825,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -5854,7 +5854,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -5883,7 +5883,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -5912,7 +5912,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -5942,7 +5942,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 65;
 		
 		function RECIPE:OnCraft(player)
@@ -5972,7 +5972,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -6003,7 +6003,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 100;
 	
 	function RECIPE:OnCraft(player)
@@ -6033,7 +6033,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 100;
 	
 	function RECIPE:OnCraft(player)
@@ -6064,7 +6064,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 60;
 	
 	function RECIPE:OnCraft(player)
@@ -6095,7 +6095,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "smithing"
+	RECIPE.craftVerb = "куете"
 	RECIPE.experience = 40;
 	
 	function RECIPE:OnCraft(player)
@@ -6125,7 +6125,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 185;
 		
 		function RECIPE:OnCraft(player)
@@ -6155,7 +6155,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 250;
 		
 		function RECIPE:OnCraft(player)
@@ -6185,7 +6185,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -6214,7 +6214,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -6244,7 +6244,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 65;
 		
 		function RECIPE:OnCraft(player)
@@ -6272,7 +6272,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -6302,7 +6302,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 225;
 		
 		function RECIPE:OnCraft(player)
@@ -6332,7 +6332,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -6360,7 +6360,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -6387,7 +6387,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -6416,7 +6416,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
@@ -6446,7 +6446,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -6476,7 +6476,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 50;
 		
 		function RECIPE:OnCraft(player)
@@ -6507,7 +6507,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 85;
 		
 		function RECIPE:OnCraft(player)
@@ -6538,7 +6538,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -6568,7 +6568,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -6597,7 +6597,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 175;
 		
 		function RECIPE:OnCraft(player)
@@ -6627,7 +6627,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -6658,7 +6658,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 350;
 		
 		function RECIPE:OnCraft(player)
@@ -6688,7 +6688,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 500;
 		
 		function RECIPE:OnCraft(player)
@@ -6717,7 +6717,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -6746,7 +6746,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -6775,7 +6775,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -6804,7 +6804,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -6833,7 +6833,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 70;
 		
 		function RECIPE:OnCraft(player)
@@ -6862,7 +6862,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -6891,7 +6891,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -6921,7 +6921,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 225;
 		
 		function RECIPE:OnCraft(player)
@@ -6951,7 +6951,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -6981,7 +6981,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 300;
 		
 		function RECIPE:OnCraft(player)
@@ -7011,7 +7011,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
@@ -7043,7 +7043,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 350;
 		
 		function RECIPE:OnCraft(player)
@@ -7075,7 +7075,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 400;
 		
 		function RECIPE:OnCraft(player)
@@ -7104,7 +7104,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 70;
 		
 		function RECIPE:OnCraft(player)
@@ -7133,7 +7133,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -7162,7 +7162,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -7191,7 +7191,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -7220,7 +7220,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -7249,7 +7249,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -7277,7 +7277,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "possession/spiritsting.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "imbueing"
+		RECIPE.craftVerb = "наполяете"
 		RECIPE.experience = 70;
 		
 		function RECIPE:OnCraft(player)
@@ -7305,7 +7305,7 @@ RECIPE:Register()
 	RECIPE.finishSound = "possession/spiritsting.wav";
 	RECIPE.failSound = "buttons/button2.wav"
 	RECIPE.craftTime = 8
-	RECIPE.craftVerb = "imbueing"
+	RECIPE.craftVerb = "наполяете"
 	RECIPE.experience = 60;
 	
 	function RECIPE:OnCraft(player)
@@ -7334,7 +7334,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -7363,7 +7363,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -7394,7 +7394,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 70;
 		
 		function RECIPE:OnCraft(player)
@@ -7422,7 +7422,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -7449,7 +7449,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -7478,7 +7478,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -7507,7 +7507,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -7536,7 +7536,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -7563,7 +7563,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 55;
 		
 		function RECIPE:OnCraft(player)
@@ -7591,7 +7591,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 30;
 		
 		function RECIPE:OnCraft(player)
@@ -7619,7 +7619,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -7648,7 +7648,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 85;
 		
 		function RECIPE:OnCraft(player)
@@ -7676,7 +7676,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -7704,7 +7704,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
@@ -7735,7 +7735,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -7765,7 +7765,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -7792,7 +7792,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -7820,7 +7820,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 8;
 		
 		function RECIPE:OnCraft(player)
@@ -7848,7 +7848,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 20;
 		
 		function RECIPE:OnCraft(player)
@@ -7875,7 +7875,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -7902,7 +7902,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 15;
 		
 		function RECIPE:OnCraft(player)
@@ -7930,7 +7930,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -7959,7 +7959,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -7989,7 +7989,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -8018,7 +8018,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -8047,7 +8047,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
@@ -8078,7 +8078,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -8109,7 +8109,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 60;
 		
 		function RECIPE:OnCraft(player)
@@ -8139,7 +8139,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 225;
 		
 		function RECIPE:OnCraft(player)
@@ -8169,7 +8169,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 225;
 		
 		function RECIPE:OnCraft(player)
@@ -8197,7 +8197,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "assembling"
+		RECIPE.craftVerb = "собираете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -8228,7 +8228,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
@@ -8258,7 +8258,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 150;
 		
 		function RECIPE:OnCraft(player)
@@ -8288,7 +8288,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
@@ -8318,7 +8318,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 200;
 		
 		function RECIPE:OnCraft(player)
@@ -8348,7 +8348,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 35;
 		
 		function RECIPE:OnCraft(player)
@@ -8377,7 +8377,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 45;
 		
 		function RECIPE:OnCraft(player)
@@ -8406,7 +8406,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -8435,7 +8435,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -8464,7 +8464,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -8493,7 +8493,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -8521,7 +8521,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -8549,7 +8549,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 25;
 		
 		function RECIPE:OnCraft(player)
@@ -8576,7 +8576,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 10;
 		
 		function RECIPE:OnCraft(player)
@@ -8604,7 +8604,7 @@ RECIPE:Register()
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 40;
 		
 		function RECIPE:OnCraft(player)
@@ -8635,7 +8635,7 @@ RECIPE = cwRecipes.recipes:New("presviter_gatekeeper_helmet");
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 10
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 100;
 		
 		function RECIPE:OnCraft(player)
@@ -8664,7 +8664,7 @@ RECIPE = cwRecipes.recipes:New("emis_gatekeeper_helmet");
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -8693,7 +8693,7 @@ RECIPE = cwRecipes.recipes:New("emis_gatekeeper_helmet");
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
 		RECIPE.failSound = "buttons/button2.wav"
 		RECIPE.craftTime = 8
-		RECIPE.craftVerb = "smithing"
+		RECIPE.craftVerb = "куете"
 		RECIPE.experience = 80;
 		
 		function RECIPE:OnCraft(player)
@@ -8723,7 +8723,7 @@ RECIPE = cwRecipes.recipes:New("flintlock");
     RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
     RECIPE.failSound = "buttons/button2.wav"
     RECIPE.craftTime = 15
-    RECIPE.craftVerb = "smithing"
+    RECIPE.craftVerb = "куете"
     RECIPE.experience = 80;
 
     function RECIPE:OnCraft(player)

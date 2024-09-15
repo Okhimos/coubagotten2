@@ -66,7 +66,7 @@ function PANEL:Rebuild()
 	self.buttonPeform = vgui.Create("DButton", self)
 	self.buttonPeform:SetPos(280, 26)
 	self.buttonPeform:SetSize(162, 114)
-	self.buttonPeform:SetText("Perform")
+	self.buttonPeform:SetText("Исполнить")
 	self.buttonPeform:SetTextColor(Color(200, 170, 170))
 	--self.buttonPeform:SetFont("Ritual_Button")
 	self.buttonPeform:SetFont("Ritual_Text")
@@ -106,7 +106,7 @@ function PANEL:Rebuild()
 	self.buttonHotkey = vgui.Create("DButton", self)
 	self.buttonHotkey:SetPos(446, 26)
 	self.buttonHotkey:SetSize(163, 114)
-	self.buttonHotkey:SetText("Bind")
+	self.buttonHotkey:SetText("Привязать")
 	self.buttonHotkey:SetTextColor(Color(200, 170, 170))
 	--self.buttonHotkey:SetFont("Ritual_Button")
 	self.buttonHotkey:SetFont("Ritual_Text")
@@ -124,7 +124,7 @@ function PANEL:Rebuild()
 		end;
 
 		if(#cwRituals.hotkeyRituals >= 8) then
-			Schema:EasyText("firebrick", "You can only have a maximum of 8 bound rituals at one time!");
+			Schema:EasyText("firebrick", "Вы можете привязать максимум 8 ритуалов!");
 			
 			return;
 
