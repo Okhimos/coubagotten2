@@ -2151,11 +2151,11 @@ function Clockwork.player:GiveCash(player, amount, reason, bNoMsg)
 			if (!bNoMsg) then
 				if (reason) then
 					Clockwork.hint:Send(
-						player, "Your character has lost the sum of "..Clockwork.kernel:FormatCash(roundedAmount).." ("..reason..").", 4, negativeHintColor
+						player, "Ваш персонаж потерял "..Clockwork.kernel:FormatCash(roundedAmount).." монет ("..reason..").", 4, negativeHintColor
 					)
 				else
 					Clockwork.hint:Send(
-						player, "Your character has lost the sum of "..Clockwork.kernel:FormatCash(roundedAmount)..".", 4, negativeHintColor
+						player, "Ваш персонаж потерял "..Clockwork.kernel:FormatCash(roundedAmount).." монет.", 4, negativeHintColor
 					)
 				end
 			end
@@ -2163,11 +2163,11 @@ function Clockwork.player:GiveCash(player, amount, reason, bNoMsg)
 			if (!bNoMsg) then
 				if (reason) then
 					Clockwork.hint:Send(
-						player, "Your character has gained the sum of "..Clockwork.kernel:FormatCash(roundedAmount).." ("..reason..").", 4, positiveHintColor
+						player, "Ваш персонаж получил "..Clockwork.kernel:FormatCash(roundedAmount).." монет ("..reason..").", 4, positiveHintColor
 					)
 				else
 					Clockwork.hint:Send(
-						player, "Your character has gained the sum of "..Clockwork.kernel:FormatCash(roundedAmount)..".", 4, positiveHintColor
+						player, "Ваш персонаж получил "..Clockwork.kernel:FormatCash(roundedAmount).." монет.", 4, positiveHintColor
 					)
 				end
 			end
