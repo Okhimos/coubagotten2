@@ -275,7 +275,7 @@ netstream.Hook("ReloadMenu", function(data)
 		end
 	end
 	
-	Schema:EasyText("chocolate", "No valid ammo could be found for this weapon!");
+	Schema:EasyText("chocolate", "Нет подходящих патрон для этого оружия!");
 end)
 
 netstream.Hook("ClockworkIntro", function(data)
