@@ -110,14 +110,14 @@ function cwPossession:StartCommand(player, ucmd)
 								
 								if !player:GetNetVar("ThrustStance") then
 									if activeWeapon.isJavelin then
-										player:PrintMessage(HUD_PRINTTALK, "*** Switched to melee stance.")
-										possessor:PrintMessage(HUD_PRINTTALK, "*** Switched to melee stance.")
+										player:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на ближний бой.")
+										possessor:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на ближний бой.")
 									elseif activeWeapon.CanSwipeAttack == true then
-										player:PrintMessage(HUD_PRINTTALK, "*** Switched to swiping stance.")
-										possessor:PrintMessage(HUD_PRINTTALK, "*** Switched to swiping stance.")
+										player:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на рубящую.")
+										possessor:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на рубящую.")
 									else
-										player:PrintMessage(HUD_PRINTTALK, "*** Switched to thrusting stance.")
-										possessor:PrintMessage(HUD_PRINTTALK, "*** Switched to thrusting stance.")
+										player:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на колющую.")
+										possessor:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на колющую.")
 									end
 									
 									player:SetLocalVar("ThrustStance", true);
@@ -127,17 +127,17 @@ function cwPossession:StartCommand(player, ucmd)
 									end
 								else
 									if activeWeapon.isJavelin then
-										player:PrintMessage(HUD_PRINTTALK, "*** Switched to throwing stance.")
-										possessor:PrintMessage(HUD_PRINTTALK, "*** Switched to throwing stance.")
+										player:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на метательную.")
+										possessor:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на метательную.")
 									elseif activeWeapon.CanSwipeAttack == true then
-										player:PrintMessage(HUD_PRINTTALK, "*** Switched to thrusting stance.")
-										possessor:PrintMessage(HUD_PRINTTALK, "*** Switched to thrusting stance.")
+										player:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на колющую.")
+										possessor:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на колющую.")
 									elseif attacktable["dmgtype"] == 128 then
-										player:PrintMessage(HUD_PRINTTALK, "*** Switched to bludgeoning stance.")
-										possessor:PrintMessage(HUD_PRINTTALK, "*** Switched to bludgeoning stance.")
+										player:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на дробящую.")
+										possessor:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на дробящую.")
 									else
-										player:PrintMessage(HUD_PRINTTALK, "*** Switched to slashing stance.")
-										possessor:PrintMessage(HUD_PRINTTALK, "*** Switched to slashing stance.")
+										player:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на рубящую.")
+										possessor:PrintMessage(HUD_PRINTTALK, "*** Смена стойки на рубящую.")
 									end
 									
 									player:SetLocalVar("ThrustStance", false);

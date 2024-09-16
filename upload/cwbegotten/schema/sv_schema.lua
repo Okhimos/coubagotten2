@@ -1940,43 +1940,43 @@ function playerMeta:UnequipWeapons()
 end;
 
 function Schema:PlayerCommitSuicide(player)
-	local thirdPerson = "him";
-	local gender = "He";
-	local genderlc = "he";
-	local possessive = "his";
-	local selfless = "himself";
-	local madman = "madman";
+	local thirdPerson = "его";
+	local gender = "Он";
+	local genderlc = "он";
+	local possessive = "своего";
+	local selfless = "себя";
+	local madman = "безумец";
 
 	if (player:GetGender() == GENDER_FEMALE) then
-		thirdPerson = "her";
-		gender = "She";
-		genderlc = "she";
-		possessive = "her";
-		selfless = "herself";
-		madman = "madwoman";
+		thirdPerson = "ее";
+		gender = "Она";
+		genderlc = "она";
+		possessive = "своего";
+		selfless = "себя";
+		madman = "безумец";
 	end;
 	
 	local SuicideMethods = 
 	{
-		"pulls a makeshift shiv out of "..possessive.." pocket and sticks it in "..possessive.." fucking neck.",
-		"pulls a makeshift shiv out of "..possessive.." pocket and gouges it into both of "..possessive.." fucking eyes.",
-		"pulls a makeshift shiv out of "..possessive.." pocket and plunges it deep into "..possessive.." god damn stomach.",
-		"places "..possessive.." hands on "..possessive.." neck and twists it until it fucking snaps.",
-		"pulls out a knife and cuts out "..possessive.." tongue. "..gender.." would then stuff it down "..possessive.." fucking throat, and would quickly suffocate "..selfless.." before falling over and dying.",
-		"picks up a chunk of rubble off the ground. "..gender.." would then smash it into "..possessive.." fucking head, falling over and dying within a couple strikes.",
-		"screams like a "..madman.." and jams "..possessive.." thumbs into "..possessive.." eyes, reeling in pain as blood gushes all over the fucking place before finally collapsing, dead.",
-		"gets a mad look in "..possessive.." eyes and digs out "..possessive.." fucking throat with "..possessive.." nails, blood gushing from the wound everywhere.",
-		"rips off "..possessive.." nose with his bare hands, shoving it down "..possessive.." fucking throat, choking to death.",
-		"digs out "..possessive.." wrist arteries with "..possessive.." nails, screaming in agony as "..genderlc.." bleeds out.",
-		"pulls out a knife and fucking cuts open "..possessive.." stomach, digging inside with "..possessive.." and disemboweling himself with "..possessive.." bare hands.",
-		"gets on all fours and bangs "..possessive.." head repeatedly against the ground, shattering "..possessive.." skull after several successive hits.",
-		"starts fucking choking "..selfless.." with "..possessive.." own two hands! Holy shit! Eventually "..genderlc.." turns blue and collapses, dead. What a twisted fuck!",
-		"puts both "..possessive.." hands into "..possessive.." mouth, and violently fucking rips "..possessive.." jaw off! Jesus Christ! "..gender.." then would scream in agony for a split second before snapping "..possessive.." neck!",
-		"starts cutting "..possessive.." face into ribbons with "..possessive.." god damn nails. What a twisted fucking psychopath!",
-		"abruptly does a backflip, landing on "..possessive.." neck and breaking "..possessive.." skull against the floor with a sickening crunch of bone and cartilage as brain matter spews everywhere.",
-		"pulls out a knife and starts fucking flaying "..selfless.." alive! Holy shit! Layers upon layers of skin find themselves on the ground before "..genderlc.." finally collapses in a pool of blood.",
-		"suddenly plunges "..possessive.." fucking hand into "..possessive.." throat, driving "..possessive.." arm deep inside. "..gender.." then painfully pulls out "..possessive.." own god damn intestines! Holy fucking shit! "..gender.." would then collapsed in a pool of blood.",
-		"suddenly begins tightening "..possessive.." fists, clenching every muscle in "..possessive.." body. As "..genderlc.." does this, "..possessive.." face and knuckles begin to turn a bright red as "..possessive.." limbs tremble back and forth, increasing in magnitude until "..possessive.." epidermal layer is a bright lobster red. Abruptly, "..possessive.." entire fucking body rips apart, exploding in a massive cloud of red blood and bodyparts, viscera spilling everywhere! What the fuck happened?!?"
+		"вытаскивает самодельную заточку из "..possessive.." кармана и втыкает в свою ебанную шею.",
+		"вытаскивает самодельную заточку из "..possessive.." кармана и втыкивает их в свои ебучие глаза.",
+		"вытаскивает самодельную заточку из "..possessive.." кармана и глубоко втыкивает ее в свой ебучий живот.",
+		"кладет руки на свою шею и давит, пока она к хям не хрустнула.",
+		"вытаскивает нож и нахуй отрезает свой язык. "..gender.." затем проталкивает его в свой рот, из-за чего быстро задыхается и падает.",
+		"поднимает кусок земли, затем хуярит себя этой землей до смерти.",
+		"кричит как ебанутый, затем втыкивает свои пальцы в глаза, заливая все вокруг своей кровью и падая на пол замертво.",
+		"безумно оглядывается, затем пальцами разрывает нахуй свое горло, заливая все вокруг кровью.",
+		"отрывает свой нос, затем запихивает его в свое горло, задыхаясь..",
+		"выдирает артерию пальцами, затем кричит в агонии, пока умирает.",
+		"вытаскивает нож, чтобы разрезать себе живот и вытащить свои кишки на всеобщее обозрение голыми руками, затем умирает.",
+		"встает на четвереньки, затем хуярит своей головой землю и после нескольких удачных ударов разбивает себе череп.",
+		"начинает душить себя своими же руками! Ебанный рот! Спустя некоторое время, его кожа становится синей и он падает замертво. Что за ебанутый!",
+		"запихивает обе руки себе в рот и отрывает нахуй свою челюсть! Иисус Христос! После нескольких криков в агонии душит себя и падает замертво.",
+		"начинает резать свое лицо своими же ногтями. Что за ебанутый, блять, психопат!",
+		"неожиданно делает прыжок с кувырком, приземляясь на шею, к хуям ее ломая и разбивая свой череп, заполняя пространство вокруг серым веществом и кровью.",
+		"вытаскивает нож и начинает потрошить себя! Охуеть! Слои кожи оказываются на земле, перед тем как он падает и умирает от кровотечения.",
+		"неожиданно засовывает свои руки в глотку и вытаскивает свои внутренности! Ебанный, блять, рот! Затем падает в лужи собственной крови.",
+		"неожиданно начинает сжимать свои кулаки. Пока это происходило, его лицо начало становится красным как ебучий томат, а конечности начали трястись с ускоряющейся периодичностью, пока его кожа не стала похожа на лобстера. Неожиданно, он к хуям взрывается облаком крови и частей тела! Какого хуя произошло?!?!?"
 	}
 
 	player:Freeze(true);
@@ -1988,8 +1988,8 @@ function Schema:PlayerCommitSuicide(player)
 	timer.Simple(3, function()
 		if IsValid(player) then
 			player:Kill();
-			player:DeathCauseOverride("Went fucking insane and brutally killed "..selfless..".");
-			Clockwork.kernel:PrintLog(LOGTYPE_CRITICAL, player:Name().." has committed fucking suicide.");
+			player:DeathCauseOverride("Сошел к хуям с ума и убил "..selfless..".");
+			Clockwork.kernel:PrintLog(LOGTYPE_CRITICAL, player:Name().." УБИЛСЯ! ХАХАХХА!.");
 			
 			if string.find(suicideMethod, "exploding") then
 				if (player:GetRagdollEntity()) then
