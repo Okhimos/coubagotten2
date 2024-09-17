@@ -1164,7 +1164,7 @@ local COMMAND = Clockwork.command:New("EventZone");
 					end
 				end
 			else
-				for k, v in pairs (_player.GetAll()) do
+				for _, v in _player.Iterator() do
 					if v:HasInitialized() then
 						local vZone = v:GetCharacterData("LastZone", "wasteland");
 							
@@ -1527,23 +1527,21 @@ local COMMAND = Clockwork.command:New("CallCongregation");
 			cwDayNight:ModifyCycleTimeLeft(120);
 		end
 		
-		local players = _player.GetAll()
 		local close_players = {};
 		local far_players = {};
 		
-		for i = 1, _player.GetCount() do
 		for _, v in _player.Iterator() do
 			if IsValid(v) and v:HasInitialized() then
 				local lastZone = v:GetCharacterData("LastZone");
 				
 				if lastZone == "wasteland" then
-					table.insert(far_players, player);
 					Clockwork.chatBox:Add(player, nil, "event", "Звонит церковный колокол, и разносится святое слово: созывается конгрегация, и все сословия, как высшие. так и низшие, обязаны явиться... В противном случае они рискуют быть умервщленными в кратчайшие сроки.");
-					netstream.Start(player, "FadeAmbientMusic");
+					table.insert(far_players, v);
+					netstream.Start(v, "FadeAmbientMusic");
 				elseif lastZone == "tower" or lastZone == "theater" then
-					table.insert(close_players, player);
 					Clockwork.chatBox:Add(player, nil, "event", "Звонит церковный колокол, и разносится святое слово: созывается конгрегация, и все сословия, как высшие. так и низшие, обязаны явиться... В противном случае они рискуют быть умервщленными в кратчайшие сроки.");
-					netstream.Start(player, "FadeAmbientMusic");
+					table.insert(close_players, v);
+					netstream.Start(v, "FadeAmbientMusic");
 				end
 			end
 		end
@@ -2777,8 +2775,8 @@ local COMMAND = Clockwork.command:New("HellJaunt");
 				return false;
 			end
 			
-			if player:GetNWBool("Parried") == true then
 				Schema:EasyText(player, "peru", "Ты сейчас слишком растерян, чтобы отправиться в ад!");
+			if player:GetNetVar("Parried") == true then
 				
 				return false;
 			end
