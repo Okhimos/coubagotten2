@@ -20,7 +20,7 @@ end
 
 DEFAULT_MODELS = {
 	female = {
-		clothes = "models/begotten/wanderers/wanderer_female.mdl",
+		clothes = "models/begotten/wanderers/wanderer_female_new.mdl",
 		heads = {
 			"female_01",
 			"female_02",
@@ -31,7 +31,7 @@ DEFAULT_MODELS = {
 		},
 	},
 	male = {
-		clothes = "models/begotten/wanderers/wanderer_male.mdl",
+		clothes = "models/begotten/wanderers/wanderer_male_new.mdl",
 		heads = {
 			"male_01",
 			"male_02",
