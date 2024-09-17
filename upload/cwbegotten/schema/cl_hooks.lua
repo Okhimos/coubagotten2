@@ -522,7 +522,7 @@ function Schema:GetEntityMenuOptions(entity, options)
 				if table.HasValue(animalModels, entity:GetModel()) then
 					--local activeWeapon = Clockwork.Client:GetActiveWeapon();
 					
-					--if IsValid(activeWeapon) and activeWeapon.isDagger then
+					--if activeWeapon:IsValid() and activeWeapon.isDagger then
 						options["Mutilate"] = "cwCorpseMutilate";
 						options["Skin"] = "cwCorpseSkin";
 					--else
@@ -560,7 +560,7 @@ function Schema:GetEntityMenuOptions(entity, options)
 			elseif model == "models/animals/bear.mdl" then
 				--local activeWeapon = Clockwork.Client:GetActiveWeapon();
 				
-				--if IsValid(activeWeapon) and activeWeapon.isDagger then
+				--if activeWeapon:IsValid() and activeWeapon.isDagger then
 					options["Mutilate"] = "cwCorpseMutilate";
 					options["Skin"] = "cwCorpseSkin";
 				--[[else
@@ -992,7 +992,8 @@ function Schema:DrawTargetPlayerLevel(target, alpha, x, y)
 		if levelText then
 			return Clockwork.kernel:DrawInfo(Clockwork.kernel:ParseData(levelText), x, y, textColor, alpha);
 		end
-	elseif Clockwork.Client:GetNetVar("subfaction") == "Clan Reaver" and targetFaction ~= "Goreic Warrior" then
+	--elseif Clockwork.Client:GetNetVar("subfaction") == "Clan Reaver" and targetFaction ~= "Goreic Warrior" then
+	elseif playerFaction == "Goreic Warrior" and targetFaction ~= "Goreic Warrior" then
 		local level = target:GetNetVar("level", 1)
 		local textColor = Color(255, 100, 100, 255);
 		

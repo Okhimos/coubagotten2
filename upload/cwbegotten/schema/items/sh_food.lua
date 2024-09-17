@@ -731,7 +731,7 @@ local ITEM = Clockwork.item:New();
 					
 					Clockwork.entity:CreateItem(nil, "canned_fresh_meat", Vector(playerPos.x, playerPos.y, playerPos.z + 64));
 					
-					Schema:EasyText(GetAdmins(), "tomato", player:Name().." was taken by a can!", nil);
+					Schema:EasyText(Schema:GetAdmins(), "tomato", player:Name().." was taken by a can!", nil);
 				end
 			end);
 		end;
@@ -974,8 +974,7 @@ local ITEM = Clockwork.item:New();
 	function ITEM:OnUse(player, itemEntity)
 		--player:GiveItem(Clockwork.item:CreateInstance("empty_can"));
 		
-		Schema:EasyText(player, "olivedrab", "Вы едите Соленый Огурец. Он был вкусным, но вас охватывает страх, когда вы понимаете, что там не было никакого соленого огурца!");
-		Schema:EasyText(GetAdmins(), "tomato", player:Name().." has eaten a Pickle Surprise!", nil);
+		Schema:EasyText(player, "olivedrab", "You eat the Pickle Surprise. It tasted good, but you're struck with fear as you realize there that there was no pickle.");
 
 		player:HandleXP(cwBeliefs.xpValues["food"]);
 	end;

@@ -588,7 +588,7 @@ local ITEM = Clockwork.item:New();
 			player:HandleSanity(-100);
 			player:ScriptedDeath("Chugged the Yum Chug.");
 			Schema:EasyText(player, "maroon", "В принципе не думая, ты открываешь рот и вливаешь в себя белую жижку. Все отлично, если не брать в расчет адское жжение в гортани. Через примерно секунд тридцать бездыханное тело валится наземь, оставляя под собой смесь из крови и блевотни. Ну ты и лох конечно.");
-			Schema:EasyText(GetAdmins(), "tomato", player:Name().." chugged the Yum Chug!", nil);
+			Schema:EasyText(Schema:GetAdmins(), "tomato", player:Name().." chugged the Yum Chug!", nil);
 		end
 	end;
 
@@ -623,7 +623,7 @@ local ITEM = Clockwork.item:New();
 			player:ScriptedDeath("Cleansed of impurities.");
 			player:Ignite(8, 0);
 			Schema:EasyText(player, "maroon", "Когда вы пьете Святую воду, и она начинает очищать нечистоты в вашем теле, вы внезапно осознаете, что никто в этом забытом мире не может стать лучше. Ваши внутренности загораются, причиняя неимоверную боль.");
-			Schema:EasyText(GetAdmins(), "tomato", player:Name().." drank holy water!", nil);
+			Schema:EasyText(Schema:GetAdmins(), "tomato", player:Name().." drank holy water!", nil);
 		end
 	end;
 

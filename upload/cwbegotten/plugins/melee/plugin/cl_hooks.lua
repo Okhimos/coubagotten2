@@ -6,7 +6,7 @@
 function cwMelee:PlayerCharacterInitialized(data)
 	local stability = Clockwork.Client:GetNWInt("stability", 100);
 	--local poise = Clockwork.Client:GetNWInt("meleeStamina", 90);
-	local freeze = Clockwork.Client:GetNWInt("freeze", 0);
+	local freeze = Clockwork.Client:GetNetVar("freeze", 0);
 	
 	self.stability = stability;
 	--self.poise = poise;
@@ -19,7 +19,7 @@ function cwMelee:GetBars(bars)
 	local stability = Clockwork.Client:GetNWInt("stability", 100);
 	--local max_poise = Clockwork.Client:GetNetVar("maxMeleeStamina", 90);
 	--local poise = Clockwork.Client:GetNWInt("meleeStamina", 90);
-	local freeze = Clockwork.Client:GetNWInt("freeze", 0);
+	local freeze = Clockwork.Client:GetNetVar("freeze", 0);
 	local frameTime = FrameTime();
 	
 	if (stability) then
@@ -92,7 +92,7 @@ end;
 function cwMelee:PlayerDrawWeaponSelect()
 	local activeWeapon = Clockwork.Client:GetActiveWeapon();
 
-	if IsValid(activeWeapon) and activeWeapon.IsABegottenMelee and activeWeapon:GetNextPrimaryFire() > CurTime() then
+	if activeWeapon:IsValid() and activeWeapon.IsABegottenMelee and activeWeapon:GetNextPrimaryFire() > CurTime() then
 		if LocalPlayer():IsWeaponRaised(activeWeapon) then
 			return false;
 		end
@@ -103,7 +103,7 @@ end;
 	if (!self.nextBreathingCheck or self.nextBreathingCheck < curTime) then
 		self.nextBreathingCheck = curTime + 0.6;
 	
-		for k, v in pairs(_player.GetAll()) do
+		for _, v in _player.Iterator() do
 			local max_poise = v:GetMaxPoise();
 			local poise = v:GetNetVar("meleeStamina", max_poise);
 			local playedBreathing = false;

@@ -358,7 +358,7 @@ function PANEL:DisplayWantedPoster(bountyData, charKey)
 	statusLabel:SetText("МЕСТО ДЕЙСТВИЯ НЕИЗВЕСТНО");
 	statusLabel:SetTextColor(Color(120, 25, 25, 255));
 	
-	for i, v in ipairs(_player.GetAll()) do
+	for _, v in _player.Iterator() do
 		if v:GetNetVar("Key") == charKey then
 			statusLabel:SetText("ОРУДУЕТ В ОКРУГЕ");
 			statusLabel:SetTextColor(Color(25, 120, 25, 255));

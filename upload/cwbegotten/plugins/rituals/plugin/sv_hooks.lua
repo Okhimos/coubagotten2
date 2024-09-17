@@ -319,10 +319,9 @@ function cwRituals:PreEntityTakeDamage(entity, damageInfo)
 		end
 		
 		if damageInfo:IsDamageType(DMG_BULLET) or damageInfo:IsDamageType(DMG_BUCKSHOT) then
-			local players = _player.GetAll();
 			local entPos = entity:GetPos();
 			
-			for i, v in ipairs(players) do
+			for _, v in _player.Iterator() do
 				if v:GetNetVar("powderheelActive") and v:GetPos():Distance(entPos) <= config.Get("talk_radius"):Get() then
 					damageInfo:ScaleDamage(0.5);
 					
@@ -342,7 +341,7 @@ function cwRituals:PlayerCharacterLoaded(player)
 		if subfaction == "Kinisger" then
 			local lastAppearanceChange = player:GetCharacterData("lastAppearanceChange");
 		
-			for k, v in pairs(_player.GetAll()) do
+			for _, v in _player.Iterator() do
 				if IsValid(v) and v ~= player and v:HasInitialized() and v:GetFaction() ~= "Children of Satan" then
 					local vCharLastPlayed = v:QueryCharacter("LastPlayed");
 
@@ -352,7 +351,7 @@ function cwRituals:PlayerCharacterLoaded(player)
 				end
 			end
 		elseif player:GetFaction() ~= "Children of Satan" then
-			for k, v in pairs(_player.GetAll()) do
+			for _, v in _player.Iterator() do
 				if IsValid(v) and v ~= player and v:HasInitialized() and v:GetSubfaction() == "Kinisger" then
 					local lastAppearanceChange = v:GetCharacterData("lastAppearanceChange");
 					
@@ -629,11 +628,7 @@ function cwRituals:DoPlayerDeath(player, attacker, damageInfo)
 				
 				Clockwork.chatBox:Add(attacker, nil, "itnofake", "В момент когда вы добиваете "..player:Name().." вы чувствуете как в ваши карманы наполняются чем-то.");
 				
-				local playerCount = _player.GetCount();
-				local players = _player.GetAll();
-
-				for i = 1, playerCount do
-					local v, k = players[i], i;
+				for _, v in _player.Iterator() do
 					if v:HasInitialized() then
 						if v == player or v:GetFaith() == "Faith of the Dark" then
 							Clockwork.chatBox:Add(v, nil, "darkwhispernoprefix", "Смерть настигла помеченного человека. "..player:Name().."был убит и теперь его душа принадлежит Темному Лорду.");
@@ -1090,7 +1085,7 @@ netstream.Hook("AppearanceAlterationMenu", function(player, data)
 					end
 				end
 				
-				for k, v in pairs(_player.GetAll()) do
+				for _, v in _player.Iterator() do
 					if IsValid(v) and v:HasInitialized() and v:GetFaction() ~= "Children of Satan" then
 						Clockwork.player:SetRecognises(v, player, false);
 					end
