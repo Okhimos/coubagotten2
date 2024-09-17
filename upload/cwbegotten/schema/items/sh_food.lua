@@ -974,7 +974,7 @@ local ITEM = Clockwork.item:New();
 	function ITEM:OnUse(player, itemEntity)
 		--player:GiveItem(Clockwork.item:CreateInstance("empty_can"));
 		
-		Schema:EasyText(player, "olivedrab", "You eat the Pickle Surprise. It tasted good, but you're struck with fear as you realize there that there was no pickle.");
+		Schema:EasyText(player, "olivedrab", "Вы едите Соленый Огурец. Он был вкусным, но вас охватывает страх, когда вы понимаете, что там не было никакого соленого огурца!");
 
 		player:HandleXP(cwBeliefs.xpValues["food"]);
 	end;
