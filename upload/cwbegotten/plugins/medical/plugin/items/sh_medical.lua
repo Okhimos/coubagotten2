@@ -285,6 +285,66 @@ local ITEM = Clockwork.item:New("medical_base");
 ITEM:Register();
 
 local ITEM = Clockwork.item:New("medical_base");
+	ITEM.name = "Сигарета";
+	ITEM.model = "models/moskalyka/metro-exodus/cigar.mdl";
+	ITEM.weight = 0.1;
+	ITEM.useText = "Smoke";
+	ITEM.description = "Небольшая папироска, набитая чем-то похожим на табак.";
+	ITEM.iconoverride = "itemicons/cigarette.png"
+	ITEM.uniqueID = "cigarrete";
+	ITEM.useSound = "begotten_apocalypse/cigarsmoke.wav";
+	
+	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 150};
+	ITEM.useXP = 45;
+	
+	function ITEM:OnUsed(player, itemEntity)
+		if player:Alive() and !player:IsRagdolled() then
+			Clockwork.player:SetMenuOpen(player, false);
+			
+			if cwBeliefs then
+				player:HandleXP(self.useXP);
+			end
+			
+			player:HandleSanity(20);
+			player:EmitSound(self.useSound);
+			player:TakeItem(self, true);
+			
+			netstream.Start(player, "Stunned", 3);
+		end
+	end;
+ITEM:Register();
+
+local ITEM = Clockwork.item:New("medical_base");
+	ITEM.name = "Сигара";
+	ITEM.model = "models/jellik/cigar.mdl";
+	ITEM.weight = 0.1;
+	ITEM.useText = "Smoke";
+	ITEM.description = "Хорошая сигара, наверняка забитая табаком с темноземья!";
+	ITEM.iconoverride = "itemicons/cigar.png"
+	ITEM.uniqueID = "cigarrete";
+	ITEM.useSound = "begotten_apocalypse/cigarsmoke.wav";
+	
+	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 300};
+	ITEM.useXP = 60;
+	
+	function ITEM:OnUsed(player, itemEntity)
+		if player:Alive() and !player:IsRagdolled() then
+			Clockwork.player:SetMenuOpen(player, false);
+			
+			if cwBeliefs then
+				player:HandleXP(self.useXP);
+			end
+			
+			player:HandleSanity(40);
+			player:EmitSound(self.useSound);
+			player:TakeItem(self, true);
+			
+			netstream.Start(player, "Stunned", 3);
+		end
+	end;
+ITEM:Register();
+
+local ITEM = Clockwork.item:New("medical_base");
 	ITEM.name = "Самодельный Бинт";
 	ITEM.cost = 15;
 	ITEM.model = "models/props_wasteland/prison_toiletchunk01f.mdl";
