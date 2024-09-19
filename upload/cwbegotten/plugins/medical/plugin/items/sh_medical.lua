@@ -322,7 +322,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.useText = "Smoke";
 	ITEM.description = "Хорошая сигара, наверняка забитая табаком с темноземья!";
 	ITEM.iconoverride = "itemicons/cigar.png"
-	ITEM.uniqueID = "cigar\";
+	ITEM.uniqueID = "cigar";
 	ITEM.useSound = "begotten_apocalypse/cigarsmoke.wav";
 	
 	ITEM.ingestible = {orally = true, anally = false};
