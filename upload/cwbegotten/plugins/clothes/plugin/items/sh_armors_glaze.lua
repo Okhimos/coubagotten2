@@ -34,9 +34,9 @@ ITEM.stabilityScale = 0.45; -- reduces stability damage by 55%
 local ITEM = Clockwork.item:New("clothes_base");
 ITEM.name = "Кольчуга Странника";
 ITEM.uniqueID = "wanderer_mail";
-ITEM.group = "wanderers/wanderermail";
-ITEM.model = "models/begotten/headgroups_props/wanderermail.mdl"
-ITEM.iconoverride = "materials/begotten/ui/itemicons/wanderer_mail.png"
+ITEM.group = "prelude_wanderers/wanderertabard";
+ITEM.model = "models/begottenprelude/items/wanderertabard.mdl"
+ITEM.iconoverride = "begottenprelude/ui/itemicons/wanderertabard.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 0.75
 ITEM.hitParticle = "MetalSpark";
@@ -576,7 +576,7 @@ ITEM:Register();
 local ITEM = Clockwork.item:New("clothes_base");
 ITEM.name = "Гамбенезон Привратника-Отступника";
 ITEM.uniqueID = "renegade_disciple_robes";
-ITEM.model = "models/begotten/headgroups_props/renegadearmor2.mdl"
+ITEM.model = "models/begotten/items/adyssakeeperworld.mdl"
 ITEM.iconoverride = "materials/begotten/ui/itemicons/renegade_disciple_armor.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 1;
@@ -612,7 +612,7 @@ ITEM.components = {breakdownType = "breakdown", items = {"leather", "leather", "
 
 -- Called when a replacement is needed for a player.
 function ITEM:GetReplacement(player)
-	return "models/begotten/gatekeepers/renegadedisciple.mdl";
+	return "models/begotten/gatekeepers/renegadekeeperdisciple.mdl";
 end;
 
 ITEM.runSound = {
@@ -633,7 +633,7 @@ ITEM:Register();
 local ITEM = Clockwork.item:New("clothes_base");
 ITEM.name = "Латы Привратника-Отступника";
 ITEM.uniqueID = "renegade_acolyte_robes";
-ITEM.model = "models/begotten/headgroups_props/renegadearmor1.mdl"
+ITEM.model = "models/begotten/items/adyssakeeperarmoredworld.mdl"
 ITEM.iconoverride = "materials/begotten/ui/itemicons/renegade_acoylte_armor.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 1;
@@ -669,7 +669,7 @@ ITEM.components = {breakdownType = "breakdown", items = {"leather", "leather", "
 
 -- Called when a replacement is needed for a player.
 function ITEM:GetReplacement(player)
-	return "models/begotten/gatekeepers/renegadeacolyte.mdl";
+	return "models/begotten/gatekeepers/renegadekeeperacolyte.mdl";
 end;
 
 ITEM.runSound = {
@@ -690,9 +690,9 @@ ITEM:Register();
 local ITEM = Clockwork.item:New("clothes_base");
 ITEM.name = "Стеганое Пальто";
 ITEM.uniqueID = "padded_coat";
-ITEM.group = "wanderers/leather";
-ITEM.model = "models/begotten/headgroup_props/paddedcoat.mdl"
-ITEM.iconoverride = "materials/begotten/ui/itemicons/padded_coat.png"
+ITEM.group = "prelude_wanderers/wanderergambeson";
+ITEM.model = "models/begottenprelude/items/wanderergambeson.mdl"
+ITEM.iconoverride = "begottenprelude/ui/itemicons/wanderergambeson.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 1.1
 ITEM.hitParticle = "GlassImpact";
@@ -804,9 +804,9 @@ ITEM:Register();
 local ITEM = Clockwork.item:New("clothes_base");
 ITEM.name = "Боевая Роба Православного Монаха";
 ITEM.uniqueID = "orthodoxist_battle_monk_robes";
-ITEM.group = "wanderers/monkmail";
-ITEM.model = "models/begotten/headgroups_props/monkmail.mdl"
-ITEM.iconoverride = "materials/begotten/ui/itemicons/battle_monk_robes.png"
+ITEM.group = "wanderers/anglo";
+ITEM.model = "models/begotten/items/anglochainworld.mdl"
+ITEM.iconoverride = "rgs-3/itemicons/family_chaincoat.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 0.75
 ITEM.hitParticle = "MetalSpark";
@@ -2318,11 +2318,11 @@ ITEM.walkSound = {
 ITEM:Register();
 
 local ITEM = Clockwork.item:New("clothes_base");
-ITEM.name = "Доспехи Мастера Войны";
+ITEM.name = "Доспехи Высшего Привратника";
 ITEM.uniqueID = "masteratarms_gatekeeper_plate"
-ITEM.group = "gatekeepers/masteratarms";
-ITEM.model = "models/begotten/headgroups_props/masteratarmsplate.mdl"
-ITEM.iconoverride = "materials/begotten/ui/itemicons/masteratarms_gatekeeper_plate.png"
+ITEM.group = "gatekeepers/gatekeeperfine";
+ITEM.model = "models/items/magic/armors/player_armors/player_armor_plate.mdl"
+ITEM.iconoverride = "materials/begotten/ui/itemicons/heavy_gatekeeper_plate.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 0.75
 ITEM.hitParticle = "MetalSpark";
@@ -2330,7 +2330,7 @@ ITEM.protection = 80
 ITEM.type = "chainmail";
 ITEM.weight = 6;
 ITEM.weightclass = "Medium";
-ITEM.description = "Уникальный комплект доспехов Привратника, изготовленный из лучших материалов и специально разработанный для защиты Мастера Войны";
+ITEM.description = "Доспех, созданный на основе Хороших Лат ордена Привратников. Кираса изготовлена из прочной стали Максимилиана. На ремне находятся ножны для кинжала, который является символом уважения к падшим героям.";
 ITEM.useSound = "armormovement/body-armor-b4.WAV.mp3";
 ITEM.requireFaction = {"Gatekeeper"};
 ITEM.faction = "Gatekeeper";
