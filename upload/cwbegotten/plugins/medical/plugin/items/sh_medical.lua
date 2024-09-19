@@ -294,6 +294,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.uniqueID = "cigarrete";
 	ITEM.useSound = "begotten_apocalypse/cigarsmoke.wav";
 	
+	ITEM.ingestible = {orally = true, anally = false};
 	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 150};
 	ITEM.useXP = 45;
 	
@@ -321,9 +322,10 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.useText = "Smoke";
 	ITEM.description = "Хорошая сигара, наверняка забитая табаком с темноземья!";
 	ITEM.iconoverride = "itemicons/cigar.png"
-	ITEM.uniqueID = "cigarrete";
+	ITEM.uniqueID = "cigar\";
 	ITEM.useSound = "begotten_apocalypse/cigarsmoke.wav";
 	
+	ITEM.ingestible = {orally = true, anally = false};
 	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 300};
 	ITEM.useXP = 60;
 	
