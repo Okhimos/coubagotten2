@@ -5,6 +5,12 @@
 	Other credits: kurozael, Alex Grist, Mr. Meow, zigbomb
 --]]
 
+util.AddNetworkString("SetWhitelisted")
+util.AddNetworkString("SetWhitelistedSubfaction")
+util.AddNetworkString("CharacterAdd")
+util.AddNetworkString("CharacterRemove")
+util.AddNetworkString("CharacterMenu")
+
 if (!Clockwork.player) then include("sh_player.lua") end
 if (!Clockwork.database) then include("sv_database.lua") end
 if (!Clockwork.chatBox) then include("sv_chatbox.lua") end
@@ -258,11 +264,12 @@ function Clockwork.player:CreateCharacterFromData(player, data)
 	if (!factionTable.GetName) then
 		if (!factionTable.useFullName) then
 			if (data.forename and data.surname) then
-				data.forename = string.gsub(data.forename, "^.", string.upper)
-				data.surname = string.gsub(data.surname, "^.", string.upper)
+				-- ^. pattern only detects ASCII characters
+				data.forename = string.utf8upper(data.forename:utf8sub(1, 1)) .. data.forename:utf8sub(2)
+				data.surname = string.utf8upper(data.surname:utf8sub(1, 1)) .. data.surname:utf8sub(2)
 				
-				local forename = string.lower(data.forename);
-				local surname = string.lower(data.surname);
+				local forename = string.utf8lower(data.forename);
+				local surname = string.utf8lower(data.surname);
 
 				if (string.find(data.forename, "[%p%s%d]") or string.find(data.surname, "[%p%s%d]")) then
 					return self:SetCreateFault(
@@ -276,7 +283,7 @@ function Clockwork.player:CreateCharacterFromData(player, data)
 					for k, v in pairs(Schema.Ranks) do
 						for i, v2 in ipairs(v) do
 							if v2 ~= "" then
-								table.insert(blacklistedNames, string.lower(v2));
+								table.insert(blacklistedNames, string.utf8lower(v2));
 							end
 						end
 					end
@@ -638,7 +645,9 @@ end
 
 -- A function to set the player's character menu state.
 function Clockwork.player:SetCharacterMenuState(player, state)
-	netstream.Start(player, "CharacterMenu", state)
+	net.Start("CharacterMenu")
+		net.WriteUInt(state, 2)
+	net.Send(player)
 end
 
 -- A function to get a player's action.
@@ -1010,9 +1019,11 @@ function Clockwork.player:SetWhitelisted(player, faction, isWhitelisted)
 		table.RemoveByValue(newTab, faction);
 	end
 
-	netstream.Start(
-		player, "SetWhitelisted", {faction, isWhitelisted}
-	)
+	net.Start("SetWhitelisted")
+		net.WriteString(faction)
+		net.WriteBool(isWhitelisted)
+	net.Send(player)
+
 	player:SetData("Whitelisted", newTab)
 end
 
@@ -1035,9 +1046,11 @@ function Clockwork.player:SetWhitelistedSubfaction(player, subfaction, isWhiteli
 		table.RemoveByValue(newTab, subfaction);
 	end
 
-	netstream.Start(
-		player, "SetWhitelistedSubfaction", {subfaction, isWhitelisted}
-	)
+	net.Start("SetWhitelistedSubfaction")
+		net.WriteString(subfaction)
+		net.WriteBool(isWhitelisted)
+	net.Send(player)
+	
 	player:SetData("WhitelistedSubfactions", newTab)
 end
 
@@ -1708,7 +1721,9 @@ function Clockwork.player:ForceDeleteCharacter(player, characterID)
 
 		player.cwCharacterList[characterID] = nil
 
-		netstream.Start(player, "CharacterRemove", characterID)
+		net.Start("CharacterRemove")
+			net.WriteUInt(characterID, 16)
+		net.Send(player)
 	end
 end
 
@@ -2979,7 +2994,9 @@ function Clockwork.player:CharacterScreenAdd(player, character)
 	end
 
 	hook.Run("PlayerAdjustCharacterScreenInfo", player, character, info)
-	netstream.Start(player, "CharacterAdd", info)
+	net.Start("CharacterAdd")
+		net.WriteTable(info)
+	net.Send(player)
 end
 
 -- A function to convert a character's MySQL variables to Lua variables.
