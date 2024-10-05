@@ -330,12 +330,12 @@ function cwMedicalSystem:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunction
 		if (itemTable.applicable) then
 			if itemTable.limbs == "all" then
 				if itemTable.useOnSelf then
-					menuPanel:AddOption(string.gsub("Apply", "^.", string.upper), function()
+					menuPanel:AddOption("Apply", function()
 						Clockwork.inventory:InventoryAction("apply_all", itemTable.uniqueID, itemTable.itemID);
 					end);
 				end;
 				
-				menuPanel:AddOption(string.gsub("Give", "^.", string.upper), function()
+				menuPanel:AddOption("Give", function()
 					Clockwork.inventory:InventoryAction("give_all", itemTable.uniqueID, itemTable.itemID);
 				end);
 			else
@@ -348,7 +348,7 @@ function cwMedicalSystem:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunction
 						for k, v in SortedPairsByMemberValue (limbs, "priority") do
 							local hitGroupString = hitgroupToString[k];
 							
-							subMenu:AddOption(string.gsub(hitGroupString, "^.", string.upper), function()
+							subMenu:AddOption(string.utf8upper(hitGroupString:utf8sub(1, 1)) .. hitGroupString:utf8sub(2), function()
 								Clockwork.inventory:InventoryAction(string.gsub("apply_"..hitGroupString, " ", "_"), itemTable.uniqueID, itemTable.itemID);
 							end);
 						end;
@@ -356,7 +356,7 @@ function cwMedicalSystem:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunction
 						for i = 1, #methods do
 							local hitGroupString = hitgroupToString[methods[i]];
 							
-							subMenu:AddOption(string.gsub(hitGroupString, "^.", string.upper), function()
+							subMenu:AddOption(string.utf8upper(hitGroupString:utf8sub(1, 1)) .. hitGroupString:utf8sub(2), function()
 								Clockwork.inventory:InventoryAction(string.gsub("apply_"..hitGroupString, " ", "_"), itemTable.uniqueID, itemTable.itemID);
 							end);
 						end;
@@ -369,7 +369,7 @@ function cwMedicalSystem:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunction
 					for i = 1, #methods do
 						local hitGroupString = hitgroupToString[methods[i]];
 						
-						subMenu:AddOption(string.gsub(hitGroupString, "^.", string.upper), function()
+						subMenu:AddOption(string.utf8upper(hitGroupString:utf8sub(1, 1)) .. hitGroupString:utf8sub(2), function()
 							Clockwork.inventory:InventoryAction(string.gsub("give_"..hitGroupString, " ", "_"), itemTable.uniqueID, itemTable.itemID);
 						end);
 					end;
@@ -379,7 +379,7 @@ function cwMedicalSystem:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunction
 					for i = 1, #methods do
 						local hitGroupString = hitgroupToString[methods[i]];
 						
-						subMenu:AddOption(string.gsub(hitGroupString, "^.", string.upper), function()
+						subMenu:AddOption(string.utf8upper(hitGroupString:utf8sub(1, 1)) .. hitGroupString:utf8sub(2), function()
 							Clockwork.inventory:InventoryAction(string.gsub("give_"..hitGroupString, " ", "_"), itemTable.uniqueID, itemTable.itemID);
 						end);
 					end;
@@ -395,7 +395,7 @@ function cwMedicalSystem:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunction
 
 				for k, v in pairs (methods) do
 					if v ~= false then
-						subMenu:AddOption(string.gsub(k, "^.", string.upper), function()
+						subMenu:AddOption(string.utf8upper(k:utf8sub(1, 1)) .. k:utf8sub(2), function()
 							Clockwork.inventory:InventoryAction("ingest_"..k, itemTable.uniqueID, itemTable.itemID);
 						end);
 					end
@@ -403,7 +403,7 @@ function cwMedicalSystem:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunction
 			else
 				for k, v in pairs (methods) do
 					if v ~= false then
-						menuPanel:AddOption(string.gsub(k, "^.", string.upper), function()
+						menuPanel:AddOption(string.utf8upper(k:utf8sub(1, 1)) .. k:utf8sub(2), function()
 							Clockwork.inventory:InventoryAction("ingest_"..k, itemTable.uniqueID, itemTable.itemID);
 						end);
 					end;
@@ -461,7 +461,7 @@ function cwMedicalSystem:ModifyStatusEffects(tab)
 			end
 			
 			if v.bleeding then
-				table.insert(tab, {text = "(-) "..string.gsub(hitGroupString, "^.", string.upper)..": Кровотечение", color = Color(200, 40, 40)});
+				table.insert(tab, {text = "(-) "..(string.utf8upper(hitGroupString:utf8sub(1, 1)) .. hitGroupString:utf8sub(2))..": Bleeding", color = Color(200, 40, 40)});
 			end
 			
 			--[[if v.infected and v.infected > 0 then
@@ -495,7 +495,7 @@ function cwMedicalSystem:ModifyStatusEffects(tab)
 			for i = 1, #v do
 				local injury = self.cwInjuryTable[v[i]];
 				
-				table.insert(tab, {text = "(-) "..string.gsub(hitGroupString, "^.", string.upper)..": "..injury.name, color = Color(200, 40, 40)});
+				table.insert(tab, {text = "(-) "..(string.utf8upper(hitGroupString:utf8sub(1, 1)) .. hitGroupString:utf8sub(2))..": "..injury.name, color = Color(200, 40, 40)});
 			end
 		end
 	end

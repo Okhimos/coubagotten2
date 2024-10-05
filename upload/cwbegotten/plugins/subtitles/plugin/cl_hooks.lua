@@ -49,8 +49,8 @@ function cwCinematicText:ChatBoxAdjustInfo(info)
 						info.text = info.text.."...";
 					end;
 					
-					local lastChar = string.sub(info.text, string.len(info.text));
 					local sayText = "говорит";
+					local lastChar = string.utf8sub(info.text, string.utf8len(info.text));
 					
 					if info.class == "ic" then
 						if lastChar == "?" then

@@ -128,7 +128,7 @@ function PANEL:Rebuild()
 			surface.PlaySound("begotten/ui/buttonclick.wav")
 			
 			if self.recipeListOpen ~= "Weapons" then
-				self:BuildRecipeList("Weapons", faction, faith, subfaction, subfaith, (Clockwork.Client.recipeSearch and Clockwork.Client.recipeSearch or ""));
+				self:BuildRecipeList("Weapons", faction, faith, subfaction, subfaith, (cwRecipes.recipeSearch and cwRecipes.recipeSearch or ""));
 			end
 		end
 		
@@ -153,7 +153,7 @@ function PANEL:Rebuild()
 			surface.PlaySound("begotten/ui/buttonclick.wav")
 			
 			if self.recipeListOpen ~= "Munitions" then
-				self:BuildRecipeList("Munitions", faction, faith, subfaction, subfaith, (Clockwork.Client.recipeSearch and Clockwork.Client.recipeSearch or ""));
+				self:BuildRecipeList("Munitions", faction, faith, subfaction, subfaith, (cwRecipes.recipeSearch and cwRecipes.recipeSearch or ""));
 			end
 		end
 		
@@ -178,7 +178,7 @@ function PANEL:Rebuild()
 			surface.PlaySound("begotten/ui/buttonclick.wav")
 			
 			if self.recipeListOpen ~= "Armor" then
-				self:BuildRecipeList("Armor", faction, faith, subfaction, subfaith, (Clockwork.Client.recipeSearch and Clockwork.Client.recipeSearch or ""));
+				self:BuildRecipeList("Armor", faction, faith, subfaction, subfaith, (cwRecipes.recipeSearch and cwRecipes.recipeSearch or ""));
 			end
 		end
 		
@@ -203,7 +203,7 @@ function PANEL:Rebuild()
 			surface.PlaySound("begotten/ui/buttonclick.wav")
 			
 			if self.recipeListOpen ~= "Cooking" then
-				self:BuildRecipeList("Cooking", faction, faith, subfaction, subfaith, (Clockwork.Client.recipeSearch and Clockwork.Client.recipeSearch or ""));
+				self:BuildRecipeList("Cooking", faction, faith, subfaction, subfaith, (cwRecipes.recipeSearch and cwRecipes.recipeSearch or ""));
 			end
 		end
 		
@@ -218,7 +218,7 @@ function PANEL:Rebuild()
 		self.medicalButton:SetText("Медицина");
 		self.medicalButton:SetSize(256, 70);
 		self.medicalButton:SetTextColor(Color(160, 0, 0));
-		self.medicalButton:SetFont("Civ5Tooltip5");
+		self.medicalButton:SetFont("nov_IntroTextSmallfaaaaa");
 		
 		local width, height = self.medicalButton:GetWide(), self.medicalButton:GetTall()
 		local buttonMaterial = Material("begotten/ui/butt24.png")
@@ -253,7 +253,7 @@ function PANEL:Rebuild()
 			surface.PlaySound("begotten/ui/buttonclick.wav")
 			
 			if self.recipeListOpen ~= "Other" then
-				self:BuildRecipeList("Other", faction, faith, subfaction, subfaith, (Clockwork.Client.recipeSearch and Clockwork.Client.recipeSearch or ""));
+				self:BuildRecipeList("Other", faction, faith, subfaction, subfaith, (cwRecipes.recipeSearch and cwRecipes.recipeSearch or ""));
 			end
 		end
 		
@@ -332,27 +332,23 @@ function PANEL:Rebuild()
 	end
 	
 	-- Default to weapons.
-	self:BuildRecipeList("Weapons", faction, faith, subfaction, subfaith, (Clockwork.Client.recipeSearch and Clockwork.Client.recipeSearch or ""));
+	self:BuildRecipeList("Weapons", faction, faith, subfaction, subfaith, (cwRecipes.recipeSearch and cwRecipes.recipeSearch or ""));
 
-	if(!self.recipeSearch) then
+	if (!self.recipeSearch) then
 		self.recipeSearch = self:Add("cwSearchBox");
 		self.recipeSearch:SetPos(7,79);
 		self.recipeSearch:SetWide(768);
 
-		if(Clockwork.Client.recipeSearch) then
-			self.recipeSearch:SetValue(Clockwork.Client.recipeSearch);
-
+		if(cwRecipes.recipeSearch) then
+			self.recipeSearch:SetValue(cwRecipes.recipeSearch);
 		end
 
 		self.recipeSearch.OnChange = function()
-			Clockwork.Client.recipeSearch = self.recipeSearch:GetText();
+			cwRecipes.recipeSearch = string.gsub(self.recipeSearch:GetText() or "", "[^%w%s%-]", "");
 
-			self:BuildRecipeList(self.recipeListOpen, faction, faith, subfaction, subfaith, Clockwork.Client.recipeSearch);
-
+			self:BuildRecipeList(self.recipeListOpen, faction, faith, subfaction, subfaith, cwRecipes.recipeSearch);
 		end
-
 	end
-
 end
 
 function PANEL:BuildRecipeList(category, faction, faith, subfaction, subfaith, searchTerm)
@@ -404,9 +400,8 @@ function PANEL:BuildRecipeList(category, faction, faith, subfaction, subfaith, s
 					end
 				end
 
-				if(searchTerm and !string.find(string.lower(v.name), string.lower(searchTerm))) then
+				if (searchTerm and !string.find(string.lower(v.name), string.lower(searchTerm))) then
 					continue;
-
 				end
 			
 				self:AddRecipe(v);

@@ -295,7 +295,7 @@ function COMMAND:OnRun(player, arguments)
 	local target = Clockwork.player:FindByID(arguments[1]);
 
 	if (target) then
-		local message = string.upper("\""..table.concat(arguments, " ", 2).."\"");
+		local message = string.utf8upper("\""..table.concat(arguments, " ", 2).."\"");
 
 		if target ~= player then
 			Clockwork.chatBox:SetMultiplier(1.25);
@@ -324,7 +324,7 @@ function COMMAND:OnRun(player, arguments)
 	local target = Clockwork.player:FindByID(arguments[1]);
 
 	if (target) then
-		local message = string.upper("\""..table.concat(arguments, " ", 2).."\"");
+		local message = string.utf8upper("\""..table.concat(arguments, " ", 2).."\"");
 
 		if target ~= player then
 			Clockwork.chatBox:SetMultiplier(1.25);

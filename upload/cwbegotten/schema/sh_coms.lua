@@ -486,10 +486,10 @@ local COMMAND = Clockwork.command:New("Promote")
 	-- Called when the command has been run.
 	function COMMAND:OnRun(player, arguments)
 		local target = Clockwork.player:FindByID(arguments[1]);
-		local rank;
+		local rank
 		
 		if arguments[2] then
-			rank = string.lower(tostring(arguments[2]));
+			rank = string.utf8lower(tostring(arguments[2]));
 		end
 		
 		if (target) then
@@ -511,7 +511,7 @@ local COMMAND = Clockwork.command:New("Promote")
 
 				if rank then
 					for k, v in pairs(ranks[faction]) do
-						if (string.lower(v) == tostring(rank) or k == tonumber(rank)) then
+						if (string.utf8lower(v) == tostring(rank) or k == tonumber(rank)) then
 							rank = k;
 						end;
 					end;
@@ -1210,7 +1210,7 @@ local COMMAND = Clockwork.command:New("PlaySoundZone");
 			if table.HasValue(valid_zones, zone) then
 				for i = 3, 4 do
 					if (tonumber(arguments[i]) == nil) then
-						if (string.len(tostring(arguments[i])) > 0) then
+						if (string.utf8len(tostring(arguments[i])) > 0) then
 							startingIndex = startingIndex - 1;
 						end;
 					else
@@ -3177,7 +3177,7 @@ local COMMAND = Clockwork.command:New("AddBounty");
 						local reason = arguments[3];
 						
 						if reason then
-							if string.len(reason) > 128 then
+							if string.utf8len(reason) > 128 then
 								Schema:EasyText(player, "peru", "The reason for this bounty is too long! It must be a maximum of 128 characters.");
 								
 								return;
