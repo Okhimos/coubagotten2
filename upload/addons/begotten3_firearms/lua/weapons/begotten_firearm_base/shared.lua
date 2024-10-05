@@ -350,9 +350,9 @@ function SWEP:AdjustFireBegotten()
 										self.Owner:EmitSound("vj_weapons/dryfire_revolver.wav");
 										
 										if forceJam then
-											Clockwork.chatBox:Add(self.Owner, nil, "it", "Какая-то мистическая сила не позволяет тебе выстрелить, а оружие клинит!")
+											Clockwork.chatBox:Add(self.Owner, nil, "it", "Some magical force prevents your firearm from firing, jamming it in the process!")
 										else
-											Clockwork.chatBox:Add(self.Owner, nil, "it", "Ваше оружие заряжено пустышкой, из-за чего оно не стреляет!")
+											Clockwork.chatBox:Add(self.Owner, nil, "it", "Your firearm was loaded with a dud round and misfires!")
 										end
 									end
 									
@@ -368,7 +368,7 @@ function SWEP:AdjustFireBegotten()
 					return true;
 				else
 					-- Shouldn't really be possible but maybe we can do something with this later like making it explode the weapon.
-					printp("Заряжен не тот патрон!");
+					printp("Invalid ammo loaded!");
 					return false;
 				end
 			end
@@ -384,7 +384,7 @@ function SWEP:CanFireBegotten()
 			
 				if faction ~= "Gatekeeper" and faction ~= "Holy Hierarchy" and faction ~= "Pope Adyssa's Gatekeepers" then
 					if SERVER then
-						Clockwork.player:Notify(self.Owner, "Вы не можете атаковать в этом святом месте!");
+						Clockwork.player:Notify(self.Owner, "You cannot attack in this holy place!");
 					end
 					
 					return false;
@@ -1169,7 +1169,7 @@ function SWEP:Think()
 								if ammo and #ammo > 0 and !itemTable.usesMagazine then
 									itemTable:SetData("Ammo", {});
 									
-									Clockwork.player:Notify(self.Owner, "В ваше оружие заливается вода, из-за чего патрон намокает!");
+									Clockwork.player:Notify(self.Owner, "Your weapon fills with water and your powder charge is ruined!");
 								end
 							end
 						end
