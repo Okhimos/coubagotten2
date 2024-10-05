@@ -32,11 +32,11 @@ function cwSailing:PlayerAdjustItemMenu(itemTable, menuPanel, itemFunctions)
 				Clockwork.inventory:InventoryAction("dock", itemTable.uniqueID, itemTable.itemID);
 			end);]]--
 
-			menuPanel:AddOption("Undock", function()
+			menuPanel:AddOption("Подготовить", function()
 				Clockwork.inventory:InventoryAction("undock", itemTable.uniqueID, itemTable.itemID);
 			end);
 			
-			menuPanel:AddOption("Rename", function()
+			menuPanel:AddOption("Переименовать", function()
 				Clockwork.inventory:InventoryAction("rename", itemTable.uniqueID, itemTable.itemID);
 			end);
 		end
@@ -49,7 +49,7 @@ function cwSailing:SubModifyItemMarkupTooltip(category, maximumWeight, weight, c
 		
 		if health then
 			if health > 0 then
-				frame:AddText("Longship Health: "..tostring(health), Color(110, 30, 30), nil, 0.9);
+				frame:AddText("Состояние Корабля: "..tostring(health), Color(110, 30, 30), nil, 0.9);
 			end
 		end
 	end
@@ -90,7 +90,7 @@ function cwSailing:CreateMenu(data)
 				
 					--if oil >= 75 then
 					if oil >= 1 then
-						menu:AddOption("Burn", function() Clockwork.Client:ConCommand("cw_BurnShip") end);
+						menu:AddOption("Сжечь", function() Clockwork.Client:ConCommand("cw_BurnShip") end);
 					end
 				end
 			end
@@ -98,68 +98,68 @@ function cwSailing:CreateMenu(data)
 	end
 	
 	if isAdmin or data.cargoholdopenable then
-		menu:AddOption("Cargo Hold", function() Clockwork.Client:ConCommand("cw_CargoHold") end);
+		menu:AddOption("Трюм", function() Clockwork.Client:ConCommand("cw_CargoHold") end);
 	end
 	
-	menu:AddOption("Examine", function() Clockwork.Client:ConCommand("cw_CheckShipStatus") end);
+	menu:AddOption("Осмотреть", function() Clockwork.Client:ConCommand("cw_CheckShipStatus") end);
 	
 	if data.ignited then
-		menu:AddOption("Extinguish", function() Clockwork.Client:ConCommand("cw_ExtinguishShip") end);
+		menu:AddOption("Потушить", function() Clockwork.Client:ConCommand("cw_ExtinguishShip") end);
 	end
 	
 	if data.repairable then
-		menu:AddOption("Repair", function() Clockwork.Client:ConCommand("cw_RepairShip") end);
+		menu:AddOption("Починить", function() Clockwork.Client:ConCommand("cw_RepairShip") end);
 	end
 	
 	if data.destination and data.location and !string.find(zone, "sea_") then
-		menu:AddOption("Abort Sailing", function() Clockwork.Client:ConCommand("cw_AbortSailing") end);
+		menu:AddOption("Отменить Поход", function() Clockwork.Client:ConCommand("cw_AbortSailing") end);
 	end
 	
 	if data.isOwner then
 		if data.entity:GetNWBool("freeSailing") then
-			menu:AddOption("Disable Free Sailing", function() Clockwork.Client:ConCommand("cw_ShipToggleFreeSailing") end);
+			menu:AddOption("Отключить Свободное Плавание", function() Clockwork.Client:ConCommand("cw_ShipToggleFreeSailing") end);
 		else
-			menu:AddOption("Enable Free Sailing", function() Clockwork.Client:ConCommand("cw_ShipToggleFreeSailing") end);
+			menu:AddOption("Включить Свободное Плавание", function() Clockwork.Client:ConCommand("cw_ShipToggleFreeSailing") end);
 		end
 		
 		if data.location == "docks" then
-			menu:AddOption("Dock", function() Clockwork.Client:ConCommand("cw_DockLongship") end);
+			menu:AddOption("Пришвартовать", function() Clockwork.Client:ConCommand("cw_DockLongship") end);
 		end
 	end
 	
 	if data.sailable or (isAdmin and Clockwork.player:IsNoClipping(Clockwork.Client) and !data.destination) then
 		local location = data.location;
-		local submenu = menu:AddSubMenu("Sail", function() end);
+		local submenu = menu:AddSubMenu("Отправиться", function() end);
 			
 		if location ~= "docks" then
 			if location == "hell" or location == "wastelandlava" or location == "styx" then
-				submenu:AddOption("Sail through the River Styx to the Goreic Forest", function() Clockwork.Client:ConCommand("cw_MoveShipGoreForest") end);
+				submenu:AddOption(" Отправиться по Реке Стикс в Горейский Лес", function() Clockwork.Client:ConCommand("cw_MoveShipGoreForest") end);
 			else
-				submenu:AddOption("Sail through the High Seas to the Goreic Forest", function() Clockwork.Client:ConCommand("cw_MoveShipGoreForest") end);
+				submenu:AddOption(" Отправиться по Морю в Горейский Лес", function() Clockwork.Client:ConCommand("cw_MoveShipGoreForest") end);
 			end
 		end
 			
 		if zone ~= "wasteland" then
 			if location == "hell" or location == "styx" then
-				submenu:AddOption("Sail through the River Styx to the Glazic Wasteland", function() Clockwork.Client:ConCommand("cw_MoveShipWasteland") end);
+				submenu:AddOption(" Отправиться по реке Стикс в Долину Рока", function() Clockwork.Client:ConCommand("cw_MoveShipWasteland") end);
 			else
-				submenu:AddOption("Sail through the High Seas to the Glazic Wasteland", function() Clockwork.Client:ConCommand("cw_MoveShipWasteland") end);
+				submenu:AddOption(" Отправиться по морю в Долину Рока", function() Clockwork.Client:ConCommand("cw_MoveShipWasteland") end);
 			end
 			
-			submenu:AddOption("Sail through the River Styx to the Lava Coast", function() Clockwork.Client:ConCommand("cw_MoveShipLava") end);
+			submenu:AddOption("Отправиться по реке Стикс на Лавовый Берег", function() Clockwork.Client:ConCommand("cw_MoveShipLava") end);
 		end
 			
 		if location ~= "hell" then
-			submenu:AddOption("Sail through the River Styx to Hell", function() Clockwork.Client:ConCommand("cw_MoveShipHell") end);
+			submenu:AddOption("Отправиться по реке Стикс в Ад", function() Clockwork.Client:ConCommand("cw_MoveShipHell") end);
 		end
 	end
 	
 	if isAdmin then
-		menu:AddOption("(ADMIN) Toggle River Styx Enchantment", function() Clockwork.Client:ConCommand("cw_ShipToggleEnchantment") end);
+		menu:AddOption("[ADMIN] Одобрить или Отклонить разрешение рейда Ада.", function() Clockwork.Client:ConCommand("cw_ShipToggleEnchantment") end);
 	
 		if location == "calm" or location == "rough" or location == "styx" then
-			menu:AddOption("(ADMIN) Speed to Destination", function() Clockwork.Client:ConCommand("cw_ShipTimerSpeed") end);
-			menu:AddOption("(ADMIN) Toggle Timer", function() Clockwork.Client:ConCommand("cw_ShipTimerPause") end);
+			menu:AddOption("[ADMIN] Ускорить Таймер", function() Clockwork.Client:ConCommand("cw_ShipTimerSpeed") end);
+			menu:AddOption("[ADMIN] Заморозить Таймер", function() Clockwork.Client:ConCommand("cw_ShipTimerPause") end);
 		end
 	end
 	
@@ -180,12 +180,12 @@ netstream.Hook("OpenAlarmMenu", function(alarmEnt)
 		
 		menu:SetMinimumWidth(150);
 		
-		menu:AddOption("Examine", function()
-			Schema:EasyText("skyblue", "A jury-rigged alarm system with seismic sensors set to activate an alarm should a Goreic longship arrive. Note that the alarm is not powerful enough to be heard from the Tower of Light, and will only sound if Gorewatch has an occupying garrison.");
+		menu:AddOption("Осмотреть", function()
+			Schema:EasyText("skyblue", "Самодельная система сигнализации с сейсмическими датчиками, настроенная на включение сигнала тревоги в случае прибытия кораблей Северных Захватчиков. Стоит обратить внимание, что сигнал тревоги недостаточно мощный, чтобы его можно было услышать из Башни Света, и он сработает только в том случае, если у Горвотча есть люди.");
 		end);
 		
 		if alarmEnt:GetNWBool("broken") then
-			menu:AddOption("Repair", function() Clockwork.Client:ConCommand("cw_RepairGorewatchAlarm") end);
+			menu:AddOption("Починить", function() Clockwork.Client:ConCommand("cw_RepairGorewatchAlarm") end);
 		end
 		
 		menu:Open();
@@ -211,22 +211,22 @@ netstream.Hook("OpenSteamEngineMenu", function(steamEngineEnt)
 		
 		menu:AddOption("Examine", function()
 			if steamEngineEnt:GetNWBool("turnedOn") then
-				Schema:EasyText("skyblue", "A salvaged steam engine restored to working order by Clan Shagalax. It powers the Ironclad Steamship to which it is bolted down. Spewing acrid smoke and deafening noise, it shakes violently and can be felt rattling the ship.");
+				Schema:EasyText("skyblue", "Монстр из древности, доведенный до рабочего состояния Кланом Шагалакс. Он приводит в действие Броненосец. Излучает едкий дым и оглушительный шум.");
 			else
-				Schema:EasyText("skyblue", "A salvaged steam engine restored to working order by Clan Shagalax. It powers the Ironclad Steamship to which it is bolted down, though it is not currently running.");
+				Schema:EasyText("skyblue", "Монстр из древности, доведенный до рабочего состояния Кланом Шагалакс. Он приводит в действие Броненосец. Излучает едкий дым и оглушительный шум. По всей видимости, не функционирует.");
 			end
 		end);
 		
 		if steamEngineEnt:GetNWBool("broken") then
-			menu:AddOption("Repair", function() Clockwork.Client:ConCommand("cw_SteamEngineRepair") end);
+			menu:AddOption("Починить", function() Clockwork.Client:ConCommand("cw_SteamEngineRepair") end);
 		else
-			menu:AddOption("Add Fuel", function() Clockwork.Client:ConCommand("cw_SteamEngineFuel refuel") end);
-			menu:AddOption("Check Fuel", function() Clockwork.Client:ConCommand("cw_SteamEngineFuel check") end);
+			menu:AddOption("Добавить Топливо", function() Clockwork.Client:ConCommand("cw_SteamEngineFuel refuel") end);
+			menu:AddOption("Проверить Топливо", function() Clockwork.Client:ConCommand("cw_SteamEngineFuel check") end);
 		
 			if steamEngineEnt:GetNWBool("turnedOn") then
-				menu:AddOption("Turn Off Engine", function() Clockwork.Client:ConCommand("cw_SteamEngine off") end);
+				menu:AddOption("Отключить Двигатель", function() Clockwork.Client:ConCommand("cw_SteamEngine off") end);
 			else
-				menu:AddOption("Turn On Engine", function() Clockwork.Client:ConCommand("cw_SteamEngine on") end);
+				menu:AddOption("Завести Двигатель", function() Clockwork.Client:ConCommand("cw_SteamEngine on") end);
 			end
 		end
 		

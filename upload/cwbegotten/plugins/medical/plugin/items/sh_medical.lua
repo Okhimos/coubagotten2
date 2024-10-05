@@ -93,7 +93,7 @@ local ITEM = Clockwork.item:New("medical_base");
 	ITEM.useXP = 25;
 	
 	function ITEM:OnUsed(player, itemEntity)
-		Schema:EasyText(player, "olivedrab","Вы наносите на рану пасту.");
+		Schema:EasyText(player, "olivedrab","Вы наносите на рану пасту. Она слегка щиплет, но в целом жить можно.");
 		netstream.Start(self, "Stunned", 2);
 	end;
 ITEM:Register();
@@ -276,68 +276,6 @@ local ITEM = Clockwork.item:New("medical_base");
 			end
 			
 			player:HandleSanity(100);
-			player:EmitSound(self.useSound);
-			player:TakeItem(self, true);
-			
-			netstream.Start(player, "Stunned", 3);
-		end
-	end;
-ITEM:Register();
-
-local ITEM = Clockwork.item:New("medical_base");
-	ITEM.name = "Сигарета";
-	ITEM.model = "models/moskalyka/metro-exodus/cigar.mdl";
-	ITEM.weight = 0.1;
-	ITEM.useText = "Smoke";
-	ITEM.description = "Небольшая папироска, набитая чем-то похожим на табак.";
-	ITEM.iconoverride = "itemicons/cigarette.png"
-	ITEM.uniqueID = "cigarrete";
-	ITEM.useSound = "begotten_apocalypse/cigarsmoke.wav";
-	
-	ITEM.ingestible = {orally = true, anally = false};
-	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 150};
-	ITEM.useXP = 45;
-	
-	function ITEM:OnUsed(player, itemEntity)
-		if player:Alive() and !player:IsRagdolled() then
-			Clockwork.player:SetMenuOpen(player, false);
-			
-			if cwBeliefs then
-				player:HandleXP(self.useXP);
-			end
-			
-			player:HandleSanity(20);
-			player:EmitSound(self.useSound);
-			player:TakeItem(self, true);
-			
-			netstream.Start(player, "Stunned", 3);
-		end
-	end;
-ITEM:Register();
-
-local ITEM = Clockwork.item:New("medical_base");
-	ITEM.name = "Сигара";
-	ITEM.model = "models/jellik/cigar.mdl";
-	ITEM.weight = 0.1;
-	ITEM.useText = "Smoke";
-	ITEM.description = "Хорошая сигара, наверняка забитая табаком с темноземья!";
-	ITEM.iconoverride = "itemicons/cigar.png"
-	ITEM.uniqueID = "cigar";
-	ITEM.useSound = "begotten_apocalypse/cigarsmoke.wav";
-	
-	ITEM.ingestible = {orally = true, anally = false};
-	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 300};
-	ITEM.useXP = 60;
-	
-	function ITEM:OnUsed(player, itemEntity)
-		if player:Alive() and !player:IsRagdolled() then
-			Clockwork.player:SetMenuOpen(player, false);
-			
-			if cwBeliefs then
-				player:HandleXP(self.useXP);
-			end
-			
-			player:HandleSanity(40);
 			player:EmitSound(self.useSound);
 			player:TakeItem(self, true);
 			
@@ -625,7 +563,7 @@ local ITEM = Clockwork.item:New();
 ITEM:Register();
 
 local ITEM = Clockwork.item:New();
-	ITEM.name = "Микрросхема";
+	ITEM.name = "Микросхема";
 	ITEM.category = "Crafting Materials";
 	ITEM.model = "models/mosi/fallout4/props/junk/components/circuitry.mdl";
 	ITEM.weight = 0.2;
@@ -936,4 +874,68 @@ local ITEM = Clockwork.item:New();
 	-- Called when a player drops the item.
 	function ITEM:OnDrop(player, position) end;
 	
+ITEM:Register();
+
+local ITEM = Clockwork.item:New("medical_base");
+	ITEM.name = "Самокрутка";
+	ITEM.model = "models/rgs-3/items/cigar.mdl";
+	ITEM.weight = 0.1;
+	ITEM.useText = "Выкурить";
+	ITEM.description = "Свёрток, в котором находится нечто, отдаленно напоминающее табак.";
+	ITEM.iconoverride = "rgs-3/itemicons/papiros.png"
+	ITEM.uniqueID = "cigarette";
+	ITEM.useSound = "rgs-3/cigarsmoke.wav";
+	
+	ITEM.ingestible = {orally = true, anally = false};
+	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 250};
+	ITEM.useXP = 25;
+	
+	function ITEM:OnUsed(player, itemEntity)
+		if player:Alive() and !player:IsRagdolled() then
+			Clockwork.player:SetMenuOpen(player, false);
+
+			if cwBeliefs then
+				player:HandleXP(self.useXP);
+			end
+			
+			player:HandleSanity(20);
+			player:EmitSound(self.useSound);
+			player:TakeItem(self, true);
+
+					Schema:EasyText(player, "olive", "Ты достаешь самокрутку, после чего поджигаешь ее и затягиваешься. Это успокаивает...");
+		end
+	end;
+ITEM:Register();
+
+local ITEM = Clockwork.item:New("medical_base");
+	ITEM.name = "Сигара";
+	ITEM.model = "models/jellik/cigar.mdl";
+	ITEM.weight = 0.1;
+	ITEM.useText = "Выкурить";
+	ITEM.description = "Дорогая сигара с эмблемой Темноземского Султаната. Прекрасная находка, за которую можно получить кучу денег!";
+	ITEM.iconoverride = "rgs-3/itemicons/cigar.png"
+	ITEM.uniqueID = "cigar";
+	ITEM.useSound = "rgs-3/cigarsmoke.wav";
+	
+	ITEM.ingestible = {orally = true, anally = false};
+	ITEM.itemSpawnerInfo = {category = "Medical", rarity = 700};
+	ITEM.useXP = 35;
+	
+	function ITEM:OnUsed(player, itemEntity)
+		if player:Alive() and !player:IsRagdolled() then
+			Clockwork.player:SetMenuOpen(player, false);
+
+			if cwBeliefs then
+				player:HandleXP(self.useXP);
+			end
+			
+			player:HandleSanity(50);
+			player:EmitSound(self.useSound);
+			player:TakeItem(self, true);
+
+			netstream.Start(player, "Stunned", 3);
+
+					Schema:EasyText(player, "olivedrab", "С каждым вдохом едкого дыма ты понимаешь, что жизнь налаживается...");
+		end
+	end;
 ITEM:Register();

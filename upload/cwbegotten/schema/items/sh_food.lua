@@ -614,7 +614,7 @@ local ITEM = Clockwork.item:New();
 	-- Called when a player uses the item.
 	function ITEM:OnUse(player, itemEntity)
 		if player:HasBelief("favored") then
-			Schema:EasyText(player, "lawngreen", "Если скушать конфету, она внезапно превратится в очищающий камень, который пульсирует, даруя вам мощное исцеление и восстанавливая ваш рассудок, одновременно снижая вашу порчу!");
+			Schema:EasyText(player, "lawngreen", "Когда ты кладешь конфету в рот, она внезапно превратится в очищающий камень, который пульсирует, даруя вам мощное исцеление и восстанавливая ваш рассудок, одновременно снижая вашу порчу!");
 			player:HandleSanity(50);
 			player:HandleNeed("corruption", -25);
 			player:SetHealth(math.Clamp(player:Health() + 25, 0, player:GetMaxHealth()));
@@ -1034,6 +1034,65 @@ local ITEM = Clockwork.item:New();
 		
 		player:HandleXP(cwBeliefs.xpValues["food"]);
 	end;
+
+	-- Called when a player drops the item.
+	function ITEM:OnDrop(player, position) end;
+ITEM:Register();
+
+local ITEM = Clockwork.item:New();
+	ITEM.name = "Фишкейк";
+	ITEM.cost = 8;
+	ITEM.model = "models/foodnhouseholditems/fishbass.mdl";
+	ITEM.weight = 0.25;
+	ITEM.useText = "Слопать";
+	ITEM.category = "Food";
+	ITEM.useSound = "npc/barnacle/barnacle_crunch2.wav";
+	ITEM.iconoverride = "rgs-3/itemicons/fishcake.png"
+	ITEM.description = "Рыбешка из пребрежных вод. Если все совсем плохо...ее можно съесть.";
+	ITEM.stackable = true;
+	ITEM.uniqueID = "kittycandy";
+	
+	ITEM.itemSpawnerInfo = {category = "Food", rarity = 1500};
+	ITEM.needs = {hunger = 25};
+	
+	-- Called when a player uses the item.
+	local ITEM = Clockwork.item:New();
+	ITEM.name = "Фишкейк";
+	ITEM.cost = 8;
+	ITEM.model = "models/foodnhouseholditems/fishbass.mdl";
+	ITEM.weight = 1;
+	ITEM.useText = "Съесть";
+	ITEM.category = "Food";
+	ITEM.useSound = "npc/barnacle/barnacle_crunch2.wav";
+	ITEM.description = "Рыбешка из прибрежных вод. Если все совсем плохо...Нет, лучше умереть.";
+	ITEM.iconoverride = "rgs-3/itemicons/fishcake.png"
+	ITEM.stackable = true;
+	ITEM.infectionchance = 15;
+	ITEM.uniqueID = "fishcake"
+	ITEM.poison = 30;
+	
+	ITEM.itemSpawnerInfo = {category = "Food", rarity = 500};
+	ITEM.needs = {hunger = 25, thirst = 25};
+
+	-- Called when a player uses the item.
+	function ITEM:OnUse(player, itemEntity)
+		if player:HasBelief("savage_animal") then
+			Schema:EasyText(player, "olive", "Вы вгрызаетесь в рыбу и несмотря на движение во рту, жуете, прихлюпывая. Самое то.");
+			player:HandleSanity(3);
+			player:SetHealth(math.Clamp(player:Health() + 5, 0, player:GetMaxHealth()));
+			player:HandleXP(cwBeliefs.xpValues["food"]);
+		elseif (math.random( 1, 4 ) == 1) then
+			player:ScriptedDeath("был убит своим обедом.");
+			Schema:EasyText(player, "olive", "Ты пихаешь рыбу себе в рот, а в какой-то момент она начинает двигаться, застревая у тебя в горле! Задыхаясь ты понимаешь, как глупо умер...");
+			player:HandleSanity(-100);
+		else
+			Schema:EasyText(player, "olive", "Ты вгрызаешься в сырую рыбу и спокойно ее ешь...Ужас.");
+			player:HandleSanity(-10);
+			player:SetHealth(math.Clamp(player:Health() + 15, 0, player:GetMaxHealth()));
+			player:HandleXP(cwBeliefs.xpValues["food"]);
+		end;
+	end;
+	
 
 	-- Called when a player drops the item.
 	function ITEM:OnDrop(player, position) end;

@@ -288,7 +288,7 @@ local ITEM = Clockwork.item:New();
 		end]]--
 		
 		if IsValid(longshipEnt.machinegun) then
-			Schema:EasyText(player, "peru", "This ironclad has already been upgraded!");
+			Schema:EasyText(player, "peru", "Броненосец уже Улучшен!");
 			
 			return false;
 		end

@@ -340,7 +340,7 @@ local ITEM = Clockwork.item:New("enchanted_base");
 	
 	function ITEM:OnPlayerUnequipped(player, extraData)
 		if player:GetSubfaith() == "Voltism" and extraData != "force_unequip" then
-			Schema:EasyText(player, "peru", "This implant is fused into your occipital lobe and cannot be unequipped!");
+			Schema:EasyText(player, "peru", "Этот имплант стал частью твоей головы и не может быть снят!");
 			return false;
 		end
 		

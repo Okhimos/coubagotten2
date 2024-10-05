@@ -1385,7 +1385,7 @@ RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("aura_of_powderheel");
 	RITUAL.name = "(T3) Аура Отца";
-	RITUAL.description = "Call upon the power of the Great Tree in times of battle against its enemies to protect you from their non-traditional weaponry. Performing this ritual generates a spherical forcefield for 10 minutes, which reduces bullet damage to everyone around you within talking distance by 50%. Attempting to fire while inside the sphere will guarantee a misfire. Incurs 15 corruption.";
+	RITUAL.description = "Призовите силу Древа во время битвы с его врагами, чтобы защитить вас от трусливого оружия. Выполнение этого ритуала создает сферическое поле на 10 минут, которое снижает урон от пуль всем в определенном радиусе. Попытка выстрелить, находясь внутри сферы, гарантированно создаст осечку. Навлекает 15 порчи. ";
 	RITUAL.onerequiredbelief = {"watchful_raven"}; -- Tier III Faith of the Family Ritual
 	
 	RITUAL.requirements = {"pantheistic_catalyst", "xolotl_catalyst", "xolotl_catalyst"};
@@ -1538,8 +1538,8 @@ RITUAL = cwRituals.rituals:New("rooting");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("scornificationism");
-	RITUAL.name = "(Уникальное) Щит Сола";
-	RITUAL.description = "Вы питаете такую лютую ненависть к греховной природе человека, что отказываетесь умирать, не забрав грешников с собой! Выполнение этого ритуала не позволит урону игрока или NPC убить вас или ввести в критическое состояние в течение следующих 120 секунд, но вы все равно можете быть убиты или покорены другими способами. Дает 15 порчи.";
+	RITUAL.name = "(Уникальное) Бич Грешника";
+	RITUAL.description = "Вы настолько ненавидите себя и окружающий мир, что не умрете, пока грешники не окажутся убиты. Выполнение этого ритуала не позволит вам умереть или оказаться в критическом состоянии следующие 120 секунд. Навлекает 15 порчи.";
 	RITUAL.onerequiredbelief = {"extinctionist"}; -- Unique Sol Orthodoxy Ritual
 	
 	RITUAL.requirements = {"purifying_stone", "light_catalyst", "elysian_catalyst"};
@@ -1555,7 +1555,7 @@ RITUAL = cwRituals.rituals:New("scornificationism");
 				if player.scornificationismActive then
 					player.scornificationismActive = nil;
 
-					Clockwork.hint:Send(player, "Щит Сола спадает с вас...", 10, Color(175, 100, 100), true, true);
+					Clockwork.hint:Send(player, "Божественные силы покидают вас...", 10, Color(175, 100, 100), true, true);
 				end
 			end
 		end);
@@ -1569,8 +1569,8 @@ RITUAL = cwRituals.rituals:New("scornificationism");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("sprouting");
-	RITUAL.name = "(T2) Проростание";
-	RITUAL.description = "There is something to be learned from leaves, dirt, and bone. Performing this ritual will restore 200 health and 100% of blood, as well as healing all injuries. Removes 5 corruption.";
+	RITUAL.name = "(T2) Звук Леса";
+	RITUAL.description = "Есть чему поучиться у листьев и земли. Выполнение этого ритуала восстановит 200 здоровья и 100% крови, а также исцелит все травмы. Удаляет 5 порчи.";
 	RITUAL.onerequiredbelief = {"man_become_beast", "one_with_the_druids", "daring_trout", "shedskin"}; -- Tier II Faith of the Family Ritual
 	
 	RITUAL.requirements = {"pantheistic_catalyst", "pantheistic_catalyst", "pantheistic_catalyst"};
@@ -1583,7 +1583,7 @@ RITUAL = cwRituals.rituals:New("sprouting");
 		player:SetHealth(math.min(player:Health() + 200, player:GetMaxHealth()));
 		player:SetBloodLevel(5000);
 		
-		Clockwork.chatBox:Add(player, nil, "itnofake", "Вы чувствуете невероятный прилив сил, вы будто переродились!");
+		Clockwork.chatBox:Add(player, nil, "itnofake", "Вы чувствуете невероятный прилив сил, будто бы перерождаясь!");
 	end;
 	function RITUAL:OnFail(player)
 	end;
@@ -1594,8 +1594,8 @@ RITUAL = cwRituals.rituals:New("sprouting");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("soulscorch");
-	RITUAL.name = "(Уникальное) Выжигание души";
-	RITUAL.description = "Станьте катализатором вымирания человечества. Когда вы будете убиты, Сияние поразит их! Совершив этот ритуал, вы будете излучать свет в течение 5 минут, а после смерти нанесете количество урона, соответствующее уровню вашего таинства, всем, кто не принадлежит к Вере Света, за исключением вольтижеров (или половину, если они таковыми являются), на расстоянии разговора. Дает 15 порчи.";
+	RITUAL.name = "(Уникальное) Воспламенение Души";
+	RITUAL.description = "Когда вы испустите дух, то ритуал сработает уничтожив ваше тело в огне праведного гнева. Вы нанесете количество урона, равное уровню вашего таинства всем, кто не принадлежит вере Света (Исключая Вольтизм). Влекет за собой повышение порчи на 15.";
 	RITUAL.onerequiredbelief = {"extinctionist"}; -- Unique Sol Orthodoxy Ritual
 	
 	RITUAL.requirements = {"light_catalyst", "holy_spirit", "light_catalyst"};
@@ -1671,8 +1671,8 @@ RITUAL = cwRituals.rituals:New("steel_will");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("enlightenment");
-	RITUAL.name = "(T3) Просвещение";
-	RITUAL.description = "Вы достигли вершины глазического понимания. Совершив этот ритуал, вы на 15 минут озарите святым светом большую площадь вокруг себя. Он повышает здравомыслие всех персонажей веры Стойкого Сияния, попавших под его свет, а также сжигает всех приближающихся еретиков родословной Рекх-хет-са. Дает 10 порчи.";
+	RITUAL.name = "(T3) Святой Свет";
+	RITUAL.description = "Вы смогли понять Сияние. Исполнив этот ритуал, вы на 15 минут озарите святым светом большую площадь вокруг себя. Он повышает здравомыслие всех персонажей веры Стойкого Сияния, попавших под радиус действия, а также сжигает всех приближающихся еретиков родословной Рекх-Хет-Са. Дает 10 порчи.";
 	RITUAL.onerequiredbelief = {"emissary", "extinctionist"}; -- Tier III Faith of the Light Ritual
 	
 	RITUAL.requirements = {"holy_spirit", "light_catalyst", "light_catalyst"};
@@ -1688,7 +1688,7 @@ RITUAL = cwRituals.rituals:New("enlightenment");
 				if player:GetNetVar("enlightenmentActive", false) then
 					player:SetNetVar("enlightenmentActive", false);
 					
-					Clockwork.hint:Send(player, "Ритуал просвещения спадает с вас...", 10, Color(175, 100, 100), true, true);
+					Clockwork.hint:Send(player, "Ритуал святого света перестает свое действие...", 10, Color(175, 100, 100), true, true);
 				end
 			end
 		end);
@@ -1814,7 +1814,7 @@ RITUAL = cwRituals.rituals:New("summon_eddie");
 					--Clockwork.entity:MakeFlushToGround(entity, trace.HitPos + Vector(0, 0, 64), trace.HitNormal);
 					entity:SetPos(trace.HitPos + Vector(0, 0, 16));
 					
-					Clockwork.chatBox:AddInTargetRadius(player, "it", "There is a blinding flash of light and thunderous noise as an unholy creature of Hell suddenly appears!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
+					Clockwork.chatBox:AddInTargetRadius(player, "it", "В ужасной вспышке появляется нечестивое создание из Легионов Смерти!", trace.HitPos, config.Get("talk_radius"):Get() * 3);
 				end
 			end);
 		else
@@ -1827,7 +1827,7 @@ RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("summon_otis");
 	RITUAL.name = "(T3) Призыв Демона (Отис)";
-	RITUAL.description = "Вызовите сильного, владеющего бензопилой порожденного, ставшего хозяином адского демона. Он будет враждебно относиться ко всем, кто не принадлежит к Вере Тьмы. Время действия 15 секунд. Добавляет 3-минутный кулдаун ко всем призывам. Дает 25 порчи.";
+	RITUAL.description = "Вызовите сильного, владеющего бензопилой порожденного. Он будет враждебно относиться ко всем, кто не принадлежит к Вере Тьмы. Время действия 15 секунд. Добавляет 3-минутный кулдаун ко всем призывам. Дает 25 порчи.";
 	RITUAL.onerequiredbelief = {"sorcerer"}; -- Tier III Faith of the Dark Ritual
 	RITUAL.requiredBeliefsSubfactionOverride = {["Rekh-khet-sa"] = {"embrace_the_darkness"}}; -- Tier III Faith of the Dark Ritual
 	
@@ -1948,7 +1948,7 @@ RITUAL = cwRituals.rituals:New("summon_otis");
 RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("summon_sprinter");
-	RITUAL.name = "(T3) Призыв Демона (Анозеры)";
+	RITUAL.name = "(T3) Призыв Демона (Анозер)";
 	RITUAL.description = "Вызовите двух Порожденных Спринтеров, одержимых верными демонами. Они будут враждебно относиться ко всем, кто не принадлежит к Вере Тьмы. Пусть их божество-покровитель спасет ваших врагов. Время действия 15 секунд. Добавляет 3-минутный кулдаун ко всем призывам. Дает 25 порчи.";
 	RITUAL.onerequiredbelief = {"sorcerer"}; -- Tier III Faith of the Dark Ritual
 	RITUAL.requiredBeliefsSubfactionOverride = {["Rekh-khet-sa"] = {"embrace_the_darkness"}}; -- Tier III Faith of the Dark Ritual
@@ -2310,7 +2310,7 @@ RITUAL:Register()
 
 RITUAL = cwRituals.rituals:New("summon_familiar_elk");
 	RITUAL.name = "(T3) Призыв Духа (Лось)";
-	RITUAL.description = "Вызовите духа лося из Леса Гор, чтобы он исполнил вашу просьбу. Он будет враждебно относиться ко всем, кто не принадлежит к Вере Семьи. Время действия 5 секунд. Добавляет 1 минуту кулдауна ко всем призывам. Дает 5 порчи.";
+	RITUAL.description = "Вызовите дух лося из Леса, чтобы он исполнил вашу просьбу. Он будет враждебно относиться ко всем, кто не принадлежит к Вере Семьи. Время действия 5 секунд. Добавляет 1 минуту кулдауна ко всем призывам. Дает 5 порчи.";
 	RITUAL.onerequiredbelief = {"watchful_raven"}; -- Tier III Faith of the Family Ritual
 	
 	RITUAL.requirements = {"elysian_catalyst", "trinity_catalyst", "elysian_catalyst"};

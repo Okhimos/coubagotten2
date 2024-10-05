@@ -477,7 +477,7 @@ function Schema:GetEntityMenuOptions(entity, options)
 			if clientFaction == "Goreic Warrior" and entFaction ~= "Goreic Warrior" and entity:GetNetVar("tied") != 0 then
 				for k, v in pairs(ents.FindInSphere(Clockwork.Client:GetPos(), 512)) do
 					if v:GetClass() == "cw_salesman" and v:GetNetworkedString("Name") == "Reaver Despoiler" then
-						options["Sell Into Slavery"] = "cw_sellSlave";
+						options["Продать в Рабство"] = "cw_sellSlave";
 						
 						break;
 					end
@@ -485,7 +485,7 @@ function Schema:GetEntityMenuOptions(entity, options)
 			elseif entity:IsWanted() and entity:GetNetVar("tied") != 0 then
 				for k, v in pairs(ents.FindInSphere(Clockwork.Client:GetPos(), 512)) do
 					if v:GetClass() == "cw_bounty_board" then
-						options["Turn In"] = "cw_turnInBounty";
+						options["Повесить"] = "cw_turnInBounty";
 						
 						break;
 					end
@@ -500,7 +500,7 @@ function Schema:GetEntityMenuOptions(entity, options)
 				if clientFaction == "Goreic Warrior" and playerFaction ~= "Goreic Warrior" and player:GetNetVar("tied") != 0 then
 					for k, v in pairs(ents.FindInSphere(Clockwork.Client:GetPos(), 512)) do
 						if v:GetClass() == "cw_salesman" and v:GetNetworkedString("Name") == "Reaver Despoiler" then
-							options["Sell Into Slavery"] = "cw_sellSlave";
+							options["Продать в Рабство"] = "cw_sellSlave";
 							
 							break;
 						end
@@ -508,7 +508,7 @@ function Schema:GetEntityMenuOptions(entity, options)
 				elseif player:IsWanted() and player:GetNetVar("tied") != 0 then
 					for k, v in pairs(ents.FindInSphere(Clockwork.Client:GetPos(), 512)) do
 						if v:GetClass() == "cw_bounty_board" then
-							options["Turn In"] = "cw_turnInBounty";
+							options["Повесить"] = "cw_turnInBounty";
 							
 							break;
 						end
@@ -523,8 +523,8 @@ function Schema:GetEntityMenuOptions(entity, options)
 					--local activeWeapon = Clockwork.Client:GetActiveWeapon();
 					
 					--if activeWeapon:IsValid() and activeWeapon.isDagger then
-						options["Mutilate"] = "cwCorpseMutilate";
-						options["Skin"] = "cwCorpseSkin";
+						options["Вырезать Мясо"] = "cwCorpseMutilate";
+						options["Снять Шкуру"] = "cwCorpseSkin";
 					--else
 						--if !self.skinNotificationTimer or self.skinNotificationTimer < curTime then
 							--Clockwork.chatBox:Add(nil, "icon16/error.png", Color(200, 175, 200, 255), "You must have a dagger equipped in order to skin or mutilate this animal!");
@@ -533,12 +533,12 @@ function Schema:GetEntityMenuOptions(entity, options)
 						--end
 					--end
 				elseif entity:GetNWEntity("Player"):IsPlayer() or entity:GetNWEntity("Player") == game.GetWorld() then
-					options["Pillage"] = "cw_corpseLoot";
+					options["Обыскать"] = "cw_corpseLoot";
 					
 					if entity:GetNWInt("bountyKey") then
 						for k, v in pairs(ents.FindInSphere(Clockwork.Client:GetPos(), 512)) do
 							if v:GetClass() == "cw_bounty_board" then
-								options["Turn In"] = "cw_turnInBounty";
+								options["Повесить"] = "cw_turnInBounty";
 								
 								break;
 							end
@@ -548,21 +548,21 @@ function Schema:GetEntityMenuOptions(entity, options)
 			end;
 			
 			if IsValid(entity:GetNWEntity("CinderBlock")) then
-				options["Untie Rope"] = "cwUntieCinderBlock"
+				options["Отвязать"] = "cwUntieCinderBlock"
 			end
 		elseif (entity:GetClass() == "cw_belongings") then
-			options["Open"] = "cw_belongingsOpen";
+			options["Открыть"] = "cw_belongingsOpen";
 		elseif (entity:GetClass() == "prop_physics") then
 			local model = entity:GetModel();
 			
 			if entity:GetNWBool("BIsCinderBlock") == true then
-				options["Untie Rope"] = "cwUntieCinderBlock"
+				options["Отвязать"] = "cwUntieCinderBlock"
 			elseif model == "models/animals/bear.mdl" then
 				--local activeWeapon = Clockwork.Client:GetActiveWeapon();
 				
 				--if activeWeapon:IsValid() and activeWeapon.isDagger then
-					options["Mutilate"] = "cwCorpseMutilate";
-					options["Skin"] = "cwCorpseSkin";
+					options["Вырезать Мясо"] = "cwCorpseMutilate";
+					options["Снять Шкуру"] = "cwCorpseSkin";
 				--[[else
 					if !self.skinNotificationTimer or self.skinNotificationTimer < curTime then
 						Clockwork.chatBox:Add(nil, "icon16/error.png", Color(200, 175, 200, 255), "You must have a dagger equipped in order to skin or mutilate this animal!");
@@ -574,9 +574,9 @@ function Schema:GetEntityMenuOptions(entity, options)
 		elseif (entity:GetClass() == "cw_radio") then
 			if (!entity:IsCrazy()) then
 				if (!entity:IsOff()) then
-					options["Turn Off"] = "cw_radioToggle";
+					options["Отключить"] = "cw_radioToggle";
 				else
-					options["Turn On"] = "cw_radioToggle";
+					options["Включить"] = "cw_radioToggle";
 				end;
 				
 				if !entity:IsStatic() or (entity:IsStatic() and Clockwork.Client:IsAdmin()) then
@@ -588,32 +588,32 @@ function Schema:GetEntityMenuOptions(entity, options)
 						end);
 					end;
 					
-					options["Take"] = "cw_radioTake";
+					options["Взять"] = "cw_radioTake";
 				end
 			end;
 		elseif (entity:GetClass() == "cw_gramophone") then
 			if (!entity:IsOff()) then
-				options["Turn Off"] = "cwToggleGramophone";
+				options["Отключить"] = "cwToggleGramophone";
 			else
-				options["Turn On"] = "cwToggleGramophone";
+				options["Включить"] = "cwToggleGramophone";
 			end;
 		elseif (entity:GetClass() == "cw_siege_ladder") then
 			if entity:GetNWEntity("owner") == Clockwork.Client then
-				options["Tear Down"] = "cwTearDownSiegeLadder";
+				options["Подготовить"] = "cwTearDownSiegeLadder";
 			end
 		elseif (entity:GetClass() == "cw_bear_trap") then
-			options["Examine"] = "cwItemExamine";
+			options["Осмотреть"] = "cwItemExamine";
 		
 			if entity:GetNWString("state") == "trap" then
 				if !cwBeliefs or Clockwork.Client:HasBelief("ingenious") then
-					options["Reset"] = "cwResetBearTrap";
+					options["Активировать"] = "cwResetBearTrap";
 				end
 			else
 				if !cwBeliefs or Clockwork.Client:HasBelief("ingenious") then
-					options["Set"] = "cwSetBearTrap";
+					options["Активировать"] = "cwSetBearTrap";
 				end
 				
-				options["Take"] = "cwTakeBearTrap";
+				options["Взять"] = "cwTakeBearTrap";
 			end
 		end;
 	end;
@@ -858,9 +858,9 @@ function Schema:DrawTargetPlayerSubfaction(target, alpha, x, y)
 				end
 				
 				if target:GetNetVar("kinisgerOverrideSubfaction") then
-					subfactionText = "Это мой родственник. "..brother..". из рода Кининсгеров, под маскировкой "..targetSubfaction..".";
+					subfactionText = "Это мой родственник. "..brother.." из рода Кининсгеров, под маскировкой "..targetSubfaction..".";
 				else
-					subfactionText = "Это мой родственник. "..brother..". из рода "..targetSubfaction..".";
+					subfactionText = "Это мой родственник. "..brother.." из рода "..targetSubfaction..".";
 				end
 				
 				textColor = Color(0, 255, 0, 255);
@@ -910,7 +910,7 @@ function Schema:DrawTargetPlayerSubfaction(target, alpha, x, y)
 					end
 				elseif targetSubfaction == "Praeventor" then
 					if playerSubfaction == targetSubfaction then
-						subfactionText = "Знакомый мне разведчик из Священного Ордена Привратников.";
+						subfactionText = "Знакомый мне Разведчик из Священного Ордена Привратников.";
 						textColor = Color(0, 255, 0, 255);
 					else
 						subfactionText = "Разведчик из Священного Ордена Привратников.";
@@ -965,7 +965,7 @@ function Schema:DrawTargetPlayerLevel(target, alpha, x, y)
 				thirdPerson = "её"
 			end
 			
-			levelText = "Свеженький и слабенький поросеннок. Принести "..thirdPerson.." в жертву значит оскорбить Темного Лорда.";
+			levelText = "Слабак. Принести "..thirdPerson.." в жертву значит оскорбить Темного Лорда.";
 		elseif level >= 10 and level < 20 then
 			local thirdPerson = "его"
 			
@@ -1025,7 +1025,7 @@ function Schema:DrawTargetPlayerLevel(target, alpha, x, y)
 			end
 		
 			textColor = Color(100, 255, 100, 255);
-			levelText = thirdPerson.." очень силен, его хорошо купят на рабском рынке!";
+			levelText = thirdPerson.." выглядит достойно и будет продан по высокой цене!";
 		end
 		
 		if levelText then
@@ -2192,7 +2192,7 @@ function Schema:ModifyItemMarkupTooltip(category, maximumWeight, weight, conditi
 				end
 			end
 			
-			frame:AddText("Required Beliefs (One Of The Following): ", Color(225, 225, 225), "nov_IntroTextSmallDETrooper", 1.15);
+			frame:AddText("Необходимое Убеждение: ", Color(225, 225, 225), "nov_IntroTextSmallDETrooper", 1.15);
 			frame:AddIconRow(beliefIcons, 40);
 		end
 
@@ -2486,7 +2486,7 @@ function Schema:ModifyItemMarkupTooltip(category, maximumWeight, weight, conditi
 				end
 			end
 			
-			frame:AddText("Required Beliefs: ", Color(225, 225, 225), "nov_IntroTextSmallDETrooper", 1.15);
+			frame:AddText("Необходимое Убеждение: ", Color(225, 225, 225), "nov_IntroTextSmallDETrooper", 1.15);
 			frame:AddIconRow(beliefIcons, 40);
 		end
 		
@@ -3209,7 +3209,7 @@ function Schema:ModifyItemMarkupTooltip(category, maximumWeight, weight, conditi
 		end
 		
 		if magazineAmmo and magazineAmmo > 0 then
-			frame:AddText("Loaded Shot: ", Color(225, 225, 225), "nov_IntroTextSmallDETrooper", 1.15);
+			frame:AddText("Заряженный Патрон: ", Color(225, 225, 225), "nov_IntroTextSmallDETrooper", 1.15);
 			frame:AddText(itemTable.ammoName.." ("..tostring(magazineAmmo).."/"..tostring(itemTable.ammoMagazineSize)..")", Color(180, 170, 170), "nov_IntroTextSmallDETrooper", 0.8);
 		else
 			frame:AddText("Этот магазин пуст.", Color(225, 225, 225), "nov_IntroTextSmallDETrooper", 1.15);

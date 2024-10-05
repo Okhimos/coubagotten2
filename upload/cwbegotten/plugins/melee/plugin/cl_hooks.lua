@@ -201,7 +201,7 @@ function cwMelee:CreateDummyMenu(dummyEnt)
 		end;
 	end
 	
-	menu:AddOption("Examine", function()
+	menu:AddOption("Осмотреть", function()
 		netstream.Start("DummyExamine", {dummyEnt});
 	end);
 	

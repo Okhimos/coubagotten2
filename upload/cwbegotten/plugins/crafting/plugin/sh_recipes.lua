@@ -968,7 +968,7 @@ function cwRecipes:ClockworkInitialized()
 			["cloth"] = {amount = 1},
 		};
 		RECIPE.result = {
-			["crafted_bandage"] = {amount = 1},
+			["crafted_bandage"] = {amount = 2},
 		};
 		RECIPE.category = "Medical"
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
@@ -1020,7 +1020,7 @@ function cwRecipes:ClockworkInitialized()
 			["cloth"] = {amount = 3},
 		};
 		RECIPE.result = {
-			["gauze"] = {amount = 1},
+			["gauze"] = {amount = 2},
 		};
 		RECIPE.category = "Medical"
 		RECIPE.finishSound = "begotten/items/first_aid.wav";
@@ -2007,7 +2007,7 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.requiredFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
 			["iron_ingot"] = {amount = 2},
-			["wood"] = {amount = 3},
+			["wood"] = {amount = 4},
 		};
 		RECIPE.result = {
 			["begotten_2h_great_gorewaraxe"] = {amount = 1},
@@ -2211,7 +2211,8 @@ function cwRecipes:ClockworkInitialized()
 		RECIPE.requiredFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
 			["steel_ingot"] = {amount = 1},
-			["wood"] = {amount = 3},
+			["iron_ingot"] = {amount = 2},
+			["wood"] = {amount = 4},
 		};
 		RECIPE.result = {
 			["begotten_2h_great_reaverwaraxe"] = {amount = 1},
@@ -2662,7 +2663,8 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"craftsman"};
 		RECIPE.requiredFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
-			["steel_ingot"] = {amount = 2},
+			["steel_ingot"] = {amount = 1},
+			["iron_ingot"] = {amount = 1},
 			["wood"] = {amount = 2},
 		};
 		RECIPE.result = {
@@ -2691,7 +2693,8 @@ RECIPE:Register()
 		RECIPE.requiredBeliefs = {"craftsman"};
 		RECIPE.requiredFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
-			["steel_ingot"] = {amount = 2},
+			["iron_ingot"] = {amount = 1},
+			["steel_ingot"] = {amount = 1},
 			["wood"] = {amount = 2},
 		};
 		RECIPE.result = {
@@ -3239,7 +3242,7 @@ RECIPE:Register()
 			["wood"] = {amount = 1},
 		};
 		RECIPE.result = {
-			["scimitar"] = {amount = 1},
+			["begotten_1h_scimitar"] = {amount = 1},
 		};
 		RECIPE.category = "Weapons"
 		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
@@ -4711,14 +4714,16 @@ RECIPE:Register()
 	RECIPE:Register()
 
 	RECIPE = cwRecipes.recipes:New("enchanted_longsword");
-		RECIPE.name = "Зачарованный Длинный Меч";
+		RECIPE.name = "Меч Северного Сияния";
 		RECIPE.requiresSmithy = true;
 		RECIPE.requiredBeliefs = {"artisan"};
 		RECIPE.requiredFaiths = {"Faith of the Light"};
 		RECIPE.excludedFactions = {"Goreic Warrior"};
 		RECIPE.requirements = {
-			["maximilian_steel_ingot"] = {amount = 3},
+			["fine_steel_ingot"] = {amount = 2},
 			["ice_sigil_stone"] = {amount = 1},
+			["maximilian_steel_ingot"] = {amount = 1},
+			["leather"] = {amount = 1},
 		};
 		RECIPE.result = {
 			["begotten_sacrificial_enchantedlongsword_ice"] = {amount = 1},
@@ -5249,7 +5254,7 @@ RECIPE:Register()
 	RECIPE:Register()
 
 	RECIPE = cwRecipes.recipes:New("warfighter_shield");
-		RECIPE.name = "Щит Бойца";
+		RECIPE.name = "Щит Воина";
 		RECIPE.requiresSmithy = true;
 		RECIPE.requiredBeliefs = {"artisan"};
 		RECIPE.requiredFaiths = {"Faith of the Family"};
@@ -5390,7 +5395,7 @@ RECIPE:Register()
 	RECIPE:Register()
 	
 	RECIPE = cwRecipes.recipes:New("leather_shield");
-		RECIPE.name = "Кожанный Щит";
+		RECIPE.name = "Кожаный Щит";
 		RECIPE.requiredBeliefs = {"craftsman"};
 		RECIPE.requirements = {
 			["shield5"] = {amount = 1},
@@ -8677,7 +8682,7 @@ RECIPE = cwRecipes.recipes:New("emis_gatekeeper_helmet");
 		end;
 	RECIPE:Register()
 
-	RECIPE = cwRecipes.recipes:New("emis_gatekeeper_helmet_emis");
+	RECIPE = cwRecipes.recipes:New("emis_gatekeeper_helmet_upgrade");
 		RECIPE.name = "(Ул.) Лик Святого";
 		RECIPE.requiresSmithy = true;
 		RECIPE.requiredBeliefs = {"artisan"};
@@ -8735,3 +8740,120 @@ RECIPE = cwRecipes.recipes:New("flintlock");
     function RECIPE:EndCraft(player)
     end;
 RECIPE:Register()
+
+RECIPE = cwRecipes.recipes:New("scout_gambeson");
+		RECIPE.name = "Кожаный Доспех";
+		RECIPE.requiredBeliefs = {"mechanic"};
+		RECIPE.requirements = {
+			["cloth"] = {amount = 2},
+			["leather"] = {amount = 2},
+			["iron_ingot"] = {amount = 2},
+		};
+		RECIPE.result = {
+			["scout_gambeson"] = {amount = 1},
+		};
+		RECIPE.category = "Armor"
+		RECIPE.finishSound = "begotten/items/first_aid.wav";
+		RECIPE.failSound = "buttons/button2.wav"
+		RECIPE.craftTime = 8
+		RECIPE.craftVerb = "собираете"
+		RECIPE.experience = 45;
+		
+		function RECIPE:OnCraft(player)
+		end;
+		function RECIPE:OnFail(player)
+		end;
+		function RECIPE:StartCraft(player)
+		end;
+		function RECIPE:EndCraft(player)
+		end;
+	RECIPE:Register()
+
+RECIPE = cwRecipes.recipes:New("scrapper_disciple_plate");
+		RECIPE.name = "Мусорный Доспех";
+		RECIPE.requiredBeliefs = {"mechanic"};
+		RECIPE.excludedSubfactions = {"Clan Gore", "Clan Harald", "Clan Reaver", "Clan Crast", "Clan Grock"};
+		RECIPE.requirements = {
+			["cloth"] = {amount = 1},
+			["scrap"] = {amount = 3},
+		};
+		RECIPE.result = {
+			["scrapper_disciple_plate"] = {amount = 1},
+		};
+		RECIPE.category = "Armor"
+		RECIPE.finishSound = "generic_ui/refine_success_02.wav";
+		RECIPE.failSound = "buttons/button2.wav"
+		RECIPE.craftTime = 8
+		RECIPE.craftVerb = "собираю"
+		RECIPE.experience = 25;
+		
+		function RECIPE:OnCraft(player)
+		end;
+		function RECIPE:OnFail(player)
+		end;
+		function RECIPE:StartCraft(player)
+		end;
+		function RECIPE:EndCraft(player)
+		end;
+	RECIPE:Register()
+	
+	RECIPE = cwRecipes.recipes:New("gore_shagalaxchief_helm");
+		RECIPE.name = "Шлем Шагалакса-Вожака";
+		RECIPE.requiresSmithy = true;
+		RECIPE.requiredBeliefs = {"artisan"};
+		RECIPE.requiredFactions = {"Goreic Warrior"};
+		RECIPE.requirements = {
+			["fine_steel_ingot"] = {amount = 1},
+			["steel_ingot"] = {amount = 3},
+			["familial_catalyst"] = {amount = 1},
+			["leather"] = {amount = 3},
+		};
+		RECIPE.result = {
+			["gore_shagalaxchief_helm"] = {amount = 1},
+		};
+		RECIPE.category = "Armor"
+		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
+		RECIPE.failSound = "buttons/button2.wav"
+		RECIPE.craftTime = 8
+		RECIPE.craftVerb = "куете"
+		RECIPE.experience = 90;
+		
+		function RECIPE:OnCraft(player)
+		end;
+		function RECIPE:OnFail(player)
+		end;
+		function RECIPE:StartCraft(player)
+		end;
+		function RECIPE:EndCraft(player)
+		end;
+	RECIPE:Register()
+	
+		RECIPE = cwRecipes.recipes:New("shagalax_houscarl_heavy");
+		RECIPE.name = "Броня Шагалакса-Вожака";
+		RECIPE.requiresSmithy = true;
+		RECIPE.requiredBeliefs = {"artisan"};
+		RECIPE.requiredFactions = {"Goreic Warrior"};
+		RECIPE.requirements = {
+			["shagalaxian_steel_ingot"] = {amount = 1},
+			["steel_ingot"] = {amount = 5},
+			["leather"] = {amount = 3},
+		};
+		RECIPE.result = {
+			["shagalax_houscarl_heavy"] = {amount = 1},
+		};
+		RECIPE.category = "Armor"
+		RECIPE.finishSound = "generic_ui/smelt_success_02.wav";
+		RECIPE.failSound = "buttons/button2.wav"
+		RECIPE.craftTime = 8
+		RECIPE.craftVerb = "куете"
+		RECIPE.experience = 195;
+		
+		function RECIPE:OnCraft(player)
+		end;
+		function RECIPE:OnFail(player)
+		end;
+		function RECIPE:StartCraft(player)
+		end;
+		function RECIPE:EndCraft(player)
+		end;
+	RECIPE:Register()

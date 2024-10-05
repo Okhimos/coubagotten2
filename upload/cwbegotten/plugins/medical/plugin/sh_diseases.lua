@@ -80,9 +80,9 @@ local DISEASE = {};
 	DISEASE.fromWater = true;
 	DISEASE.stages = {
 		[1] = {progressionTime = 1800, symptoms = nil,},
-		[2] = {progressionTime = 3600, symptoms = {"Fatigue", "Headaches"}},
-		[3] = {progressionTime = 3600, symptoms = {"Fatigue", "Headaches", "Coughing"}},
-		[4] = {progressionTime = 3600, symptoms = {"Fatigue", "Headaches", "Coughing", "Paleness"}},
+		[2] = {progressionTime = 3600, symptoms = {"Усталость", "Головные Боли"}},
+		[3] = {progressionTime = 3600, symptoms = {"Усталость", "Головные Боли", "Кашель"}},
+		[4] = {progressionTime = 3600, symptoms = {"Усталость", "Головные Боли", "Кашель", "Бледность"}},
 	};
 cwMedicalSystem:RegisterDisease(DISEASE.uniqueID, DISEASE);
 
@@ -96,9 +96,9 @@ local DISEASE = {};
 	DISEASE.fromWater = true;
 	DISEASE.stages = {
 		[1] = {progressionTime = 1800, symptoms = nil,},
-		[2] = {progressionTime = 3600, symptoms = {"Nausea"}},
-		[3] = {progressionTime = 3600, symptoms = {"Nausea", "Coughing", "Paleness"}},
-		[4] = {progressionTime = 3600, symptoms = {"Nausea", "Coughing", "Paleness", "Vomiting"}},
+		[2] = {progressionTime = 3600, symptoms = {"Тошнота"}},
+		[3] = {progressionTime = 3600, symptoms = {"Тошнота", "Кашель", "Бледность"}},
+		[4] = {progressionTime = 3600, symptoms = {"Тошнота", "Кашель", "Бледность", "Рвота"}},
 	};
 cwMedicalSystem:RegisterDisease(DISEASE.uniqueID, DISEASE);
 
@@ -112,9 +112,9 @@ local DISEASE = {};
 --	DISEASE.fromWater = true;
 	DISEASE.stages = {
 		[1] = {progressionTime = 900, symptoms = nil,},
-		[2] = {progressionTime = 3600, symptoms = {"Fatigue", "Headaches", "Coughing", "Vomiting"}},
-		[3] = {progressionTime = 3600, symptoms = {"Fatigue", "Headaches", "Nausea", "Coughing", "Vomiting Blood", "Pustules"}},
-		[4] = {progressionTime = 3600, symptoms = {"Fatigue", "Headaches", "Nausea", "Coughing", "Vomiting Blood", "Pustules", "Rage"}},
+		[2] = {progressionTime = 3600, symptoms = {"Усталость", "Головные Боли", "Кашель", "Рвота"}},
+		[3] = {progressionTime = 3600, symptoms = {"Усталость", "Головные Боли", "Тошнота", "Кашель", "Кровавая Рвота", "Бубоны"}},
+		[4] = {progressionTime = 3600, symptoms = {"Усталость", "Головные Боли", "Тошнота", "Кашель", "Кровавая Рвота", "Бубоны", "Ярость"}},
 	};
 	DISEASE.showOnAdminESP = true; -- Show disease on admin ESP if it's important.
 	DISEASE.OnReceive = function(player)
@@ -131,6 +131,6 @@ local DISEASE = {};
 	DISEASE.name = "Лепра";
 	DISEASE.permanent = true;
 	DISEASE.stages = {
-		[1] = {symptoms = {"Deformities"}},
+		[1] = {symptoms = {"Уродец"}},
 	};
 cwMedicalSystem:RegisterDisease(DISEASE.uniqueID, DISEASE);

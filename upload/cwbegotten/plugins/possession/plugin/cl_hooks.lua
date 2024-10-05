@@ -4,7 +4,7 @@
 
 local glowMaterial = Material("sprites/redglow1");
 
-surface.CreateFont("UseHint", {font = "Trebuchet24", size = 18, weight = 750});
+surface.CreateFont("UseHint", {font = "Oranienbaum", size = 18, weight = 750});
 
 -- Called each tick.
 function cwPossession:Tick()

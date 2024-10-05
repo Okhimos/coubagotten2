@@ -659,6 +659,10 @@ function PANEL:Rebuild(player, level, experience, beliefs, points, faith, highli
 		self.localLevelCap = self.localLevelCap + 666;
 	end
 
+if player:HasBelief("emissary") then
+        self.localLevelCap = self.localLevelCap + 5;
+    end
+
 	local scrW, scrH = ScrW(), ScrH()
 	local sizeW, sizeH = 1555, 928;
 	local centerW, centerH = scrW * 0.5, scrH * 0.5

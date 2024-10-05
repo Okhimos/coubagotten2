@@ -80,6 +80,8 @@ ITEM.protection = 90;
 ITEM.weight = 6;
 ITEM.weightclass = "Heavy";
 ITEM.type = "plate";
+ITEM.faction = "Holy Hierarchy";
+ITEM.excludeFactions = {"Goreic Warrior"};
 ITEM.description = "Пластинчатый доспех, покрытый святой тканью и благословенными символами. Шлем, выкованный из Максимиллианской стали с золотыми гравюрами. Он предназначался для самых сильных воинов Сияния.";
 ITEM.useSound = "armormovement/body-armor-b4.WAV.mp3";
 

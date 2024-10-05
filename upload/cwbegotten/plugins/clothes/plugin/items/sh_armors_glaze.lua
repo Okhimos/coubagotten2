@@ -3,7 +3,7 @@
 
 PROTECTION - 25
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -13,7 +13,7 @@ ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
 PROTECTION - 40
 FALL DAMAGE - +10%
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -23,7 +23,7 @@ ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
 PROTECTION - 65
 FALL DAMAGE - +15%
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.75; -- reduces bullet damage by 25%
@@ -63,7 +63,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -125,7 +125,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.75; -- reduces bullet damage by 25%
@@ -188,7 +188,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -249,7 +249,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -310,7 +310,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -431,7 +431,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -488,7 +488,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -545,7 +545,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -602,7 +602,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -659,7 +659,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -715,7 +715,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -774,7 +774,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -814,7 +814,7 @@ ITEM.protection = 55
 ITEM.type = "chainmail";
 ITEM.weight = 4;
 ITEM.weightclass = "Medium";
-ITEM.description = "Кольчужное одеяние, изготовлено для ордена боевых монахов. Кажется, что оно защищено осуждающей аурой, которая вселяет животный ужас в еретическую тварь. Особенно когда глаза такого монаха светиться желтым.";
+ITEM.description = "Плащ из вареной кожи под которым находится кольчуга, покрывающая большую часть тела. Это одеяние было создано специально для ордена монахов Сола.";
 ITEM.useSound = "armormovement/body-armor-b4.WAV.mp3";
 
 ITEM.kinisgerOverride = true;
@@ -837,7 +837,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -891,7 +891,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -948,7 +948,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -1008,7 +1008,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -1064,7 +1064,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -1119,7 +1119,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -1178,7 +1178,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -1243,7 +1243,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -1306,7 +1306,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.75; -- reduces bullet damage by 25%
@@ -1372,7 +1372,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.75; -- reduces bullet damage by 25%
@@ -1442,7 +1442,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.65; -- reduces bullet damage by 35%
@@ -1507,7 +1507,7 @@ ITEM.effectiveLimbs = {
 ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.60; -- reduces bullet damage by 40%
@@ -1570,7 +1570,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.08, -- increases fall damage by 8%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -1632,7 +1632,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.08, -- increases fall damage by 8%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -1694,7 +1694,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.08, -- increases fall damage by 8%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -1760,7 +1760,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.75; -- reduces bullet damage by 25%
@@ -1832,7 +1832,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.75; -- reduces bullet damage by 25%
@@ -1901,7 +1901,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.75; -- reduces bullet damage by 25%
@@ -1979,7 +1979,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.70; -- reduces slash damage by 30%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -1999,7 +1999,7 @@ end;
 -- Called when a player has unequipped the item.
 function ITEM:OnPlayerUnequipped(player, extraData)
 	if player:GetSubfaith() == "Voltism" then
-		Schema:EasyText(player, "peru", "This armor is grafted into your skin and fused with your flesh, and cannot be unequipped!");
+		Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 		return false;
 	end
 
@@ -2028,7 +2028,7 @@ end
 function ITEM:OnTakeFromPlayer(player)
 	if (player:GetClothesEquipped() == self) then
 		if player:Alive() and player:GetSubfaith() == "Voltism" then
-			Schema:EasyText(player, "peru", "This armor is grafted into this character's skin and fused with their flesh, and cannot be unequipped!");
+			Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 			return false;
 		end
 
@@ -2042,11 +2042,11 @@ end
 function ITEM:OnDrop(player, position)
 	if (player:GetClothesEquipped() == self) then
 		if player:Alive() and player:GetSubfaith() == "Voltism" then
-			Schema:EasyText(player, "peru", "This armor is grafted into this character's skin and fused with their flesh, and cannot be unequipped!");
+			Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 			return false;
 		end
 	
-		Schema:EasyText(player, "firebrick", "You cannot drop an item you're currently wearing.")
+		Schema:EasyText(player, "firebrick", "Ты не можешь сделать это сейчас!")
 		return false
 	end
 end
@@ -2102,7 +2102,7 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.95; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.90; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
@@ -2122,7 +2122,7 @@ end;
 -- Called when a player has unequipped the item.
 function ITEM:OnPlayerUnequipped(player, extraData)
 	if player:GetSubfaith() == "Voltism" then
-		Schema:EasyText(player, "peru", "This armor is grafted into your skin and fused with your flesh, and cannot be unequipped!");
+		Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 		return false;
 	end
 
@@ -2151,7 +2151,7 @@ end
 function ITEM:OnTakeFromPlayer(player)
 	if (player:GetClothesEquipped() == self) then
 		if player:Alive() and player:GetSubfaith() == "Voltism" then
-			Schema:EasyText(player, "peru", "This armor is grafted into this character's skin and fused with their flesh, and cannot be unequipped!");
+			Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 			return false;
 		end
 
@@ -2165,11 +2165,11 @@ end
 function ITEM:OnDrop(player, position)
 	if (player:GetClothesEquipped() == self) then
 		if player:Alive() and player:GetSubfaith() == "Voltism" then
-			Schema:EasyText(player, "peru", "This armor is grafted into this character's skin and fused with their flesh, and cannot be unequipped!");
+			Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 			return false;
 		end
 	
-		Schema:EasyText(player, "peru", "You cannot drop an item you're currently wearing.")
+		Schema:EasyText(player, "peru", "Ты не можешь сделать это сейчас!")
 		return false
 	end
 end
@@ -2229,7 +2229,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.15, -- increases fall damage by 15%
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 30%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 30%
 ITEM.pierceScale = 0.70; -- reduces pierce damage by 30%
 ITEM.slashScale = 0.60; -- reduces slash damage by 40%
 ITEM.bulletScale = 0.3; -- reduces bullet damage by 70%
@@ -2249,7 +2249,7 @@ end;
 -- Called when a player has unequipped the item.
 function ITEM:OnPlayerUnequipped(player, extraData)
 	if player:GetSubfaith() == "Voltism" then
-		Schema:EasyText(player, "peru", "This armor is grafted into your skin and fused with your flesh, and cannot be unequipped!");
+		Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 		return false;
 	end
 
@@ -2278,7 +2278,7 @@ end
 function ITEM:OnTakeFromPlayer(player)
 	if (player:GetClothesEquipped() == self) then
 		if player:Alive() and player:GetSubfaith() == "Voltism" then
-			Schema:EasyText(player, "peru", "This armor is grafted into this character's skin and fused with their flesh, and cannot be unequipped!");
+			Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 			return false;
 		end
 		
@@ -2292,11 +2292,11 @@ end
 function ITEM:OnDrop(player, position)
 	if (player:GetClothesEquipped() == self) then
 		if player:Alive() and player:GetSubfaith() == "Voltism" then
-			Schema:EasyText(player, "peru", "This armor is grafted into this character's skin and fused with their flesh, and cannot be unequipped!");
+			Schema:EasyText(player, "peru", "Это броня вживлена в твою плоть и не может быть снята!");
 			return false;
 		end
 	
-		Schema:EasyText(player, "firebrick", "You cannot drop an item you're currently wearing.")
+		Schema:EasyText(player, "firebrick", "Ты не можешь сделать это сейчас!")
 		return false
 	end
 end
@@ -2319,10 +2319,9 @@ ITEM:Register();
 
 local ITEM = Clockwork.item:New("clothes_base");
 ITEM.name = "Доспехи Высшего Привратника";
-ITEM.uniqueID = "masteratarms_gatekeeper_plate"
-ITEM.group = "gatekeepers/gatekeeperfine";
-ITEM.model = "models/items/magic/armors/player_armors/player_armor_plate.mdl"
-ITEM.iconoverride = "materials/begotten/ui/itemicons/heavy_gatekeeper_plate.png"
+ITEM.group = "gatekeepers/masteratarms";
+ITEM.model = "models/begotten/headgroups_props/masteratarmsplate.mdl"
+ITEM.iconoverride = "materials/begotten/ui/itemicons/masteratarms_gatekeeper_plate.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 0.75
 ITEM.hitParticle = "MetalSpark";
@@ -2330,7 +2329,7 @@ ITEM.protection = 80
 ITEM.type = "chainmail";
 ITEM.weight = 6;
 ITEM.weightclass = "Medium";
-ITEM.description = "Доспех, созданный на основе Хороших Лат ордена Привратников. Кираса изготовлена из прочной стали Максимилиана. На ремне находятся ножны для кинжала, который является символом уважения к падшим героям.";
+ITEM.description = "Уникальный комплект доспехов, изготовленный из лучших материалов доступных обществу Сияния и специально разработанный для защиты первого человека в Ордене Привратников";
 ITEM.useSound = "armormovement/body-armor-b4.WAV.mp3";
 ITEM.requireFaction = {"Gatekeeper"};
 ITEM.faction = "Gatekeeper";
@@ -2357,6 +2356,21 @@ ITEM.components = {breakdownType = "meltdown", items = {"fine_steel_chunks", "fi
 function ITEM:GetReplacement(player)
 
 end;
+
+ITEM.runSound = {
+	"armormovement/body-hauberk-1.wav.mp3",
+	"armormovement/body-hauberk-2.wav.mp3",
+	"armormovement/body-hauberk-3.wav.mp3",
+	"armormovement/body-hauberk-4.wav.mp3",
+	"armormovement/body-hauberk-5.wav.mp3",
+};
+
+ITEM.walkSound = {
+	"armormovement/body-hauberk-b4.wav.mp3",
+	"armormovement/body-hauberk-b5.wav.mp3",
+};
+
+ITEM:Register();
 
 ITEM.runSound = {
 	"armormovement/body-hauberk-1.wav.mp3",
@@ -2470,7 +2484,7 @@ ITEM.damageTypeScales = {
 	[DMG_FALL] = -0.10, -- increases fall damage by 10%
 }
 
-ITEM.bluntScale = 0.75; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.85; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.85; -- reduces pierce damage by 15%
 ITEM.slashScale = 0.75; -- reduces slash damage by 25%
 ITEM.stabilityScale = 0.75; -- reduces stability damage by 25%
@@ -2501,9 +2515,9 @@ ITEM:Register();
 local ITEM = Clockwork.item:New("clothes_base");
 ITEM.name = "Кожаный Доспех";
 ITEM.uniqueID = "scout_gambeson";
-ITEM.group = "gatekeeper/gatekeeperauxarmor";
+ITEM.group = "gatekeepers/gatekeeperaux_black";
 ITEM.model = "models/begotten/headgroups_props/gatekeeperauxarmor_black.mdl"
-ITEM.iconoverride = "materials/begotten/ui/itemicons/praeventor_gambeson.png"
+ITEM.iconoverride = "rgs-3/itemicons/sirok_glaze.png"
 ITEM.category = "Armor"
 ITEM.conditionScale = 1.1
 ITEM.hitParticle = "GlassImpact";
@@ -2527,13 +2541,13 @@ ITEM.effectiveLimbs = {
 	[HITGROUP_GEAR] = true
 }
 
-ITEM.bluntScale = 0.70; -- reduces blunt damage by 25%
+ITEM.bluntScale = 0.80; -- reduces blunt damage by 25%
 ITEM.pierceScale = 0.90; -- reduces pierce damage by 5%
 ITEM.slashScale = 0.85; -- reduces slash damage by 10%
 ITEM.stabilityScale = 0.85; -- reduces stability damage by 15%
 ITEM.bulletScale = 0.90; -- reduces bullet damage by 10%
 
-ITEM.components = {breakdownType = "breakdown", items = {"iron_chunks", "leather", "leather", "cloth", "cloth"}};
+ITEM.components = {breakdownType = "breakdown", items = {"iron_chunks", "leather", "cloth", }};
 
 -- Called when a replacement is needed for a player.
 function ITEM:GetReplacement(player)
@@ -2553,3 +2567,64 @@ ITEM.runSound = {
 	"armormovement/body-lobe-b2.wav.mp3",
 };]]--
 
+ITEM:Register();
+
+local ITEM = Clockwork.item:New("clothes_base");
+ITEM.name = "Мусорный Доспех";
+ITEM.uniqueID = "scrapper_disciple_plate";
+ITEM.group = "wanderers/wanderer";
+ITEM.model = "models/begotten/headgroups_props/wanderer_armor_new.mdl"
+ITEM.iconoverride = "rgs-3/itemicons/wanderer_vest.png"
+ITEM.category = "Armor"
+ITEM.conditionScale = 1
+ITEM.hitParticle = "GlassImpact";
+ITEM.protection = 30
+ITEM.type = "leather";
+ITEM.weight = 5;
+ITEM.weightclass = "Light";
+ITEM.description = "Куски мусора, что защищают самые важные части тела своего носителя.";
+ITEM.useSound = "armormovement/body-armor-b4.WAV.mp3";
+ITEM.excludeSubfactions = {"Clan Gore", "Clan Harald", "Clan Reaver", "Clan Crast", "Clan Grock"};
+
+ITEM.effectiveLimbs = {
+	[HITGROUP_GENERIC] = true,
+	[HITGROUP_CHEST] = true,
+	[HITGROUP_STOMACH] = true,
+	[HITGROUP_LEFTARM] = true,
+	[HITGROUP_RIGHTARM] = true,
+	[HITGROUP_LEFTLEG] = true,
+	[HITGROUP_RIGHTLEG] = true,
+	[HITGROUP_GEAR] = true
+}
+
+ITEM.damageTypeScales = {
+	[DMG_FALL] = -0.10, -- increases fall damage by 10%
+}
+
+ITEM.bluntScale = 0.90; -- reduces blunt damage by 25%
+ITEM.pierceScale = 0.90; -- reduces pierce damage by 15%
+ITEM.slashScale = 0.75; -- reduces slash damage by 30%
+ITEM.stabilityScale = 0.80; -- reduces stability damage by 25%
+ITEM.bulletScale = 0.90; -- reduces bullet damage by 30%
+
+ITEM.components = {breakdownType = "breakdown", items = {"scrap", "scrap", "cloth"}};
+
+-- Called when a replacement is needed for a player.
+function ITEM:GetReplacement(player)
+
+end;
+
+ITEM.runSound = {
+	"armormovement/body-lobe-1.wav.mp3",
+	"armormovement/body-lobe-2.wav.mp3",
+	"armormovement/body-lobe-3.wav.mp3",
+	"armormovement/body-lobe-4.wav.mp3",
+	"armormovement/body-lobe-5.wav.mp3",
+};
+
+--[[ITEM.walkSound = {
+	"armormovement/body-lobe-b1.wav.mp3",
+	"armormovement/body-lobe-b2.wav.mp3",
+};]]--
+
+ITEM:Register();

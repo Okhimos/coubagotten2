@@ -393,7 +393,7 @@ function CLASS_TABLE:OnHandleUnequip(Callback)
 					local mainSlot = Clockwork.Client.equipmentSlots[slot];
 					local offhandSlot = Clockwork.Client.equipmentSlots[slot.."Offhand"];
 					
-					unequipMenu = menu:AddSubMenu("Unequip", function()
+					unequipMenu = menu:AddSubMenu("Снять", function()
 						if offhandSlot then
 							netstream.Start("UnequipItem", {offhandSlot("uniqueID"), offhandSlot("itemID")});
 						end
@@ -424,7 +424,7 @@ function CLASS_TABLE:OnHandleUnequip(Callback)
 			end
 			
 			if !unequipMenu then
-				unequipMenu = menu:AddOption("Unequip", function()
+				unequipMenu = menu:AddOption("Убрать", function()
 					Callback("holster")
 				end)
 			end
@@ -433,16 +433,16 @@ function CLASS_TABLE:OnHandleUnequip(Callback)
 				local ammo = self:GetData("Ammo");
 				
 				if ammo and #ammo > 0 then
-					local unloadText = "Unload Shot";
+					local unloadText = "Вынуть Патрон";
 									
 					if self.ammoCapacity == 1 or (#ammo == 1 and !string.find(ammo[1], "Magazine")) then
 						if self.usesMagazine then
-							unloadText = "Unload Chamber";
+							unloadText = "Разрядить";
 						end
 					elseif self.isRevolver then
-						unloadText = "Unload All Shot";
+						unloadText = "Разрядить Полностью";
 					elseif self.usesMagazine then
-						unloadText = "Unload Magazine";
+						unloadText = "Вынуть Магазин";
 					end
 					
 					menu:AddOption(unloadText, function()
@@ -451,7 +451,7 @@ function CLASS_TABLE:OnHandleUnequip(Callback)
 				end
 			end
 			
-			menu:AddOption("Drop", function()
+			menu:AddOption("Выкинуть", function()
 				Callback("drop")
 			end)
 		menu:Open()
@@ -465,7 +465,7 @@ end;
 -- A function to get whether the player can equip the item or not.
 function CLASS_TABLE:CanEquip(player)
 	if self:IsBroken() then
-		Schema:EasyText(player, "peru", "This item is broken and cannot be equipped!");
+		Schema:EasyText(player, "peru", "Этот предмет сломан!");
 		return false;
 	end
 	
@@ -668,7 +668,7 @@ if (SERVER) then
 				self.OnRepaired(player, itemTable, amount, degradation);
 			end;
 		elseif (holder) then
-			Schema:EasyText(holder, "peru", "You cannot repair this item!");
+			Schema:EasyText(holder, "peru", "Ты не можешь починить этот предмет!");
 		end;
 	end;
 	
