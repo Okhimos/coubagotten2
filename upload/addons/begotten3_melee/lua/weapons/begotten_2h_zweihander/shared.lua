@@ -168,7 +168,7 @@ SWEP.ViewModelBoneMods = {
 }
 
 SWEP.VElements = {
-	["v_zweihander"] = { type = "Model", model = "models/begottenprelude/weapons/zweihander.mdl", bone = "RW_Weapon", rel = "", pos = Vector(11.947, 8.831, -15.065), angle = Angle(78.311, -15.195, 139.091), size = Vector(1, 1, 1), material = "", skin = 0, bodygroup = {} }
+	["v_zweihander"] = { type = "Model", model = "models/begottenprelude/weapons/zweihander.mdl", bone = "RW_Weapon", rel = "", pos = Vector(-0.519, 0.518, -3.636), angle = Angle(82.986, 0, 59.61), size = Vector(1, 1, 1), material = "", skin = 0, bodygroup = {} }
 }
 
 SWEP.WElements = {
