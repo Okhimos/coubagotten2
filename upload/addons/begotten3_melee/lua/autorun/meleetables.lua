@@ -1660,6 +1660,26 @@ AttackTables.ClaymoreAttackTable = {
 	["punchstrength"] = Angle(0,1,0),
 };
 
+AttackTables.ZweihanderAttackTable = {
+	["primarydamage"] = 80,
+	["dmgtype"] = 4,
+	["attacktype"] = "reg_swing",
+	["canaltattack"] = true,
+	["altattackdamagemodifier"] = 0.75,
+	["altattackpoisedamagemodifier"] = 0.1,
+	["altmeleearc"] = 15,
+	["armorpiercing"] = 30,
+	["altarmorpiercing"] = 45,
+	["poisedamage"] = 35,
+	["stabilitydamage"] = 0,
+	["takeammo"] = 7,
+	["delay"] = 1.4,
+	["striketime"] = 0.6,
+	["meleearc"] = 45,
+	["meleerange"] = 1140,
+	["punchstrength"] = Angle(0,1,0),
+};
+
 AttackTables.VoltlongswordAttackTable = {
 	["primarydamage"] = 65,
 	["dmgtype"] = 4,
@@ -3254,6 +3274,7 @@ AddTable("ThrowingStoneAttackTable", AttackTables.ThrowingStoneAttackTable)
 AddTable("IronBoltAttackTable", AttackTables.IronBoltAttackTable)
 AddTable("ScrapBoltAttackTable", AttackTables.ScrapBoltAttackTable)
 AddTable("ClaymoreAttackTable", AttackTables.ClaymoreAttackTable) 
+AddTable("ZweihanderAttackTable", AttackTables.ZweihanderAttackTable)
 AddTable("HaralderWarAxeAttackTable", AttackTables.HaralderWarAxeAttackTable) 
 AddTable("ClubAttackTable", AttackTables.ClubAttackTable) 
 AddTable("HeavyBattleAxeAttackTable", AttackTables.HeavyBattleAxeAttackTable) 
@@ -3423,6 +3444,24 @@ BlockTables.FistBlockTable = {
 };
 
 BlockTables.ClaymoreBlockTable = {
+	["guardblockamount"] = 10,
+	["specialeffect"] = false,
+	["blockeffect"] = "MetalSpark",
+	["blockeffectforward"] = 25,
+	["blockeffectpos"] = (Vector(0, -10, 65)),
+	["blockcone"] = 180,
+	["blockdamagetypes"] = {DMG_SLASH, DMG_CLUB, DMG_VEHICLE},
+	["partialbulletblock"] = false,
+	["poiseresistance"] = 25,
+	["raisespeed"] = 1.75,
+	["instantraise"] = false,
+	["parrydifficulty"] = 0.2,
+	["parrytakestamina"] = 20,
+	["canparry"] = true,
+	["candeflect"] = true,
+};
+
+BlockTables.ZweihanderBlockTable = {
 	["guardblockamount"] = 10,
 	["specialeffect"] = false,
 	["blockeffect"] = "MetalSpark",
@@ -5716,6 +5755,7 @@ AddTable("DefaultBlockTable", BlockTables.DefaultBlockTable)
 AddTable("AdminTwistedMacheteBlockTable", BlockTables.AdminTwistedMacheteBlockTable)
 AddTable("FistBlockTable", BlockTables.FistBlockTable) 
 AddTable("ClaymoreBlockTable", BlockTables.ClaymoreBlockTable) 
+AddTable("ZweihanderBlockTable", BlockTables.ZweihanderBlockTable) 
 AddTable("HaralderWarAxeBlockTable", BlockTables.HaralderWarAxeBlockTable) 
 AddTable("ClubBlockTable", BlockTables.ClubBlockTable) 
 AddTable("HeavyBattleAxeBlockTable", BlockTables.HeavyBattleAxeBlockTable) 
