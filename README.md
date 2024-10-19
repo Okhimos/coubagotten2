@@ -12,3 +12,5 @@
 
 
 Оригинал - от команды беготтена (https://github.com/DETrooper/Begotten-III) и его модифицированной версии от Легаза (https://github.com/offlegaz2/Begotten-III-RU-)
+
+Версия от 08.10.2024
